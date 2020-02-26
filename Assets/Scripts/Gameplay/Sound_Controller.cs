@@ -25,13 +25,14 @@ public class Sound_Controller : MonoBehaviour
 
     void Start()
     {
+        AudioListener.volume = PlayerOptions.Volume;
         AudioSource[] audios = GetComponents<AudioSource>();
         lickPlayer = audios[0];
         soundPlayer = audios[1];
         musicPlayer = audios[2];
         licktriggered = false;
         //so_backsong = (AudioClip)Resources.Load<AudioClip>($"so_backsong");
-        so_backsong = (AudioClip)Resources.Load<AudioClip>($"so_battle_theme");
+        so_backsong = (AudioClip)Resources.Load<AudioClip>($"Music/so_battle_theme");
         musicPlayer.volume = 0.3f;
         lickPlayer.volume = 0.5f;
         soundPlayer.volume = 0.8f;
@@ -132,7 +133,7 @@ public class Sound_Controller : MonoBehaviour
     private void EnableTurnEvent (EnableTurnEvent enableturn)
     {
         licktriggered = false;
-        so_lick = (AudioClip)Resources.Load<AudioClip>($"so_lick{Random.Range(1, 7)}");            
+        so_lick = (AudioClip)Resources.Load<AudioClip>($"Sound/so_lick{Random.Range(1, 7)}");            
     }
 
     private void QtePlayEvent(QtePlayEvent qteplay)
@@ -149,19 +150,19 @@ public class Sound_Controller : MonoBehaviour
     {
         if (qteprize.effic < 0.3f)
         {
-            soundPlayer.clip = (AudioClip)Resources.Load<AudioClip>($"so_crowdboo");
+            soundPlayer.clip = (AudioClip)Resources.Load<AudioClip>($"Sound/so_crowdboo");
         }
         else if (qteprize.effic >= 0.3f && qteprize.effic < 0.7f)
         {
-            soundPlayer.clip = (AudioClip)Resources.Load<AudioClip>($"so_crowdclap");
+            soundPlayer.clip = (AudioClip)Resources.Load<AudioClip>($"Sound/so_crowdclap");
         }
         else if (qteprize.effic >= 0.7f && qteprize.effic < 1)
         {
-            soundPlayer.clip = (AudioClip)Resources.Load<AudioClip>($"so_crowdcheer{Random.Range(1, 3)}");
+            soundPlayer.clip = (AudioClip)Resources.Load<AudioClip>($"Sound/so_crowdcheer{Random.Range(1, 3)}");
         }
         else //100%
         {
-            soundPlayer.clip = (AudioClip)Resources.Load<AudioClip>($"so_crowdhurra{Random.Range(1, 3)}");
+            soundPlayer.clip = (AudioClip)Resources.Load<AudioClip>($"Sound/so_crowdhurra{Random.Range(1, 3)}");
         }
 
         soundPlayer.Play();

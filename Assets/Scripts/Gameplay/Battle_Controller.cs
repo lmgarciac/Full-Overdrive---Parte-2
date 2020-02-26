@@ -110,6 +110,8 @@ public class Battle_Controller : FiniteStateMachine
     private int bonusHP;
     private int bonusSP;
 
+    private int difficulty;
+
     private static float ti_coroutinetime = 0.1f;
 
     private bool playerturn;
@@ -740,6 +742,9 @@ public class Battle_Controller : FiniteStateMachine
     }
 
     private void StartProcedure(){
+
+
+        difficulty = PlayerOptions.Difficulty;
         currentseconds = 0;
         countdownstate = 0;
 //      Para saber cuanto vale una negra en segundos, divido el BPM por 60 
@@ -779,7 +784,7 @@ public class Battle_Controller : FiniteStateMachine
         defenseenemy = 1;   
         qtecounter = 0;
 
-        qteBase = Resources.Load("Qte_Base");
+        qteBase = Resources.Load("Prefabs/Qte_Base");
 
 
         SwitchState(new IdleState());
@@ -1109,22 +1114,22 @@ public class Battle_Controller : FiniteStateMachine
         switch (ev_action.action)
         {
             case (int)action.attack:
-                return ($"so_qte_atk_{ Random.Range(1, 3)}");
+                return ($"QTE_Template_atk_{ Random.Range(1, 3)}");
                 break;
             case (int)action.defend:
-                return ($"so_qte_def_{Random.Range(1, 2)}");
+                return ($"QTE_Template_def_{Random.Range(1, 2)}");
                 break;
             case (int)action.special:
-                return ($"so_qte_special_{Random.Range(1, 2)}");
+                return ($"QTE_Template_special_{Random.Range(1, 2)}");
                 break;
             case (int)action.heal:
-                return ($"so_qte_item_{Random.Range(1, 2)}");
+                return ($"QTE_Template_item_{Random.Range(1, 2)}");
                 break;
             case (int)action.buff:
-                return ($"so_qte_item_{Random.Range(1, 2)}");
+                return ($"QTE_Template_item_{Random.Range(1, 2)}");
                 break;
             default:
-                return ($"so_qte_atk_{Random.Range(1, 2)}");
+                return ($"QTE_Template_atk_{Random.Range(1, 2)}");
                 break;
         }
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QTE_Controller : MonoBehaviour
+public class QTE_Button_Controller : MonoBehaviour
 {
     private SpriteRenderer button_renderer;
     public Sprite defaultImage;

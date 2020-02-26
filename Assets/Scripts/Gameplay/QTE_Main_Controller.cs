@@ -72,21 +72,22 @@ public class QTE_Main_Controller : MonoBehaviour
 
     public void InitializeQte(string qtename)
     {
-        if(noteAmount!= 0)
-        {
-            return;
-        }
+        //if(noteAmount!= 0)
+        //{
+        //    return;
+        //}
 
-        guitarPrefab = (GameObject)Resources.Load("Electric_Guitar_Model");
-        noteUp = (GameObject)Resources.Load("Arrow_Up_Prefab");
-        noteDown = (GameObject)Resources.Load("Arrow_Down_Prefab");
-        noteLeft = (GameObject)Resources.Load("Arrow_Left_Prefab");
-        noteRight = (GameObject)Resources.Load("Arrow_Right_Prefab");
+        guitarPrefab = (GameObject)Resources.Load("Models/Electric_Guitar_Model");
+        noteUp = (GameObject)Resources.Load("Prefabs/Arrow_Up_Prefab");
+        noteDown = (GameObject)Resources.Load("Prefabs/Arrow_Down_Prefab");
+        noteLeft = (GameObject)Resources.Load("Prefabs/Arrow_Left_Prefab");
+        noteRight = (GameObject)Resources.Load("Prefabs/Arrow_Right_Prefab");
         Debug.Log(qtename);
-        QteSo = (Qte_Template)Resources.Load<Qte_Template>($"{qtename}");
+        QteSo = (Qte_Template)Resources.Load<Qte_Template>($"so_QTEs/{qtename}");
 
         licktriggered = false;
         noteAmount = QteSo.noteData.Length;
+        Debug.Log($"Noteamount: {noteAmount}");
         noteindex = 0;
         arrowsPosition = QteSo.arrowsHeight;
 
@@ -149,5 +150,10 @@ public class QTE_Main_Controller : MonoBehaviour
                 notesArray[noteindex] = clone;
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        noteAmount = 0;
     }
 }

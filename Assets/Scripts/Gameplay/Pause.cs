@@ -27,7 +27,7 @@ public class Pause : MonoBehaviour
         if (Input.GetKeyDown("escape"))
         {
             //Application.LoadLevel("Menu");
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
         }
     }
 }
