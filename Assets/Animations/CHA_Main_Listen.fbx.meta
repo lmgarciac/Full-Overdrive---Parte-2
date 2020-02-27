@@ -5,13 +5,13 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: -8958409701138980852
-    second: CHA_Main_Standar|CHA_Main_StandarAction
+    second: CHA_Main_Idle
   - first:
       74: 4283209305642353707
-    second: CHA_Main_Standar|Prop_Guitarra_2Action
+    second: CHA_Main_Idle_Shoulder
   - first:
       74: 1154686063143892230
-    second: Prop_Guitarra_2|Prop_Guitarra_2Action
+    second: CHA_Main_Idle_Guitar
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -41,7 +41,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: CHA_Main_Standar|CHA_Main_StandarAction
+      name: CHA_Main_Idle
       takeName: CHA_Main_Standar|CHA_Main_StandarAction
       internalID: 0
       firstFrame: 0
@@ -70,7 +70,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: CHA_Main_Standar|Prop_Guitarra_2Action
+      name: CHA_Main_Idle_Shoulder
       takeName: CHA_Main_Standar|Prop_Guitarra_2Action
       internalID: 0
       firstFrame: 0
@@ -99,7 +99,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Prop_Guitarra_2|Prop_Guitarra_2Action
+      name: CHA_Main_Idle_Guitar
       takeName: Prop_Guitarra_2|Prop_Guitarra_2Action
       internalID: 0
       firstFrame: 0

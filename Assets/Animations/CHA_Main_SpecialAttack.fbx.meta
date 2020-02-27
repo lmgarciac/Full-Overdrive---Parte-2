@@ -5,13 +5,16 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: -8958409701138980852
-    second: CHA_Main_Standar|CHA_Main_StandarAction
+    second: CHA_Main_Special
   - first:
       74: 4283209305642353707
-    second: CHA_Main_Standar|Prop_Guitarra_2Action
+    second: CHA_Main_Special_Point
   - first:
       74: 1154686063143892230
-    second: Prop_Guitarra_2|Prop_Guitarra_2Action
+    second: r
+  - first:
+      74: -3118121612772183517
+    second: CHA_Main_Special_Guitar
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -41,7 +44,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: CHA_Main_Standar|CHA_Main_StandarAction
+      name: CHA_Main_Special
       takeName: CHA_Main_Standar|CHA_Main_StandarAction
       internalID: 0
       firstFrame: 0
@@ -68,13 +71,13 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 150
     - serializedVersion: 16
-      name: CHA_Main_Standar|Prop_Guitarra_2Action
+      name: CHA_Main_Special_Point
       takeName: CHA_Main_Standar|Prop_Guitarra_2Action
       internalID: 0
       firstFrame: 0
-      lastFrame: 120
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -99,7 +102,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Prop_Guitarra_2|Prop_Guitarra_2Action
+      name: CHA_Main_Special_Guitar
       takeName: Prop_Guitarra_2|Prop_Guitarra_2Action
       internalID: 0
       firstFrame: 0
@@ -110,7 +113,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
