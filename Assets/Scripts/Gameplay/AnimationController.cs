@@ -68,9 +68,12 @@ public class AnimationController : MonoBehaviour
                 //objplayeridle.SetActive(false);
                 //objplayerspecial.SetActive(false);
                 //objplayerattack.SetActive(true);
-                an_player.SetBool("Idle", false);
-                an_player.SetBool("Attack", true);
-                an_player.SetBool("Special", false);
+                if (an_player.GetBool("Attack") != true)
+                {
+                    an_player.SetBool("Attack", true);
+                    an_player.SetBool("Idle", false);
+                    an_player.SetBool("Special", false);
+                }
             }
             else if (anim.animation == (int)animation.special)
             {
