@@ -1120,13 +1120,13 @@ public class Battle_Controller : FiniteStateMachine
                 return ($"QTE_Template_def_{Random.Range(1, 2)}");
                 break;
             case (int)action.special:
-                return ($"QTE_Template_special_{Random.Range(1, 2)}");
+                return ($"QTE_Template_spe_{Random.Range(1, 2)}");
                 break;
             case (int)action.heal:
-                return ($"QTE_Template_item_{Random.Range(1, 2)}");
+                return ($"QTE_Template_ite_{Random.Range(1, 2)}");
                 break;
             case (int)action.buff:
-                return ($"QTE_Template_item_{Random.Range(1, 2)}");
+                return ($"QTE_Template_ite_{Random.Range(1, 2)}");
                 break;
             default:
                 return ($"QTE_Template_atk_{Random.Range(1, 2)}");

@@ -17,11 +17,19 @@ public class transparency : MonoBehaviour
     private GameObject objectFaded;
     private Vector3 screenPos;
 
+    public float movSpeed;
+
     void Start()
     {
     }
 
     void Update()
+    {
+        WorldTransparency();
+        PlayerMovement();
+    }
+
+    private void WorldTransparency()
     {
         screenPos = gameCamera.WorldToScreenPoint(this.transform.position);
         camRaycast = gameCamera.ScreenPointToRay(screenPos);
@@ -55,4 +63,17 @@ public class transparency : MonoBehaviour
             }
         }
     }
+
+    private void PlayerMovement()
+    {
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+
+        Vector3 direction = new Vector3(horizontal, 0, vertical);
+
+        direction = Quaternion.AngleAxis(-45, Vector3.up) * direction;
+        this.transform.Translate(direction.normalized * Time.deltaTime * movSpeed);
+        gameCamera.transform.Translate(direction.normalized * Time.deltaTime * movSpeed);
+    }
+
 }
