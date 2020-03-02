@@ -2425,6 +2425,7 @@ MonoBehaviour:
   fadeSpeed: 3
   targetAlpha: 0.3
   gameCamera: {fileID: 1975456501}
+  ortog: 0
   movSpeed: 5
 --- !u!195 &1796750755
 NavMeshAgent:
@@ -2652,10 +2653,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1975456499}
-  m_LocalRotation: {x: 0.26483703, y: -0.27983642, z: 0.08061975, w: 0.91926783}
-  m_LocalPosition: {x: 12.5102, y: 22.485865, z: -27.229216}
+  m_LocalRotation: {x: -0.25661537, y: 0.12025099, z: -0.032184407, w: -0.9584636}
+  m_LocalPosition: {x: -10.5871525, y: 16.969744, z: -35.47657}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}

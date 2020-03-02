@@ -20,7 +20,7 @@ public class transparency_all : MonoBehaviour
     Dictionary<int, GameObject> objectsFaded;
     Dictionary<int, GameObject> objectsHit;
     private Vector3 cam_player;
-
+    public bool ortog;
     private Vector3 screenPos;
 
     public float movSpeed;
@@ -108,10 +108,15 @@ public class transparency_all : MonoBehaviour
 
     private void PlayerMovement()
     {
+        float changeangle = 0;
+        if (ortog == true)
+        {
+            changeangle = -45f;
+        }
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0, vertical);
-        direction = Quaternion.AngleAxis(-45, Vector3.up) * direction;
+        direction = Quaternion.AngleAxis(changeangle, Vector3.up) * direction;
         direction = direction.normalized * movSpeed;
         this.transform.Translate(direction * Time.deltaTime);
 
