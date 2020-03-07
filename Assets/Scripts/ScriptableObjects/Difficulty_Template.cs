@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "so_diff_n", menuName = "Difficulty Template")]
+[System.Serializable]
+[CreateAssetMenu(fileName = "Difficulty_Template_n", menuName = "Difficulty Template")]
+
 public class Difficulty_Template : ScriptableObject
 {
     public string qteDescription = "Descripción Dificultad";

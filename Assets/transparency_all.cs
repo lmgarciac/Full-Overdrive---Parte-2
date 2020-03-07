@@ -10,6 +10,7 @@ public class transparency_all : MonoBehaviour
     public float targetAlpha;
 
     private Color color;
+    private Shader shader;
 
     public Camera gameCamera;
     private RaycastHit hit;
@@ -20,11 +21,13 @@ public class transparency_all : MonoBehaviour
     Dictionary<int, GameObject> objectsFaded;
     Dictionary<int, GameObject> objectsHit;
     private Vector3 cam_player;
-    public bool ortog;
     private Vector3 screenPos;
-
+   // public bool ortograph;
     public float movSpeed;
     private bool verify;
+    public Material opaqueMat;
+    public Material transMat;
+    private Material[] currentMats;
 
     void Start()
     {
@@ -51,17 +54,26 @@ public class transparency_all : MonoBehaviour
 
         for (int i = 0; i < hits.Length; i++)
         {
+            
             RaycastHit hit = hits[i];
+            Debug.Log(hit.transform.gameObject.name);
             if (hit.transform.gameObject.tag != "Player" && hit.transform.gameObject.tag != "Floor")
             {
+                //Debug.Log("Hit!");
+                objectFaded = hit.transform.gameObject;
+
                 // Si es nuevo, lo agrego al listado.
                 if (!objectsHit.ContainsKey(hit.transform.gameObject.GetInstanceID()))
                 {
+                    Debug.Log("Asignar material transparente");
+                    currentMats = objectFaded.GetComponent<MeshRenderer>().materials;
+                    currentMats[0] = transMat;
+                    objectFaded.GetComponent<MeshRenderer>().materials = currentMats;
                     objectsHit.Add(hit.transform.gameObject.GetInstanceID(), hit.transform.gameObject);
                 }
 
-                objectFaded = hit.transform.gameObject;
                 color = objectFaded.GetComponent<MeshRenderer>().material.color;
+
                 if (color.a >= targetAlpha)
                 {
                     color.a -= Time.deltaTime * fadeSpeed;
@@ -98,9 +110,11 @@ public class transparency_all : MonoBehaviour
         //Si ya volvió a alpha 1, quitarlo.
         for (int j = 0; j < objectsHit.Count; j++)
         {
+            objectFaded.GetComponent<MeshRenderer>().material = opaqueMat;
             color = objectsHit.ElementAt(j).Value.GetComponent<MeshRenderer>().material.color;
             if (color.a >= 1.0f)
             {
+                objectFaded.GetComponent<MeshRenderer>().material = opaqueMat;
                 objectsHit.Remove(objectsHit.ElementAt(j).Key);
             }
         }
@@ -108,11 +122,8 @@ public class transparency_all : MonoBehaviour
 
     private void PlayerMovement()
     {
-        float changeangle = 0;
-        if (ortog == true)
-        {
-            changeangle = -45f;
-        }
+        float changeangle = 45f;
+
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0, vertical);
