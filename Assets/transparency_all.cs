@@ -28,6 +28,7 @@ public class transparency_all : MonoBehaviour
     public Material opaqueMat;
     public Material transMat;
     private Material[] currentMats;
+    public float MaxTurnSpeed;
 
     void Start()
     {
@@ -66,9 +67,9 @@ public class transparency_all : MonoBehaviour
                 if (!objectsHit.ContainsKey(hit.transform.gameObject.GetInstanceID()))
                 {
                     Debug.Log("Asignar material transparente");
-                    currentMats = objectFaded.GetComponent<MeshRenderer>().materials;
-                    currentMats[0] = transMat;
-                    objectFaded.GetComponent<MeshRenderer>().materials = currentMats;
+                    //currentMats = objectFaded.GetComponent<MeshRenderer>().materials;
+                    //currentMats[0] = transMat;
+                    objectFaded.GetComponent<MeshRenderer>().material = transMat;
                     objectsHit.Add(hit.transform.gameObject.GetInstanceID(), hit.transform.gameObject);
                 }
 
@@ -110,7 +111,7 @@ public class transparency_all : MonoBehaviour
         //Si ya volvió a alpha 1, quitarlo.
         for (int j = 0; j < objectsHit.Count; j++)
         {
-            objectFaded.GetComponent<MeshRenderer>().material = opaqueMat;
+            //objectFaded.GetComponent<MeshRenderer>().material = opaqueMat;
             color = objectsHit.ElementAt(j).Value.GetComponent<MeshRenderer>().material.color;
             if (color.a >= 1.0f)
             {
@@ -129,7 +130,12 @@ public class transparency_all : MonoBehaviour
         Vector3 direction = new Vector3(horizontal, 0, vertical);
         direction = Quaternion.AngleAxis(changeangle, Vector3.up) * direction;
         direction = direction.normalized * movSpeed;
-        this.transform.Translate(direction * Time.deltaTime);
+//        this.transform.Translate(direction * Time.deltaTime);
+        this.transform.Translate(Vector3.forward * Time.deltaTime);
+
+        Quaternion wanted_rotation = Quaternion.LookRotation(direction);
+
+        this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, wanted_rotation, MaxTurnSpeed * Time.deltaTime);
 
         gameCamera.transform.position = this.transform.position + cam_player;
     }
