@@ -6,16 +6,38 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public Animator animFader;
+    private bool fadesound = false;
+    public AudioSource musica;
+    public float soundFadespeed = 0.3f;
 
     void Start()
     {
         PlayerOptions.Volume = AudioListener.volume;
         PlayerOptions.Difficulty = 1;
+
+        //musica = this.GetComponent<AudioSource>();
+
+    }
+
+    void Update()
+    {
+        if (fadesound == true)
+        {
+            musica.volume -= Time.deltaTime * soundFadespeed;
+        }
+    }
+
+    private void Fadeout()
+    {
+        animFader.SetBool("Leave", true);
+        fadesound = true;
     }
 
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Fadeout();
     } 
 
     public void QuitGame()

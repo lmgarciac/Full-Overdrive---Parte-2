@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 
 
-public class transparency_all : MonoBehaviour
+public class Player_Controller : MonoBehaviour
 {
     public float fadeSpeed = 1f;
     public float targetAlpha;
