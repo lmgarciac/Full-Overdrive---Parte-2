@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -120}
-  m_SizeDelta: {x: 124.05, y: 64.32}
+  m_AnchoredPosition: {x: 420, y: -12}
+  m_SizeDelta: {x: 98.6, y: 51.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &102468940
 MonoBehaviour:
@@ -349,7 +349,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -12}
+  m_AnchoredPosition: {x: -405, y: -12}
   m_SizeDelta: {x: 199.89, y: 80.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &157998363
@@ -558,8 +558,8 @@ RectTransform:
   m_Father: {fileID: 1860043246}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -808,8 +808,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: BACK
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 44fb28dbe6dac9141ae66c175dcdcfc5, type: 2}
-  m_sharedMaterial: {fileID: -8877068771878131568, guid: 44fb28dbe6dac9141ae66c175dcdcfc5,
+  m_fontAsset: {fileID: 11400000, guid: be417dc31210b8a4ea3153f5d6d013db, type: 2}
+  m_sharedMaterial: {fileID: -76859460667646670, guid: be417dc31210b8a4ea3153f5d6d013db,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1070,8 +1070,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: DIFFICULTY
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 44fb28dbe6dac9141ae66c175dcdcfc5, type: 2}
-  m_sharedMaterial: {fileID: -8877068771878131568, guid: 44fb28dbe6dac9141ae66c175dcdcfc5,
+  m_fontAsset: {fileID: 11400000, guid: be417dc31210b8a4ea3153f5d6d013db, type: 2}
+  m_sharedMaterial: {fileID: -76859460667646670, guid: be417dc31210b8a4ea3153f5d6d013db,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1298,8 +1298,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: PLAY
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 44fb28dbe6dac9141ae66c175dcdcfc5, type: 2}
-  m_sharedMaterial: {fileID: -8877068771878131568, guid: 44fb28dbe6dac9141ae66c175dcdcfc5,
+  m_fontAsset: {fileID: 11400000, guid: be417dc31210b8a4ea3153f5d6d013db, type: 2}
+  m_sharedMaterial: {fileID: -76859460667646670, guid: be417dc31210b8a4ea3153f5d6d013db,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1325,10 +1325,10 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 62
+  m_fontSize: 36.3
   m_fontSizeBase: 62
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 100
   m_fontStyle: 1
@@ -1342,7 +1342,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1818,8 +1818,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 100}
-  m_SizeDelta: {x: 125.5, y: 59.3}
+  m_AnchoredPosition: {x: 0, y: -12}
+  m_SizeDelta: {x: 103.8, y: 40.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1305182092
 MonoBehaviour:
@@ -2146,7 +2146,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2163,7 +2163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.60784316, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.2901961, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2351,8 +2351,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: VOLUME
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 44fb28dbe6dac9141ae66c175dcdcfc5, type: 2}
-  m_sharedMaterial: {fileID: -8877068771878131568, guid: 44fb28dbe6dac9141ae66c175dcdcfc5,
+  m_fontAsset: {fileID: 11400000, guid: be417dc31210b8a4ea3153f5d6d013db, type: 2}
+  m_sharedMaterial: {fileID: -76859460667646670, guid: be417dc31210b8a4ea3153f5d6d013db,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2553,8 +2553,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -59}
-  m_SizeDelta: {x: 498.6, y: 440.3}
+  m_AnchoredPosition: {x: 0, y: -249.4}
+  m_SizeDelta: {x: 1327, y: 140.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1494758844
 MonoBehaviour:
@@ -2609,7 +2609,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -32.2}
+  m_AnchoredPosition: {x: 0, y: -30.800003}
   m_SizeDelta: {x: 354, y: 61.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1572055649
@@ -2976,7 +2976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.60784316, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.2901961, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3081,8 +3081,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: QUIT
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 44fb28dbe6dac9141ae66c175dcdcfc5, type: 2}
-  m_sharedMaterial: {fileID: -8877068771878131568, guid: 44fb28dbe6dac9141ae66c175dcdcfc5,
+  m_fontAsset: {fileID: 11400000, guid: be417dc31210b8a4ea3153f5d6d013db, type: 2}
+  m_sharedMaterial: {fileID: -76859460667646670, guid: be417dc31210b8a4ea3153f5d6d013db,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3108,12 +3108,12 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 62
+  m_fontSize: 46.15
   m_fontSizeBase: 62
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 100
   m_fontStyle: 1
   m_textAlignment: 514
   m_characterSpacing: 0
@@ -3252,8 +3252,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: OPTIONS
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 44fb28dbe6dac9141ae66c175dcdcfc5, type: 2}
-  m_sharedMaterial: {fileID: -8877068771878131568, guid: 44fb28dbe6dac9141ae66c175dcdcfc5,
+  m_fontAsset: {fileID: 11400000, guid: be417dc31210b8a4ea3153f5d6d013db, type: 2}
+  m_sharedMaterial: {fileID: -76859460667646670, guid: be417dc31210b8a4ea3153f5d6d013db,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3279,12 +3279,12 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 62
+  m_fontSize: 72.25
   m_fontSizeBase: 62
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 100
   m_fontStyle: 1
   m_textAlignment: 514
   m_characterSpacing: 0
@@ -3602,7 +3602,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 69.2}
+  m_AnchoredPosition: {x: 0, y: 101}
   m_SizeDelta: {x: 354, y: 61.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1885699534
@@ -3850,7 +3850,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -180}
+  m_AnchoredPosition: {x: 0, y: -166}
   m_SizeDelta: {x: 179.3, y: 82.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1960729320
