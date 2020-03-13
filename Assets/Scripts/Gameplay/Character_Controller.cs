@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class Character_Controller : FiniteStateMachine
 {
+    Quaternion ogRotation;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        ogRotation = transform.rotation;
     }
 
     // Update is called once per frame
-    protected override void Update()
+    void LateUpdate()
     {
-
+        transform.rotation = ogRotation;
         base.Update();
     }
 }
