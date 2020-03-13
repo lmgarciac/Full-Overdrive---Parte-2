@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-
+using Events;
 
 public class Player_Controller : MonoBehaviour
 {
@@ -30,6 +30,12 @@ public class Player_Controller : MonoBehaviour
     private Material[] currentMats;
     public float MaxTurnSpeed;
 
+
+    //// Events ////
+    private readonly CollectEvent ev_collect = new CollectEvent();
+    private readonly DialogueEvent ev_dialogue = new DialogueEvent();
+
+
     void Start()
     {
         objectsHit = new Dictionary<int, GameObject>();
@@ -41,7 +47,25 @@ public class Player_Controller : MonoBehaviour
     {
 
         WorldTransparency();
-        PlayerMovement();
+
+        if (Input.GetKey(KeyCode.W) ||
+            Input.GetKey(KeyCode.A) ||
+            Input.GetKey(KeyCode.S) ||
+            Input.GetKey(KeyCode.D))
+        {
+            PlayerMovement();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Collectable")
+        {
+            Debug.Log("Collectable!");
+            //Sumar puntos
+            other.gameObject.SetActive(false);
+            EventController.TriggerEvent(ev_collect);
+        }
     }
 
     private void WorldTransparency()
@@ -57,8 +81,11 @@ public class Player_Controller : MonoBehaviour
         {
             
             RaycastHit hit = hits[i];
-            Debug.Log(hit.transform.gameObject.name);
-            if (hit.transform.gameObject.tag != "Player" && hit.transform.gameObject.tag != "Floor")
+            //Debug.Log(hit.transform.gameObject.name);
+            if (hit.transform.gameObject.tag != "Player" && 
+                hit.transform.gameObject.tag != "Floor"  &&
+                hit.transform.gameObject.tag != "Collectable" &&
+                hit.transform.gameObject.tag != "NPCI")
             {
                 //Debug.Log("Hit!");
                 objectFaded = hit.transform.gameObject;
@@ -66,7 +93,7 @@ public class Player_Controller : MonoBehaviour
                 // Si es nuevo, lo agrego al listado.
                 if (!objectsHit.ContainsKey(hit.transform.gameObject.GetInstanceID()))
                 {
-                    Debug.Log("Asignar material transparente");
+                    //Debug.Log("Asignar material transparente");
                     //currentMats = objectFaded.GetComponent<MeshRenderer>().materials;
                     //currentMats[0] = transMat;
                     objectFaded.GetComponent<MeshRenderer>().material = transMat;
@@ -127,6 +154,7 @@ public class Player_Controller : MonoBehaviour
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
+
         Vector3 direction = new Vector3(horizontal, 0, vertical);
         direction = Quaternion.AngleAxis(changeangle, Vector3.up) * direction;
         direction = direction.normalized * movSpeed;
@@ -139,5 +167,6 @@ public class Player_Controller : MonoBehaviour
 
         gameCamera.transform.position = this.transform.position + cam_player;
     }
+
 
 }

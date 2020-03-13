@@ -110,9 +110,18 @@ namespace Events
         public bool playerturn;
         public bool camshake;
         public int animation;
-        //none = 0,
-        //idle = 1,
-        //play = 2,
-        //special = 3,
+    }
+
+
+    ///////////////WORLD MAP EVENTS//////////////////
+    public class CollectEvent : GameEvent
+    {
+
+    }
+
+    public class DialogueEvent : GameEvent
+    {
+        public bool talking;
+        public Dialogue dialogue;
     }
 }

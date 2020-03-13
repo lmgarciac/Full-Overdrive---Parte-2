@@ -9,6 +9,7 @@ TagManager:
   - QTE
   - Arrow
   - Floor
+  - Collectable
   layers:
   - Default
   - TransparentFX
