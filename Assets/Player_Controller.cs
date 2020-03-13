@@ -130,9 +130,11 @@ public class Player_Controller : MonoBehaviour
         Vector3 direction = new Vector3(horizontal, 0, vertical);
         direction = Quaternion.AngleAxis(changeangle, Vector3.up) * direction;
         direction = direction.normalized * movSpeed;
-//        this.transform.Translate(direction * Time.deltaTime);
-        this.transform.Translate(Vector3.forward * Time.deltaTime);
-
+        //        this.transform.Translate(direction * Time.deltaTime);
+        if (horizontal != 0 || vertical != 0)
+        {
+            this.transform.Translate(Vector3.forward * Time.deltaTime);
+        }
         Quaternion wanted_rotation = Quaternion.LookRotation(direction);
 
         this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, wanted_rotation, MaxTurnSpeed * Time.deltaTime);
