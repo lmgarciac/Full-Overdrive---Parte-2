@@ -10,6 +10,7 @@ TagManager:
   - Arrow
   - Floor
   - Collectable
+  - NPCI
   layers:
   - Default
   - TransparentFX

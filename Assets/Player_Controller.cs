@@ -22,7 +22,7 @@ public class Player_Controller : MonoBehaviour
     Dictionary<int, GameObject> objectsHit;
     private Vector3 cam_player;
     private Vector3 screenPos;
-   // public bool ortograph;
+    // public bool ortograph;
     public float movSpeed;
     private bool verify;
     public Material opaqueMat;
@@ -79,11 +79,11 @@ public class Player_Controller : MonoBehaviour
 
         for (int i = 0; i < hits.Length; i++)
         {
-            
+
             RaycastHit hit = hits[i];
             //Debug.Log(hit.transform.gameObject.name);
-            if (hit.transform.gameObject.tag != "Player" && 
-                hit.transform.gameObject.tag != "Floor"  &&
+            if (hit.transform.gameObject.tag != "Player" &&
+                hit.transform.gameObject.tag != "Floor" &&
                 hit.transform.gameObject.tag != "Collectable" &&
                 hit.transform.gameObject.tag != "NPCI")
             {
@@ -159,10 +159,8 @@ public class Player_Controller : MonoBehaviour
         direction = Quaternion.AngleAxis(changeangle, Vector3.up) * direction;
         direction = direction.normalized * movSpeed;
         //        this.transform.Translate(direction * Time.deltaTime);
-        if (horizontal != 0 || vertical != 0)
-        {
-            this.transform.Translate(Vector3.forward * Time.deltaTime);
-        }
+        this.transform.Translate(Vector3.forward * Time.deltaTime);
+
         Quaternion wanted_rotation = Quaternion.LookRotation(direction);
 
         this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, wanted_rotation, MaxTurnSpeed * Time.deltaTime);
