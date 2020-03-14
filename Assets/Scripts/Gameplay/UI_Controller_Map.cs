@@ -9,14 +9,19 @@ using TMPro;
 public class UI_Controller_Map : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI tx_collectables;
-
     [SerializeField] private GameObject go_dialoguebox;
     [SerializeField] private TextMeshProUGUI tx_NPCIname;
     [SerializeField] private TextMeshProUGUI tx_NPCIdialogue;
+    [SerializeField] private Animator anim_dialogue;
 
+    private static float dialogue_seconds = 0.03f;
+
+    private WaitForSecondsRealtime waitforseconds = new WaitForSecondsRealtime(dialogue_seconds);
 
     private int collectables;
     private Queue<string> sentences;
+
+
 
     void Start()
     {
@@ -59,6 +64,9 @@ public class UI_Controller_Map : MonoBehaviour
             sentences.Clear();
             go_dialoguebox.SetActive(true);
             tx_NPCIname.text = dialogue.dialogue.name;
+
+            anim_dialogue.SetBool("Open", true);
+
             foreach (string sentence in dialogue.dialogue.sentences)
             {
                 sentences.Enqueue(sentence);
@@ -78,13 +86,25 @@ public class UI_Controller_Map : MonoBehaviour
 
         string sentence = sentences.Dequeue();
         Debug.Log(sentence);
-        tx_NPCIdialogue.text = sentence;
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(sentence));
+        //tx_NPCIdialogue.text = sentence;
 
     }
 
     public void EndDialogue()
     {
         Debug.Log("End of conversation");
-        go_dialoguebox.SetActive(false);
+        anim_dialogue.SetBool("Open", false);
+    }
+
+    IEnumerator TypeSentence(string sentence)
+    {
+        tx_NPCIdialogue.text = "";
+        foreach (char letter in sentence.ToCharArray())
+        {
+            tx_NPCIdialogue.text += letter;
+            yield return waitforseconds;
+        }
     }
 }

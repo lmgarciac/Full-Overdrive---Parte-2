@@ -30,6 +30,21 @@ public class Player_Controller : MonoBehaviour
     private Material[] currentMats;
     public float MaxTurnSpeed;
 
+    [SerializeField] private float zoomlevel;
+    [SerializeField] private Animator cameraAnimator;
+
+    public enum camstate
+    {
+        idle = 0,
+        zoomin = 1,
+        zoomout = 2,
+    }
+
+    private bool cameraplaying = false;
+
+    private int _camstate = 0;
+
+    private WaitForSecondsRealtime waitforseconds = new WaitForSecondsRealtime(0.5f);
 
     //// Events ////
     private readonly CollectEvent ev_collect = new CollectEvent();
@@ -54,6 +69,49 @@ public class Player_Controller : MonoBehaviour
             Input.GetKey(KeyCode.D))
         {
             PlayerMovement();
+        }
+
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            if (_camstate == (int)camstate.idle && !cameraplaying)
+            {
+                cameraAnimator.SetBool("CamIdle", false);
+                cameraAnimator.SetBool("CamOut", false);
+                cameraAnimator.SetBool("CamIn", true);
+                _camstate = (int)camstate.zoomin;
+                cameraplaying = true;
+                StartCoroutine(WaitforCamera());
+            }
+            if (_camstate == (int)camstate.zoomout && !cameraplaying)
+            {
+                cameraAnimator.SetBool("CamIdle", true);
+                cameraAnimator.SetBool("CamOut", false);
+                cameraAnimator.SetBool("CamIn", false);
+                _camstate = (int)camstate.idle;
+                cameraplaying = true;
+                StartCoroutine(WaitforCamera());
+            }
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            if (_camstate == (int)camstate.idle && !cameraplaying)
+            {
+                cameraAnimator.SetBool("CamIdle", false);
+                cameraAnimator.SetBool("CamOut", true);
+                cameraAnimator.SetBool("CamIn", false);
+                _camstate = (int)camstate.zoomout;
+                cameraplaying = true;
+                StartCoroutine(WaitforCamera());
+            }
+            if (_camstate == (int)camstate.zoomin && !cameraplaying)
+            {
+                cameraAnimator.SetBool("CamIdle", true);
+                cameraAnimator.SetBool("CamOut", false);
+                cameraAnimator.SetBool("CamIn", false);
+                _camstate = (int)camstate.idle;
+                cameraplaying = true;
+                StartCoroutine(WaitforCamera());
+            }
         }
     }
 
@@ -168,5 +226,15 @@ public class Player_Controller : MonoBehaviour
         gameCamera.transform.position = this.transform.position + cam_player;
     }
 
+    bool AnimatorIsPlaying(Animator animator)
+    {
+        return animator.GetCurrentAnimatorStateInfo(0).length >
+               animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+    }
 
+    IEnumerator WaitforCamera()
+    {
+        yield return waitforseconds;
+        cameraplaying = false;
+    }
 }

@@ -42,7 +42,7 @@ public class Sound_Controller_Map : MonoBehaviour
 
         //so_backsong = (AudioClip)Resources.Load<AudioClip>($"Music/so_battle_theme");
 
-        musicPlayer.volume = 0.3f;
+        musicPlayer.volume = 0.05f;
         soundPlayer.volume = 0.8f;
 
     }
