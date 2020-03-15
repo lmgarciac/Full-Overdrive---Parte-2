@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using Events;
+using UnityEngine.AI;
 
 public class Player_Controller : MonoBehaviour
 {
@@ -44,6 +45,12 @@ public class Player_Controller : MonoBehaviour
 
     private int _camstate = 0;
 
+    private int collectables = 0;
+    private int picks = 0;
+    private int heals = 0;
+    private int buffs = 0;
+    private int money = 100;
+
     private WaitForSecondsRealtime waitforseconds = new WaitForSecondsRealtime(0.5f);
 
     //// Events ////
@@ -51,11 +58,23 @@ public class Player_Controller : MonoBehaviour
     private readonly DialogueEvent ev_dialogue = new DialogueEvent();
 
 
+    private void OnEnable()
+    {
+        EventController.AddListener<BeforeSceneUnloadEvent>(BeforeSceneUnloadEvent);
+        EventController.AddListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
+    }
+
+    private void OnDisable()
+    {
+        EventController.RemoveListener<BeforeSceneUnloadEvent>(BeforeSceneUnloadEvent);
+        EventController.RemoveListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
+    }
+
     void Start()
     {
         objectsHit = new Dictionary<int, GameObject>();
         cam_player = gameCamera.transform.position - this.transform.position;
-
+        //Player position
     }
 
     void Update()
@@ -113,6 +132,14 @@ public class Player_Controller : MonoBehaviour
                 StartCoroutine(WaitforCamera());
             }
         }
+
+        //if (Input.GetKey(KeyCode.V))
+        //{
+        //    this.transform.position = new Vector3(-1.3f, -0.126f, 1.8f);
+        //    this.transform.GetComponent<NavMeshAgent>().Warp(this.transform.position);
+        //    gameCamera.transform.position = this.transform.position + cam_player;
+        //}
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -121,10 +148,15 @@ public class Player_Controller : MonoBehaviour
         {
             Debug.Log("Collectable!");
             //Sumar puntos
+            collectables++;
             other.gameObject.SetActive(false);
             EventController.TriggerEvent(ev_collect);
         }
     }
+
+
+
+
 
     private void WorldTransparency()
     {
@@ -140,10 +172,7 @@ public class Player_Controller : MonoBehaviour
 
             RaycastHit hit = hits[i];
             //Debug.Log(hit.transform.gameObject.name);
-            if (hit.transform.gameObject.tag != "Player" &&
-                hit.transform.gameObject.tag != "Floor" &&
-                hit.transform.gameObject.tag != "Collectable" &&
-                hit.transform.gameObject.tag != "NPCI")
+            if (hit.transform.gameObject.tag == "Transparent")
             {
                 //Debug.Log("Hit!");
                 objectFaded = hit.transform.gameObject;
@@ -216,12 +245,13 @@ public class Player_Controller : MonoBehaviour
         Vector3 direction = new Vector3(horizontal, 0, vertical);
         direction = Quaternion.AngleAxis(changeangle, Vector3.up) * direction;
         direction = direction.normalized * movSpeed;
-        //        this.transform.Translate(direction * Time.deltaTime);
-        this.transform.Translate(Vector3.forward * Time.deltaTime);
+        //this.transform.Translate(direction * Time.deltaTime);
 
         Quaternion wanted_rotation = Quaternion.LookRotation(direction);
 
         this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, wanted_rotation, MaxTurnSpeed * Time.deltaTime);
+
+        this.transform.Translate(Vector3.forward * Time.deltaTime);
 
         gameCamera.transform.position = this.transform.position + cam_player;
     }
@@ -236,5 +266,43 @@ public class Player_Controller : MonoBehaviour
     {
         yield return waitforseconds;
         cameraplaying = false;
+    }
+
+    private void BeforeSceneUnloadEvent(BeforeSceneUnloadEvent before)
+    {
+        //Items
+        Player_Status.Collectables = collectables;
+        Player_Status.Picks = picks;
+        Player_Status.Heals = heals;
+        Player_Status.Buffs = buffs;
+        Player_Status.Money = money;
+
+        ////Player position
+        Map_Status.PlayerRotation = this.transform.rotation;
+        Map_Status.PlayerPosition = this.transform.position;
+
+        ////Camera position
+        Map_Status.CameraRotation = gameCamera.transform.rotation;
+        Map_Status.CameraPosition = gameCamera.transform.position;
+    }
+
+    private void AfterSceneLoadEvent(AfterSceneLoadEvent after)
+    {
+        //Restore Items
+        collectables = Player_Status.Collectables;
+        picks = Player_Status.Picks;
+        heals = Player_Status.Heals;
+        buffs = Player_Status.Buffs;
+        money = Player_Status.Money;
+
+        //Restore positions
+        if (!Map_Status.FirstTime)
+        {
+            this.transform.position = Map_Status.PlayerPosition;
+            this.transform.rotation = Map_Status.PlayerRotation;
+            gameCamera.transform.position = Map_Status.CameraPosition;
+            gameCamera.transform.rotation = Map_Status.CameraRotation;
+            this.transform.GetComponent<NavMeshAgent>().Warp(this.transform.position);
+        }
     }
 }

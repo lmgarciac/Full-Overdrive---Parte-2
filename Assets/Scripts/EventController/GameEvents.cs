@@ -123,5 +123,16 @@ namespace Events
     {
         public bool talking;
         public Dialogue dialogue;
+        public bool isshop;
+    }
+
+    public class BeforeSceneUnloadEvent : GameEvent
+    {
+
+    }
+
+    public class AfterSceneLoadEvent : GameEvent
+    {
+
     }
 }

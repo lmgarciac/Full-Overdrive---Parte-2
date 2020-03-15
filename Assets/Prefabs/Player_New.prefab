@@ -5000,9 +5000,8 @@ GameObject:
   - component: {fileID: 14758575696046561}
   - component: {fileID: 14758575696046562}
   - component: {fileID: 14758575696046563}
-  - component: {fileID: 14758575696046572}
   m_Layer: 8
-  m_Name: Player 1
+  m_Name: Player_New
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5118,28 +5117,8 @@ MonoBehaviour:
   opaqueMat: {fileID: 2100000, guid: 547269ff2f6466c4baf33aa074d24cd3, type: 2}
   transMat: {fileID: 2100000, guid: 1a98b2e58a8c41641a16aa016eca3d7c, type: 2}
   MaxTurnSpeed: 1000
---- !u!195 &14758575696046572
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 14758575696046573}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  zoomlevel: 0
+  cameraAnimator: {fileID: 0}
 --- !u!1 &14758575700150340
 GameObject:
   m_ObjectHideFlags: 0

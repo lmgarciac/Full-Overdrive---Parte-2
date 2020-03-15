@@ -8,10 +8,14 @@ public class Pause : MonoBehaviour
     // Start is called before the first frame update
     bool active;
     Canvas canvas;
+    private SceneController sceneController;
+
+
     void Start()
     {
         canvas = GetComponent<Canvas>();
         canvas.enabled = false;
+        sceneController = FindObjectOfType<SceneController>();
     }
 
     // Update is called once per frame
@@ -27,7 +31,8 @@ public class Pause : MonoBehaviour
         if (Input.GetKeyDown("escape"))
         {
             //Application.LoadLevel("Menu");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
+            sceneController.FadeAndLoadScene("_Test_Interactions");
         }
     }
 }

@@ -45015,7 +45015,7 @@ PrefabInstance:
     - target: {fileID: 388127827913326802, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[1]
-      value: Y tengo un gato que rompe todo...
+      value: Y tengo un gato.
       objectReference: {fileID: 0}
     - target: {fileID: 388127827913326802, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
@@ -49589,6 +49589,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 388127827913326802, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[0]
+      value: Hola soy Alejo.
       objectReference: {fileID: 0}
     - target: {fileID: 388127826884432217, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
