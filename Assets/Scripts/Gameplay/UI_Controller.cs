@@ -105,7 +105,9 @@ public enum action
         EventController.AddListener<GameOverEvent>(GameOverEvent); 
         EventController.AddListener<SelectActionEvent>(SelectActionEvent); 
         EventController.AddListener<QteHitEvent>(QteHitEvent); 
-        EventController.AddListener<QtePrizeEvent>(QtePrizeEvent); 
+        EventController.AddListener<QtePrizeEvent>(QtePrizeEvent);
+        EventController.AddListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
+
     }
     private void OnDisable() {
         // EventController.RemoveListener<GameStartEvent>(OnGameStartEvent); 
@@ -120,7 +122,9 @@ public enum action
         EventController.RemoveListener<GameOverEvent>(GameOverEvent); 
         EventController.RemoveListener<SelectActionEvent>(SelectActionEvent); 
         EventController.RemoveListener<QteHitEvent>(QteHitEvent);
-        EventController.RemoveListener<QtePrizeEvent>(QtePrizeEvent);         
+        EventController.RemoveListener<QtePrizeEvent>(QtePrizeEvent);
+        EventController.RemoveListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
+
     }
     private void StartTimerEvent(StartTimerEvent timer)
     {
@@ -157,8 +161,8 @@ public enum action
         player.sp = battlestart.playerinitsp;
         enemy.hp = battlestart.enemyinithp;
         enemy.sp = battlestart.enemyinitsp;
-        player.buff = battlestart.buffqty;
-        player.heal = battlestart.healqty;
+        //player.buff = battlestart.buffqty;
+        //player.heal = battlestart.healqty;
 
         max_hp_player = battlestart.playerhp;
         max_hp_enemy = battlestart.enemyhp;
@@ -171,8 +175,8 @@ public enum action
         tx_playersp.text = $"{player.sp}";
         tx_enemyhp.text = $"{enemy.hp}";
         tx_enemysp.text = $"{enemy.sp}";
-        tx_buffqty.text = $"{player.buff}";
-        tx_healqty.text = $"{player.heal}";
+        //tx_buffqty.text = $"{player.buff}";
+        //tx_healqty.text = $"{player.heal}";
     }
 
     private void ActionEvent (ActionEvent ev_action)
@@ -531,4 +535,14 @@ public enum action
             ProgressSP_Enemy.transform.localScale = new Vector3(Mathf.Clamp((_calc_spdown_enemy), 0f, 1f),ProgressSP_Enemy.transform.localScale.y, ProgressSP_Enemy.transform.localScale.z); //Ajusto SP Enemy
         }
     }
+
+    private void AfterSceneLoadEvent(AfterSceneLoadEvent after)
+    {
+        tx_healqty.text = Player_Status.Heals.ToString();
+        player.heal = Player_Status.Heals;
+
+        tx_buffqty.text = Player_Status.Buffs.ToString();
+        player.buff = Player_Status.Buffs;
+    }
+
 }

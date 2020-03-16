@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Events;
+using UnityEngine.SceneManagement;
 
 public class Battle_Controller : FiniteStateMachine
 {
@@ -146,6 +147,7 @@ public class Battle_Controller : FiniteStateMachine
     private readonly QtePrizeEvent ev_qteprize = new QtePrizeEvent();
     private readonly AnimEvent ev_anim = new AnimEvent();
 
+    private SceneController sceneController;
 
 
     public struct Character {
@@ -175,6 +177,8 @@ public class Battle_Controller : FiniteStateMachine
     {
         StartProcedure();
         StartCoroutine(StartCountdown());
+        sceneController = FindObjectOfType<SceneController>();
+
     }
 
     //Enable / Disable Events
@@ -183,11 +187,17 @@ public class Battle_Controller : FiniteStateMachine
         EventController.AddListener<QteHitEvent>(QteHitEvent);
         EventController.AddListener<QtePlayEvent>(QtePlayEvent);
         EventController.AddListener<QteLeaveEvent>(QteLeaveEvent);
+        EventController.AddListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
+        EventController.AddListener<BeforeSceneUnloadEvent>(BeforeSceneUnloadEvent);
+
     }
     private void OnDisable() {
         EventController.RemoveListener<QteHitEvent>(QteHitEvent);
         EventController.RemoveListener<QtePlayEvent>(QtePlayEvent);
         EventController.RemoveListener<QteLeaveEvent>(QteLeaveEvent);
+        EventController.RemoveListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
+        EventController.RemoveListener<BeforeSceneUnloadEvent>(BeforeSceneUnloadEvent);
+
     }
 
     //Update Event
@@ -553,12 +563,14 @@ public class Battle_Controller : FiniteStateMachine
                 enemy.hp = 0;
                 EventController.TriggerEvent(ev_gameover);
                 gameover = true;
+                sceneController.FadeAndLoadScene("_Test_Interactions");
             }
             if (player.hp <= 0)
             {
                 player.hp = 0;
                 EventController.TriggerEvent(ev_gameover);
                 gameover = true;
+                sceneController.FadeAndLoadScene("_Test_Interactions");
             }
 
 
@@ -1134,4 +1146,16 @@ public class Battle_Controller : FiniteStateMachine
         }
     }
 
+    private void AfterSceneLoadEvent(AfterSceneLoadEvent after)
+    {
+        playerheal = Player_Status.Heals;
+        playerbuff = Player_Status.Buffs;
+        //Debug.Log(playerheal);
+    }
+    private void BeforeSceneUnloadEvent(BeforeSceneUnloadEvent before)
+    {
+        Player_Status.Heals = player.heal;
+        Player_Status.Buffs = player.buff;
+        //Debug.Log(playerheal);
+    }
 }

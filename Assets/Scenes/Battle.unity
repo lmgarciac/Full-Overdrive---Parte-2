@@ -2511,10 +2511,10 @@ MonoBehaviour:
   playerinithp: 50
   playerbuff: 2
   playerheal: 2
-  enemyhp: 50
+  enemyhp: 1
   enemysp: 100
   enemyinitsp: 75
-  enemyinithp: 50
+  enemyinithp: 1
   enemyheal: 1
   enemybuff: 2
   specialcost: 60

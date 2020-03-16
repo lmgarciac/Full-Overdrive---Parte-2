@@ -45,17 +45,18 @@ public class Player_Controller : MonoBehaviour
 
     private int _camstate = 0;
 
-    private int collectables = 0;
-    private int picks = 0;
-    private int heals = 0;
-    private int buffs = 0;
-    private int money = 100;
+    private int collectables;
+    private int picks;
+    private int heals;
+    private int buffs;
+    public int money;
 
     private WaitForSecondsRealtime waitforseconds = new WaitForSecondsRealtime(0.5f);
 
     //// Events ////
     private readonly CollectEvent ev_collect = new CollectEvent();
     private readonly DialogueEvent ev_dialogue = new DialogueEvent();
+    private readonly BuyEvent ev_buy = new BuyEvent();
 
 
     private void OnEnable()
@@ -75,10 +76,16 @@ public class Player_Controller : MonoBehaviour
         objectsHit = new Dictionary<int, GameObject>();
         cam_player = gameCamera.transform.position - this.transform.position;
         //Player position
+
+
+        //Por el momento para testear
+        money = 1000;
+
     }
 
     void Update()
     {
+        //Debug.Log(money);
 
         WorldTransparency();
 
@@ -275,7 +282,7 @@ public class Player_Controller : MonoBehaviour
         Player_Status.Picks = picks;
         Player_Status.Heals = heals;
         Player_Status.Buffs = buffs;
-        Player_Status.Money = money;
+        //Player_Status.Money = money;
 
         ////Player position
         Map_Status.PlayerRotation = this.transform.rotation;
@@ -293,7 +300,7 @@ public class Player_Controller : MonoBehaviour
         picks = Player_Status.Picks;
         heals = Player_Status.Heals;
         buffs = Player_Status.Buffs;
-        money = Player_Status.Money;
+        //money = Player_Status.Money;
 
         //Restore positions
         if (!Map_Status.FirstTime)
@@ -303,6 +310,30 @@ public class Player_Controller : MonoBehaviour
             gameCamera.transform.position = Map_Status.CameraPosition;
             gameCamera.transform.rotation = Map_Status.CameraRotation;
             this.transform.GetComponent<NavMeshAgent>().Warp(this.transform.position);
+        }
+    }
+
+    public void BuyHeal(int price)
+    {
+        if (money > price)
+        {
+            ev_buy.isheal = true;
+            ev_buy.price = price;
+            money -= price;
+            heals++;
+            EventController.TriggerEvent(ev_buy);
+        }
+    }
+
+    public void BuyBuff(int price)
+    {
+        if (money > price)
+        {
+            ev_buy.isheal = false;
+            ev_buy.price = price;
+            money -= price;
+            buffs++;
+            EventController.TriggerEvent(ev_buy);
         }
     }
 }

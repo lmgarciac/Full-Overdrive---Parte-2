@@ -126,6 +126,12 @@ namespace Events
         public bool isshop;
     }
 
+    public class BuyEvent : GameEvent
+    {
+        public bool isheal;
+        public int price;
+    }
+
     public class BeforeSceneUnloadEvent : GameEvent
     {
 

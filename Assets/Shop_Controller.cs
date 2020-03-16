@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Events;
+using TMPro;
 
 public class Shop_Controller : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class Shop_Controller : MonoBehaviour
     private readonly DialogueEvent ev_dialogue = new DialogueEvent();
     private bool starttalking = false;
     private bool cantalk = false;    // Start is called before the first frame update
+
+
+
 
     void Start()
     {
@@ -26,6 +30,9 @@ public class Shop_Controller : MonoBehaviour
                 ev_dialogue.talking = false;
                 ev_dialogue.dialogue = dialogue;
                 ev_dialogue.isshop = true;
+
+
+
                 EventController.TriggerEvent(ev_dialogue);
                 starttalking = true;
                 dialoguecounter++;

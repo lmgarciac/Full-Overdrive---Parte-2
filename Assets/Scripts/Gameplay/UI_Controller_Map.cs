@@ -12,6 +12,7 @@ public class UI_Controller_Map : MonoBehaviour
     [SerializeField] private TextMeshProUGUI tx_picks;
     [SerializeField] private TextMeshProUGUI tx_heals;
     [SerializeField] private TextMeshProUGUI tx_buffs;
+    [SerializeField] private TextMeshProUGUI tx_money;
 
     [SerializeField] private GameObject go_dialoguebox;
     [SerializeField] private TextMeshProUGUI tx_NPCIname;
@@ -23,6 +24,10 @@ public class UI_Controller_Map : MonoBehaviour
     [SerializeField] private TextMeshProUGUI tx_Shopdialogue;
     [SerializeField] private Animator anim_shop;
 
+    [SerializeField] private TextMeshProUGUI tx_shopbuffs;
+    [SerializeField] private TextMeshProUGUI tx_shopheals;
+    [SerializeField] private TextMeshProUGUI tx_shopmoney;
+
     private static float dialogue_seconds = 0.03f;
 
     private WaitForSecondsRealtime waitforseconds = new WaitForSecondsRealtime(dialogue_seconds);
@@ -31,6 +36,7 @@ public class UI_Controller_Map : MonoBehaviour
     private int picks;
     private int heals;
     private int buffs;
+    private int money;
 
     private Queue<string> sentences;
 
@@ -40,6 +46,11 @@ public class UI_Controller_Map : MonoBehaviour
     {
         sentences = new Queue<string>();
         go_dialoguebox.SetActive(false);
+
+
+        //Por el momento para testear
+        tx_money.text = 1000.ToString();
+        Player_Status.Money = money = 1000;
 
     }
     void Update()
@@ -52,12 +63,15 @@ public class UI_Controller_Map : MonoBehaviour
         EventController.AddListener<DialogueEvent>(DialogueEvent);
         EventController.AddListener<BeforeSceneUnloadEvent>(BeforeSceneUnloadEvent);
         EventController.AddListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
+        EventController.AddListener<BuyEvent>(BuyEvent);
+
     }
     private void OnDisable() {
         EventController.RemoveListener<CollectEvent>(CollectEvent);
         EventController.RemoveListener<DialogueEvent>(DialogueEvent);
         EventController.RemoveListener<BeforeSceneUnloadEvent>(BeforeSceneUnloadEvent);
         EventController.RemoveListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
+        EventController.RemoveListener<BuyEvent>(BuyEvent);
     }
 
     private void CollectEvent(CollectEvent collect)
@@ -96,6 +110,12 @@ public class UI_Controller_Map : MonoBehaviour
         else
         {
             isshop = true;
+
+            tx_shopmoney.text = money.ToString();
+            tx_shopbuffs.text = buffs.ToString();
+            tx_heals.text = heals.ToString();
+
+
             if (dialogue.talking)
             {
                 DisplayNextSentence();
@@ -189,5 +209,31 @@ public class UI_Controller_Map : MonoBehaviour
 
         tx_buffs.text = Player_Status.Buffs.ToString();
         buffs = Player_Status.Buffs;
+
+        //tx_money.text = Player_Status.Money.ToString();
+        //money = Player_Status.Money;
+    }
+
+    private void BuyEvent(BuyEvent buy)
+    {
+        if(buy.isheal)
+        {
+            money -= buy.price;
+            heals++;
+            tx_heals.text = heals.ToString();
+            tx_shopheals.text = heals.ToString();
+            tx_money.text = money.ToString();
+            tx_shopmoney.text = money.ToString();
+
+        }
+        else
+        {
+            money -= buy.price;
+            buffs++;
+            tx_buffs.text = buffs.ToString();
+            tx_shopbuffs.text = buffs.ToString();
+            tx_money.text = money.ToString();
+            tx_shopmoney.text = money.ToString();
+        }
     }
 }
