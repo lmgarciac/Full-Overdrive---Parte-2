@@ -51,11 +51,12 @@ public class Player_Controller : MonoBehaviour
     private int buffs;
     public int money;
 
+    private bool dialogueactive;
+
     private WaitForSecondsRealtime waitforseconds = new WaitForSecondsRealtime(0.5f);
 
     //// Events ////
     private readonly CollectEvent ev_collect = new CollectEvent();
-    private readonly DialogueEvent ev_dialogue = new DialogueEvent();
     private readonly BuyEvent ev_buy = new BuyEvent();
 
 
@@ -63,12 +64,16 @@ public class Player_Controller : MonoBehaviour
     {
         EventController.AddListener<BeforeSceneUnloadEvent>(BeforeSceneUnloadEvent);
         EventController.AddListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
+        EventController.AddListener<DialogueStatusEvent>(DialogueStatusEvent);
+
     }
 
     private void OnDisable()
     {
         EventController.RemoveListener<BeforeSceneUnloadEvent>(BeforeSceneUnloadEvent);
         EventController.RemoveListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
+        EventController.RemoveListener<DialogueStatusEvent>(DialogueStatusEvent);
+
     }
 
     void Start()
@@ -85,10 +90,15 @@ public class Player_Controller : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(money);
 
         WorldTransparency();
 
+        if(dialogueactive)
+        {
+            return;
+        }
+
+        //Input routines
         if (Input.GetKey(KeyCode.W) ||
             Input.GetKey(KeyCode.A) ||
             Input.GetKey(KeyCode.S) ||
@@ -139,14 +149,6 @@ public class Player_Controller : MonoBehaviour
                 StartCoroutine(WaitforCamera());
             }
         }
-
-        //if (Input.GetKey(KeyCode.V))
-        //{
-        //    this.transform.position = new Vector3(-1.3f, -0.126f, 1.8f);
-        //    this.transform.GetComponent<NavMeshAgent>().Warp(this.transform.position);
-        //    gameCamera.transform.position = this.transform.position + cam_player;
-        //}
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -178,7 +180,7 @@ public class Player_Controller : MonoBehaviour
         {
 
             RaycastHit hit = hits[i];
-            //Debug.Log(hit.transform.gameObject.name);
+            Debug.Log($"Raycast target: {hit.transform.gameObject.name}");
             if (hit.transform.gameObject.tag == "Transparent")
             {
                 //Debug.Log("Hit!");
@@ -193,10 +195,10 @@ public class Player_Controller : MonoBehaviour
                     objectFaded.GetComponent<MeshRenderer>().material = transMat;
                     objectsHit.Add(hit.transform.gameObject.GetInstanceID(), hit.transform.gameObject);
                 }
-
                 color = objectFaded.GetComponent<MeshRenderer>().material.color;
 
-                if (color.a >= targetAlpha)
+                if (color.a >= targetAlpha) //Quitar Alpha
+                //if (Mathf.Approximately(color.a, targetAlpha))                        
                 {
                     color.a -= Time.deltaTime * fadeSpeed;
                 }
@@ -216,7 +218,7 @@ public class Player_Controller : MonoBehaviour
                 }
             }
 
-            if (verify == false) //No está mas, devolver alpha y remover
+            if (verify == false) //No está mas, devolver alpha
             {
                 //Devolver el Alpha
                 color = objectsHit.ElementAt(j).Value.GetComponent<MeshRenderer>().material.color;
@@ -229,17 +231,34 @@ public class Player_Controller : MonoBehaviour
             }
         }
 
-        //Si ya volvió a alpha 1, quitarlo.
-        for (int j = 0; j < objectsHit.Count; j++)
+        List<int> keys = new List<int>(objectsHit.Keys);
+        foreach (int key in keys)
         {
-            //objectFaded.GetComponent<MeshRenderer>().material = opaqueMat;
-            color = objectsHit.ElementAt(j).Value.GetComponent<MeshRenderer>().material.color;
+            //dict[key] = ...
+
+            color = objectsHit[key].GetComponent<MeshRenderer>().material.color;
             if (color.a >= 1.0f)
+            //if (Mathf.Approximately(color.a, 1.0f))
             {
-                objectFaded.GetComponent<MeshRenderer>().material = opaqueMat;
-                objectsHit.Remove(objectsHit.ElementAt(j).Key);
+                //Debug.Log("Te devuelvo el opaco");
+                objectsHit[key].GetComponent<MeshRenderer>().material = opaqueMat;
+                objectsHit.Remove(key);
             }
         }
+        //Si ya volvió a alpha 1, quitarlo.
+        //for (int j = 0; j < objectsHit.Count; j++)
+        //{
+        //    //objectFaded.GetComponent<MeshRenderer>().material = opaqueMat;
+        //    color = objectsHit.ElementAt(j).Value.GetComponent<MeshRenderer>().material.color;
+        //    if (color.a >= 1.0f)
+        //    //if (Mathf.Approximately(color.a, 1.0f))
+        //    {
+        //        Debug.Log("Te devuelvo el opaco");
+        //        objectFaded.GetComponent<MeshRenderer>().material = opaqueMat;
+        //        objectsHit.Remove(objectsHit.ElementAt(j).Key);
+        //    }
+        //    //Debug.Log(objectsHit.ElementAt(j).Key);
+        //}
     }
 
     private void PlayerMovement()
@@ -335,5 +354,10 @@ public class Player_Controller : MonoBehaviour
             buffs++;
             EventController.TriggerEvent(ev_buy);
         }
+    }
+
+    private void DialogueStatusEvent(DialogueStatusEvent status)
+    {
+        dialogueactive = status.dialogueactive;
     }
 }

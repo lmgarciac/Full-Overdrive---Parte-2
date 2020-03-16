@@ -32,7 +32,7 @@ public class Pause : MonoBehaviour
         {
             //Application.LoadLevel("Menu");
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
-            sceneController.FadeAndLoadScene("_Test_Interactions");
+            sceneController.FadeAndLoadScene("_Test_Navigation");
         }
     }
 }

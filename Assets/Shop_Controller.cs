@@ -8,7 +8,11 @@ public class Shop_Controller : MonoBehaviour
 {
     public Dialogue dialogue;
     private int dialoguecounter = 0;
+
     private readonly DialogueEvent ev_dialogue = new DialogueEvent();
+    private readonly DialogueStatusEvent ev_dialoguestatus = new DialogueStatusEvent();
+
+
     private bool starttalking = false;
     private bool cantalk = false;    // Start is called before the first frame update
 
@@ -36,6 +40,10 @@ public class Shop_Controller : MonoBehaviour
                 EventController.TriggerEvent(ev_dialogue);
                 starttalking = true;
                 dialoguecounter++;
+
+                ev_dialoguestatus.dialogueactive = true;
+                EventController.TriggerEvent(ev_dialoguestatus);
+
             }
             else
             {
@@ -48,6 +56,9 @@ public class Shop_Controller : MonoBehaviour
             {
                 dialoguecounter = 0;
                 starttalking = false;
+
+                ev_dialoguestatus.dialogueactive = false;
+                EventController.TriggerEvent(ev_dialoguestatus);
             }
         }
     }

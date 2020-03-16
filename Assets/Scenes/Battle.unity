@@ -2529,6 +2529,7 @@ MonoBehaviour:
   rotationQTE: {x: 60, y: 0, z: 0, w: 0}
   spotlightplayer: {fileID: 1715290449}
   spotlightenemy: {fileID: 1590111112}
+  previous_scene: _Test_Navigation
   qtelerpTime: 1
   qtestep: 30
   qtein: 0

@@ -49,6 +49,9 @@ public class Battle_Controller : FiniteStateMachine
     [SerializeField] private GameObject spotlightplayer;
     [SerializeField] private GameObject spotlightenemy;
 
+    [SerializeField] private string previous_scene;
+
+
     public enum characterid
     {
         player = 0,
@@ -563,14 +566,14 @@ public class Battle_Controller : FiniteStateMachine
                 enemy.hp = 0;
                 EventController.TriggerEvent(ev_gameover);
                 gameover = true;
-                sceneController.FadeAndLoadScene("_Test_Interactions");
+                sceneController.FadeAndLoadScene(previous_scene);
             }
             if (player.hp <= 0)
             {
                 player.hp = 0;
                 EventController.TriggerEvent(ev_gameover);
                 gameover = true;
-                sceneController.FadeAndLoadScene("_Test_Interactions");
+                sceneController.FadeAndLoadScene(previous_scene);
             }
 
 

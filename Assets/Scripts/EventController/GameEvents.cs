@@ -126,6 +126,11 @@ namespace Events
         public bool isshop;
     }
 
+    public class DialogueStatusEvent : GameEvent
+    {
+        public bool dialogueactive;
+    }
+
     public class BuyEvent : GameEvent
     {
         public bool isheal;

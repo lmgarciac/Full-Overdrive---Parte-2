@@ -38,6 +38,9 @@ public class MainMenu : MonoBehaviour
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Fadeout();
+        Player_Status.Buffs = 2;
+        Player_Status.Heals = 2;
+        Player_Status.Money = 100;
     } 
 
     public void QuitGame()

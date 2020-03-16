@@ -8,6 +8,8 @@ public class SwitchScreen : MonoBehaviour
     private void NextScreen()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
     }
 
 }
