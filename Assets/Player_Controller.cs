@@ -33,6 +33,8 @@ public class Player_Controller : MonoBehaviour
 
     [SerializeField] private float zoomlevel;
     [SerializeField] private Animator cameraAnimator;
+    [SerializeField] private Animator playerAnimator;
+
 
     public enum camstate
     {
@@ -104,7 +106,12 @@ public class Player_Controller : MonoBehaviour
             Input.GetKey(KeyCode.S) ||
             Input.GetKey(KeyCode.D))
         {
+            playerAnimator.SetBool("Walking", true);
             PlayerMovement();
+        }
+        else
+        {
+            playerAnimator.SetBool("Walking", false);
         }
 
         if (Input.GetKey(KeyCode.UpArrow))
@@ -360,4 +367,5 @@ public class Player_Controller : MonoBehaviour
     {
         dialogueactive = status.dialogueactive;
     }
+
 }

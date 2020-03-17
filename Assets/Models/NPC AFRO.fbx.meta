@@ -1,20 +1,26 @@
 fileFormatVersion: 2
-guid: c20f3605d230f16418069abd86a2815e
+guid: 4db90bff721e4644886abf269158fc79
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
-      74: 8539868586581230992
-    second: rig|ANI_Idle_01
+      74: 3807035571746662911
+    second: rig.001|ANI_Idle
   - first:
-      74: -119080223620625391
-    second: rig|ANI_Idle_02
+      74: -5581795243208059046
+    second: rig.001|ANI_Walk
   - first:
-      74: -5712835850984817030
-    second: rig|ANI_Idle_03
+      74: -8541306831640966270
+    second: rig.001|ANI_Walk.001
   - first:
-      74: 3777018219902972211
-    second: rig|ANI_Walk
+      74: -2257694191408751499
+    second: rig.001|ANI_Walk.002
+  - first:
+      74: -871211490437129705
+    second: rig.001|ANI_Walk.003
+  - first:
+      74: -5231816975817103556
+    second: rig.001|ANI_Walk.004
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -44,11 +50,40 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: rig|ANI_Idle_01
-      takeName: rig|ANI_Idle_01
+      name: rig.001|ANI_Idle
+      takeName: rig.001|ANI_Idle
       internalID: 0
       firstFrame: 0
       lastFrame: 200
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: rig.001|ANI_Walk
+      takeName: rig.001|ANI_Walk
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 50
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -73,18 +108,18 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: rig|ANI_Idle_02
-      takeName: rig|ANI_Idle_02
+      name: rig.001|ANI_Walk.001
+      takeName: rig.001|ANI_Walk.001
       internalID: 0
       firstFrame: 0
-      lastFrame: 200
+      lastFrame: 50
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -102,18 +137,18 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: rig|ANI_Idle_03
-      takeName: rig|ANI_Idle_03
+      name: rig.001|ANI_Walk.002
+      takeName: rig.001|ANI_Walk.002
       internalID: 0
       firstFrame: 0
-      lastFrame: 200
+      lastFrame: 50
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -131,18 +166,47 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: rig|ANI_Walk
-      takeName: rig|ANI_Walk
+      name: rig.001|ANI_Walk.003
+      takeName: rig.001|ANI_Walk.003
       internalID: 0
       firstFrame: 0
-      lastFrame: 40
+      lastFrame: 50
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: rig.001|ANI_Walk.004
+      takeName: rig.001|ANI_Walk.004
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
