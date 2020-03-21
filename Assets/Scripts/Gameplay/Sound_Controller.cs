@@ -25,7 +25,7 @@ public class Sound_Controller : MonoBehaviour
 
     void Start()
     {
-        AudioListener.volume = PlayerOptions.Volume;
+        //AudioListener.volume = PlayerOptions.Volume;
         AudioSource[] audios = GetComponents<AudioSource>();
         lickPlayer = audios[0];
         soundPlayer = audios[1];
@@ -45,7 +45,7 @@ public class Sound_Controller : MonoBehaviour
     {
         if (!licktriggered && !lickPlayer.isPlaying)
         {
-            musicPlayer.volume = 0.3f;
+            //musicPlayer.volume = 0.3f;
         }
     }
     private void OnEnable() {
