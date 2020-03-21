@@ -136,7 +136,7 @@ public class Tutorial_Controller : MonoBehaviour
         if (tutorialphase == 3 && !dialoguePlayer.isPlaying && startdialogue == false)
         {
             StartCoroutine(FadeTime(1f, fadeDurationinitial));
-            sceneController.FadeAndLoadScene("_Test_Navigation");
+            sceneController.FadeAndLoadScene("_Scene_Comic");
         }
 
     }

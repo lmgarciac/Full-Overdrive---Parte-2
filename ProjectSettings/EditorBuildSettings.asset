@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/_Test_Tutorial.unity
     guid: 4bb10a977e44ac148aeaeee4e8e183d9
+  - enabled: 1
+    path: Assets/Scenes/_Scene_Comic.unity
+    guid: fee906e288079af4bbfce9a83aff0286
   m_configObjects: {}
