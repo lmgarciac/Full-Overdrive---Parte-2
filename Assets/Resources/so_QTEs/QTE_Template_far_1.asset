@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc50df09b214c824d81e9ab132bf51dc, type: 3}
+  m_Name: QTE_Template_far_1
+  m_EditorClassIdentifier: 
+  qteDescription: Descripcion del QTE
+  speed: 3
+  arrowsHeight: 20
+  QTEPosition: {x: -30, y: 8, z: -9}
+  QTERotation: {x: -90, y: 180, z: 0, w: 0}
+  noteData:
+  - notePosition: 3
+    noteDelay: 0
+  - notePosition: 0
+    noteDelay: 2
+  - notePosition: 2
+    noteDelay: 4
+  - notePosition: 1
+    noteDelay: 6
+  - notePosition: 0
+    noteDelay: 8
+  - notePosition: 0
+    noteDelay: 10
+  - notePosition: 2
+    noteDelay: 10
+  - notePosition: 1
+    noteDelay: 14
+  - notePosition: 3
+    noteDelay: 14
+  - notePosition: 0
+    noteDelay: 16
+  - notePosition: 3
+    noteDelay: 18
+  - notePosition: 0
+    noteDelay: 24
+  - notePosition: 1
+    noteDelay: 25
+  - notePosition: 2
+    noteDelay: 26
+  - notePosition: 3
+    noteDelay: 27
+  - notePosition: 0
+    noteDelay: 32
+  - notePosition: 0
+    noteDelay: 38
+  - notePosition: 1
+    noteDelay: 38
+  - notePosition: 2
+    noteDelay: 38
+  - notePosition: 1
+    noteDelay: 42
+  - notePosition: 2
+    noteDelay: 42
+  - notePosition: 3
+    noteDelay: 42
+  - notePosition: 0
+    noteDelay: 48
+  - notePosition: 3
+    noteDelay: 48
+  - notePosition: 1
+    noteDelay: 50
+  - notePosition: 2
+    noteDelay: 50
+  - notePosition: 0
+    noteDelay: 55
+  - notePosition: 1
+    noteDelay: 56
+  - notePosition: 2
+    noteDelay: 57
+  - notePosition: 3
+    noteDelay: 58
+  - notePosition: 2
+    noteDelay: 59
+  - notePosition: 1
+    noteDelay: 60
+  - notePosition: 0
+    noteDelay: 61
+  - notePosition: 1
+    noteDelay: 62
+  - notePosition: 2
+    noteDelay: 63
+  - notePosition: 3
+    noteDelay: 64
