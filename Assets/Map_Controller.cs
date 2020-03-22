@@ -10,17 +10,38 @@ public class Map_Controller : MonoBehaviour
     private GameObject[] activeCollectables;
     private int[] collectablesIdentifiers;
     private Collectable_Controller collectableController;
+    private bool isScaling;
+    private Vector3 localscale;
+
+    [SerializeField] private GameObject boundaries;
+    [SerializeField] private float targetScale;
+    [SerializeField] private float targetScaleDuration;
+
+
+    ///Message Variables
+    public Dialogue dialogue;
+    private int dialoguecounter = 0;
+    private readonly DialogueEvent ev_dialogue = new DialogueEvent();
+    private readonly DialogueStatusEvent ev_dialoguestatus = new DialogueStatusEvent();
+    private bool starttalking = false;
+    private bool cantalk = false;
+    private bool conversationbegin = false;
+    private bool sendmessage;
 
     private void OnEnable()
     {
         EventController.AddListener<BeforeSceneUnloadEvent>(BeforeSceneUnloadEvent);
         EventController.AddListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
+        EventController.AddListener<ExpandBoundariesEvent>(ExpandBoundariesEvent);
+
     }
 
     private void OnDisable()
     {
         EventController.RemoveListener<BeforeSceneUnloadEvent>(BeforeSceneUnloadEvent);
         EventController.RemoveListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
+        EventController.RemoveListener<ExpandBoundariesEvent>(ExpandBoundariesEvent);
+
     }
 
 
@@ -28,15 +49,11 @@ public class Map_Controller : MonoBehaviour
     void Start()
     {
 
-        ////Player position
-        //GameObject.FindGameObjectWithTag("Player").transform.position = Map_Status.PlayerPosition;
-        //GameObject.FindGameObjectWithTag("Player").transform.rotation = Map_Status.PlayerRotation;
+    }
 
-        ////Camera position
-        //GameObject.FindGameObjectWithTag("MainCamera").transform.position = Map_Status.CameraPosition;
-        // GameObject.FindGameObjectWithTag("MainCamera").transform.rotation = Map_Status.CameraRotation;
-
-
+    private void Update()
+    {
+        SendMessage();
     }
 
     private void BeforeSceneUnloadEvent(BeforeSceneUnloadEvent before)
@@ -95,6 +112,94 @@ public class Map_Controller : MonoBehaviour
                 {
                     currentCollectable.SetActive(false);
                 }
+            }
+        }
+    }
+
+    private void ExpandBoundariesEvent(ExpandBoundariesEvent expand)
+    {
+        sendmessage = true;
+        StartCoroutine(ExpandBoundaries(targetScale, targetScaleDuration));
+    }
+
+
+    private IEnumerator ExpandBoundaries(float finalScale, float scaleDuration)
+    {
+        isScaling = true;
+        float scaleSpeed = Mathf.Abs(boundaries.transform.localScale.x - finalScale) / scaleDuration;
+
+        while (!Mathf.Approximately(boundaries.transform.localScale.x, finalScale))
+        {
+            localscale.x = Mathf.MoveTowards(boundaries.transform.localScale.x, finalScale,
+                                               scaleSpeed * Time.deltaTime);
+            localscale.y = Mathf.MoveTowards(boundaries.transform.localScale.y, finalScale,
+                                               scaleSpeed * Time.deltaTime);
+            localscale.z = Mathf.MoveTowards(boundaries.transform.localScale.z, finalScale,
+                                               scaleSpeed * Time.deltaTime);
+
+            boundaries.transform.localScale = localscale;
+
+            yield return null;
+        }
+        Debug.Log("alguina vez llego aca??");
+        isScaling = false;
+    }
+
+    private void SendMessage()
+    {
+        if (sendmessage && !conversationbegin)
+        {
+            if (!starttalking)
+            {
+                Debug.Log("TAlkin");
+                ev_dialogue.talking = false;
+                ev_dialogue.dialogue = dialogue;
+                Debug.Log(dialogue.name);
+                ev_dialogue.isshop = false;
+                EventController.TriggerEvent(ev_dialogue);
+                starttalking = true;
+                dialoguecounter++;
+
+                ev_dialoguestatus.dialogueactive = true;
+                EventController.TriggerEvent(ev_dialoguestatus);
+
+                conversationbegin = true;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) && sendmessage && conversationbegin)
+        {
+            if (!starttalking)
+            {
+                Debug.Log("TAlkin");
+                ev_dialogue.talking = false;
+                ev_dialogue.dialogue = dialogue;
+                Debug.Log(dialogue.name);
+                ev_dialogue.isshop = false;
+                EventController.TriggerEvent(ev_dialogue);
+                starttalking = true;
+                dialoguecounter++;
+
+                ev_dialoguestatus.dialogueactive = true;
+                EventController.TriggerEvent(ev_dialoguestatus);
+
+            }
+            else
+            {
+                ev_dialogue.talking = true;
+                EventController.TriggerEvent(ev_dialogue);
+                dialoguecounter++;
+            }
+
+            if (dialoguecounter > dialogue.sentences.Length)
+            {
+                dialoguecounter = 0;
+                starttalking = false;
+
+                ev_dialoguestatus.dialogueactive = false;
+                EventController.TriggerEvent(ev_dialoguestatus);
+
+                sendmessage = false;
             }
         }
     }

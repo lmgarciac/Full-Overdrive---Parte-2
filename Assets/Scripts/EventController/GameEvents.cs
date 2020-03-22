@@ -146,4 +146,9 @@ namespace Events
     {
 
     }
+
+    public class ExpandBoundariesEvent : GameEvent
+    {
+        public int currentarea;
+    }
 }

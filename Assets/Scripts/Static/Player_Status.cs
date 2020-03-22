@@ -9,6 +9,7 @@ public static class Player_Status
     private static int heals;
     private static int buffs;
     private static int money;
+    private static int currentarea; //Area 1, Area 2 or Area 3
 
     public static int Collectables
     {
@@ -67,6 +68,18 @@ public static class Player_Status
         set
         {
             money = value;
+        }
+    }
+
+    public static int CurrentArea
+    {
+        get
+        {
+            return currentarea;
+        }
+        set
+        {
+            currentarea = value;
         }
     }
 }

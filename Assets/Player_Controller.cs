@@ -35,6 +35,10 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] private Animator cameraAnimator;
     [SerializeField] private Animator playerAnimator;
 
+    [SerializeField] private int targetPicks;
+    [SerializeField] private int targetCollectables;
+
+    private int currentarea;
 
     public enum camstate
     {
@@ -47,19 +51,24 @@ public class Player_Controller : MonoBehaviour
 
     private int _camstate = 0;
 
-    private int collectables;
-    private int picks;
+    public int collectables;
+    public int picks;
     private int heals;
     private int buffs;
     public int money;
 
     private bool dialogueactive;
+    private bool checkingarea;
+    private bool enableinput = false;
 
     private WaitForSecondsRealtime waitforseconds = new WaitForSecondsRealtime(0.5f);
+
+    private WaitForSecondsRealtime waitenableinput = new WaitForSecondsRealtime(2f);
 
     //// Events ////
     private readonly CollectEvent ev_collect = new CollectEvent();
     private readonly BuyEvent ev_buy = new BuyEvent();
+    private readonly ExpandBoundariesEvent ev_expand = new ExpandBoundariesEvent();
 
 
     private void OnEnable()
@@ -82,8 +91,8 @@ public class Player_Controller : MonoBehaviour
     {
         objectsHit = new Dictionary<int, GameObject>();
         cam_player = gameCamera.transform.position - this.transform.position;
-        //Player position
 
+        StartCoroutine(WaitEnableInput());
 
         //Por el momento para testear
         //money = 1000;
@@ -100,11 +109,17 @@ public class Player_Controller : MonoBehaviour
             return;
         }
 
+        if (!checkingarea)
+        {
+            checkingarea = true;
+            StartCoroutine(CheckCurrentArea()); //Checks if the player has met the requisites to advance to the next area
+        }
+
         //Input routines
-        if (Input.GetKey(KeyCode.W) ||
+        if ((Input.GetKey(KeyCode.W) ||
             Input.GetKey(KeyCode.A) ||
             Input.GetKey(KeyCode.S) ||
-            Input.GetKey(KeyCode.D))
+            Input.GetKey(KeyCode.D)) && enableinput)
         {
             playerAnimator.SetBool("Walking", true);
             PlayerMovement();
@@ -114,7 +129,7 @@ public class Player_Controller : MonoBehaviour
             playerAnimator.SetBool("Walking", false);
         }
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow) && enableinput)
         {
             if (_camstate == (int)camstate.idle && !cameraplaying)
             {
@@ -135,7 +150,7 @@ public class Player_Controller : MonoBehaviour
                 StartCoroutine(WaitforCamera());
             }
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow) && enableinput)
         {
             if (_camstate == (int)camstate.idle && !cameraplaying)
             {
@@ -368,4 +383,22 @@ public class Player_Controller : MonoBehaviour
         dialogueactive = status.dialogueactive;
     }
 
+    IEnumerator WaitEnableInput()
+    {
+        yield return waitenableinput;
+        enableinput = true;
+    }
+
+    IEnumerator CheckCurrentArea() // A futuro, mejorar con un diccionario, lista, array o lo que sea
+    {
+        yield return waitenableinput;
+
+        if (picks >= targetPicks && collectables >= targetCollectables && currentarea <2)
+        {
+            currentarea = 2;
+            ev_expand.currentarea = 2;
+            EventController.TriggerEvent(ev_expand);
+        }
+        checkingarea = false;
+    }
 }

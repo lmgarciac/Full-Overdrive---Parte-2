@@ -567,6 +567,9 @@ public class Battle_Controller : FiniteStateMachine
                 EventController.TriggerEvent(ev_gameover);
                 gameover = true;
                 sceneController.FadeAndLoadScene(previous_scene);
+
+                Player_Status.Picks++; //A futuro corregir sino siempre te da el pick
+
             }
             if (player.hp <= 0)
             {
