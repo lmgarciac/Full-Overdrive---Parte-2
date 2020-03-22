@@ -86,6 +86,7 @@ public class UI_Controller_Map : MonoBehaviour
         //NPCI
         if (!dialogue.isshop)
         {
+            Debug.Log("Entro!!");
             isshop = false;
             if (dialogue.talking)
             {

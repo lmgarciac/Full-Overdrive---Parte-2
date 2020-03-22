@@ -52,7 +52,7 @@ public class Intro_Controller : MonoBehaviour
         yield return waitforseconds;
 
 
-        sceneController.FadeAndLoadScene("_Test_Navigation");
+        sceneController.FadeAndLoadScene("_Scene_ObiYank");
     }
 
 }

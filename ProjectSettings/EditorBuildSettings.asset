@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/_Test_Farming.unity
     guid: a589f585943930946840023976f6906b
+  - enabled: 1
+    path: Assets/Scenes/_Scene_ObiYank.unity
+    guid: 962f5a781a164f64a95c781ff4bd8a37
   m_configObjects: {}
