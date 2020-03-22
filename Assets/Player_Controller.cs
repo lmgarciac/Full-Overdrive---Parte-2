@@ -86,7 +86,7 @@ public class Player_Controller : MonoBehaviour
 
 
         //Por el momento para testear
-        money = 1000;
+        //money = 1000;
 
     }
 
@@ -326,7 +326,7 @@ public class Player_Controller : MonoBehaviour
         picks = Player_Status.Picks;
         heals = Player_Status.Heals;
         buffs = Player_Status.Buffs;
-        //money = Player_Status.Money;
+        money = Player_Status.Money;
 
         //Restore positions
         if (!Map_Status.FirstTime)

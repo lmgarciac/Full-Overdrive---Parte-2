@@ -48,9 +48,10 @@ public class UI_Controller_Map : MonoBehaviour
         go_dialoguebox.SetActive(false);
 
 
-        //Por el momento para testear
-        tx_money.text = 1000.ToString();
-        Player_Status.Money = money = 1000;
+        ////Por el momento para testear
+        //tx_money.text = Player_Status.Money.ToString();
+        //money = Player_Status.Money;
+        ////Player_Status.Money = money = 1000;
 
     }
     void Update()
@@ -210,8 +211,8 @@ public class UI_Controller_Map : MonoBehaviour
         tx_buffs.text = Player_Status.Buffs.ToString();
         buffs = Player_Status.Buffs;
 
-        //tx_money.text = Player_Status.Money.ToString();
-        //money = Player_Status.Money;
+        tx_money.text = Player_Status.Money.ToString();
+        money = Player_Status.Money;
     }
 
     private void BuyEvent(BuyEvent buy)
