@@ -24,7 +24,7 @@ public class Bar_Controller : MonoBehaviour
             //SceneManager.LoadScene("Battle", LoadSceneMode.Additive);
             //SceneManager.SetActiveScene(SceneManager.GetSceneByName("Battle"));
             //SaveMapState();
-            sceneController.FadeAndLoadScene("Battle");
+            sceneController.FadeAndLoadScene("_Scene_Battle");
         }
     }
 

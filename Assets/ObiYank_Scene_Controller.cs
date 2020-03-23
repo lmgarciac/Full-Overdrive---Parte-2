@@ -9,12 +9,18 @@ public class ObiYank_Scene_Controller : MonoBehaviour
     [SerializeField] private Animator camera;
     [SerializeField] private Animator player;
 
+    [SerializeField] private int numbers;
+
     private WaitForSecondsRealtime waitforseconds = new WaitForSecondsRealtime(5f);
     private WaitForSecondsRealtime waitforsecond = new WaitForSecondsRealtime(1f);
 
     private SceneController sceneController;
 
-    public Dialogue dialogue;
+    private Dialogue dialogue;
+    private int dialogueindex = 0;
+
+    [SerializeField] public Dialogue[] dialogues;
+
     private int dialoguecounter = 0;
     private readonly DialogueEvent ev_dialogue = new DialogueEvent();
     private readonly DialogueStatusEvent ev_dialoguestatus = new DialogueStatusEvent();
@@ -33,11 +39,12 @@ public class ObiYank_Scene_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (cantalk && !conversationbegin)
+        //if (cantalk && !conversationbegin)
+        if (cantalk)
         {
             if (!starttalking)
             {
-                Debug.Log("TAlkin");
+                //Debug.Log("TAlkin");
                 ev_dialogue.talking = false;
                 ev_dialogue.dialogue = dialogue;
                 Debug.Log(dialogue.name);
@@ -51,42 +58,54 @@ public class ObiYank_Scene_Controller : MonoBehaviour
 
                 conversationbegin = true;
             }
-        }
 
-        if (Input.GetKeyDown(KeyCode.E) && cantalk && conversationbegin)
-        {
-            if (!starttalking)
+            if (Input.GetKeyDown(KeyCode.E) && cantalk && conversationbegin)
             {
-                Debug.Log("TAlkin");
-                ev_dialogue.talking = false;
-                ev_dialogue.dialogue = dialogue;
-                Debug.Log(dialogue.name);
-                ev_dialogue.isshop = false;
-                EventController.TriggerEvent(ev_dialogue);
-                starttalking = true;
-                dialoguecounter++;
+                //Debug.Log("Paso por aqui");
+                if (!starttalking)
+                {
+                    //Debug.Log("TAlkin");
+                    ev_dialogue.talking = false;
+                    ev_dialogue.dialogue = dialogue;
+                    Debug.Log(dialogue.name);
+                    ev_dialogue.isshop = false;
+                    EventController.TriggerEvent(ev_dialogue);
+                    starttalking = true;
+                    dialoguecounter++;
 
-                ev_dialoguestatus.dialogueactive = true;
-                EventController.TriggerEvent(ev_dialoguestatus);
+                    ev_dialoguestatus.dialogueactive = true;
+                    EventController.TriggerEvent(ev_dialoguestatus);
 
-            }
-            else
-            {
-                ev_dialogue.talking = true;
-                EventController.TriggerEvent(ev_dialogue);
-                dialoguecounter++;
-            }
+                }
+                else
+                {
+                    ev_dialogue.talking = true;
+                    EventController.TriggerEvent(ev_dialogue);
+                    dialoguecounter++;
+                }
 
-            if (dialoguecounter > dialogue.sentences.Length)
-            {
-                dialoguecounter = 0;
-                starttalking = false;
+                if (dialoguecounter > dialogue.sentences.Length)
+                {
+                    dialoguecounter = 0;
+                    starttalking = false;
 
-                ev_dialoguestatus.dialogueactive = false;
-                EventController.TriggerEvent(ev_dialoguestatus);
+                    ev_dialoguestatus.dialogueactive = false;
+                    EventController.TriggerEvent(ev_dialoguestatus);
 
-                sceneController.FadeAndLoadScene("_Test_Navigation");
+                    Debug.Log("Paso por aqui");
 
+                    Debug.Log($"{dialogueindex}/{dialogues.Length}");
+                    if (dialogueindex < dialogues.Length - 1)
+                    {
+                        dialogueindex++;
+                        dialogue = dialogues[dialogueindex];
+                    }
+                    else
+                    {
+                        sceneController.FadeAndLoadScene("_Test_Navigation");
+                        cantalk = false;
+                    }
+                }
             }
         }
     }
@@ -95,6 +114,8 @@ public class ObiYank_Scene_Controller : MonoBehaviour
     {
 
         yield return waitforseconds;
+        yield return waitforseconds;
+
         camera.SetBool("Switch", true);
         player.SetBool("GetUp", true);
 
@@ -105,6 +126,7 @@ public class ObiYank_Scene_Controller : MonoBehaviour
 
         cantalk = true;
 
+        dialogue = dialogues[dialogueindex];
         //Comenzar dialogo
     }
 }

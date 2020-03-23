@@ -345,19 +345,15 @@ public class Battle_Controller : FiniteStateMachine
             EventController.TriggerEvent(ev_enableturn);
             if (playerturn && ev_action.action != (int)action.none)
             {
-                //instantiatedQTE = (GameObject)Instantiate(QTEprefab, positionQTE, Quaternion.identity);
-                //instantiatedQTE = (GameObject)Instantiate(SelectQTE(), positionQTE, Quaternion.AngleAxis(rotationQTE.x, Vector3.right));
-                instantiatedQTE = (GameObject)Instantiate(qteBase, positionQTE, Quaternion.AngleAxis(rotationQTE.x, Vector3.right));
-
-                //instantiatedQTE = (GameObject)Instantiate(qteBase, positionQTE, Quaternion.identity);
                 instantiatedQTE = (GameObject)Instantiate(qteBase);
-
                 QTE_Main_Controller qteController = instantiatedQTE.GetComponent<QTE_Main_Controller>();
                 qteController.InitializeQte(SelectQTE());
 
                 instantiatedQTE.transform.position = positionQTE;
+                instantiatedQTE.transform.Rotate(rotationQTE.x, rotationQTE.y, rotationQTE.z, Space.Self);
+
                 //instantiatedQTE.transform.rotation = Quaternion.identity;
-                instantiatedQTE.transform.rotation = Quaternion.AngleAxis(rotationQTE.x, Vector3.right);
+                //instantiatedQTE.transform.rotation = Quaternion.AngleAxis(rotationQTE.x, Vector3.right);
 
                 qtein = true;
                 qtefinished = false;
