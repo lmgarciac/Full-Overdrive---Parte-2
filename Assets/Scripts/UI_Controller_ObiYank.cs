@@ -11,6 +11,8 @@ public class UI_Controller_ObiYank : MonoBehaviour
     [SerializeField] private GameObject go_dialoguebox;
     [SerializeField] private TextMeshProUGUI tx_NPCIname;
     [SerializeField] private TextMeshProUGUI tx_NPCIdialogue;
+    [SerializeField] private Image im_NPCimage;
+
     [SerializeField] private Animator anim_dialogue;
 
     private static float dialogue_seconds = 0.03f;
@@ -61,6 +63,7 @@ public class UI_Controller_ObiYank : MonoBehaviour
                 sentences.Clear();
                 go_dialoguebox.SetActive(true);
                 tx_NPCIname.text = dialogue.dialogue.name;
+                im_NPCimage.sprite = dialogue.dialogue.image;
 
                 anim_dialogue.SetBool("Open", true);
 

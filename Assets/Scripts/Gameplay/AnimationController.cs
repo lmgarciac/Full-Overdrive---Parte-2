@@ -6,25 +6,12 @@ using Events;
 public class AnimationController : MonoBehaviour
 {
 
-    //[SerializeField] private GameObject player;
-    //[SerializeField] private GameObject enemy;
-    //[SerializeField] private GameObject camera;
-
-    //[SerializeField] private GameObject objplayerattack;
-    //[SerializeField] private GameObject objplayeridle;
-    //[SerializeField] private GameObject objplayerspecial;
-
-    //[SerializeField] private GameObject objenemyattack;
-    //[SerializeField] private GameObject objenemyidle;
-    //[SerializeField] private GameObject objenemyspecial;
-
-
     [SerializeField] private GameObject go_player;
     private Animator an_player;
 
+    [SerializeField] private GameObject go_enemy;
+    private Animator an_enemy;
 
-    //private Animator playeranim;
-    //private Animator enemyanim;
     //private Animator cameraanim;
 
     public enum animation
@@ -33,6 +20,8 @@ public class AnimationController : MonoBehaviour
         idle = 1,
         play = 2,
         special = 3,
+        win = 4,
+        lose = 5,
     }
 
     private void OnEnable()
@@ -47,10 +36,8 @@ public class AnimationController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //playeranim = player.GetComponent<Animator>();
-        //enemyanim = enemy.GetComponent<Animator>();
-        //cameraanim = camera.GetComponent<Animator>();
         an_player = go_player.GetComponent<Animator>();
+        an_enemy = go_enemy.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -64,10 +51,6 @@ public class AnimationController : MonoBehaviour
         {
             if (anim.animation == (int)animation.play)
             {
-                //playeranim.runtimeAnimatorController = Resources.Load("ANI_Main_Atack") as RuntimeAnimatorController;
-                //objplayeridle.SetActive(false);
-                //objplayerspecial.SetActive(false);
-                //objplayerattack.SetActive(true);
                 if (an_player.GetBool("Attack") != true)
                 {
                     an_player.SetBool("Attack", true);
@@ -77,48 +60,75 @@ public class AnimationController : MonoBehaviour
             }
             else if (anim.animation == (int)animation.special)
             {
-                //playeranim.runtimeAnimatorController = Resources.Load("ANI_Main_Special") as RuntimeAnimatorController;
-                //objplayeridle.SetActive(false);
-                //objplayerspecial.SetActive(true);
-                //objplayerattack.SetActive(false);
                 an_player.SetBool("Idle", false);
                 an_player.SetBool("Attack", false);
                 an_player.SetBool("Special", true);
             }
             else //Idle
             {
-                //playeranim.runtimeAnimatorController = Resources.Load("ANI_Main_idle") as RuntimeAnimatorController;
-                //objplayeridle.SetActive(true);
-                //objplayerspecial.SetActive(false);
-                //objplayerattack.SetActive(false);
                 an_player.SetBool("Idle", true);
                 an_player.SetBool("Attack", false);
                 an_player.SetBool("Special", false);
+                an_player.SetBool("Win", false);
+                an_player.SetBool("Lose", false);
             }
         }
         else //Enemy
         {
             if (anim.animation == (int)animation.play)
             {
-                //enemyanim.runtimeAnimatorController = Resources.Load("ANI_Enemy_Atack") as RuntimeAnimatorController;
-                //objenemyidle.SetActive(false);
-                //objenemyspecial.SetActive(false);
-                //objenemyattack.SetActive(true);
+                if (an_enemy.GetBool("Attack") != true)
+                {
+                    an_enemy.SetBool("Attack", true);
+                    an_enemy.SetBool("Idle", false);
+                    an_enemy.SetBool("Special", false);
+                }
             }
             else if (anim.animation == (int)animation.special)
             {
-                //enemyanim.runtimeAnimatorController = Resources.Load("ANI_Enemy_Special") as RuntimeAnimatorController;
-                //objenemyidle.SetActive(false);
-                //objenemyspecial.SetActive(true);
-                //objenemyattack.SetActive(false);
+                an_enemy.SetBool("Idle", false);
+                an_enemy.SetBool("Attack", false);
+                an_enemy.SetBool("Special", true);
             }
-            else
+            else //Idle
             {
-                //enemyanim.runtimeAnimatorController = Resources.Load("ANI_Enemy_idle") as RuntimeAnimatorController;
-                //objenemyidle.SetActive(true);
-                //objenemyspecial.SetActive(false);
-                //objenemyattack.SetActive(false);
+                an_enemy.SetBool("Idle", true);
+                an_enemy.SetBool("Attack", false);
+                an_enemy.SetBool("Special", false);
+                an_enemy.SetBool("Win", false);
+                an_enemy.SetBool("Lose", false);
             }
+        }
+
+        // WIN / LOSE ANIMATIONS
+
+        if (anim.animation == (int)animation.win)
+        {
+            an_player.SetBool("Idle", false);
+            an_player.SetBool("Attack", false);
+            an_player.SetBool("Special", false);
+            an_player.SetBool("Lose", false);
+            an_player.SetBool("Win", true);
+
+            an_enemy.SetBool("Idle", false);
+            an_enemy.SetBool("Attack", false);
+            an_enemy.SetBool("Special", false);
+            an_enemy.SetBool("Win", false);
+            an_enemy.SetBool("Lose", true);
+        }
+        else if (anim.animation == (int)animation.lose)
+        {
+            an_player.SetBool("Idle", false);
+            an_player.SetBool("Attack", false);
+            an_player.SetBool("Special", false);
+            an_player.SetBool("Win", false);
+            an_player.SetBool("Lose", true);
+
+            an_enemy.SetBool("Idle", false);
+            an_enemy.SetBool("Attack", false);
+            an_enemy.SetBool("Special", false);
+            an_enemy.SetBool("Lose", false);
+            an_enemy.SetBool("Win", true);
         }
 
         //Camshake

@@ -51,6 +51,8 @@ public class Battle_Controller : FiniteStateMachine
 
     [SerializeField] private string previous_scene;
 
+    [SerializeField] private Animator anim_dialogue;
+
 
     public enum characterid
     {
@@ -86,6 +88,8 @@ public class Battle_Controller : FiniteStateMachine
         idle = 1,
         play = 2,
         special = 3,
+        win = 4,
+        lose = 5,
     }
 
 
@@ -174,6 +178,8 @@ public class Battle_Controller : FiniteStateMachine
     public bool qteout;
     private Vector3 qtenextPosition;
 
+    private bool actionButton;
+
     //Start Event
 
     void Start()
@@ -208,10 +214,17 @@ public class Battle_Controller : FiniteStateMachine
     protected override void Update()
     {
 
-        Debug.Log($"Playing: {playing}");
-        Debug.Log($"Ev_action: {ev_action.action}");
-        Debug.Log($"Triggerstate: {triggerstate}");
-        Debug.Log($"QTEState: {IsStateRunning(new QTEState().GetType())}");
+        //Debug.Log($"Playing: {playing}");
+        //Debug.Log($"Ev_action: {ev_action.action}");
+        //Debug.Log($"Triggerstate: {triggerstate}");
+        //Debug.Log($"QTEState: {IsStateRunning(new QTEState().GetType())}");
+
+
+        if (Input.GetKeyDown(KeyCode.E) && gameover)
+        {
+            anim_dialogue.SetBool("Open", false);
+            sceneController.FadeAndLoadScene(previous_scene);
+        }
 
         // Initial Countdown logic
         if (oncountdown && countdownstate == 1 && triggercountdown)
@@ -560,19 +573,30 @@ public class Battle_Controller : FiniteStateMachine
             if (enemy.hp <= 0)
             {
                 enemy.hp = 0;
+                ev_gameover.playerwin = true;
                 EventController.TriggerEvent(ev_gameover);
                 gameover = true;
-                sceneController.FadeAndLoadScene(previous_scene);
+
+                //Trigger anim Win
+                ev_anim.playerturn = playerturn;
+                ev_anim.animation = (int)animation.win;
+                ev_anim.camshake = false;
+                EventController.TriggerEvent(ev_anim);
 
                 Player_Status.Picks++; //A futuro corregir sino siempre te da el pick
-
             }
             if (player.hp <= 0)
             {
                 player.hp = 0;
+                ev_gameover.playerwin = false;
                 EventController.TriggerEvent(ev_gameover);
                 gameover = true;
-                sceneController.FadeAndLoadScene(previous_scene);
+
+                //Trigger anim Win
+                ev_anim.playerturn = playerturn;
+                ev_anim.animation = (int)animation.lose;
+                ev_anim.camshake = false;
+                EventController.TriggerEvent(ev_anim);
             }
 
 

@@ -84,7 +84,7 @@ namespace Events
     }
 
     public class GameOverEvent : GameEvent {
-
+        public bool playerwin;
      }
     public class QteHitEvent : GameEvent {
         public bool success;

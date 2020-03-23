@@ -17,6 +17,8 @@ public class UI_Controller_Map : MonoBehaviour
     [SerializeField] private GameObject go_dialoguebox;
     [SerializeField] private TextMeshProUGUI tx_NPCIname;
     [SerializeField] private TextMeshProUGUI tx_NPCIdialogue;
+    [SerializeField] private Image im_NPCIimage;
+
     [SerializeField] private Animator anim_dialogue;
 
     [SerializeField] private GameObject go_shopbox;
@@ -98,6 +100,7 @@ public class UI_Controller_Map : MonoBehaviour
                 sentences.Clear();
                 go_dialoguebox.SetActive(true);
                 tx_NPCIname.text = dialogue.dialogue.name;
+                im_NPCIimage.sprite = dialogue.dialogue.image;
 
                 anim_dialogue.SetBool("Open", true);
 

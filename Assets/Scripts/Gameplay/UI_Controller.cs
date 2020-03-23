@@ -24,49 +24,52 @@ public class UI_Controller : MonoBehaviour
     [SerializeField] private GameObject go_actionspanel;
     [SerializeField] private GameObject go_itempanel;
 
+    [SerializeField] private GameObject go_dialogue;
+    [SerializeField] private TextMeshProUGUI tx_result;
+    [SerializeField] private Animator anim_dialogue;
 
 
+    private enum countertype { inittimer = 0, sessiontimer = 1, }
+    private enum counterstatus { ready = 0, set = 1, go = 2 }
 
+    public enum turnstate
+    {
+        turninfo = 0,
+        chooseaction = 1,
+        qte = 2,
+        anim = 3,
+        miss = 4,
 
-    private enum countertype {inittimer = 0, sessiontimer =1,}
-    private enum counterstatus {ready = 0, set =1, go=2}
-public enum turnstate
-{
-    turninfo = 0,
-    chooseaction = 1,
-    qte = 2,
-    anim = 3,
-    miss = 4,
-
-}
-    public struct Character {
+    }
+    public struct Character
+    {
         public int hp;
         public int sp;
         public int buff;
         public int heal;
     }
-public enum characterid
-{
-    player = 0,
-    enemy =1,
-}
+    public enum characterid
+    {
+        player = 0,
+        enemy = 1,
+    }
 
-public enum action
-{
-    attack = 1,
-    defend = 2,
-    special = 3,
-    item = 4,
-    buff = 5,
-    heal = 6,
-    back = 7,
-    none = 0,
-}
+    public enum action
+    {
+        attack = 1,
+        defend = 2,
+        special = 3,
+        item = 4,
+        buff = 5,
+        heal = 6,
+        back = 7,
+        none = 0,
+    }
     private Character player;
     private Character enemy;
-    
-    
-    
+
+
+
     //PARA HP PERSONAJE
     private int max_hp_player;
     private int max_hp_enemy;
@@ -79,12 +82,12 @@ public enum action
     public Image ProgressHP_Enemy;
     public Image ProgressSP_Player;
     public Image ProgressSP_Enemy;
-    
+
     /*Agregado para la barra de progreso del HP/SP*/
-    
+
     void Start()
     {
-        
+
     }
     void Update()
     {
@@ -92,35 +95,37 @@ public enum action
         UpgradeSPBar();
     }
 
-    private void OnEnable() {
+    private void OnEnable()
+    {
         // EventController.AddListener<GameStartEvent>(OnGameStartEvent);
         // EventController.AddListener<GameOverEvent>(GameOverEvent); 
-        EventController.AddListener<StartTimerEvent>(StartTimerEvent); 
-        EventController.AddListener<UpdateTimerEvent>(UpdateTimerEvent); 
-        EventController.AddListener<FinishTimerEvent>(FinishTimerEvent); 
-        EventController.AddListener<CounterStatusEvent>(CounterStatusEvent); 
-        EventController.AddListener<ActionEvent>(ActionEvent); 
-        EventController.AddListener<BattleStartedEvent>(BattleStartedEvent); 
-        EventController.AddListener<EnableTurnEvent>(EnableTurnEvent); 
-        EventController.AddListener<GameOverEvent>(GameOverEvent); 
-        EventController.AddListener<SelectActionEvent>(SelectActionEvent); 
-        EventController.AddListener<QteHitEvent>(QteHitEvent); 
+        EventController.AddListener<StartTimerEvent>(StartTimerEvent);
+        EventController.AddListener<UpdateTimerEvent>(UpdateTimerEvent);
+        EventController.AddListener<FinishTimerEvent>(FinishTimerEvent);
+        EventController.AddListener<CounterStatusEvent>(CounterStatusEvent);
+        EventController.AddListener<ActionEvent>(ActionEvent);
+        EventController.AddListener<BattleStartedEvent>(BattleStartedEvent);
+        EventController.AddListener<EnableTurnEvent>(EnableTurnEvent);
+        EventController.AddListener<GameOverEvent>(GameOverEvent);
+        EventController.AddListener<SelectActionEvent>(SelectActionEvent);
+        EventController.AddListener<QteHitEvent>(QteHitEvent);
         EventController.AddListener<QtePrizeEvent>(QtePrizeEvent);
         EventController.AddListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
 
     }
-    private void OnDisable() {
+    private void OnDisable()
+    {
         // EventController.RemoveListener<GameStartEvent>(OnGameStartEvent); 
         // EventController.RemoveListener<GameOverEvent>(GameOverEvent); 
-        EventController.RemoveListener<StartTimerEvent>(StartTimerEvent); 
-        EventController.RemoveListener<UpdateTimerEvent>(UpdateTimerEvent); 
-        EventController.RemoveListener<FinishTimerEvent>(FinishTimerEvent); 
-        EventController.RemoveListener<CounterStatusEvent>(CounterStatusEvent); 
-        EventController.RemoveListener<ActionEvent>(ActionEvent); 
-        EventController.RemoveListener<BattleStartedEvent>(BattleStartedEvent); 
-        EventController.RemoveListener<EnableTurnEvent>(EnableTurnEvent); 
-        EventController.RemoveListener<GameOverEvent>(GameOverEvent); 
-        EventController.RemoveListener<SelectActionEvent>(SelectActionEvent); 
+        EventController.RemoveListener<StartTimerEvent>(StartTimerEvent);
+        EventController.RemoveListener<UpdateTimerEvent>(UpdateTimerEvent);
+        EventController.RemoveListener<FinishTimerEvent>(FinishTimerEvent);
+        EventController.RemoveListener<CounterStatusEvent>(CounterStatusEvent);
+        EventController.RemoveListener<ActionEvent>(ActionEvent);
+        EventController.RemoveListener<BattleStartedEvent>(BattleStartedEvent);
+        EventController.RemoveListener<EnableTurnEvent>(EnableTurnEvent);
+        EventController.RemoveListener<GameOverEvent>(GameOverEvent);
+        EventController.RemoveListener<SelectActionEvent>(SelectActionEvent);
         EventController.RemoveListener<QteHitEvent>(QteHitEvent);
         EventController.RemoveListener<QtePrizeEvent>(QtePrizeEvent);
         EventController.RemoveListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
@@ -144,8 +149,8 @@ public enum action
         if (status.counterstatus == (int)counterstatus.go)
         {
             tx_centralinfo.text = $"GO!";
-        }                        
-    }        
+        }
+    }
     private void UpdateTimerEvent(UpdateTimerEvent timer)
     {
 
@@ -179,12 +184,12 @@ public enum action
         //tx_healqty.text = $"{player.heal}";
     }
 
-    private void ActionEvent (ActionEvent ev_action)
+    private void ActionEvent(ActionEvent ev_action)
     {
         /////////////////////////// Player Actions////////////////////
-        
-        if ( ev_action.characterid == (int)characterid.player && ev_action.action == (int)action.attack)
-        {        
+
+        if (ev_action.characterid == (int)characterid.player && ev_action.action == (int)action.attack)
+        {
             enemy.hp -= ev_action.damage;
 
             if (enemy.hp < 0)
@@ -192,10 +197,10 @@ public enum action
                 enemy.hp = 0;
             }
             tx_enemydamage.text = $"-{ev_action.damage}HP";
-            tx_enemyhp.text = $"{enemy.hp}";            
+            tx_enemyhp.text = $"{enemy.hp}";
         }
-        if ( ev_action.characterid == (int)characterid.player && ev_action.action == (int)action.special)
-        {        
+        if (ev_action.characterid == (int)characterid.player && ev_action.action == (int)action.special)
+        {
             enemy.hp -= ev_action.damage;
             player.sp -= specialcost;
             if (enemy.hp < 0)
@@ -204,10 +209,10 @@ public enum action
             }
             tx_enemydamage.text = $"-{ev_action.damage}HP";
             tx_enemyhp.text = $"{enemy.hp}";
-            tx_playersp.text = $"{player.sp}";            
-        } 
-        if ( ev_action.characterid == (int)characterid.player && ev_action.action == (int)action.heal)
-        {        
+            tx_playersp.text = $"{player.sp}";
+        }
+        if (ev_action.characterid == (int)characterid.player && ev_action.action == (int)action.heal)
+        {
             //player.hp -= ev_action.damage;
             player.hp = Mathf.Clamp(player.hp - ev_action.damage, 0, max_hp_player);
 
@@ -216,22 +221,22 @@ public enum action
             tx_playerhp.text = $"{player.hp}";
         }
 
-        if ( ev_action.characterid == (int)characterid.player && ev_action.action == (int)action.buff)
-        {        
+        if (ev_action.characterid == (int)characterid.player && ev_action.action == (int)action.buff)
+        {
             tx_playerdamage.text = $"Buffed!\n" + ev_action.buff.ToString("F1");
-        }              
+        }
 
         ////////////////////////Enemy actions///////////////////
-        
-        if ( ev_action.characterid == (int)characterid.enemy && ev_action.action == (int)action.attack)
-        {        
+
+        if (ev_action.characterid == (int)characterid.enemy && ev_action.action == (int)action.attack)
+        {
             player.hp -= ev_action.damage;
             if (player.hp < 0)
             {
                 player.hp = 0;
             }
             tx_playerdamage.text = $"-{ev_action.damage}HP";
-            tx_playerhp.text = $"{player.hp}";            
+            tx_playerhp.text = $"{player.hp}";
         }
 
         if (ev_action.characterid == (int)characterid.enemy && ev_action.action == (int)action.special)
@@ -274,8 +279,8 @@ public enum action
             switch (enableturn.turnstate)
             {
                 case (int)turnstate.turninfo:
-                    tx_info.text = $"Get Ready!";                   
-                    break;                
+                    tx_info.text = $"Get Ready!";
+                    break;
                 case (int)turnstate.chooseaction:
                     tx_info.text = $"Choose!";
                     break;
@@ -283,7 +288,7 @@ public enum action
                     tx_info.text = $"Play!";
                     go_actionspanel.SetActive(true);
                     go_itempanel.SetActive(false);
-                    tx_centralinfo.text = null;                    
+                    tx_centralinfo.text = null;
                     break;
                 case (int)turnstate.anim:
                     tx_info.text = $"Action!";
@@ -303,15 +308,15 @@ public enum action
                     tx_info.text = $"Enemy Turn!";
                     tx_enemydamage.text = null;
                     tx_playerdamage.text = null;
-                    break;             
+                    break;
                 case (int)turnstate.chooseaction:
                     tx_info.text = $"Enemy Choice!";
                     break;
                 case (int)turnstate.qte:
                     tx_info.text = $"Enemy Play!";
                     go_actionspanel.SetActive(true);
-                    go_itempanel.SetActive(false);                    
-                    tx_centralinfo.text = null;                    
+                    go_itempanel.SetActive(false);
+                    tx_centralinfo.text = null;
                     break;
                 case (int)turnstate.anim:
                     tx_info.text = $"Enemy Action!";
@@ -325,7 +330,19 @@ public enum action
 
     private void GameOverEvent(GameOverEvent gameover)
     {
-        tx_centralinfo.text = $"GameOver!";
+        if (gameover.playerwin)
+        {
+            tx_result.text = $"You Win!";
+        }
+        else
+        {
+            tx_result.text = $"You Lose!";
+        }
+
+        anim_dialogue.SetBool("Open", true);
+        
+
+        //tx_centralinfo.text = $"GameOver!";
         go_actionspanel.SetActive(false);
         go_itempanel.SetActive(false);
         tx_info.text = null;
@@ -354,8 +371,8 @@ public enum action
                 player.buff = 0;
             }
             tx_buffqty.text = $"{player.buff}";
-        } 
-        
+        }
+
         if (select.characterid == (int)characterid.player && select.action == (int)action.heal)
         {
             go_actionspanel.SetActive(true);
@@ -479,8 +496,8 @@ public enum action
                             _tx_prizedam;
 
     }
-    
-    
+
+
     void UpgradeHPBar()
     {
         float _calc_hpdown_enemy = (float)enemy.hp / (float)max_hp_player;
@@ -498,41 +515,41 @@ public enum action
 
         if (player.hp <= (float)max_hp_player)
         {
-            ProgressHP_Player.transform.localScale = new Vector3(Mathf.Clamp((_calc_hpdown_player), 0, 1),ProgressHP_Player.transform.localScale.y, ProgressHP_Player.transform.localScale.z); //Ajusto HP Player
-            
+            ProgressHP_Player.transform.localScale = new Vector3(Mathf.Clamp((_calc_hpdown_player), 0, 1), ProgressHP_Player.transform.localScale.y, ProgressHP_Player.transform.localScale.z); //Ajusto HP Player
+
         }
 
         if (enemy.hp <= (float)max_hp_enemy)
         {
-            ProgressHP_Enemy.transform.localScale = new Vector3(Mathf.Clamp((_calc_hpdown_enemy), 0, 1),ProgressHP_Enemy.transform.localScale.y, ProgressHP_Enemy.transform.localScale.z); //Ajusto HP Enemy
+            ProgressHP_Enemy.transform.localScale = new Vector3(Mathf.Clamp((_calc_hpdown_enemy), 0, 1), ProgressHP_Enemy.transform.localScale.y, ProgressHP_Enemy.transform.localScale.z); //Ajusto HP Enemy
         }
     }
-    
+
     void UpgradeSPBar()
     {
         float _calc_spdown_enemy = (float)enemy.sp / (float)max_sp_player;
         float _calc_spdown_player = (float)player.sp / (float)max_sp_enemy;
-        
+
         if (float.IsNaN(_calc_spdown_player))
         {
             _calc_spdown_player = 0;
         }
-        
+
         if (float.IsNaN(_calc_spdown_enemy))
         {
             _calc_spdown_enemy = 0;
         }
 
-        
+
         if (player.sp <= (float)max_sp_player)
         {
-            ProgressSP_Player.transform.localScale = new Vector3(Mathf.Clamp((_calc_spdown_player), 0f, 1f),ProgressSP_Player.transform.localScale.y, ProgressSP_Player.transform.localScale.z); //Ajusto SP Player
-            
+            ProgressSP_Player.transform.localScale = new Vector3(Mathf.Clamp((_calc_spdown_player), 0f, 1f), ProgressSP_Player.transform.localScale.y, ProgressSP_Player.transform.localScale.z); //Ajusto SP Player
+
         }
 
         if (enemy.sp <= (float)max_sp_enemy)
         {
-            ProgressSP_Enemy.transform.localScale = new Vector3(Mathf.Clamp((_calc_spdown_enemy), 0f, 1f),ProgressSP_Enemy.transform.localScale.y, ProgressSP_Enemy.transform.localScale.z); //Ajusto SP Enemy
+            ProgressSP_Enemy.transform.localScale = new Vector3(Mathf.Clamp((_calc_spdown_enemy), 0f, 1f), ProgressSP_Enemy.transform.localScale.y, ProgressSP_Enemy.transform.localScale.z); //Ajusto SP Enemy
         }
     }
 

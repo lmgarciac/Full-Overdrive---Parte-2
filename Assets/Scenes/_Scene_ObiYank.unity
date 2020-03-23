@@ -6966,46 +6966,59 @@ MonoBehaviour:
   player: {fileID: 1685410563}
   numbers: 0
   dialogues:
-  - name: Obi Yank
+  - image: {fileID: 21300000, guid: 19b9fa78048784a409ff34d120b980db, type: 3}
+    name: Obi Yank
     sentences:
     - Hi Gero! I'm Obi Yank, nice to finally meet you.
-  - name: Gero
+  - image: {fileID: 21300000, guid: 9f8d4d6096d08ea479c9e999a8ba8c29, type: 3}
+    name: Gero
     sentences:
     - Wait... you're my garden gnome. And you're... talking to me?
-  - name: Obi Yank
+  - image: {fileID: 21300000, guid: 19b9fa78048784a409ff34d120b980db, type: 3}
+    name: Obi Yank
     sentences:
     - First time, huh?
-  - name: Gero
+  - image: {fileID: 21300000, guid: 9f8d4d6096d08ea479c9e999a8ba8c29, type: 3}
+    name: Gero
     sentences:
     - I always thought there was something weird about you to be honest.
-  - name: Obi Yank
+  - image: {fileID: 21300000, guid: 19b9fa78048784a409ff34d120b980db, type: 3}
+    name: Obi Yank
     sentences:
     - Now, that's offensive...
     - Anyway, welcome to Jamtown! Trust me, you'll like this place.
-  - name: Gero
+  - image: {fileID: 21300000, guid: 9f8d4d6096d08ea479c9e999a8ba8c29, type: 3}
+    name: Gero
     sentences:
     - Jamtown? Sounds kind of cool actually...
-  - name: Obi Yank
+  - image: {fileID: 21300000, guid: 19b9fa78048784a409ff34d120b980db, type: 3}
+    name: Obi Yank
     sentences:
     - Oh it is! Here everybody likes to jam!
     - But there's only one thing though... quite a bad one if you ask me.
-  - name: Gero
+  - image: {fileID: 21300000, guid: 9f8d4d6096d08ea479c9e999a8ba8c29, type: 3}
+    name: Gero
     sentences:
     - The townspeople are all garden gnomes?
-  - name: Obi Yank
+  - image: {fileID: 21300000, guid: 19b9fa78048784a409ff34d120b980db, type: 3}
+    name: Obi Yank
     sentences:
     - Well aren't you just a fun little lollipop triple dipped in stupid...
     - Something much worse actually.
-  - name: Gero
+  - image: {fileID: 21300000, guid: 9f8d4d6096d08ea479c9e999a8ba8c29, type: 3}
+    name: Gero
     sentences:
     - What could be worse than that?
-  - name: Obi Yank
+  - image: {fileID: 21300000, guid: 19b9fa78048784a409ff34d120b980db, type: 3}
+    name: Obi Yank
     sentences:
     - Our mayor is a greedy, power thirsty evil monkey in a suit.
-  - name: Gero
+  - image: {fileID: 21300000, guid: 9f8d4d6096d08ea479c9e999a8ba8c29, type: 3}
+    name: Gero
     sentences:
     - What??
-  - name: Obi Yank
+  - image: {fileID: 21300000, guid: 19b9fa78048784a409ff34d120b980db, type: 3}
+    name: Obi Yank
     sentences:
     - Nevermind... Well, first of all I think you should know how to get around in
       town.
@@ -7013,10 +7026,12 @@ MonoBehaviour:
     - Use the Arrow Keys to zoom the camera in and out.
     - If you'd like to interact with things, press "E".
     - Well, gotta go now. Got some garden gnome businesses to attend.
-  - name: Gero
+  - image: {fileID: 21300000, guid: 9f8d4d6096d08ea479c9e999a8ba8c29, type: 3}
+    name: Gero
     sentences:
     - Garden gnomes don't have anything to att... Wait!
-  - name: Obi Yank
+  - image: {fileID: 21300000, guid: 19b9fa78048784a409ff34d120b980db, type: 3}
+    name: Obi Yank
     sentences:
     - Your hair looks terrible by the way!
 --- !u!4 &276627039 stripped
@@ -30309,6 +30324,7 @@ MonoBehaviour:
   go_dialoguebox: {fileID: 466212104}
   tx_NPCIname: {fileID: 1490655980}
   tx_NPCIdialogue: {fileID: 1892546749}
+  im_NPCimage: {fileID: 1207676135}
   anim_dialogue: {fileID: 466212106}
 --- !u!4 &1127172831
 Transform:
@@ -32162,6 +32178,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: -4736133659276472721, guid: f065617df90b78341af427fb06fd08e4, type: 3}
+--- !u!114 &1207676135 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4114624453229049786, guid: 0fe66f2c7f9b1f54089435a36bba2df4,
+    type: 3}
+  m_PrefabInstance: {fileID: 4114624452174178539}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1207958513 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 5207debbd61ef6d4b943f6e7813239c6,
@@ -57089,6 +57117,37 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4114624453229049786, guid: 0fe66f2c7f9b1f54089435a36bba2df4,
+        type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4114624453229049786, guid: 0fe66f2c7f9b1f54089435a36bba2df4,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 19b9fa78048784a409ff34d120b980db,
+        type: 3}
+    - target: {fileID: 4114624453229049786, guid: 0fe66f2c7f9b1f54089435a36bba2df4,
+        type: 3}
+      propertyPath: m_FillMethod
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4114624453229049786, guid: 0fe66f2c7f9b1f54089435a36bba2df4,
+        type: 3}
+      propertyPath: m_FillOrigin
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4114624453229049786, guid: 0fe66f2c7f9b1f54089435a36bba2df4,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4114624453229049786, guid: 0fe66f2c7f9b1f54089435a36bba2df4,
+        type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fe66f2c7f9b1f54089435a36bba2df4, type: 3}
