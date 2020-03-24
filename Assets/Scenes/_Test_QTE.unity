@@ -120,6 +120,80 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &53609708
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 365892872305137010, guid: 4d49f2cbede4aa842ac826bafa92c74c,
+        type: 3}
+      propertyPath: m_Name
+      value: Qte_Base (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 365892872305137010, guid: 4d49f2cbede4aa842ac826bafa92c74c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 365892872305137011, guid: 4d49f2cbede4aa842ac826bafa92c74c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 365892872305137011, guid: 4d49f2cbede4aa842ac826bafa92c74c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 365892872305137011, guid: 4d49f2cbede4aa842ac826bafa92c74c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 365892872305137011, guid: 4d49f2cbede4aa842ac826bafa92c74c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 365892872305137011, guid: 4d49f2cbede4aa842ac826bafa92c74c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 365892872305137011, guid: 4d49f2cbede4aa842ac826bafa92c74c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 365892872305137011, guid: 4d49f2cbede4aa842ac826bafa92c74c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 365892872305137011, guid: 4d49f2cbede4aa842ac826bafa92c74c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 365892872305137011, guid: 4d49f2cbede4aa842ac826bafa92c74c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 365892872305137011, guid: 4d49f2cbede4aa842ac826bafa92c74c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 365892872305137011, guid: 4d49f2cbede4aa842ac826bafa92c74c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d49f2cbede4aa842ac826bafa92c74c, type: 3}
 --- !u!1001 &243269120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -131,6 +205,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Qte_Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 365892872305137010, guid: 4d49f2cbede4aa842ac826bafa92c74c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 365892872305137011, guid: 4d49f2cbede4aa842ac826bafa92c74c,
         type: 3}
@@ -190,7 +269,7 @@ PrefabInstance:
     - target: {fileID: 1151763298672706713, guid: 4d49f2cbede4aa842ac826bafa92c74c,
         type: 3}
       propertyPath: manualQte
-      value: QTE_Template_spe_2
+      value: QTE_Template_far_1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d49f2cbede4aa842ac826bafa92c74c, type: 3}

@@ -13,6 +13,14 @@ TagManager:
   - NPCI
   - Bar
   - Transparent
+  - ActivatorRed
+  - ActivatorBlue
+  - ActivatorYellow
+  - ActivatorGreen
+  - ArrowBlue
+  - ArrowRed
+  - ArrowYellow
+  - ArrowGreen
   layers:
   - Default
   - TransparentFX

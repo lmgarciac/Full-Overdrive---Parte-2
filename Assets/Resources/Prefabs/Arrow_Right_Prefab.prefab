@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3979213608085621829}
   m_Layer: 0
   m_Name: Arrow_Right_Prefab
-  m_TagString: Arrow
+  m_TagString: ArrowGreen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -88,6 +88,7 @@ namespace Events
      }
     public class QteHitEvent : GameEvent {
         public bool success;
+        public int color; //0 Blue, 1 Red, 2 Yellow, 3 Green
      }
     public class QteLeaveEvent : GameEvent
     {

@@ -51,7 +51,7 @@ public class QTE_Main_Controller : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Arrow" && !licktriggered)
+        if(other.tag.StartsWith("Arrow") && !licktriggered)
         {
             Debug.Log("Entro!");
             ev_qteplay.noteamount = noteAmount;
@@ -61,7 +61,7 @@ public class QTE_Main_Controller : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Arrow" && !licktriggered)
+        if (other.tag.StartsWith("Arrow") && !licktriggered)
         {
             qteleavecounter++;
             Debug.Log($"{qteleavecounter} / {noteAmount}");
