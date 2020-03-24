@@ -49,7 +49,6 @@ public class Intro_Controller : MonoBehaviour
 
         yield return waitforseconds;
         yield return waitforseconds;
-        yield return waitforseconds;
 
 
         sceneController.FadeAndLoadScene("_Scene_ObiYank");

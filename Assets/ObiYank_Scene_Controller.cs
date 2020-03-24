@@ -127,6 +127,29 @@ public class ObiYank_Scene_Controller : MonoBehaviour
         cantalk = true;
 
         dialogue = dialogues[dialogueindex];
+
+        StartCoroutine(FadeVolume(AudioListener.volume * 0.3f));
+
         //Comenzar dialogo
+    }
+
+
+    private IEnumerator FadeVolume(float finalVolume)
+    {
+        float fadeSpeed = Mathf.Abs(AudioListener.volume - finalVolume) / 2.0f;
+
+        // While the CanvasGroup hasn't reached the final alpha yet...
+        while (!Mathf.Approximately(AudioListener.volume, finalVolume))
+        {
+            // ... move the alpha towards it's target alpha.
+            AudioListener.volume = Mathf.MoveTowards(AudioListener.volume, finalVolume,
+                fadeSpeed * Time.deltaTime);
+
+            //musicPlayer.volume = Mathf.MoveTowards(musicPlayer.volume, PlayerOptions.Volume,
+            //   fadeSpeed * Time.deltaTime);
+
+            // Wait for a frame then continue.
+            yield return null;
+        }
     }
 }

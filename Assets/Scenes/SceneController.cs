@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using Events;
+using System.Collections.Generic;
 
 // This script exists in the Persistent scene and manages the content
 // based scene's loading.  It works on a principle that the
@@ -30,9 +31,41 @@ public class SceneController : MonoBehaviour
     private readonly BeforeSceneUnloadEvent ev_before = new BeforeSceneUnloadEvent();
     private readonly AfterSceneLoadEvent ev_after = new AfterSceneLoadEvent();
 
+    private AudioSource musicPlayer;
+    private AudioClip musicClip;
+    private float volumeClip;
+
+    public Music_Template configurationMusic;
+
+    Dictionary<string, AudioClip> songList;
+    Dictionary<string, float> volumeList;
+
+    private bool isFadingMusic;
 
     private IEnumerator Start ()
     {
+        //Inicializar diccionaro de canciones
+
+        PlayerOptions.Volume = 1f;
+        musicPlayer = this.GetComponent<AudioSource>();
+        songList = new Dictionary<string, AudioClip>();
+        volumeList = new Dictionary<string, float>();
+
+        foreach (Canciones cancion in configurationMusic.listaCanciones)
+        {
+            if(cancion.cancion != null)
+            {
+                //Debug.Log($"{cancion.sceneName} / {cancion.cancion}");
+
+                songList.Add(cancion.sceneName, cancion.cancion);
+                volumeList.Add(cancion.sceneName, cancion.volume);
+            }
+
+        }
+
+
+
+
         // Set the initial alpha to start off with a black screen.
         faderCanvasGroup.alpha = 1f;
 
@@ -45,6 +78,7 @@ public class SceneController : MonoBehaviour
 
         // Once the scene is finished loading, start fading in.
         StartCoroutine (Fade (0f));
+
     }
 
 
@@ -54,6 +88,7 @@ public class SceneController : MonoBehaviour
     public void FadeAndLoadScene(string sceneName)
 
     {
+
         // If a fade isn't happening then start fading and switching scenes.
         if (!isFading)
         {
@@ -72,7 +107,7 @@ public class SceneController : MonoBehaviour
 
         // If this event has any subscribers, call it.
         //if (BeforeSceneUnload != null)
-            //BeforeSceneUnload();
+        //BeforeSceneUnload();
         EventController.TriggerEvent(ev_before);
 
         // Unload the current active scene.
@@ -89,6 +124,7 @@ public class SceneController : MonoBehaviour
         
         // Start fading back in and wait for it to finish before exiting the function.
         yield return StartCoroutine (Fade (0f));
+
     }
 
 
@@ -102,6 +138,16 @@ public class SceneController : MonoBehaviour
 
         // Set the newly loaded scene as the active scene (this marks it as the one to be unloaded next).
         SceneManager.SetActiveScene (newlyLoadedScene);
+
+        songList.TryGetValue(sceneName, out musicClip);
+        volumeList.TryGetValue(sceneName, out volumeClip);
+
+        if (musicPlayer.clip != musicClip)
+        {
+            musicPlayer.volume = volumeClip;
+            musicPlayer.clip = musicClip;
+            musicPlayer.Play();
+        }
     }
 
 
@@ -123,6 +169,9 @@ public class SceneController : MonoBehaviour
             faderCanvasGroup.alpha = Mathf.MoveTowards (faderCanvasGroup.alpha, finalAlpha,
                 fadeSpeed * Time.deltaTime);
 
+            //musicPlayer.volume = Mathf.MoveTowards(musicPlayer.volume, PlayerOptions.Volume,
+             //   fadeSpeed * Time.deltaTime);
+
             // Wait for a frame then continue.
             yield return null;
         }
@@ -133,4 +182,5 @@ public class SceneController : MonoBehaviour
         // Stop the CanvasGroup from blocking raycasts so input is no longer ignored.
         faderCanvasGroup.blocksRaycasts = false;
     }
+
 }
