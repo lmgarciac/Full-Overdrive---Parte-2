@@ -394,25 +394,29 @@ public class UI_Controller : MonoBehaviour
             go_itempanel.SetActive(false);
         }
 
-        if (select.action == (int)action.attack)
+        if (select.characterid != (int)characterid.player)
         {
-            tx_centralinfo.text = $"Attack!";
-        }
-        if (select.action == (int)action.special)
-        {
-            tx_centralinfo.text = $"Special!";
-        }
-        if (select.action == (int)action.defend)
-        {
-            tx_centralinfo.text = $"Defend!";
-        }
-        if (select.action == (int)action.heal)
-        {
-            tx_centralinfo.text = $"Heal!";
-        }
-        if (select.action == (int)action.buff)
-        {
-            tx_centralinfo.text = $"Buff!";
+            Debug.Log("Estas pasando por aca mucho?");
+            if (select.action == (int)action.attack)
+            {
+                tx_centralinfo.text = $"Attack!";
+            }
+            if (select.action == (int)action.special)
+            {
+                tx_centralinfo.text = $"Special!";
+            }
+            if (select.action == (int)action.defend)
+            {
+                tx_centralinfo.text = $"Defend!";
+            }
+            if (select.action == (int)action.heal)
+            {
+                tx_centralinfo.text = $"Heal!";
+            }
+            if (select.action == (int)action.buff)
+            {
+                tx_centralinfo.text = $"Buff!";
+            }
         }
     }
     private void QteHitEvent(QteHitEvent qtehit)
