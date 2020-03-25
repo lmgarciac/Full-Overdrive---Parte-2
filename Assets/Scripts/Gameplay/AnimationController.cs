@@ -12,7 +12,28 @@ public class AnimationController : MonoBehaviour
     [SerializeField] private GameObject go_enemy;
     private Animator an_enemy;
 
-    //private Animator cameraanim;
+
+    [SerializeField] private GameObject go_UIAttack;
+    private Animator an_UIAttack;
+
+    [SerializeField] private GameObject go_UIDefend;
+    private Animator an_UIDefend;
+
+    [SerializeField] private GameObject go_UISpecial;
+    private Animator an_UISpecial;
+
+    //[SerializeField] private GameObject go_UIItem;
+    //private Animator an_UIItem;
+
+    [SerializeField] private GameObject go_UIHeal;
+    private Animator an_UIHeal;
+
+    [SerializeField] private GameObject go_UIBuff;
+    private Animator an_UIBuff;
+
+    [SerializeField] private GameObject go_UIClock;
+    private Animator an_UIClock;
+
 
     public enum animation
     {
@@ -38,6 +59,16 @@ public class AnimationController : MonoBehaviour
     {
         an_player = go_player.GetComponent<Animator>();
         an_enemy = go_enemy.GetComponent<Animator>();
+
+        an_UIAttack = go_UIAttack.GetComponent<Animator>();
+        an_UIDefend = go_UIDefend.GetComponent<Animator>();
+        an_UISpecial = go_UISpecial.GetComponent<Animator>();
+        //an_UIItem = go_UIItem.GetComponent<Animator>();
+        an_UIHeal = go_UIHeal.GetComponent<Animator>();
+        an_UIBuff = go_UIBuff.GetComponent<Animator>();
+
+        an_UIClock = go_UIClock.GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -56,6 +87,7 @@ public class AnimationController : MonoBehaviour
                     an_player.SetBool("Attack", true);
                     an_player.SetBool("Idle", false);
                     an_player.SetBool("Special", false);
+                    CloseAttackUI();
                 }
             }
             else if (anim.animation == (int)animation.special)
@@ -63,14 +95,31 @@ public class AnimationController : MonoBehaviour
                 an_player.SetBool("Idle", false);
                 an_player.SetBool("Attack", false);
                 an_player.SetBool("Special", true);
+                CloseAttackUI();
+            }
+            else if (anim.animation == (int)animation.none) //Miss
+            {
+                an_player.SetBool("Idle", false);
+                an_player.SetBool("Attack", false);
+                an_player.SetBool("Special", false);
+                an_player.SetBool("Win", false);
+                an_player.SetBool("Lose", true);
+                CloseAttackUI();
             }
             else //Idle
             {
+                Debug.Log("InicializarUI");
+
                 an_player.SetBool("Idle", true);
                 an_player.SetBool("Attack", false);
                 an_player.SetBool("Special", false);
                 an_player.SetBool("Win", false);
                 an_player.SetBool("Lose", false);
+
+                if(!anim.dontshowUI)
+                {
+                    InitializeAttackUI();
+                }
             }
         }
         else //Enemy
@@ -141,6 +190,73 @@ public class AnimationController : MonoBehaviour
         {
             //cameraanim.runtimeAnimatorController = null;
         }
+
+    }
+
+    private void InitializeAttackUI()
+    {
+        go_UIAttack.SetActive(true);
+        go_UIDefend.SetActive(true);
+        go_UISpecial.SetActive(true);
+        go_UIHeal.SetActive(true);
+        go_UIBuff.SetActive(true);
+        //go_UIItem.SetActive(true);
+        go_UIClock.SetActive(true);
+
+
+        an_UIAttack.SetBool("SlideIn", true);
+        an_UIDefend.SetBool("SlideIn", true);
+        an_UISpecial.SetBool("SlideIn", true);
+        an_UIHeal.SetBool("SlideIn", true);
+        an_UIBuff.SetBool("SlideIn", true);
+        //an_UIItem.SetBool("SlideIn", true);
+        an_UIClock.SetBool("SlideIn", true);
+
+        an_UIAttack.SetBool("SlideOut", false);
+        an_UIDefend.SetBool("SlideOut", false);
+        an_UISpecial.SetBool("SlideOut", false);
+        //an_UIItem.SetBool("SlideOut", false);
+        an_UIHeal.SetBool("SlideOut", false);
+        an_UIBuff.SetBool("SlideOut", false);
+        an_UIClock.SetBool("SlideOut", false);
+
+
+
+    }
+
+    private void CloseAttackUI()
+    {
+        an_UIAttack.SetBool("SlideOut", true);
+        an_UIDefend.SetBool("SlideOut", true);
+        an_UISpecial.SetBool("SlideOut", true);
+        //an_UIItem.SetBool("SlideOut", true);
+        an_UIHeal.SetBool("SlideOut", true);
+        an_UIBuff.SetBool("SlideOut", true);
+        an_UIClock.SetBool("SlideOut", true);
+
+        an_UIAttack.SetBool("SlideIn", false);
+        an_UIDefend.SetBool("SlideIn", false);
+        an_UISpecial.SetBool("SlideIn", false);
+        an_UIHeal.SetBool("SlideIn", false);
+        an_UIBuff.SetBool("SlideIn", false);
+        //an_UIItem.SetBool("SlideIn", false);
+        an_UIClock.SetBool("SlideIn", false);
+
+        //go_UIAttack.SetActive(false);
+        //go_UIDefend.SetActive(false);
+        //go_UISpecial.SetActive(false);
+        //go_UIHeal.SetActive(false);
+        //go_UIBuff.SetActive(false);
+        ////go_UIItem.SetActive(true);
+        //go_UIClock.SetActive(false);
+
+        //an_uiattack.setbool("slidein", false);
+        //an_uidefend.setbool("slidein", false);
+        //an_uispecial.setbool("slidein", false);
+        //an_uiheal.setbool("slidein", false);
+        //an_uibuff.setbool("slidein", false);
+        ////an_uiitem.setbool("slidein", true);
+        //an_uiclock.setbool("slidein", false);
 
     }
 

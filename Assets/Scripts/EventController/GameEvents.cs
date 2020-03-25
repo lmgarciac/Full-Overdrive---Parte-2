@@ -111,6 +111,7 @@ namespace Events
         public bool playerturn;
         public bool camshake;
         public int animation;
+        public bool dontshowUI;
     }
 
 

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class Battle_Controller : FiniteStateMachine
 {
@@ -138,6 +140,19 @@ public class Battle_Controller : FiniteStateMachine
     private enum counterstatus {ready = 0, set =1, go=2}
     private WaitForSecondsRealtime waitforseconds = new WaitForSecondsRealtime(ti_coroutinetime);
 
+
+    //Timer Settings
+    [SerializeField] private float chooseTime = 6.0f;
+    [SerializeField] private GameObject go_clock;
+    [SerializeField] private GameObject go_clockParent;
+
+    private Image im_clock;
+    private WaitForSecondsRealtime chooseTimeTick = new WaitForSecondsRealtime(0.1f);
+    private WaitForSecondsRealtime missTime = new WaitForSecondsRealtime(2f);
+    private WaitForSecondsRealtime actionTimer = new WaitForSecondsRealtime(2f);
+    private WaitForSecondsRealtime turnSwitchTimer = new WaitForSecondsRealtime(2f);
+
+
     private GameObject instantiatedQTE;
 
     private static Object qteBase;
@@ -180,11 +195,16 @@ public class Battle_Controller : FiniteStateMachine
 
     private bool actionButton;
 
+    private bool iswaiting;
+
     //Start Event
 
     void Start()
     {
         StartProcedure();
+
+        im_clock = go_clock.GetComponent<Image>();
+
         StartCoroutine(StartCountdown());
         sceneController = FindObjectOfType<SceneController>();
 
@@ -213,13 +233,7 @@ public class Battle_Controller : FiniteStateMachine
 
     protected override void Update()
     {
-
-        //Debug.Log($"Playing: {playing}");
-        //Debug.Log($"Ev_action: {ev_action.action}");
-        //Debug.Log($"Triggerstate: {triggerstate}");
-        //Debug.Log($"QTEState: {IsStateRunning(new QTEState().GetType())}");
-
-
+        // Check Exit
         if (Input.GetKeyDown(KeyCode.E) && gameover)
         {
             anim_dialogue.SetBool("Open", false);
@@ -253,22 +267,19 @@ public class Battle_Controller : FiniteStateMachine
             EventController.TriggerEvent(ev_finishtimer);
             EventController.TriggerEvent(ev_enableturn);
 
-            ev_battlestarted.playerhp = playerhp;
-            ev_battlestarted.playersp = playersp;
-            ev_battlestarted.playerinitsp = playerinitsp;
-            ev_battlestarted.enemyinitsp = enemyinitsp;
-            ev_battlestarted.playerinithp = playerinithp;
-            ev_battlestarted.enemyinithp = enemyinithp;
-            ev_battlestarted.buffqty = player.buff;
-            ev_battlestarted.healqty = player.heal;
-            ev_battlestarted.enemyhp = enemyhp;
-            ev_battlestarted.enemysp = enemysp;
-            ev_battlestarted.specialcost = specialcost;
+            //Trigger anim
+            ev_anim.playerturn = playerturn;
+            ev_anim.animation = (int)animation.idle;
 
+            ev_anim.dontshowUI = true;
 
-            EventController.TriggerEvent(ev_battlestarted);
+            EventController.TriggerEvent(ev_anim);
 
-            StartCoroutine(TimeController());
+            //SwitchState(new IdleState());
+            //StartCoroutine(ChooseTime());
+            StartCoroutine(StateSwitch());
+
+            //StartCoroutine(TimeController());
         }
 
         // Turn controller: Cambia de turno y dispara los eventos asociados
@@ -280,18 +291,31 @@ public class Battle_Controller : FiniteStateMachine
             qtecounter = 0;
             qteleavecounter = 0;
             ev_enableturn.characterid = (int)characterid.player;
+
             ev_enableturn.turnstate = (int)turnstate.turninfo;
+
+            //ev_enableturn.turnstate = (int)turnstate.chooseaction;
 
             spotlightplayer.SetActive(true);
             spotlightenemy.SetActive(false);
 
             // _turnstate = (int)turnstate.turninfo;
             EventController.TriggerEvent(ev_enableturn);
+
+            StartCoroutine(StateSwitch());
+
             SwitchState(new IdleState());
+            //SwitchState(new ChooseState());
 
             //Trigger anim
+
+            Debug.Log("Trigger animacion Turno!");
+
             ev_anim.playerturn = playerturn;
             ev_anim.animation = (int)animation.idle;
+
+            ev_anim.dontshowUI = true;
+
             ev_anim.camshake = false;
             EventController.TriggerEvent(ev_anim);
 
@@ -303,22 +327,37 @@ public class Battle_Controller : FiniteStateMachine
             triggerstate = false;
             qtecounter = 0;
             ev_enableturn.characterid = (int)characterid.enemy;
+
+
             ev_enableturn.turnstate = (int)turnstate.turninfo;
+            //ev_enableturn.turnstate = (int)turnstate.chooseaction;
+
+
 
             spotlightplayer.SetActive(false);
             spotlightenemy.SetActive(true);
 
             // _turnstate = (int)turnstate.turninfo;
             EventController.TriggerEvent(ev_enableturn);
+
+            StartCoroutine(StateSwitch());
+
             SwitchState(new IdleState());
+            //SwitchState(new ChooseState());
 
             //Trigger anim
             ev_anim.playerturn = playerturn;
             ev_anim.animation = (int)animation.idle;
+
+            ev_anim.dontshowUI = true;
+
+
             ev_anim.camshake = false;
             EventController.TriggerEvent(ev_anim);
         }
 
+        
+        
         // State controller: 
         if (playing && triggerstate && IsStateRunning(new IdleState().GetType()))
         {
@@ -332,8 +371,12 @@ public class Battle_Controller : FiniteStateMachine
             //Trigger anim
             ev_anim.playerturn = playerturn;
             ev_anim.animation = (int)animation.idle;
+            ev_anim.dontshowUI = false;
+
             ev_anim.camshake = false;
             EventController.TriggerEvent(ev_anim);
+
+            StartCoroutine(ChooseTime());
 
         }
         else if (playing && triggerstate && IsStateRunning(new ChooseState().GetType()))
@@ -348,6 +391,7 @@ public class Battle_Controller : FiniteStateMachine
             if (ev_action.action == (int)action.none)
             {
                 ev_enableturn.turnstate = (int)turnstate.miss;
+                StartCoroutine(MissedTurn());
                 qteeffic = 0;
             }
             else
@@ -356,6 +400,7 @@ public class Battle_Controller : FiniteStateMachine
             }
 
             EventController.TriggerEvent(ev_enableturn);
+
             if (playerturn && ev_action.action != (int)action.none)
             {
                 instantiatedQTE = (GameObject)Instantiate(qteBase);
@@ -371,6 +416,12 @@ public class Battle_Controller : FiniteStateMachine
                 qtein = true;
                 qtefinished = false;
             }
+
+            if(!playerturn)
+            {
+                StartCoroutine(StateSwitch());
+            }
+
             SwitchState(new QTEState());
 
             //Trigger anim
@@ -390,8 +441,14 @@ public class Battle_Controller : FiniteStateMachine
                     ev_anim.camshake = true;
                 }
             }
+            else if (ev_action.action == (int)action.none)
+            {
+                ev_anim.animation = (int)animation.none;
+            }
             else 
             {
+                ev_anim.dontshowUI = true;
+
                 ev_anim.animation = (int)animation.idle;
             }
             EventController.TriggerEvent(ev_anim);
@@ -566,6 +623,8 @@ public class Battle_Controller : FiniteStateMachine
             }
             else
             {
+                ev_anim.dontshowUI = true;
+
                 ev_anim.animation = (int)animation.idle;
             }
             EventController.TriggerEvent(ev_anim);
@@ -605,6 +664,8 @@ public class Battle_Controller : FiniteStateMachine
             qtenoteamount = 0;
             ev_action.action = (int)action.none;
 
+            StartCoroutine(ActionTimer());
+
             SwitchState(new AnimState());
 
 
@@ -612,24 +673,33 @@ public class Battle_Controller : FiniteStateMachine
         else if (playing && triggerstate && IsStateRunning(new AnimState().GetType()))
         {
             //Trigger anim
+            //playerturn = !playerturn;
+
+
             ev_anim.playerturn = playerturn;
             ev_anim.animation = (int)animation.idle;
+
+            ev_anim.dontshowUI = true;
+
             ev_anim.camshake = false;
             EventController.TriggerEvent(ev_anim);
 
             triggerstate = false;
 
             playerturn = !playerturn;
-            triggerturn = true;
-            triggerstate = false;
+
+            StartCoroutine(TurnSwitch());
+
 
             //ev_enableturn.turnstate = (int)turnstate.turninfo;
             //EventController.TriggerEvent(ev_enableturn);             
+
             SwitchState(new IdleState());
+            //SwitchState(new ChooseState());
 
 
         }
-        
+
         /////////////////////Player Input logic////////////////////
         if (playerturn && IsStateRunning(new ChooseState().GetType()))
         {
@@ -659,22 +729,23 @@ public class Battle_Controller : FiniteStateMachine
                 ev_action.characterid = ev_selected.characterid = (int)characterid.player;
                 EventController.TriggerEvent(ev_selected);
                 selected = true;
-            }                        
-            if (Input.GetKeyDown(KeyCode.W) && !selected) //Item
-            {
-                enableitems = true;
-                ev_action.action = ev_selected.action = (int)action.item;
-                ev_action.characterid = ev_selected.characterid = (int)characterid.player;                
-                EventController.TriggerEvent(ev_selected);
-                selected = true;
             }
-            else if (enableitems && Input.GetKeyDown(KeyCode.W)) //Back
-            {
-                enableitems = false;
-                ev_selected.action = (int)action.back;
-                ev_selected.characterid = (int)characterid.player;
-                EventController.TriggerEvent(ev_selected);
-            }
+            //if (Input.GetKeyDown(KeyCode.W) && !selected) //Item
+            //{
+            //    enableitems = true;
+            //    ev_action.action = ev_selected.action = (int)action.item;
+            //    ev_action.characterid = ev_selected.characterid = (int)characterid.player;                
+            //    EventController.TriggerEvent(ev_selected);
+            //    selected = true;
+            //}
+            //else if (enableitems && Input.GetKeyDown(KeyCode.W)) //Back
+            //{
+            //    enableitems = false;
+            //    ev_selected.action = (int)action.back;
+            //    ev_selected.characterid = (int)characterid.player;
+            //    EventController.TriggerEvent(ev_selected);
+            //}
+            enableitems = true;
             if (enableitems && Input.GetKeyDown(KeyCode.Q) && player.buff > 0) //Buff
             {
                 enableitems = false;
@@ -683,6 +754,7 @@ public class Battle_Controller : FiniteStateMachine
                 ev_action.action = ev_selected.action = (int)action.buff;
                 ev_action.characterid = ev_selected.characterid = (int)characterid.player;                
                 EventController.TriggerEvent(ev_selected);
+                selected = true;
             }
             if (enableitems && Input.GetKeyDown(KeyCode.E) && player.heal > 0) //Heal
             {
@@ -692,13 +764,14 @@ public class Battle_Controller : FiniteStateMachine
                 ev_action.action = ev_selected.action = (int)action.heal;
                 ev_action.characterid = ev_selected.characterid = (int)characterid.player;
                 EventController.TriggerEvent(ev_selected);
+                selected = true;
             }
 
 
         }
 
         /////////////////////AI Logic///////////////////////
-        if (!playerturn && IsStateRunning(new ChooseState().GetType()) && !selected) //De momento solo ataca
+        if (!playerturn && IsStateRunning(new ChooseState().GetType()) && !selected && !iswaiting) //De momento solo ataca
         {
             ResetPrizes();
 
@@ -741,6 +814,9 @@ public class Battle_Controller : FiniteStateMachine
 
             ev_action.characterid = ev_selected.characterid = (int)characterid.enemy;
             EventController.TriggerEvent(ev_selected);
+
+            selected = false; //Lo voy a poner en la corutina al selected
+            StartCoroutine(ChoiceWait());
 
         }
 
@@ -796,8 +872,14 @@ public class Battle_Controller : FiniteStateMachine
         //Debug.Log(ti_turntime);
         // _turnstate = (int)turnstate.turninfo;
         ev_enableturn.characterid = (int)characterid.player;
-        ev_enableturn.turnstate = (int)turnstate.turninfo;       
+
+
+        ev_enableturn.turnstate = (int)turnstate.turninfo;
+        //ev_enableturn.turnstate = (int)turnstate.chooseaction;
+
         ev_action.characterid = (int)characterid.none; 
+
+
         playerturn = true;
         enemyturn = false;
         selected = false;
@@ -824,10 +906,11 @@ public class Battle_Controller : FiniteStateMachine
 
         qteBase = Resources.Load("Prefabs/Qte_Base");
 
-
+        iswaiting = false;
         SwitchState(new IdleState());
+        //SwitchState(new ChooseState());
 
-        ////Trigger anim
+        //Trigger anim
         //ev_anim.playerturn = playerturn;
         //ev_anim.animation = (int)animation.idle;
         //EventController.TriggerEvent(ev_anim);
@@ -840,10 +923,29 @@ public class Battle_Controller : FiniteStateMachine
         //positionQTE = new Vector3(0f,10f,-3f);
         //qteobject = GameObject.FindGameObjectWithTag("QTE");
         //qteobject.SetActive(false);
+
+        ev_battlestarted.playerhp = playerhp;
+        ev_battlestarted.playersp = playersp;
+        ev_battlestarted.playerinitsp = playerinitsp;
+        ev_battlestarted.enemyinitsp = enemyinitsp;
+        ev_battlestarted.playerinithp = playerinithp;
+        ev_battlestarted.enemyinithp = enemyinithp;
+        ev_battlestarted.buffqty = player.buff;
+        ev_battlestarted.healqty = player.heal;
+        ev_battlestarted.enemyhp = enemyhp;
+        ev_battlestarted.enemysp = enemysp;
+        ev_battlestarted.specialcost = specialcost;
+        EventController.TriggerEvent(ev_battlestarted);
+
         ev_starttimer.countertype = (int)countertype.inittimer;
         ev_updatettimer.countertype = (int)countertype.inittimer;
         ev_finishtimer.countertype = (int)countertype.inittimer;
+
         EventController.TriggerEvent(ev_starttimer);
+
+
+
+
     }
     IEnumerator StartCountdown()
     {
@@ -1183,5 +1285,64 @@ public class Battle_Controller : FiniteStateMachine
         Player_Status.Heals = player.heal;
         Player_Status.Buffs = player.buff;
         //Debug.Log(playerheal);
+    }
+
+    IEnumerator ChooseTime()
+    {
+
+        //Espera 5 segundos y llena el timer
+        im_clock.fillAmount = 0f;
+        float fadeSpeed = Mathf.Abs(im_clock.fillAmount - 1f) / chooseTime;
+
+        while (!Mathf.Approximately(im_clock.fillAmount, 1f) && !selected)
+        {
+            im_clock.fillAmount = Mathf.MoveTowards(im_clock.fillAmount, 1f,
+                fadeSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        triggerstate = true;
+    }
+
+    IEnumerator MissedTurn()
+    {
+
+        yield return missTime;
+
+        triggerstate = true;
+    }
+
+    IEnumerator ActionTimer()
+    {
+
+        yield return actionTimer;
+
+        triggerstate = true;
+    }
+
+    IEnumerator TurnSwitch()
+    {
+
+        yield return turnSwitchTimer;
+
+        triggerstate = false;
+        triggerturn = true;
+
+    }
+
+    IEnumerator StateSwitch()
+    {
+
+        yield return turnSwitchTimer;
+
+        triggerstate = true;
+    }
+
+    IEnumerator ChoiceWait()
+    {
+        iswaiting = true;
+        yield return turnSwitchTimer;
+        selected = true;
+        iswaiting = false;
     }
 }
