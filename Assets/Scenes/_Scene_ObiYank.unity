@@ -6966,58 +6966,58 @@ MonoBehaviour:
   player: {fileID: 1685410563}
   numbers: 0
   dialogues:
-  - image: {fileID: 21300000, guid: 19b9fa78048784a409ff34d120b980db, type: 3}
+  - image: {fileID: 21300000, guid: 8837a46c8ab11b64e99c6bda6261e9d2, type: 3}
     name: Obi Yank
     sentences:
     - Hi Gero! I'm Obi Yank, nice to finally meet you.
-  - image: {fileID: 21300000, guid: 9f8d4d6096d08ea479c9e999a8ba8c29, type: 3}
+  - image: {fileID: 21300000, guid: 9beff765975b9ac41966a25ec8912f33, type: 3}
     name: Gero
     sentences:
     - Wait... you're my garden gnome. And you're... talking to me?
-  - image: {fileID: 21300000, guid: 19b9fa78048784a409ff34d120b980db, type: 3}
+  - image: {fileID: 21300000, guid: 8837a46c8ab11b64e99c6bda6261e9d2, type: 3}
     name: Obi Yank
     sentences:
     - First time, huh?
-  - image: {fileID: 21300000, guid: 9f8d4d6096d08ea479c9e999a8ba8c29, type: 3}
+  - image: {fileID: 21300000, guid: 9beff765975b9ac41966a25ec8912f33, type: 3}
     name: Gero
     sentences:
     - I always thought there was something weird about you to be honest.
-  - image: {fileID: 21300000, guid: 19b9fa78048784a409ff34d120b980db, type: 3}
+  - image: {fileID: 21300000, guid: 8837a46c8ab11b64e99c6bda6261e9d2, type: 3}
     name: Obi Yank
     sentences:
     - Now, that's offensive...
     - Anyway, welcome to Jamtown! Trust me, you'll like this place.
-  - image: {fileID: 21300000, guid: 9f8d4d6096d08ea479c9e999a8ba8c29, type: 3}
+  - image: {fileID: 21300000, guid: 9beff765975b9ac41966a25ec8912f33, type: 3}
     name: Gero
     sentences:
     - Jamtown? Sounds kind of cool actually...
-  - image: {fileID: 21300000, guid: 19b9fa78048784a409ff34d120b980db, type: 3}
+  - image: {fileID: 21300000, guid: 8837a46c8ab11b64e99c6bda6261e9d2, type: 3}
     name: Obi Yank
     sentences:
     - Oh it is! Here everybody likes to jam!
     - But there's only one thing though... quite a bad one if you ask me.
-  - image: {fileID: 21300000, guid: 9f8d4d6096d08ea479c9e999a8ba8c29, type: 3}
+  - image: {fileID: 21300000, guid: 9beff765975b9ac41966a25ec8912f33, type: 3}
     name: Gero
     sentences:
     - The townspeople are all garden gnomes?
-  - image: {fileID: 21300000, guid: 19b9fa78048784a409ff34d120b980db, type: 3}
+  - image: {fileID: 21300000, guid: 8837a46c8ab11b64e99c6bda6261e9d2, type: 3}
     name: Obi Yank
     sentences:
     - Well aren't you just a fun little lollipop triple dipped in stupid...
     - Something much worse actually.
-  - image: {fileID: 21300000, guid: 9f8d4d6096d08ea479c9e999a8ba8c29, type: 3}
+  - image: {fileID: 21300000, guid: 9beff765975b9ac41966a25ec8912f33, type: 3}
     name: Gero
     sentences:
     - What could be worse than that?
-  - image: {fileID: 21300000, guid: 19b9fa78048784a409ff34d120b980db, type: 3}
+  - image: {fileID: 21300000, guid: 8837a46c8ab11b64e99c6bda6261e9d2, type: 3}
     name: Obi Yank
     sentences:
     - Our mayor is a greedy, power thirsty evil monkey in a suit.
-  - image: {fileID: 21300000, guid: 9f8d4d6096d08ea479c9e999a8ba8c29, type: 3}
+  - image: {fileID: 21300000, guid: 9beff765975b9ac41966a25ec8912f33, type: 3}
     name: Gero
     sentences:
     - What??
-  - image: {fileID: 21300000, guid: 19b9fa78048784a409ff34d120b980db, type: 3}
+  - image: {fileID: 21300000, guid: 8837a46c8ab11b64e99c6bda6261e9d2, type: 3}
     name: Obi Yank
     sentences:
     - Nevermind... Well, first of all I think you should know how to get around in
@@ -7026,11 +7026,11 @@ MonoBehaviour:
     - Use the Arrow Keys to zoom the camera in and out.
     - If you'd like to interact with things, press "E".
     - Well, gotta go now. Got some garden gnome businesses to attend.
-  - image: {fileID: 21300000, guid: 9f8d4d6096d08ea479c9e999a8ba8c29, type: 3}
+  - image: {fileID: 21300000, guid: 9beff765975b9ac41966a25ec8912f33, type: 3}
     name: Gero
     sentences:
     - Garden gnomes don't have anything to att... Wait!
-  - image: {fileID: 21300000, guid: 19b9fa78048784a409ff34d120b980db, type: 3}
+  - image: {fileID: 21300000, guid: 8837a46c8ab11b64e99c6bda6261e9d2, type: 3}
     name: Obi Yank
     sentences:
     - Your hair looks terrible by the way!
@@ -57097,11 +57097,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4114624453503586391, guid: 0fe66f2c7f9b1f54089435a36bba2df4,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4114624453229049786, guid: 0fe66f2c7f9b1f54089435a36bba2df4,
         type: 3}
       propertyPath: m_Type
@@ -57133,6 +57128,11 @@ PrefabInstance:
       propertyPath: m_PreserveAspect
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4114624453503586391, guid: 0fe66f2c7f9b1f54089435a36bba2df4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -32
+      objectReference: {fileID: 0}
     - target: {fileID: 5666006207391901552, guid: 0fe66f2c7f9b1f54089435a36bba2df4,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -57157,6 +57157,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4114624453229049787, guid: 0fe66f2c7f9b1f54089435a36bba2df4,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0778177
+      objectReference: {fileID: 0}
+    - target: {fileID: 4114624453229049787, guid: 0fe66f2c7f9b1f54089435a36bba2df4,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.0778177
+      objectReference: {fileID: 0}
+    - target: {fileID: 4114624453229049787, guid: 0fe66f2c7f9b1f54089435a36bba2df4,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.0778177
+      objectReference: {fileID: 0}
+    - target: {fileID: 4114624453229049787, guid: 0fe66f2c7f9b1f54089435a36bba2df4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -138.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fe66f2c7f9b1f54089435a36bba2df4, type: 3}
