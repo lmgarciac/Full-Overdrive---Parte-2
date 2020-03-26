@@ -428,7 +428,15 @@ public class Battle_Controller : FiniteStateMachine
                 StartCoroutine(StateSwitch());
             }
 
-            SwitchState(new QTEState());
+            if (ev_action.action == (int)action.none) // Si se le pasa el turno no quiero que pase por el evento siguiente
+            {
+                SwitchState(new AnimState());
+            }
+            else
+            {
+                SwitchState(new QTEState());
+            }
+            //SwitchState(new QTEState());
 
             //Trigger anim
             ev_anim.playerturn = playerturn;

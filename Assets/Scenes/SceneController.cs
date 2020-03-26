@@ -41,6 +41,7 @@ public class SceneController : MonoBehaviour
     Dictionary<string, float> volumeList;
 
     private bool isFadingMusic;
+    private bool isNewSong;
 
     private IEnumerator Start ()
     {
@@ -77,7 +78,7 @@ public class SceneController : MonoBehaviour
         yield return StartCoroutine (LoadSceneAndSetActive (startingSceneName));
 
         // Once the scene is finished loading, start fading in.
-        StartCoroutine (Fade (0f));
+        StartCoroutine (Fade (0f,PlayerOptions.Volume));
 
     }
 
@@ -102,8 +103,18 @@ public class SceneController : MonoBehaviour
     // This is the coroutine where the 'building blocks' of the script are put together.
     private IEnumerator FadeAndSwitchScenes (string sceneName)
     {
+        //Check if it's a new song
+        songList.TryGetValue(sceneName, out musicClip);
+        volumeList.TryGetValue(sceneName, out volumeClip);
+
+        isNewSong = false;
+        if (musicPlayer.clip != musicClip)
+        {
+            isNewSong = true;
+        }
+
         // Start fading to black and wait for it to finish before continuing.
-        yield return StartCoroutine (Fade (1f));
+        yield return StartCoroutine (Fade (1f,0f));
 
         // If this event has any subscribers, call it.
         //if (BeforeSceneUnload != null)
@@ -123,7 +134,7 @@ public class SceneController : MonoBehaviour
 
         
         // Start fading back in and wait for it to finish before exiting the function.
-        yield return StartCoroutine (Fade (0f));
+        yield return StartCoroutine (Fade (0f, volumeClip));
 
     }
 
@@ -142,16 +153,18 @@ public class SceneController : MonoBehaviour
         songList.TryGetValue(sceneName, out musicClip);
         volumeList.TryGetValue(sceneName, out volumeClip);
 
+        isNewSong = false;
         if (musicPlayer.clip != musicClip)
         {
-            musicPlayer.volume = volumeClip;
+            musicPlayer.volume = 0f;
             musicPlayer.clip = musicClip;
             musicPlayer.Play();
+            isNewSong = true;
         }
     }
 
 
-    private IEnumerator Fade (float finalAlpha)
+    private IEnumerator Fade (float finalAlpha, float finalVolume)
     {
         // Set the fading flag to true so the FadeAndSwitchScenes coroutine won't be called again.
         isFading = true;
@@ -169,8 +182,13 @@ public class SceneController : MonoBehaviour
             faderCanvasGroup.alpha = Mathf.MoveTowards (faderCanvasGroup.alpha, finalAlpha,
                 fadeSpeed * Time.deltaTime);
 
-            //musicPlayer.volume = Mathf.MoveTowards(musicPlayer.volume, PlayerOptions.Volume,
-             //   fadeSpeed * Time.deltaTime);
+
+            if (isNewSong)
+            {
+                musicPlayer.volume = Mathf.MoveTowards(musicPlayer.volume, finalVolume,
+                    fadeSpeed * Time.deltaTime);
+            }
+
 
             // Wait for a frame then continue.
             yield return null;

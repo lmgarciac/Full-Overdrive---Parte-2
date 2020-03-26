@@ -226,6 +226,9 @@ public class UI_Controller_Map : MonoBehaviour
 
         tx_money.text = Player_Status.Money.ToString();
         money = Player_Status.Money;
+
+        tx_virtuosityLevel.text = Player_Status.CurrentArea.ToString();
+        currentarea = Player_Status.CurrentArea;
     }
 
     private void BuyEvent(BuyEvent buy)

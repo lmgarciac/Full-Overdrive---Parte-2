@@ -12090,8 +12090,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4780b7ad66b5fe94fbcba3f9dd2882a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goseconds: 90
-  setseconds: 55
+  goseconds: 100
+  setseconds: 70
   readyseconds: 40
   ti_songstartseconds: 110
   ti_totalsongtime: 1000000
@@ -42467,7 +42467,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -82.9, y: -41.5}
+  m_AnchoredPosition: {x: -82.9, y: -60}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1445629191
@@ -50793,6 +50793,7 @@ MonoBehaviour:
   go_dialogue: {fileID: 1683927043}
   tx_result: {fileID: 2137687692}
   anim_dialogue: {fileID: 1683927045}
+  go_pick: {fileID: 1445629189}
   ProgressHP_Player: {fileID: 247777892}
   ProgressHP_Enemy: {fileID: 947365046}
   ProgressSP_Player: {fileID: 957988390}
@@ -57387,7 +57388,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -32.6, y: 37.3}
+  m_AnchoredPosition: {x: -32.6, y: -16}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2137687692

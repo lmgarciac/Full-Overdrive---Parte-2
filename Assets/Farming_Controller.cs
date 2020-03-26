@@ -45,6 +45,7 @@ public class Farming_Controller : MonoBehaviour
 
     private float notepercentage;
     private int totalnotes;
+    private int finalPrizeMoney;
 
     [SerializeField] private GameObject soundController;
 
@@ -67,9 +68,9 @@ public class Farming_Controller : MonoBehaviour
     [SerializeField] private TextMeshProUGUI tx_continue;
 
     private bool exitfarming = false;
-
+    private bool exitingFarming = false;
     private SceneController sceneController;
-    [SerializeField] private float prizemoney;
+    [SerializeField] private int prizemoney;
 
     void Start()
     {
@@ -142,7 +143,7 @@ public class Farming_Controller : MonoBehaviour
         //}
         if (instantiatedQTE != null)
         {
-            if (qtehitcount + qteleavecount >= instantiatedQTE.GetComponent<QTE_Main_Controller>().QteSo.noteData.Length)
+            if ((qtehitcount + qteleavecount >= instantiatedQTE.GetComponent<QTE_Main_Controller>().QteSo.noteData.Length) && !exitingFarming)
             {
                 totalnotes = instantiatedQTE.GetComponent<QTE_Main_Controller>().QteSo.noteData.Length;
 
@@ -151,6 +152,7 @@ public class Farming_Controller : MonoBehaviour
                     notepercentage = (float)qtehitcount / (float)totalnotes;
                 }
 
+                finalPrizeMoney = (int)(notepercentage * prizemoney);
 
                 Debug.Log($"Note Percentage: %{notepercentage}");
                 Debug.Log($"Qte Hit Count: {qtehitcount}");
@@ -159,12 +161,13 @@ public class Farming_Controller : MonoBehaviour
                 tx_moneyearned.text = $"{(int)(notepercentage * prizemoney)}";
                 farmingStatsAnimator.SetBool("ShowStats", true);
 
-                Player_Status.Money += (int)(notepercentage * prizemoney);
+                Player_Status.Money += finalPrizeMoney;
 
                 qtecanMove = true;
                 qteout = true;
                 qtein = false;
 
+                exitingFarming = true;
                 StartCoroutine(FinishFarming());
             }
         }

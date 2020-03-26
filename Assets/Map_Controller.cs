@@ -48,6 +48,14 @@ public class Map_Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (Player_Status.CurrentArea > 1) //A futuro cambiar a algo genérico
+        {
+            localscale.x = targetScale;
+            localscale.y = targetScale;
+            localscale.z = targetScale;
+
+            boundaries.transform.localScale = localscale;
+        }
 
     }
 
@@ -141,7 +149,7 @@ public class Map_Controller : MonoBehaviour
 
             yield return null;
         }
-        Debug.Log("alguina vez llego aca??");
+        //Debug.Log("alguina vez llego aca??");
         isScaling = false;
     }
 

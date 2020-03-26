@@ -33,7 +33,7 @@ public class Sound_Controller : MonoBehaviour
         licktriggered = false;
         //so_backsong = (AudioClip)Resources.Load<AudioClip>($"so_backsong");
         so_backsong = (AudioClip)Resources.Load<AudioClip>($"Music/so_battle_theme");
-        musicPlayer.volume = 0.3f;
+        musicPlayer.volume = 0.2f;
         lickPlayer.volume = 0.5f;
         soundPlayer.volume = 0.8f;
         musicPlayer.clip = so_backsong;

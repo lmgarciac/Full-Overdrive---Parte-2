@@ -1211,6 +1211,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Hidrante (9)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1474,6 +1479,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Hidrante (38)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1704,6 +1714,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_CartelCalles (18)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1794,6 +1809,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Hidrante (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
@@ -2643,6 +2663,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Farol_1 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2811,6 +2836,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_CartelCalles (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
@@ -3348,6 +3378,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_CartelCalles (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
@@ -3918,6 +3953,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Hidrante (3)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4120,6 +4160,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_CartelCalles (31)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4310,6 +4355,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Hidrante (8)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4404,6 +4454,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Hidrante (37)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
@@ -5193,6 +5248,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_CartelCalles (22)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5340,7 +5400,7 @@ GameObject:
   - component: {fileID: 182440539}
   - component: {fileID: 182440538}
   - component: {fileID: 182440540}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Pedal_Over_Drive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5437,6 +5497,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Hidrante
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
@@ -5872,6 +5937,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Hidrante (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
@@ -6353,6 +6423,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_CartelCalles (19)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6574,6 +6649,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Farol_1 (27)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6794,6 +6874,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Farol_2 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 8b8c34e681df8c84cac5dcdf52db8b8b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8b8c34e681df8c84cac5dcdf52db8b8b,
         type: 3}
@@ -7192,6 +7277,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Hidrante (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
@@ -7958,6 +8048,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Farol_1 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8170,6 +8265,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Farol_2 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 8b8c34e681df8c84cac5dcdf52db8b8b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8b8c34e681df8c84cac5dcdf52db8b8b,
         type: 3}
@@ -8600,6 +8700,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Hidrante (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
@@ -9236,6 +9341,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Farol_1 (22)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9569,6 +9679,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Hidrante (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
@@ -10168,6 +10283,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_CartelCalles (16)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10258,6 +10378,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_CartelCalles
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
@@ -10551,6 +10676,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_CartelCalles (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
@@ -11723,6 +11853,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_CartelCalles (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11813,6 +11948,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_CartelCalles (35)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
@@ -12737,6 +12877,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Hidrante (30)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13367,6 +13512,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Hidrante (34)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13622,6 +13772,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Farol_2
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 8b8c34e681df8c84cac5dcdf52db8b8b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8b8c34e681df8c84cac5dcdf52db8b8b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13784,6 +13939,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Farol_2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 8b8c34e681df8c84cac5dcdf52db8b8b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8b8c34e681df8c84cac5dcdf52db8b8b,
         type: 3}
@@ -14003,6 +14163,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Farol_1 (14)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14081,6 +14246,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Hidrante (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
@@ -14320,6 +14490,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_CartelCalles (17)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14410,6 +14585,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Hidrante (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
@@ -14525,6 +14705,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Hidrante (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
@@ -15046,6 +15231,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Hidrante (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
@@ -16533,6 +16723,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_CartelCalles (26)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16865,6 +17060,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Farol_1
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17130,6 +17330,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Farol_1 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
@@ -17945,7 +18150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     image: {fileID: 21300000, guid: 8837a46c8ab11b64e99c6bda6261e9d2, type: 3}
-    name: Obi Yank
+    name: Obi Dwarf
     sentences:
     - You don't have enough Virtuosity to go this way yet...
   playerAnimator: {fileID: 92384516}
@@ -18898,7 +19103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 573742946}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Faroles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19526,6 +19731,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Hidrante (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
@@ -20993,6 +21203,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Farol_1 (26)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21167,6 +21382,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Farol_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
@@ -21460,6 +21680,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Farol_1 (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
@@ -22587,6 +22812,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Hidrante (10)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22681,6 +22911,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Farol_1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
@@ -23647,6 +23882,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_CartelCalles (28)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -23852,6 +24092,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Hidrante (36)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
@@ -25324,6 +25569,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Hidrante (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -25418,6 +25668,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Hidrante (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
@@ -25787,6 +26042,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_CartelCalles (29)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26022,7 +26282,7 @@ MonoBehaviour:
   targetScaleDuration: 3
   dialogue:
     image: {fileID: 21300000, guid: 8837a46c8ab11b64e99c6bda6261e9d2, type: 3}
-    name: Obi Yank
+    name: Obi Dwarf
     sentences:
     - You've unlocked a new area of the city!
 --- !u!4 &756758993
@@ -26615,6 +26875,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Hidrante (22)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26893,6 +27158,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_CartelCalles (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
@@ -27762,6 +28032,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Hidrante (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -27856,6 +28131,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_CartelCalles
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
@@ -28465,6 +28745,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_CartelCalles (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
@@ -29365,6 +29650,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Farol_1 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
@@ -30495,6 +30785,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_CartelCalles (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
@@ -32565,6 +32860,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_CartelCalles (33)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -32892,6 +33192,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Hidrante (29)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -32986,6 +33291,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Farol_2 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 8b8c34e681df8c84cac5dcdf52db8b8b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8b8c34e681df8c84cac5dcdf52db8b8b,
         type: 3}
@@ -33311,6 +33621,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Farol_2 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 8b8c34e681df8c84cac5dcdf52db8b8b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8b8c34e681df8c84cac5dcdf52db8b8b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33499,6 +33814,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Hidrante (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
@@ -34727,6 +35047,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Farol_1 (20)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34897,6 +35222,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_CartelCalles (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
@@ -35172,6 +35502,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_CartelCalles (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
@@ -35487,6 +35822,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Hidrante (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
@@ -36661,6 +37001,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Farol_1 (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
@@ -38171,6 +38516,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Farol_1 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38389,6 +38739,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_CartelCalles (8)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38479,6 +38834,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_CartelCalles (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
@@ -38854,6 +39214,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Farol_1 (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
@@ -39865,6 +40230,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Hidrante (35)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -40677,7 +41047,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     image: {fileID: 21300000, guid: 8837a46c8ab11b64e99c6bda6261e9d2, type: 3}
-    name: Obi Yank
+    name: Obi Dwarf
     sentences:
     - You don't have enough Virtuosity to go this way yet...
   playerAnimator: {fileID: 92384516}
@@ -45913,6 +46283,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_CartelCalles (30)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -46693,6 +47068,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Hidrante (39)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -46902,6 +47282,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Hidrante (33)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -46996,6 +47381,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_CartelCalles (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
@@ -47182,6 +47572,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_CartelCalles (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
@@ -48013,6 +48408,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Hidrante (31)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -48127,6 +48527,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_CartelCalles (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
@@ -48449,6 +48854,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_CartelCalles (10)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -48540,6 +48950,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Farol_1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -48618,6 +49033,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_CartelCalles (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
@@ -49166,6 +49586,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Farol_1 (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
@@ -49737,6 +50162,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Farol_1 (18)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -49931,6 +50361,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Farol_1 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
@@ -50845,6 +51280,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Hidrante (12)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -51350,7 +51790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     image: {fileID: 21300000, guid: 8837a46c8ab11b64e99c6bda6261e9d2, type: 3}
-    name: Obi Yank
+    name: Obi Dwarf
     sentences:
     - You don't have enough Virtuosity to go this way yet...
   playerAnimator: {fileID: 92384516}
@@ -52676,6 +53116,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_CartelCalles (7)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -53080,6 +53525,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Farol_1 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -53363,7 +53813,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     image: {fileID: 21300000, guid: 8837a46c8ab11b64e99c6bda6261e9d2, type: 3}
-    name: Obi Yank
+    name: Obi Dwarf
     sentences:
     - You don't have enough Virtuosity to go this way yet...
   playerAnimator: {fileID: 92384516}
@@ -54278,7 +54728,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1647694437}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hidrantes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55309,6 +55759,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Farol_1 (12)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -56134,6 +56589,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_CartelCalles (24)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -56419,6 +56879,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_CartelCalles (34)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -56560,7 +57025,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1691811124}
   - component: {fileID: 1691811125}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Carteles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56647,6 +57112,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_CartelCalles (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
@@ -56838,6 +57308,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Farol_1 (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
@@ -57190,6 +57665,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Farol_2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 8b8c34e681df8c84cac5dcdf52db8b8b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8b8c34e681df8c84cac5dcdf52db8b8b,
         type: 3}
@@ -57686,6 +58166,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_CartelCalles (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
@@ -58523,6 +59008,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_CartelCalles (14)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -59038,6 +59528,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_CartelCalles (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
@@ -59568,6 +60063,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Farol_1 (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
@@ -60790,6 +61290,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Farol_1 (24)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -61508,6 +62013,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Hidrante (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
@@ -63846,6 +64356,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Hidrante (20)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -63940,6 +64455,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Farol_2 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 8b8c34e681df8c84cac5dcdf52db8b8b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8b8c34e681df8c84cac5dcdf52db8b8b,
         type: 3}
@@ -64613,6 +65133,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Hidrante
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -64876,7 +65401,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.026666665
+  m_VoxelSize: 0.04
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: 457cead51ce720d42acaa0862ce737bb, type: 2}
 --- !u!4 &1928646450
@@ -64996,6 +65521,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_CartelCalles (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
@@ -65781,6 +66311,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_CartelCalles (20)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fc1751bc636dc394bb6cf773878379bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fc1751bc636dc394bb6cf773878379bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -66436,6 +66971,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Hidrante (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
@@ -67795,6 +68335,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Banco_1 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 40ae0b8f3847a4e4baa7855e6d2c1cdd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 40ae0b8f3847a4e4baa7855e6d2c1cdd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -68057,6 +68602,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Farol_1 (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
@@ -69534,6 +70084,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Farol_1 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -69954,6 +70509,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Farol_1 (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ad510c0ab5c694948b7a45aa550c2840,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ad510c0ab5c694948b7a45aa550c2840,
         type: 3}
@@ -70922,6 +71482,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PROP_Hidrante (24)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -71242,6 +71807,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Hidrante (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}
@@ -71682,6 +72252,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PROP_Hidrante (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89b8e0e5cb959fe45bfb8e274721949f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89b8e0e5cb959fe45bfb8e274721949f,
         type: 3}

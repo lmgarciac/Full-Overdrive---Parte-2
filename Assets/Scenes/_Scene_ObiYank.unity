@@ -6967,7 +6967,7 @@ MonoBehaviour:
   numbers: 0
   dialogues:
   - image: {fileID: 21300000, guid: 8837a46c8ab11b64e99c6bda6261e9d2, type: 3}
-    name: Obi Yank
+    name: Obi Dwarf
     sentences:
     - Hi Gero! I'm Obi Yank, nice to finally meet you.
   - image: {fileID: 21300000, guid: 9beff765975b9ac41966a25ec8912f33, type: 3}
@@ -6975,7 +6975,7 @@ MonoBehaviour:
     sentences:
     - Wait... you're my garden gnome. And you're... talking to me?
   - image: {fileID: 21300000, guid: 8837a46c8ab11b64e99c6bda6261e9d2, type: 3}
-    name: Obi Yank
+    name: Obi Dwarf
     sentences:
     - First time, huh?
   - image: {fileID: 21300000, guid: 9beff765975b9ac41966a25ec8912f33, type: 3}
@@ -6983,7 +6983,7 @@ MonoBehaviour:
     sentences:
     - I always thought there was something weird about you to be honest.
   - image: {fileID: 21300000, guid: 8837a46c8ab11b64e99c6bda6261e9d2, type: 3}
-    name: Obi Yank
+    name: Obi Dwarf
     sentences:
     - Now, that's offensive...
     - Anyway, welcome to Jamtown! Trust me, you'll like this place.
@@ -6992,7 +6992,7 @@ MonoBehaviour:
     sentences:
     - Jamtown? Sounds kind of cool actually...
   - image: {fileID: 21300000, guid: 8837a46c8ab11b64e99c6bda6261e9d2, type: 3}
-    name: Obi Yank
+    name: Obi Dwarf
     sentences:
     - Oh it is! Here everybody likes to jam!
     - But there's only one thing though... quite a bad one if you ask me.
@@ -7001,7 +7001,7 @@ MonoBehaviour:
     sentences:
     - The townspeople are all garden gnomes?
   - image: {fileID: 21300000, guid: 8837a46c8ab11b64e99c6bda6261e9d2, type: 3}
-    name: Obi Yank
+    name: Obi Dwarf
     sentences:
     - Well aren't you just a fun little lollipop triple dipped in stupid...
     - Something much worse actually.
@@ -7010,7 +7010,7 @@ MonoBehaviour:
     sentences:
     - What could be worse than that?
   - image: {fileID: 21300000, guid: 8837a46c8ab11b64e99c6bda6261e9d2, type: 3}
-    name: Obi Yank
+    name: Obi Dwarf
     sentences:
     - Our mayor is a greedy, power thirsty evil monkey in a suit.
   - image: {fileID: 21300000, guid: 9beff765975b9ac41966a25ec8912f33, type: 3}
@@ -7018,7 +7018,7 @@ MonoBehaviour:
     sentences:
     - What??
   - image: {fileID: 21300000, guid: 8837a46c8ab11b64e99c6bda6261e9d2, type: 3}
-    name: Obi Yank
+    name: Obi Dwarf
     sentences:
     - Nevermind... Well, first of all I think you should know how to get around in
       town.
@@ -7032,7 +7032,7 @@ MonoBehaviour:
     sentences:
     - Garden gnomes don't have anything to att... Wait!
   - image: {fileID: 21300000, guid: 8837a46c8ab11b64e99c6bda6261e9d2, type: 3}
-    name: Obi Yank
+    name: Obi Dwarf
     sentences:
     - Your hair looks terrible by the way!
 --- !u!4 &276627039 stripped

@@ -63,7 +63,7 @@ public class Player_Controller : MonoBehaviour
 
     private WaitForSecondsRealtime waitforseconds = new WaitForSecondsRealtime(0.5f);
 
-    private WaitForSecondsRealtime waitenableinput = new WaitForSecondsRealtime(2f);
+    private WaitForSecondsRealtime waitenableinput = new WaitForSecondsRealtime(1f);
 
     //// Events ////
     private readonly CollectEvent ev_collect = new CollectEvent();

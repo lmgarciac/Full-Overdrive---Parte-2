@@ -28,6 +28,7 @@ public class UI_Controller : MonoBehaviour
     [SerializeField] private TextMeshProUGUI tx_result;
     [SerializeField] private Animator anim_dialogue;
 
+    [SerializeField] private GameObject go_pick;
 
     private enum countertype { inittimer = 0, sessiontimer = 1, }
     private enum counterstatus { ready = 0, set = 1, go = 2 }
@@ -341,6 +342,10 @@ public class UI_Controller : MonoBehaviour
 
         anim_dialogue.SetBool("Open", true);
         
+        if (Player_Status.CurrentArea > 1) //A futuro en vez de 1, debería ser currentBar
+        {
+            go_pick.SetActive(false);
+        }
 
         //tx_centralinfo.text = $"GameOver!";
         go_actionspanel.SetActive(false);

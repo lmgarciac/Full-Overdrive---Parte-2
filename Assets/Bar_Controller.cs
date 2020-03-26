@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Events;
 
 public class Bar_Controller : MonoBehaviour
 {
@@ -9,8 +10,20 @@ public class Bar_Controller : MonoBehaviour
     private SceneController sceneController;
     private int[] collectablesIdentifiers;
     private GameObject[] activeCollectables;
+    private bool dialogueactive;
 
-    // Start is called before the first frame update
+    private void OnEnable()
+    {
+        EventController.AddListener<DialogueStatusEvent>(DialogueStatusEvent);
+
+    }
+
+    private void OnDisable()
+    {
+        EventController.RemoveListener<DialogueStatusEvent>(DialogueStatusEvent);
+
+    }
+
     void Start()
     {
         sceneController = FindObjectOfType<SceneController>();
@@ -19,7 +32,7 @@ public class Bar_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && canenterbar)
+        if (Input.GetKeyDown(KeyCode.E) && canenterbar && !dialogueactive)
         {
             //SceneManager.LoadScene("Battle", LoadSceneMode.Additive);
             //SceneManager.SetActiveScene(SceneManager.GetSceneByName("Battle"));
@@ -42,6 +55,11 @@ public class Bar_Controller : MonoBehaviour
         {
             canenterbar = false;
         }
+    }
+
+    private void DialogueStatusEvent(DialogueStatusEvent status)
+    {
+        dialogueactive = status.dialogueactive;
     }
 
     private void SaveMapState()
