@@ -29,6 +29,11 @@ public class UI_Controller_Map : MonoBehaviour
     [SerializeField] private TextMeshProUGUI tx_shopbuffs;
     [SerializeField] private TextMeshProUGUI tx_shopheals;
     [SerializeField] private TextMeshProUGUI tx_shopmoney;
+    [SerializeField] private TextMeshProUGUI tx_virtuosityLevel;
+
+    [SerializeField] private Image im_virtuosity;
+
+    private int currentarea;
 
     private static float dialogue_seconds = 0.03f;
 
@@ -49,7 +54,7 @@ public class UI_Controller_Map : MonoBehaviour
         sentences = new Queue<string>();
         go_dialoguebox.SetActive(false);
 
-
+        im_virtuosity.fillAmount = 1.0f;
         ////Por el momento para testear
         //tx_money.text = Player_Status.Money.ToString();
         //money = Player_Status.Money;
@@ -58,6 +63,7 @@ public class UI_Controller_Map : MonoBehaviour
     }
     void Update()
     {
+        im_virtuosity.fillAmount = (1.0f - (float)(picks + collectables) / 4.0f); // mejorar a futuro
 
     }
 
@@ -67,6 +73,7 @@ public class UI_Controller_Map : MonoBehaviour
         EventController.AddListener<BeforeSceneUnloadEvent>(BeforeSceneUnloadEvent);
         EventController.AddListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
         EventController.AddListener<BuyEvent>(BuyEvent);
+        EventController.AddListener<ExpandBoundariesEvent>(ExpandBoundariesEvent);
 
     }
     private void OnDisable() {
@@ -75,6 +82,8 @@ public class UI_Controller_Map : MonoBehaviour
         EventController.RemoveListener<BeforeSceneUnloadEvent>(BeforeSceneUnloadEvent);
         EventController.RemoveListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
         EventController.RemoveListener<BuyEvent>(BuyEvent);
+        EventController.RemoveListener<ExpandBoundariesEvent>(ExpandBoundariesEvent);
+
     }
 
     private void CollectEvent(CollectEvent collect)
@@ -240,5 +249,11 @@ public class UI_Controller_Map : MonoBehaviour
             tx_money.text = money.ToString();
             tx_shopmoney.text = money.ToString();
         }
+    }
+
+    private void ExpandBoundariesEvent(ExpandBoundariesEvent expand)
+    {
+        tx_virtuosityLevel.text = expand.currentarea.ToString();
+        im_virtuosity.fillAmount = 1.0f;
     }
 }

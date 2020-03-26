@@ -41,7 +41,9 @@ public class MainMenu : MonoBehaviour
         Player_Status.Buffs = 2;
         Player_Status.Heals = 2;
         Player_Status.Money = 100;
-    } 
+        Player_Status.CurrentArea = 1;
+
+    }
 
     public void QuitGame()
     {

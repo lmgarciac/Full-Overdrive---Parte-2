@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4209680745937025698}
   - component: {fileID: 4209680745937025697}
   - component: {fileID: 7790809108644263213}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Arrow_Down_Prefab
   m_TagString: ArrowYellow
   m_Icon: {fileID: 0}
@@ -88,6 +88,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pua
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: f29bd6ab13dd73b47999e0c33a47e4c3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4224801822505238522, guid: f29bd6ab13dd73b47999e0c33a47e4c3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8051415255134806348, guid: f29bd6ab13dd73b47999e0c33a47e4c3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8051415255134806348, guid: f29bd6ab13dd73b47999e0c33a47e4c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4574943190371278668, guid: f29bd6ab13dd73b47999e0c33a47e4c3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -4574943190371278668, guid: f29bd6ab13dd73b47999e0c33a47e4c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: f29bd6ab13dd73b47999e0c33a47e4c3,
         type: 3}

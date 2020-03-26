@@ -64,7 +64,9 @@ public class Farming_Controller : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI tx_noteshit;
     [SerializeField] private TextMeshProUGUI tx_moneyearned;
+    [SerializeField] private TextMeshProUGUI tx_continue;
 
+    private bool exitfarming = false;
 
     private SceneController sceneController;
     [SerializeField] private float prizemoney;
@@ -77,7 +79,7 @@ public class Farming_Controller : MonoBehaviour
         musicPlayer = audios[2];
 
         sceneController = FindObjectOfType<SceneController>();
-
+        tx_continue.text = null;
         StartCoroutine(InitFarming());
     }
 
@@ -101,6 +103,11 @@ public class Farming_Controller : MonoBehaviour
 
     void Update()
     {
+        //Exit
+        if (Input.GetKeyDown(KeyCode.E) && exitfarming)
+        {
+            sceneController.FadeAndLoadScene("_Test_Navigation");
+        }
         //QTE Movement Scroll    
         if (instantiatedQTE != null)
         {
@@ -117,6 +124,12 @@ public class Farming_Controller : MonoBehaviour
             if (qteisMoving)
             {
                 MoveQTE(instantiatedQTE);
+            }
+
+            if (instantiatedQTE != null && !qteisMoving && qteout) //
+            {
+                //instantiatedQTE.transform.position = positionQTE;
+                //Destroy(instantiatedQTE);
             }
         }
 
@@ -147,6 +160,10 @@ public class Farming_Controller : MonoBehaviour
                 farmingStatsAnimator.SetBool("ShowStats", true);
 
                 Player_Status.Money += (int)(notepercentage * prizemoney);
+
+                qtecanMove = true;
+                qteout = true;
+                qtein = false;
 
                 StartCoroutine(FinishFarming());
             }
@@ -186,8 +203,8 @@ public class Farming_Controller : MonoBehaviour
     IEnumerator FinishFarming()
     {
         yield return waitforsecondsinitial;
-        //cameraplaying = false;
-        sceneController.FadeAndLoadScene("_Test_Navigation");
+        exitfarming = true;
+        tx_continue.text = $"Press \"E\" to continue";
     }
 
     private IEnumerator FadeTime(float finalTimeScale, float fadeDuration)

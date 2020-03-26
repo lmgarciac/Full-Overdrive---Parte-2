@@ -92,6 +92,8 @@ public class Battle_Controller : FiniteStateMachine
         special = 3,
         win = 4,
         lose = 5,
+        crowdin = 6,
+        crowdout = 7,
     }
 
 
@@ -401,6 +403,7 @@ public class Battle_Controller : FiniteStateMachine
 
             EventController.TriggerEvent(ev_enableturn);
 
+
             if (playerturn && ev_action.action != (int)action.none)
             {
                 instantiatedQTE = (GameObject)Instantiate(qteBase);
@@ -415,9 +418,12 @@ public class Battle_Controller : FiniteStateMachine
 
                 qtein = true;
                 qtefinished = false;
+
+                ev_anim.animation = (int)animation.crowdout;
+                EventController.TriggerEvent(ev_anim);
             }
 
-            if(!playerturn)
+            if (!playerturn)
             {
                 StartCoroutine(StateSwitch());
             }
@@ -465,6 +471,9 @@ public class Battle_Controller : FiniteStateMachine
             qteout = true;
             qtecanMove = true;
             qteisMoving = true;
+
+            ev_anim.animation = (int)animation.crowdin;
+            EventController.TriggerEvent(ev_anim);
 
             //////Calculate Prizes////// (Comun para ambos)
             CalculatePrizes();
@@ -1301,7 +1310,10 @@ public class Battle_Controller : FiniteStateMachine
             yield return null;
         }
 
-        triggerstate = true;
+        if (!gameover)
+        {
+            triggerstate = true;
+        }
     }
 
     IEnumerator MissedTurn()
@@ -1309,7 +1321,10 @@ public class Battle_Controller : FiniteStateMachine
 
         yield return missTime;
 
-        triggerstate = true;
+        if (!gameover)
+        {
+            triggerstate = true;
+        }
     }
 
     IEnumerator ActionTimer()
@@ -1317,7 +1332,10 @@ public class Battle_Controller : FiniteStateMachine
 
         yield return actionTimer;
 
-        triggerstate = true;
+        if (!gameover)
+        {
+            triggerstate = true;
+        }
     }
 
     IEnumerator TurnSwitch()
@@ -1325,8 +1343,11 @@ public class Battle_Controller : FiniteStateMachine
 
         yield return turnSwitchTimer;
 
-        triggerstate = false;
-        triggerturn = true;
+        if (!gameover)
+        {
+            triggerstate = true;
+            triggerturn = true;
+        }
 
     }
 
@@ -1335,7 +1356,10 @@ public class Battle_Controller : FiniteStateMachine
 
         yield return turnSwitchTimer;
 
-        triggerstate = true;
+        if(!gameover)
+        {
+            triggerstate = true;
+        }
     }
 
     IEnumerator ChoiceWait()

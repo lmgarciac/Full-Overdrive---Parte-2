@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473448808685519285}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Electric_Guitar_Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 6519720847473484985}
   - component: {fileID: 3152621041412214833}
   - component: {fileID: 8175063588483704414}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -34,6 +34,8 @@ public class AnimationController : MonoBehaviour
     [SerializeField] private GameObject go_UIClock;
     private Animator an_UIClock;
 
+    [SerializeField] private GameObject go_Crowd;
+    private Animator an_Crowd;
 
     public enum animation
     {
@@ -43,6 +45,8 @@ public class AnimationController : MonoBehaviour
         special = 3,
         win = 4,
         lose = 5,
+        crowdin = 6,
+        crowdout = 7,
     }
 
     private void OnEnable()
@@ -68,6 +72,7 @@ public class AnimationController : MonoBehaviour
         an_UIBuff = go_UIBuff.GetComponent<Animator>();
 
         an_UIClock = go_UIClock.GetComponent<Animator>();
+        an_Crowd = go_Crowd.GetComponent<Animator>();
 
     }
 
@@ -164,6 +169,7 @@ public class AnimationController : MonoBehaviour
             an_enemy.SetBool("Special", false);
             an_enemy.SetBool("Win", false);
             an_enemy.SetBool("Lose", true);
+            CloseAttackUI();
         }
         else if (anim.animation == (int)animation.lose)
         {
@@ -178,6 +184,7 @@ public class AnimationController : MonoBehaviour
             an_enemy.SetBool("Special", false);
             an_enemy.SetBool("Lose", false);
             an_enemy.SetBool("Win", true);
+            CloseAttackUI();
         }
 
         //Camshake
@@ -189,6 +196,15 @@ public class AnimationController : MonoBehaviour
         else
         {
             //cameraanim.runtimeAnimatorController = null;
+        }
+
+        if (anim.animation == (int)animation.crowdin)
+        {
+            an_Crowd.SetBool("MoveOut", false);
+        }
+        if (anim.animation == (int)animation.crowdout)
+        {
+            an_Crowd.SetBool("MoveOut", true);
         }
 
     }

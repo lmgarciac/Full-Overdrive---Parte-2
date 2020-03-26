@@ -56,6 +56,9 @@ public class Tutorial_Controller : MonoBehaviour
 
     private SceneController sceneController;
 
+    [SerializeField] private GameObject go_Crowd;
+    private Animator an_Crowd;
+
 
     void Start()
     {
@@ -69,6 +72,8 @@ public class Tutorial_Controller : MonoBehaviour
         sceneController = FindObjectOfType<SceneController>();
 
         StartCoroutine(InitTutorial());
+        an_Crowd = go_Crowd.GetComponent<Animator>();
+
     }
 
 
@@ -107,6 +112,13 @@ public class Tutorial_Controller : MonoBehaviour
             {
                 MoveQTE(instantiatedQTE);
             }
+
+            // Destroy QTE
+            if (instantiatedQTE != null && !qteisMoving && qteout) //
+            {
+                instantiatedQTE.transform.position = positionQTE;
+                //Destroy(instantiatedQTE);
+            }
         }
 
         if ((qtehitcount + qteleavecount) >= 4 && tutorialphase == 0)
@@ -125,6 +137,9 @@ public class Tutorial_Controller : MonoBehaviour
         if (qtehitcount + qteleavecount >= 36 && tutorialphase == 2)
         {
             cameraAnimator.SetBool("ZoomIn", true);
+            qtecanMove = true;
+            qteout = true;
+            qtein = false;
         }
         if (qtehitcount + qteleavecount >= 42 && tutorialphase == 2)
         {
@@ -191,6 +206,8 @@ public class Tutorial_Controller : MonoBehaviour
         instantiatedQTE.transform.position = positionQTE;
         instantiatedQTE.transform.Rotate(rotationQTE.x, rotationQTE.y, rotationQTE.z, Space.Self);
         qtein = true;
+
+        an_Crowd.SetBool("MoveOut", true);
 
         infoTextAnimator.SetBool("Slide", true);
 

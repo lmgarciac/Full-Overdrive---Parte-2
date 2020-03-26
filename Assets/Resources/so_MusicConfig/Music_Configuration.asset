@@ -25,9 +25,6 @@ MonoBehaviour:
   - sceneName: _Test_Navigation
     cancion: {fileID: 8300000, guid: 280d648b57a79ac489001f9b53bf832f, type: 3}
     volume: 0.6
-  - sceneName: _Scene_Battle
-    cancion: {fileID: 8300000, guid: 24881d4dabd4417499e0fe1892b28395, type: 3}
-    volume: 0.7
   - sceneName: _Test_Farming
     cancion: {fileID: 8300000, guid: d867fbe66cecced469af150a85919b1a, type: 3}
     volume: 0.7

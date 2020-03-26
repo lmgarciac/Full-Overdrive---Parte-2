@@ -323,7 +323,8 @@ public class Player_Controller : MonoBehaviour
         Player_Status.Picks = picks;
         Player_Status.Heals = heals;
         Player_Status.Buffs = buffs;
-        //Player_Status.Money = money;
+        Player_Status.Money = money;
+        Player_Status.CurrentArea = currentarea;
 
         ////Player position
         Map_Status.PlayerRotation = this.transform.rotation;
@@ -342,6 +343,7 @@ public class Player_Controller : MonoBehaviour
         heals = Player_Status.Heals;
         buffs = Player_Status.Buffs;
         money = Player_Status.Money;
+        currentarea = Player_Status.CurrentArea;
 
         //Restore positions
         if (!Map_Status.FirstTime)
@@ -398,6 +400,7 @@ public class Player_Controller : MonoBehaviour
             currentarea = 2;
             ev_expand.currentarea = 2;
             EventController.TriggerEvent(ev_expand);
+            Player_Status.CurrentArea = currentarea;
         }
         checkingarea = false;
     }

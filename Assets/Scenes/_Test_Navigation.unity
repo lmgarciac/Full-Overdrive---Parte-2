@@ -2242,7 +2242,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1525053210}
+    m_TransformParent: {fileID: 56138253}
     m_Modifications:
     - target: {fileID: -927199367670048503, guid: 3a2d60df10c6e6a479a6ce1651af442a,
         type: 3}
@@ -2257,17 +2257,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 3a2d60df10c6e6a479a6ce1651af442a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.31
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3a2d60df10c6e6a479a6ce1651af442a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1124537
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3a2d60df10c6e6a479a6ce1651af442a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3a2d60df10c6e6a479a6ce1651af442a,
         type: 3}
@@ -2277,27 +2277,27 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 3a2d60df10c6e6a479a6ce1651af442a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3a2d60df10c6e6a479a6ce1651af442a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3a2d60df10c6e6a479a6ce1651af442a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071067
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3a2d60df10c6e6a479a6ce1651af442a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3a2d60df10c6e6a479a6ce1651af442a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3a2d60df10c6e6a479a6ce1651af442a,
         type: 3}
@@ -2312,17 +2312,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 3a2d60df10c6e6a479a6ce1651af442a,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 468.2586
+      value: 468
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3a2d60df10c6e6a479a6ce1651af442a,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 486.27014
+      value: 468
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3a2d60df10c6e6a479a6ce1651af442a,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 117.054
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 3a2d60df10c6e6a479a6ce1651af442a,
         type: 3}
@@ -2362,6 +2362,7 @@ Transform:
   - {fileID: 1563321418}
   - {fileID: 541735773}
   - {fileID: 1244820249}
+  - {fileID: 1818900232}
   m_Father: {fileID: 0}
   m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17849,7 +17850,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541735772}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -5}
+  m_LocalPosition: {x: 0, y: 0, z: -5.17}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 56138253}
@@ -17943,10 +17944,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 8837a46c8ab11b64e99c6bda6261e9d2, type: 3}
     name: Obi Yank
     sentences:
-    - You don't have enough Mojo to go this way yet...
+    - You don't have enough Virtuosity to go this way yet...
   playerAnimator: {fileID: 92384516}
 --- !u!4 &541987764 stripped
 Transform:
@@ -22505,7 +22506,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 93e8abc8421e1e746909280ad05eac1e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.20100021
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 93e8abc8421e1e746909280ad05eac1e,
         type: 3}
@@ -22515,7 +22516,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 93e8abc8421e1e746909280ad05eac1e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.116
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 93e8abc8421e1e746909280ad05eac1e,
         type: 3}
@@ -27680,7 +27681,7 @@ PrefabInstance:
     - target: {fileID: 3975449634918033758, guid: c786408fbb2c1ee40b356557aa3b3119,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.766
+      value: -2.193
       objectReference: {fileID: 0}
     - target: {fileID: 3975449634918033758, guid: c786408fbb2c1ee40b356557aa3b3119,
         type: 3}
@@ -37094,6 +37095,8 @@ MonoBehaviour:
   tx_shopbuffs: {fileID: 809091483}
   tx_shopheals: {fileID: 1133465004}
   tx_shopmoney: {fileID: 2053555378}
+  tx_virtuosityLevel: {fileID: 1583779821}
+  im_virtuosity: {fileID: 1510626630}
 --- !u!4 &1127172831
 Transform:
   m_ObjectHideFlags: 0
@@ -38295,12 +38298,12 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: e820c799bb044d849a7cc57d1e33774f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 32.45
+      value: 35.82
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e820c799bb044d849a7cc57d1e33774f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.441
+      value: -0.89
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e820c799bb044d849a7cc57d1e33774f,
         type: 3}
@@ -40579,7 +40582,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1244820248}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -5, y: 0, z: 0}
+  m_LocalPosition: {x: -5.22, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 56138253}
@@ -40612,7 +40615,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1.15}
+  m_Size: {x: 1, y: 1, z: 1.45}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1244820252
 MeshRenderer:
@@ -40673,10 +40676,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 8837a46c8ab11b64e99c6bda6261e9d2, type: 3}
     name: Obi Yank
     sentences:
-    - You don't have enough Mojo to go this way yet...
+    - You don't have enough Virtuosity to go this way yet...
   playerAnimator: {fileID: 92384516}
 --- !u!1001 &1245143593
 PrefabInstance:
@@ -50199,7 +50202,6 @@ Transform:
   - {fileID: 1900685207}
   - {fileID: 1225610739}
   - {fileID: 251681257}
-  - {fileID: 1818900232}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -51253,7 +51255,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1563321417}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 5, y: 0, z: 0}
+  m_LocalPosition: {x: 5.37, y: 0, z: -0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 56138253}
@@ -51286,7 +51288,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1.15}
+  m_Size: {x: 1, y: 1, z: 1.7}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1563321421
 MeshRenderer:
@@ -51347,10 +51349,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 8837a46c8ab11b64e99c6bda6261e9d2, type: 3}
     name: Obi Yank
     sentences:
-    - You don't have enough Mojo to go this way yet...
+    - You don't have enough Virtuosity to go this way yet...
   playerAnimator: {fileID: 92384516}
 --- !u!1001 &1564602942
 PrefabInstance:
@@ -51616,6 +51618,31 @@ Transform:
   m_Father: {fileID: 225888877}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1576760718 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2428690419752234552, guid: e820c799bb044d849a7cc57d1e33774f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1171583543}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1576760720
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576760718}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c7b0b70293f181942b09ebe1633c4543, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1577662329
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53241,7 +53268,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1630346429}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5.75}
+  m_LocalPosition: {x: 0, y: 0, z: 5.33}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 56138253}
@@ -53335,10 +53362,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 8837a46c8ab11b64e99c6bda6261e9d2, type: 3}
     name: Obi Yank
     sentences:
-    - You don't have enough Mojo to go this way yet...
+    - You don't have enough Virtuosity to go this way yet...
   playerAnimator: {fileID: 92384516}
 --- !u!1 &1631369826 stripped
 GameObject:
@@ -61708,12 +61735,12 @@ PrefabInstance:
     - target: {fileID: 388127827913326802, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
-      value: Hola soy Alejo.
+      value: Have you heard about Virtuosity?
       objectReference: {fileID: 0}
     - target: {fileID: 388127827913326802, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[1]
-      value: No quiero conversar con vos.
+      value: If your Virtuosity is high you'll go far in this city!
       objectReference: {fileID: 0}
     - target: {fileID: 388127827913326802, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
@@ -61721,6 +61748,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: ba46e1af262e03e4187fbba3709eabb0,
         type: 3}
+    - target: {fileID: 388127827913326802, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
+        type: 3}
+      propertyPath: dialogue.name
+      value: Hernan
+      objectReference: {fileID: 0}
+    - target: {fileID: 388127827913326802, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[2]
+      value: Some people find virtuosiy in the least expected places... and some earn
+        it by winning battles. How did you earn yours?
+      objectReference: {fileID: 0}
     - target: {fileID: 388127826884432217, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
       propertyPath: m_Name
@@ -62419,12 +62457,12 @@ PrefabInstance:
     - target: {fileID: 388127827913326802, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
-      value: Hola soy Alejo.
+      value: "People say there's a zombie guitar player in town!\t"
       objectReference: {fileID: 0}
     - target: {fileID: 388127827913326802, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[1]
-      value: No quiero conversar con vos.
+      value: No one's been able to defeat him in a guitar duel yet...
       objectReference: {fileID: 0}
     - target: {fileID: 388127827913326802, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
@@ -62432,6 +62470,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 1a759334347fc604d8409bbf9313a28e,
         type: 3}
+    - target: {fileID: 388127827913326802, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[2]
+      value: Do you play guitar? I dare you to try and beat him!
+      objectReference: {fileID: 0}
     - target: {fileID: 388127826884432217, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
       propertyPath: m_Name
@@ -62475,12 +62518,12 @@ PrefabInstance:
     - target: {fileID: 5013435491964885955, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.201
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5013435491964885955, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.116
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5013435491964885955, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
@@ -62510,12 +62553,12 @@ PrefabInstance:
     - target: {fileID: 388127826272293077, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.238
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 388127826272293077, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.014
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 388127826272293077, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
@@ -63541,7 +63584,7 @@ PrefabInstance:
     - target: {fileID: 388127827913326805, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.038
+      value: -3.866
       objectReference: {fileID: 0}
     - target: {fileID: 388127827913326805, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
@@ -63596,12 +63639,13 @@ PrefabInstance:
     - target: {fileID: 388127827913326802, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
-      value: Hola soy Alejo.
+      value: "They say our mayor Monkey Face is looking for the best guitar players
+        in the world.\t"
       objectReference: {fileID: 0}
     - target: {fileID: 388127827913326802, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[1]
-      value: No quiero conversar con vos.
+      value: I think there's big money involved!
       objectReference: {fileID: 0}
     - target: {fileID: 388127827913326802, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
@@ -63609,6 +63653,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 07b775cbf23b34b4aa3e7aac07a82afb,
         type: 3}
+    - target: {fileID: 388127827913326802, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[2]
+      value: But I still don't trust that monkey. There's something creepy about him...
+      objectReference: {fileID: 0}
+    - target: {fileID: 388127827913326802, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
+        type: 3}
+      propertyPath: dialogue.name
+      value: Luis
+      objectReference: {fileID: 0}
     - target: {fileID: 388127826884432217, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
       propertyPath: m_Name
