@@ -6,7 +6,7 @@ using Events;
 public class Sound_Controller : MonoBehaviour
 {
     private AudioSource soundPlayer;
-    private AudioSource lickPlayer;
+    private AudioSource soundFXPlayer;
     private AudioSource musicPlayer;
 
     [SerializeField] private AudioClip so_ready;
@@ -21,20 +21,34 @@ public class Sound_Controller : MonoBehaviour
     private AudioClip so_lick;
     private AudioClip so_backsong;
 
+    private int currentaction;
+
+    public enum action
+    {
+        attack = 1,
+        defend = 2,
+        special = 3,
+        item = 4,
+        buff = 5,
+        heal = 6,
+        back = 7,
+        none = 0,
+    }
+
     public bool licktriggered;
 
     void Start()
     {
         //AudioListener.volume = PlayerOptions.Volume;
         AudioSource[] audios = GetComponents<AudioSource>();
-        lickPlayer = audios[0];
+        soundFXPlayer = audios[0];
         soundPlayer = audios[1];
         musicPlayer = audios[2];
         licktriggered = false;
         //so_backsong = (AudioClip)Resources.Load<AudioClip>($"so_backsong");
         so_backsong = (AudioClip)Resources.Load<AudioClip>($"Music/so_battle_theme");
         musicPlayer.volume = 0.2f;
-        lickPlayer.volume = 0.5f;
+        soundFXPlayer.volume = 0.8f;
         soundPlayer.volume = 0.8f;
         musicPlayer.clip = so_backsong;
         musicPlayer.loop = true;
@@ -43,10 +57,7 @@ public class Sound_Controller : MonoBehaviour
 
     void Update()
     {
-        if (!licktriggered && !lickPlayer.isPlaying)
-        {
-            //musicPlayer.volume = 0.3f;
-        }
+
     }
     private void OnEnable() {
         // EventController.AddListener<GameStartEvent>(OnGameStartEvent);
@@ -62,6 +73,10 @@ public class Sound_Controller : MonoBehaviour
         EventController.AddListener<EnableTurnEvent>(EnableTurnEvent);
         EventController.AddListener<QtePrizeEvent>(QtePrizeEvent);
 
+        EventController.AddListener<AnimEvent>(AnimEvent);
+        EventController.AddListener<ActionEvent>(ActionEvent);
+
+
     }
     private void OnDisable() {
         // EventController.RemoveListener<GameStartEvent>(OnGameStartEvent); 
@@ -76,6 +91,9 @@ public class Sound_Controller : MonoBehaviour
         EventController.RemoveListener<QtePlayEvent>(QtePlayEvent); 
         EventController.RemoveListener<EnableTurnEvent>(EnableTurnEvent);
         EventController.RemoveListener<QtePrizeEvent>(QtePrizeEvent);
+
+        EventController.RemoveListener<AnimEvent>(AnimEvent);
+        EventController.RemoveListener<ActionEvent>(ActionEvent);
 
     }
     private void CounterStatusEvent(CounterStatusEvent status)
@@ -133,7 +151,9 @@ public class Sound_Controller : MonoBehaviour
     private void EnableTurnEvent (EnableTurnEvent enableturn)
     {
         licktriggered = false;
-        so_lick = (AudioClip)Resources.Load<AudioClip>($"Sound/so_lick{Random.Range(1, 7)}");            
+        so_lick = (AudioClip)Resources.Load<AudioClip>($"Sound/so_lick{Random.Range(1, 7)}");
+
+        currentaction = (int)action.none;
     }
 
     private void QtePlayEvent(QtePlayEvent qteplay)
@@ -166,5 +186,29 @@ public class Sound_Controller : MonoBehaviour
         }
 
         soundPlayer.Play();
+    }
+
+    private void AnimEvent(AnimEvent anim)
+    {
+        if (anim.animstate && currentaction == (int)action.heal) //This means fx should be played
+        {
+            soundFXPlayer.clip = (AudioClip)Resources.Load<AudioClip>($"Sound/so_heal");
+            soundFXPlayer.Play();
+        }
+        if (anim.animstate && currentaction == (int)action.buff) //This means fx should be played
+        {
+            soundFXPlayer.clip = (AudioClip)Resources.Load<AudioClip>($"Sound/so_buff");
+            soundFXPlayer.Play();
+        }
+        if (anim.animstate && currentaction == (int)action.attack) //This means fx should be played
+        {
+            soundFXPlayer.clip = (AudioClip)Resources.Load<AudioClip>($"Sound/pulse_wave_low");
+            soundFXPlayer.Play();
+        }
+    }
+
+    private void ActionEvent(ActionEvent ev_action)
+    {
+        currentaction = ev_action.action;
     }
 }

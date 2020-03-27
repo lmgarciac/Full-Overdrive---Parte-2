@@ -37,6 +37,9 @@ public class AnimationController : MonoBehaviour
     [SerializeField] private GameObject go_Crowd;
     private Animator an_Crowd;
 
+    [SerializeField] private GameObject go_Camera;
+    private Animator an_Camera;
+
     public enum animation
     {
         none = 0,
@@ -49,13 +52,33 @@ public class AnimationController : MonoBehaviour
         crowdout = 7,
     }
 
+    private int currentaction;
+
+    public enum action
+    {
+        attack = 1,
+        defend = 2,
+        special = 3,
+        item = 4,
+        buff = 5,
+        heal = 6,
+        back = 7,
+        none = 0,
+    }
+
     private void OnEnable()
     {
         EventController.AddListener<AnimEvent>(AnimEvent);
+        EventController.AddListener<ActionEvent>(ActionEvent);
+        EventController.AddListener<EnableTurnEvent>(EnableTurnEvent);
+
     }
     private void OnDisable()
     {
         EventController.RemoveListener<AnimEvent>(AnimEvent);
+        EventController.RemoveListener<ActionEvent>(ActionEvent);
+        EventController.RemoveListener<EnableTurnEvent>(EnableTurnEvent);
+
     }
 
     // Start is called before the first frame update
@@ -73,12 +96,15 @@ public class AnimationController : MonoBehaviour
 
         an_UIClock = go_UIClock.GetComponent<Animator>();
         an_Crowd = go_Crowd.GetComponent<Animator>();
+        an_Camera = go_Camera.GetComponent<Animator>();
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        an_Camera.SetBool("Shake", false);
     }
 
     private void AnimEvent(AnimEvent anim)
@@ -92,6 +118,11 @@ public class AnimationController : MonoBehaviour
                     an_player.SetBool("Attack", true);
                     an_player.SetBool("Idle", false);
                     an_player.SetBool("Special", false);
+
+                    if (anim.animstate && currentaction == (int)action.attack) //significa que debe shakear camara
+                    {
+                        an_Camera.SetBool("Shake",true);
+                    }
                     CloseAttackUI();
                 }
             }
@@ -136,6 +167,11 @@ public class AnimationController : MonoBehaviour
                     an_enemy.SetBool("Attack", true);
                     an_enemy.SetBool("Idle", false);
                     an_enemy.SetBool("Special", false);
+
+                    if (anim.animstate && currentaction == (int)action.attack) //significa que debe shakear camara
+                    {
+                        an_Camera.SetBool("Shake", true);
+                    }
                 }
             }
             else if (anim.animation == (int)animation.special)
@@ -276,4 +312,13 @@ public class AnimationController : MonoBehaviour
 
     }
 
+    private void ActionEvent(ActionEvent ev_action)
+    {
+        currentaction = ev_action.action;
+    }
+
+    private void EnableTurnEvent(EnableTurnEvent turn)
+    {
+        currentaction = (int)action.none;
+    }
 }

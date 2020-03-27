@@ -492,17 +492,13 @@ public class UI_Controller : MonoBehaviour
             _tx_prizedam = $"\n" + qteprize.prizeDamage.ToString("+0;-#") + $" Damage! ";
         }
 
-        //tx_prizeinfo.text = $"{_tx_effic}" +
-        //                    $"\n {qteprize.prizeSP} SP! " +
-        //                    $"\n {qteprize.prizeHP} HP! " +
-        //                    $"\n {qteprize.prizeMultiplier} Multiplier" +
-        //                    $"\n {qteprize.prizeDamage} Damage";
+        // Lo comento por ahora al info de Prize porque no me gusta.
 
-        tx_prizeinfo.text = $"{_tx_effic}" +
-                            _tx_prizesp +
-                            _tx_prizehp +
-                            _tx_prizemult +
-                            _tx_prizedam;
+        //tx_prizeinfo.text = $"{_tx_effic}" +
+        //                    _tx_prizesp +
+        //                    _tx_prizehp +
+        //                    _tx_prizemult +
+        //                    _tx_prizedam;
 
     }
 

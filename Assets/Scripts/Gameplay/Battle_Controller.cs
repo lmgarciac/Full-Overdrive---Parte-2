@@ -623,28 +623,36 @@ public class Battle_Controller : FiniteStateMachine
 
             //Trigger anim
             ev_anim.playerturn = playerturn;
-            if (ev_action.action == (int)action.attack
-                || ev_action.action == (int)action.buff
-                || ev_action.action == (int)action.heal)
+
+            if (ev_action.action == (int)action.attack)
             {
                 ev_anim.animation = (int)animation.play;
             }
-            else if (ev_action.action == (int)action.special
-                || ev_action.action == (int)action.defend)
+            if (ev_action.action == (int)action.buff)
+            {
+                ev_anim.animation = (int)animation.play;
+            }
+            if (ev_action.action == (int)action.heal)
+            {
+                ev_anim.animation = (int)animation.play;
+            }
+            if (ev_action.action == (int)action.special)
             {
                 ev_anim.animation = (int)animation.special;
-                if (ev_action.action == (int)action.special)
-                {
-                    ev_anim.camshake = true;
-                }
             }
-            else
+            if (ev_action.action == (int)action.defend)
+            {
+                ev_anim.animation = (int)animation.special;
+            }
+            if (ev_action.action == (int)action.none)
             {
                 ev_anim.dontshowUI = true;
-
                 ev_anim.animation = (int)animation.idle;
             }
+
+            ev_anim.animstate = true;
             EventController.TriggerEvent(ev_anim);
+            ev_anim.animstate = false;
 
             if (enemy.hp <= 0)
             {

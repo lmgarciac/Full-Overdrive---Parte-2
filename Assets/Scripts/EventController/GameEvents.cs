@@ -112,6 +112,7 @@ namespace Events
         public bool camshake;
         public int animation;
         public bool dontshowUI;
+        public bool animstate;
     }
 
 
