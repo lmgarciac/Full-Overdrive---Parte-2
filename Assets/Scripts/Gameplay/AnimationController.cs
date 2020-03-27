@@ -272,6 +272,7 @@ public class AnimationController : MonoBehaviour
         an_UIBuff.SetBool("SlideOut", false);
         an_UIClock.SetBool("SlideOut", false);
 
+        an_Camera.SetBool("ZoomPlayer",true);
 
 
     }
@@ -293,6 +294,8 @@ public class AnimationController : MonoBehaviour
         an_UIBuff.SetBool("SlideIn", false);
         //an_UIItem.SetBool("SlideIn", false);
         an_UIClock.SetBool("SlideIn", false);
+
+        an_Camera.SetBool("ZoomPlayer", false);
 
         //go_UIAttack.SetActive(false);
         //go_UIDefend.SetActive(false);

@@ -113,6 +113,8 @@ namespace Events
         public int animation;
         public bool dontshowUI;
         public bool animstate;
+        public bool choosestate;
+        public Vector3 modelposition;
     }
 
 

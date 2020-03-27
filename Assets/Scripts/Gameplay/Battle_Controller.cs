@@ -55,6 +55,10 @@ public class Battle_Controller : FiniteStateMachine
 
     [SerializeField] private Animator anim_dialogue;
 
+    [SerializeField] private GameObject playerObject;
+    [SerializeField] private GameObject enemyObject;
+
+
 
     public enum characterid
     {
@@ -153,6 +157,7 @@ public class Battle_Controller : FiniteStateMachine
     private WaitForSecondsRealtime missTime = new WaitForSecondsRealtime(2f);
     private WaitForSecondsRealtime actionTimer = new WaitForSecondsRealtime(2f);
     private WaitForSecondsRealtime turnSwitchTimer = new WaitForSecondsRealtime(2f);
+    private WaitForSecondsRealtime QTEShowWait = new WaitForSecondsRealtime(1f);
 
 
     private GameObject instantiatedQTE;
@@ -416,7 +421,12 @@ public class Battle_Controller : FiniteStateMachine
                 //instantiatedQTE.transform.rotation = Quaternion.identity;
                 //instantiatedQTE.transform.rotation = Quaternion.AngleAxis(rotationQTE.x, Vector3.right);
 
-                qtein = true;
+                qtecanMove = false;
+                StartCoroutine(ShowQTEWait()); // Waits a second before enabling QTE
+
+                //qtein = true;
+
+
                 qtefinished = false;
 
                 ev_anim.animation = (int)animation.crowdout;
@@ -465,7 +475,11 @@ public class Battle_Controller : FiniteStateMachine
 
                 ev_anim.animation = (int)animation.idle;
             }
+
+            ev_anim.choosestate = true;
             EventController.TriggerEvent(ev_anim);
+            ev_anim.choosestate = false;
+
         }
         //else if (playing && triggerstate && IsStateRunning(new QTEState().GetType()))
         else if ((playing && qtenoteamount!= 0 && (qteleavecounter+qtecounter == qtenoteamount) && IsStateRunning(new QTEState().GetType()))
@@ -481,6 +495,7 @@ public class Battle_Controller : FiniteStateMachine
             qteisMoving = true;
 
             ev_anim.animation = (int)animation.crowdin;
+
             EventController.TriggerEvent(ev_anim);
 
             //////Calculate Prizes////// (Comun para ambos)
@@ -650,6 +665,19 @@ public class Battle_Controller : FiniteStateMachine
                 ev_anim.animation = (int)animation.idle;
             }
 
+
+            if (playerturn)
+            {
+                ev_anim.modelposition = new Vector3(playerObject.transform.position.x,
+                                                    playerObject.transform.position.y,
+                                                    playerObject.transform.position.z);
+            }
+            else
+            {
+                ev_anim.modelposition = new Vector3(enemyObject.transform.position.x,
+                                                    enemyObject.transform.position.y,
+                                                    enemyObject.transform.position.z);
+            }
             ev_anim.animstate = true;
             EventController.TriggerEvent(ev_anim);
             ev_anim.animstate = false;
@@ -1384,5 +1412,11 @@ public class Battle_Controller : FiniteStateMachine
         yield return turnSwitchTimer;
         selected = true;
         iswaiting = false;
+    }
+
+    IEnumerator ShowQTEWait()
+    {
+        yield return QTEShowWait;
+        qtecanMove = true;
     }
 }

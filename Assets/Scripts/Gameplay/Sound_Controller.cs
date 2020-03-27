@@ -23,6 +23,14 @@ public class Sound_Controller : MonoBehaviour
 
     private int currentaction;
 
+    public enum turnstate
+    {
+        turninfo = 0,
+        chooseaction = 1,
+        qte = 2,
+        anim = 3,
+        miss = 4,
+    }
     public enum action
     {
         attack = 1,
@@ -74,8 +82,7 @@ public class Sound_Controller : MonoBehaviour
         EventController.AddListener<QtePrizeEvent>(QtePrizeEvent);
 
         EventController.AddListener<AnimEvent>(AnimEvent);
-        EventController.AddListener<ActionEvent>(ActionEvent);
-
+        //EventController.AddListener<ActionEvent>(ActionEvent);
 
     }
     private void OnDisable() {
@@ -93,7 +100,7 @@ public class Sound_Controller : MonoBehaviour
         EventController.RemoveListener<QtePrizeEvent>(QtePrizeEvent);
 
         EventController.RemoveListener<AnimEvent>(AnimEvent);
-        EventController.RemoveListener<ActionEvent>(ActionEvent);
+        //EventController.RemoveListener<ActionEvent>(ActionEvent);
 
     }
     private void CounterStatusEvent(CounterStatusEvent status)
@@ -127,6 +134,7 @@ public class Sound_Controller : MonoBehaviour
     {
         soundPlayer.clip = so_select;
         soundPlayer.Play();
+        currentaction = timer.action;
     }
     private void GameOverEvent(GameOverEvent gameover)
     {
@@ -153,7 +161,13 @@ public class Sound_Controller : MonoBehaviour
         licktriggered = false;
         so_lick = (AudioClip)Resources.Load<AudioClip>($"Sound/so_lick{Random.Range(1, 7)}");
 
-        currentaction = (int)action.none;
+        Debug.Log("Enable turn cambio current action!" + enableturn.turnstate);
+
+
+        if (enableturn.turnstate != (int)turnstate.qte && enableturn.turnstate != (int)turnstate.anim) //sino me lo borra cuando deberia estar activo
+        {
+            currentaction = (int)action.none;
+        }
     }
 
     private void QtePlayEvent(QtePlayEvent qteplay)
@@ -190,6 +204,9 @@ public class Sound_Controller : MonoBehaviour
 
     private void AnimEvent(AnimEvent anim)
     {
+
+        Debug.Log("Current Action:" + currentaction);
+
         if (anim.animstate && currentaction == (int)action.heal) //This means fx should be played
         {
             soundFXPlayer.clip = (AudioClip)Resources.Load<AudioClip>($"Sound/so_heal");
@@ -203,6 +220,11 @@ public class Sound_Controller : MonoBehaviour
         if (anim.animstate && currentaction == (int)action.attack) //This means fx should be played
         {
             soundFXPlayer.clip = (AudioClip)Resources.Load<AudioClip>($"Sound/pulse_wave_low");
+            soundFXPlayer.Play();
+        }
+        else if (anim.choosestate && currentaction == (int)action.attack) //This means fx should be played
+        {
+            soundFXPlayer.clip = (AudioClip)Resources.Load<AudioClip>($"Sound/so_pre_attack");
             soundFXPlayer.Play();
         }
     }

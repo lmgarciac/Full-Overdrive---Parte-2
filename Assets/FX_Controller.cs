@@ -8,10 +8,12 @@ public class FX_Controller : MonoBehaviour
     [SerializeField] private GameObject fx_hearts_player;
     [SerializeField] private GameObject fx_buff_player;
     [SerializeField] private GameObject fx_attack_player;
+    [SerializeField] private GameObject fx_pre_attack_player;
 
     [SerializeField] private GameObject fx_hearts_enemy;
     [SerializeField] private GameObject fx_buff_enemy;
     [SerializeField] private GameObject fx_attack_enemy;
+    [SerializeField] private GameObject fx_pre_attack_enemy;
 
     private WaitForSecondsRealtime waitforseconds = new WaitForSecondsRealtime(0.4f);
 
@@ -27,6 +29,15 @@ public class FX_Controller : MonoBehaviour
         none = 0,
     }
 
+    public enum turnstate
+    {
+        turninfo = 0,
+        chooseaction = 1,
+        qte = 2,
+        anim = 3,
+        miss = 4,
+    }
+
     private int currentaction;
 
     private void OnEnable()
@@ -34,12 +45,16 @@ public class FX_Controller : MonoBehaviour
         EventController.AddListener<AnimEvent>(AnimEvent);
         EventController.AddListener<ActionEvent>(ActionEvent);
         EventController.AddListener<EnableTurnEvent>(EnableTurnEvent);
+        EventController.AddListener<SelectActionEvent>(SelectActionEvent);
+
     }
     private void OnDisable()
     {
         EventController.RemoveListener<AnimEvent>(AnimEvent);
         EventController.RemoveListener<ActionEvent>(ActionEvent);
         EventController.RemoveListener<EnableTurnEvent>(EnableTurnEvent);
+        EventController.RemoveListener<SelectActionEvent>(SelectActionEvent);
+
     }
 
     void Start()
@@ -68,6 +83,10 @@ public class FX_Controller : MonoBehaviour
             {
                 StartCoroutine(RepeatFX(fx_attack_player, 1));
             }
+            else if (anim.choosestate && currentaction == (int)action.attack) //This means fx should be played
+            {
+                StartCoroutine(RepeatFX(fx_pre_attack_player, 1));
+            }
         }
         else
         {
@@ -83,6 +102,10 @@ public class FX_Controller : MonoBehaviour
             {
                 StartCoroutine(RepeatFX(fx_attack_enemy, 1));
             }
+            else if (anim.choosestate && currentaction == (int)action.attack) //This means fx should be played
+            {
+                StartCoroutine(RepeatFX(fx_pre_attack_enemy, 1));
+            }
         }
     }
 
@@ -91,9 +114,17 @@ public class FX_Controller : MonoBehaviour
         currentaction = ev_action.action;
     }
 
+    private void SelectActionEvent(SelectActionEvent ev_selectaction)
+    {
+        currentaction = ev_selectaction.action;
+    }
+
     private void EnableTurnEvent(EnableTurnEvent turn)
     {
-        currentaction = (int)action.none;
+        if (turn.turnstate != (int)turnstate.qte)
+        {
+            currentaction = (int)action.none;
+        }
     }
 
     IEnumerator RepeatFX(GameObject fx, int times)
