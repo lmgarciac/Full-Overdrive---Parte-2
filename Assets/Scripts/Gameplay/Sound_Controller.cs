@@ -23,6 +23,10 @@ public class Sound_Controller : MonoBehaviour
 
     private int currentaction;
 
+    private WaitForSecondsRealtime waitforseconds = new WaitForSecondsRealtime(0.4f);
+    private WaitForSecondsRealtime waitforsecondsspecial = new WaitForSecondsRealtime(0.1f);
+
+
     public enum turnstate
     {
         turninfo = 0,
@@ -60,10 +64,11 @@ public class Sound_Controller : MonoBehaviour
         soundPlayer.volume = 0.8f;
         musicPlayer.clip = so_backsong;
         musicPlayer.loop = true;
-        musicPlayer.Play();            
-    }
+        musicPlayer.Play();
 
-    void Update()
+}
+
+void Update()
     {
 
     }
@@ -217,6 +222,11 @@ public class Sound_Controller : MonoBehaviour
             soundFXPlayer.clip = (AudioClip)Resources.Load<AudioClip>($"Sound/so_buff");
             soundFXPlayer.Play();
         }
+        if (anim.animstate && currentaction == (int)action.defend) //This means fx should be played
+        {
+            soundFXPlayer.clip = (AudioClip)Resources.Load<AudioClip>($"Sound/so_buff");
+            soundFXPlayer.Play();
+        }
         if (anim.animstate && currentaction == (int)action.attack) //This means fx should be played
         {
             soundFXPlayer.clip = (AudioClip)Resources.Load<AudioClip>($"Sound/pulse_wave_low");
@@ -227,10 +237,36 @@ public class Sound_Controller : MonoBehaviour
             soundFXPlayer.clip = (AudioClip)Resources.Load<AudioClip>($"Sound/so_pre_attack");
             soundFXPlayer.Play();
         }
+        if (anim.animstate && currentaction == (int)action.special) //This means fx should be played
+        {
+
+            //StartCoroutine(RepeatSoundFX((AudioClip)Resources.Load<AudioClip>($"Sound/pulse_wave_low"), 3));
+            soundFXPlayer.clip = (AudioClip)Resources.Load<AudioClip>($"Sound/pulse_wave_low");
+            soundFXPlayer.Play();
+        }
+        else if (anim.choosestate && currentaction == (int)action.special) //This means fx should be played
+        {
+            soundFXPlayer.clip = (AudioClip)Resources.Load<AudioClip>($"Sound/so_pre_attack");
+            soundFXPlayer.Play();
+        }
     }
 
     private void ActionEvent(ActionEvent ev_action)
     {
         currentaction = ev_action.action;
+    }
+
+    IEnumerator RepeatSoundFX(AudioClip fx, int times)
+    {
+        int counter = 0;
+        soundFXPlayer.clip = fx;
+
+        while (counter < times)
+        {
+            soundFXPlayer.Play();
+            yield return waitforsecondsspecial;
+
+            counter++;
+        }
     }
 }

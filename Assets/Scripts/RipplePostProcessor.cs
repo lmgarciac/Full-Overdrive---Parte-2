@@ -88,6 +88,12 @@ public class RipplePostProcessor : MonoBehaviour
             showripple = true;
             modelposition = anim.modelposition;
         }
+        if (anim.animstate && currentaction == (int)action.special) //This means fx should be played
+        {
+            Debug.Log("ShowRipple");
+            showripple = true;
+            modelposition = anim.modelposition;
+        }
     }
 
     private void SelectActionEvent(SelectActionEvent timer)

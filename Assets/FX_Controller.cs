@@ -7,15 +7,26 @@ public class FX_Controller : MonoBehaviour
 {
     [SerializeField] private GameObject fx_hearts_player;
     [SerializeField] private GameObject fx_buff_player;
+    [SerializeField] private GameObject fx_defend_player;
+
     [SerializeField] private GameObject fx_attack_player;
+    [SerializeField] private GameObject fx_special_player;
     [SerializeField] private GameObject fx_pre_attack_player;
+    [SerializeField] private GameObject fx_pre_special_player;
 
     [SerializeField] private GameObject fx_hearts_enemy;
     [SerializeField] private GameObject fx_buff_enemy;
+    [SerializeField] private GameObject fx_defend_enemy;
+
     [SerializeField] private GameObject fx_attack_enemy;
+    [SerializeField] private GameObject fx_special_enemy;
     [SerializeField] private GameObject fx_pre_attack_enemy;
+    [SerializeField] private GameObject fx_pre_special_enemy;
+
 
     private WaitForSecondsRealtime waitforseconds = new WaitForSecondsRealtime(0.4f);
+    private WaitForSecondsRealtime waitforsecondsspecial = new WaitForSecondsRealtime(0.1f);
+
 
     public enum action
     {
@@ -83,9 +94,22 @@ public class FX_Controller : MonoBehaviour
             {
                 StartCoroutine(RepeatFX(fx_attack_player, 1));
             }
+            if (anim.animstate && currentaction == (int)action.defend) //This means fx should be played
+            {
+                StartCoroutine(RepeatFX(fx_defend_player, 3));
+            }
             else if (anim.choosestate && currentaction == (int)action.attack) //This means fx should be played
             {
                 StartCoroutine(RepeatFX(fx_pre_attack_player, 1));
+            }
+
+            if (anim.animstate && currentaction == (int)action.special) //This means fx should be played
+            {
+                StartCoroutine(RepeatFXSpecial(fx_special_player, 1));
+            }
+            else if (anim.choosestate && currentaction == (int)action.special) //This means fx should be played
+            {
+                StartCoroutine(RepeatFX(fx_pre_special_player, 1));
             }
         }
         else
@@ -102,9 +126,22 @@ public class FX_Controller : MonoBehaviour
             {
                 StartCoroutine(RepeatFX(fx_attack_enemy, 1));
             }
+            if (anim.animstate && currentaction == (int)action.defend) //This means fx should be played
+            {
+                StartCoroutine(RepeatFX(fx_defend_enemy, 3));
+            }
             else if (anim.choosestate && currentaction == (int)action.attack) //This means fx should be played
             {
                 StartCoroutine(RepeatFX(fx_pre_attack_enemy, 1));
+            }
+
+            if (anim.animstate && currentaction == (int)action.special) //This means fx should be played
+            {
+                StartCoroutine(RepeatFXSpecial(fx_special_enemy, 1));
+            }
+            else if (anim.choosestate && currentaction == (int)action.special) //This means fx should be played
+            {
+                StartCoroutine(RepeatFX(fx_pre_special_enemy, 1));
             }
         }
     }
@@ -135,6 +172,20 @@ public class FX_Controller : MonoBehaviour
         {
             fx.SetActive(true);
             yield return waitforseconds;
+            fx.SetActive(false);
+
+            counter++;
+        }
+    }
+
+    IEnumerator RepeatFXSpecial(GameObject fx, int times)
+    {
+        int counter = 0;
+
+        while (counter < times)
+        {
+            fx.SetActive(true);
+            yield return waitforsecondsspecial;
             fx.SetActive(false);
 
             counter++;

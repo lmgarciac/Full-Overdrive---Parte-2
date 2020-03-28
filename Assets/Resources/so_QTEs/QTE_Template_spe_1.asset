@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: QTE_Template_spe_1
   m_EditorClassIdentifier: 
   qteDescription: Descripcion del QTE
-  speed: 8
-  arrowsHeight: 10
+  speed: 6
+  arrowsHeight: 20
   QTEPosition: {x: -30, y: 8, z: -9}
   QTERotation: {x: -90, y: 180, z: 0, w: 0}
   noteData:

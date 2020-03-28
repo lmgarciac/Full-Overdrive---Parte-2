@@ -172,6 +172,9 @@ public class AnimationController : MonoBehaviour
                     {
                         an_Camera.SetBool("Shake", true);
                     }
+
+                    an_Camera.SetBool("ZoomEnemy", false);
+
                 }
             }
             else if (anim.animation == (int)animation.special)
@@ -179,6 +182,9 @@ public class AnimationController : MonoBehaviour
                 an_enemy.SetBool("Idle", false);
                 an_enemy.SetBool("Attack", false);
                 an_enemy.SetBool("Special", true);
+
+                an_Camera.SetBool("ZoomEnemy", false);
+
             }
             else //Idle
             {
@@ -187,6 +193,11 @@ public class AnimationController : MonoBehaviour
                 an_enemy.SetBool("Special", false);
                 an_enemy.SetBool("Win", false);
                 an_enemy.SetBool("Lose", false);
+
+                if (!anim.dontshowUI)
+                {
+                    an_Camera.SetBool("ZoomEnemy", true);
+                }
             }
         }
 
