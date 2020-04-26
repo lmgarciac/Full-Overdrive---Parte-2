@@ -6,6 +6,7 @@ public static class PlayerOptions
 {
     private static int difficulty;
     private static float volume;
+    private static bool newGame;
 
     public static int Difficulty
     {
@@ -28,6 +29,18 @@ public static class PlayerOptions
         set
         {
             volume = value;
+        }
+    }
+
+    public static bool NewGame
+    {
+        get
+        {
+            return newGame;
+        }
+        set
+        {
+            newGame = value;
         }
     }
 }

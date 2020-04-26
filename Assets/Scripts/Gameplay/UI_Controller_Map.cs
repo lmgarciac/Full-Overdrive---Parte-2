@@ -218,6 +218,9 @@ public class UI_Controller_Map : MonoBehaviour
         tx_picks.text = Player_Status.Picks.ToString();
         picks = Player_Status.Picks;
 
+
+        Debug.Log("Heals UI: " + Player_Status.Heals.ToString());
+
         tx_heals.text = Player_Status.Heals.ToString();
         heals = Player_Status.Heals;
 

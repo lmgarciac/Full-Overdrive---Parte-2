@@ -64,6 +64,14 @@ public class SceneController : MonoBehaviour
 
         }
 
+        if (PlayerOptions.NewGame)
+        {
+            startingSceneName = "_Test_Tutorial";
+        }
+        else
+        {
+            startingSceneName = "_Test_Navigation";
+        }
 
 
 
@@ -82,7 +90,13 @@ public class SceneController : MonoBehaviour
 
     }
 
-
+    private void Update()
+    {
+        if(PlayerOptions.NewGame && Input.GetKeyDown(KeyCode.Escape) && !isFading)
+        {
+            FadeAndLoadScene("_Test_Navigation");
+        }
+    }
     // This is the main external point of contact and influence from the rest of the project.
     // This will be called by a SceneReaction when the player wants to switch scenes.
     //public void FadeAndLoadScene (SceneReaction sceneReaction)
@@ -161,6 +175,9 @@ public class SceneController : MonoBehaviour
             musicPlayer.Play();
             isNewSong = true;
         }
+
+        EventController.TriggerEvent(ev_after);
+
     }
 
 

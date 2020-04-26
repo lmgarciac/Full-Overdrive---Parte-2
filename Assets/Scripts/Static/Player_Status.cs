@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class Player_Status
 {
+    //Player collectables
     private static int collectables;
     private static int picks;
     private static int heals;
