@@ -224,7 +224,7 @@ public class UI_Controller : MonoBehaviour
 
         if (ev_action.characterid == (int)characterid.player && ev_action.action == (int)action.buff)
         {
-            tx_playerdamage.text = $"Buffed!\n" + ev_action.buff.ToString("F1");
+            tx_playerdamage.text = $"BUFFED!\n" + ev_action.buff.ToString("F1");
         }
 
         ////////////////////////Enemy actions///////////////////
@@ -264,7 +264,7 @@ public class UI_Controller : MonoBehaviour
 
         if (ev_action.characterid == (int)characterid.enemy && ev_action.action == (int)action.buff)
         {
-            tx_enemydamage.text = $"Buffed!\n" + ev_action.buff.ToString("F1");
+            tx_enemydamage.text = $"BUFFED!\n" + ev_action.buff.ToString("F1");
         }
 
     }
@@ -280,22 +280,22 @@ public class UI_Controller : MonoBehaviour
             switch (enableturn.turnstate)
             {
                 case (int)turnstate.turninfo:
-                    tx_info.text = $"Get Ready!";
+                    tx_info.text = $"GET READY!";
                     break;
                 case (int)turnstate.chooseaction:
-                    tx_info.text = $"Choose!";
+                    tx_info.text = $"CHOOSE!";
                     break;
                 case (int)turnstate.qte:
-                    tx_info.text = $"Play!";
+                    tx_info.text = $"PLAY!";
                     go_actionspanel.SetActive(true);
                     go_itempanel.SetActive(false);
                     tx_centralinfo.text = null;
                     break;
                 case (int)turnstate.anim:
-                    tx_info.text = $"Action!";
+                    tx_info.text = $"ACTION!";
                     break;
                 case (int)turnstate.miss:
-                    tx_info.text = $"Turn missed!";
+                    tx_info.text = $"TURN MISSED!";
                     break;
                 default:
                     break;
@@ -306,21 +306,21 @@ public class UI_Controller : MonoBehaviour
             switch (enableturn.turnstate)
             {
                 case (int)turnstate.turninfo:
-                    tx_info.text = $"Enemy Turn!";
+                    tx_info.text = $"ENEMY TURN!";
                     tx_enemydamage.text = null;
                     tx_playerdamage.text = null;
                     break;
                 case (int)turnstate.chooseaction:
-                    tx_info.text = $"Enemy Choice!";
+                    tx_info.text = $"ENEMY CHOICE!";
                     break;
                 case (int)turnstate.qte:
-                    tx_info.text = $"Enemy Play!";
+                    tx_info.text = $"ENEMY PLAY!";
                     go_actionspanel.SetActive(true);
                     go_itempanel.SetActive(false);
                     tx_centralinfo.text = null;
                     break;
                 case (int)turnstate.anim:
-                    tx_info.text = $"Enemy Action!";
+                    tx_info.text = $"ENEMY ACTION!";
                     break;
                 default:
                     break;
@@ -333,11 +333,11 @@ public class UI_Controller : MonoBehaviour
     {
         if (gameover.playerwin)
         {
-            tx_result.text = $"You Win!";
+            tx_result.text = $"YOU WIN!";
         }
         else
         {
-            tx_result.text = $"You Lose!";
+            tx_result.text = $"YOU LOSE!";
         }
 
         anim_dialogue.SetBool("Open", true);
@@ -404,23 +404,23 @@ public class UI_Controller : MonoBehaviour
             Debug.Log("Estas pasando por aca mucho?");
             if (select.action == (int)action.attack)
             {
-                tx_centralinfo.text = $"Attack!";
+                tx_centralinfo.text = $"ATTACK!";
             }
             if (select.action == (int)action.special)
             {
-                tx_centralinfo.text = $"Special!";
+                tx_centralinfo.text = $"SPECIAL!";
             }
             if (select.action == (int)action.defend)
             {
-                tx_centralinfo.text = $"Defend!";
+                tx_centralinfo.text = $"DEFEND!";
             }
             if (select.action == (int)action.heal)
             {
-                tx_centralinfo.text = $"Heal!";
+                tx_centralinfo.text = $"HEAL!";
             }
             if (select.action == (int)action.buff)
             {
-                tx_centralinfo.text = $"Buff!";
+                tx_centralinfo.text = $"BUFF!";
             }
         }
     }
@@ -460,19 +460,19 @@ public class UI_Controller : MonoBehaviour
 
         if (qteprize.effic < 0.3f)
         {
-            _tx_effic = "You suck!";
+            _tx_effic = "YOU SUCK!";
         }
         else if (qteprize.effic >= 0.3f && qteprize.effic < 0.7f)
         {
-            _tx_effic = "Nice!";
+            _tx_effic = "NICE!";
         }
         else if (qteprize.effic >= 0.7f && qteprize.effic < 1)
         {
-            _tx_effic = "Great!";
+            _tx_effic = "GREAT!";
         }
         else //100%
         {
-            _tx_effic = "You rock!";
+            _tx_effic = "YOU ROCK!";
         }
 
         if (qteprize.prizeHP != 0)
@@ -485,11 +485,11 @@ public class UI_Controller : MonoBehaviour
         }
         if (qteprize.prizeMultiplier != 0)
         {
-            _tx_prizemult = $"\n" + qteprize.prizeMultiplier.ToString("F1") + $" Multiplier! ";
+            _tx_prizemult = $"\n" + qteprize.prizeMultiplier.ToString("F1") + $" MULTIPLIER! ";
         }
         if (qteprize.prizeDamage != 0)
         {
-            _tx_prizedam = $"\n" + qteprize.prizeDamage.ToString("+0;-#") + $" Damage! ";
+            _tx_prizedam = $"\n" + qteprize.prizeDamage.ToString("+0;-#") + $" DAMAGE! ";
         }
 
         // Lo comento por ahora al info de Prize porque no me gusta.
