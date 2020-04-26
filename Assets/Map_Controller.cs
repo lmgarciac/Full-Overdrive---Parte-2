@@ -33,6 +33,7 @@ public class Map_Controller : MonoBehaviour
         EventController.AddListener<BeforeSceneUnloadEvent>(BeforeSceneUnloadEvent);
         EventController.AddListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
         EventController.AddListener<ExpandBoundariesEvent>(ExpandBoundariesEvent);
+        EventController.AddListener<QuitGameEvent>(QuitGameEvent);
 
     }
 
@@ -41,6 +42,7 @@ public class Map_Controller : MonoBehaviour
         EventController.RemoveListener<BeforeSceneUnloadEvent>(BeforeSceneUnloadEvent);
         EventController.RemoveListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
         EventController.RemoveListener<ExpandBoundariesEvent>(ExpandBoundariesEvent);
+        EventController.RemoveListener<QuitGameEvent>(QuitGameEvent);
 
     }
 
@@ -64,6 +66,26 @@ public class Map_Controller : MonoBehaviour
         SendMessage();
     }
 
+    private void QuitGameEvent(QuitGameEvent quitgame)
+    {
+        ////Collectables
+        activeCollectables = GameObject.FindGameObjectsWithTag("Collectable");
+        collectablesIdentifiers = new int[activeCollectables.Length];
+
+        int i = 0;
+        foreach (GameObject activeCollectable in activeCollectables)
+        {
+            collectablesIdentifiers[i] = activeCollectable.GetComponent<Collectable_Controller>().uniqueIdentifier;
+            i++;
+        }
+        Map_Status.CollectablesIdentifiers = collectablesIdentifiers;
+
+        Map_Status.FirstTime = false;
+
+        PlayerOptions.NewGame = false;
+
+    }
+
     private void BeforeSceneUnloadEvent(BeforeSceneUnloadEvent before)
     {
 
@@ -81,11 +103,17 @@ public class Map_Controller : MonoBehaviour
 
         Map_Status.FirstTime = false;
 
+        PlayerOptions.NewGame = false;
+
     }
 
     private void AfterSceneLoadEvent(AfterSceneLoadEvent after)
     {
-        if (Map_Status.FirstTime)
+
+        Debug.Log("New Game: " + PlayerOptions.NewGame);
+
+        //f (Map_Status.FirstTime)
+        if (PlayerOptions.NewGame)   
         {
             ////Collectables
             activeCollectables = GameObject.FindGameObjectsWithTag("Collectable");

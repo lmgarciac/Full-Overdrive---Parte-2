@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Events;
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     
     public GameObject pauseMenuUI;
+    private readonly QuitGameEvent ev_quitgame = new QuitGameEvent();
 
     // Update is called once per frame
     void Update()
@@ -48,7 +50,12 @@ public class PauseMenu : MonoBehaviour
 
     public void QuitGame()
     {
+        EventController.TriggerEvent(ev_quitgame);
+
         SessionData.SaveData();
+
+
+
         Application.Quit();
     }
     

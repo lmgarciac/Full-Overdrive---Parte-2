@@ -129,6 +129,9 @@ public class GameData
         cameraRotation = Map_Status.CameraRotation;
         collectablesIdentifiers = Map_Status.CollectablesIdentifiers;
 
+        Debug.Log("Player rotation: " + playerRotation);
+        Debug.Log("Player position: " + playerPosition);
+
         //PlayerStats
         collectables = Player_Status.Collectables;
         picks = Player_Status.Picks;
@@ -149,6 +152,10 @@ public class GameData
         Map_Status.FirstTime = firstTime;
         Map_Status.PlayerPosition = playerPosition;
         Map_Status.PlayerRotation = playerRotation;
+
+        Debug.Log("Player rotation: " + playerRotation);
+        Debug.Log("Player position: " + playerPosition);
+
         Map_Status.CameraPosition = cameraPosition;
         Map_Status.CameraRotation = cameraRotation;
         Map_Status.CollectablesIdentifiers = collectablesIdentifiers;

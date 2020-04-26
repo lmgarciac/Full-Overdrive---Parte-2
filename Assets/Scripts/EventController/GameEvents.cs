@@ -156,4 +156,8 @@ namespace Events
     {
         public int currentarea;
     }
+
+    public class QuitGameEvent : GameEvent
+    {
+    }
 }

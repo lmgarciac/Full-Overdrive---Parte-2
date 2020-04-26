@@ -67,6 +67,8 @@ public class MainMenu : MonoBehaviour
             Player_Status.Heals = 2;
             Player_Status.Money = 100;
             Player_Status.CurrentArea = 1;
+            Player_Status.Collectables = 0;
+            Player_Status.Picks = 0;
         }
     }
 
@@ -81,6 +83,11 @@ public class MainMenu : MonoBehaviour
         Player_Status.Heals = 2;
         Player_Status.Money = 100;
         Player_Status.CurrentArea = 1;
+        Player_Status.Collectables = 0;
+        Player_Status.Picks = 0;
+
+        Debug.Log("Player Collectables: " + Player_Status.Collectables);
+
     }
 
     public void ContinueGame()
