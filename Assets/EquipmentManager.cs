@@ -14,24 +14,27 @@ public class EquipmentManager : MonoBehaviour
    }
    #endregion
 
-   private Equipment[] currentEquipment; //Array con el equipamiento
+   public Equipment[] currentEquipment; //Array con el equipamiento
 
    public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
 
    public OnEquipmentChanged onEquipmentChanged;
    
-   public Inventory inventory;
+    Inventory inventory;
    
-   void start()
+   void Start()
    {
       inventory = Inventory.instance;
-      int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length; //Sirve para saber la cantidad de intems q tiene el enum en el Scriptable object
+      int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
+      
+      Debug.Log(System.Enum.GetNames(typeof(EquipmentSlot)).Length);
+      //Sirve para saber la cantidad de intems q tiene el enum en el Scriptable object
       currentEquipment = new Equipment[numSlots];
    }
 
    public void Equip(Equipment newItem)
    {
-      int slotIndex = (int) newItem.equipSlot;
+      int slotIndex = (int)newItem.equipSlot;
       Equipment olditem = null;
 
       if (currentEquipment[slotIndex] != null) //si ya hay algo en el slot del inventario
