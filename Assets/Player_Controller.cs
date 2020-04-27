@@ -39,7 +39,9 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] private int targetCollectables;
 
     private int currentarea;
-
+    
+    private Item item;
+    
     public enum camstate
     {
         idle = 0,
@@ -76,6 +78,7 @@ public class Player_Controller : MonoBehaviour
         EventController.AddListener<BeforeSceneUnloadEvent>(BeforeSceneUnloadEvent);
         EventController.AddListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
         EventController.AddListener<DialogueStatusEvent>(DialogueStatusEvent);
+        EventController.AddListener<QuitGameEvent>(QuitGameEvent);
 
     }
 
@@ -84,6 +87,7 @@ public class Player_Controller : MonoBehaviour
         EventController.RemoveListener<BeforeSceneUnloadEvent>(BeforeSceneUnloadEvent);
         EventController.RemoveListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
         EventController.RemoveListener<DialogueStatusEvent>(DialogueStatusEvent);
+        EventController.RemoveListener<QuitGameEvent>(QuitGameEvent);
 
     }
 
@@ -175,13 +179,27 @@ public class Player_Controller : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
         if (other.tag == "Collectable")
         {
             Debug.Log("Collectable!");
             //Sumar puntos
+
             collectables++;
+            Player_Status.Collectables++;
+
             other.gameObject.SetActive(false);
             EventController.TriggerEvent(ev_collect);
+        }
+        
+        if (other.tag == "Interactable")
+        {
+            Debug.Log("Interactable!");
+            //Deberia de agregar al inventario el objeto
+            item =  other.gameObject.GetComponent<ItemPickup>().item;
+            Inventory.instance.Add(item);
+            other.gameObject.SetActive(false); //No lo borro para agregarlo al inventario
+            //EventController.TriggerEvent(ev_items);
         }
     }
 
@@ -346,7 +364,8 @@ public class Player_Controller : MonoBehaviour
         currentarea = Player_Status.CurrentArea;
 
         //Restore positions
-        if (!Map_Status.FirstTime)
+        //if (!Map_Status.FirstTime)
+        if (!PlayerOptions.NewGame)
         {
             this.transform.position = Map_Status.PlayerPosition;
             this.transform.rotation = Map_Status.PlayerRotation;
@@ -362,8 +381,13 @@ public class Player_Controller : MonoBehaviour
         {
             ev_buy.isheal = true;
             ev_buy.price = price;
+
             money -= price;
+            Player_Status.Money -= price;
+
             heals++;
+            Player_Status.Heals++;
+
             EventController.TriggerEvent(ev_buy);
         }
     }
@@ -374,8 +398,13 @@ public class Player_Controller : MonoBehaviour
         {
             ev_buy.isheal = false;
             ev_buy.price = price;
+
             money -= price;
+            Player_Status.Money -= price;
+
             buffs++;
+            Player_Status.Buffs++;
+
             EventController.TriggerEvent(ev_buy);
         }
     }
@@ -383,6 +412,18 @@ public class Player_Controller : MonoBehaviour
     private void DialogueStatusEvent(DialogueStatusEvent status)
     {
         dialogueactive = status.dialogueactive;
+    }
+
+
+    private void QuitGameEvent(QuitGameEvent quitgame)
+    {
+        ////Player position
+        Map_Status.PlayerRotation = this.transform.rotation;
+        Map_Status.PlayerPosition = this.transform.position;
+
+        ////Camera position
+        Map_Status.CameraRotation = gameCamera.transform.rotation;
+        Map_Status.CameraPosition = gameCamera.transform.position;
     }
 
     IEnumerator WaitEnableInput()

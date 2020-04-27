@@ -21,6 +21,7 @@ TagManager:
   - ArrowRed
   - ArrowYellow
   - ArrowGreen
+  - Interactable
   layers:
   - Default
   - TransparentFX
