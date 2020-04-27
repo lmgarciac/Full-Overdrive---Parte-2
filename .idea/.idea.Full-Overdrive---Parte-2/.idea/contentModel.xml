@@ -8,6 +8,7 @@
       <e p="Assets" t="Include">
         <e p="Bar_Controller.cs" t="Include" />
         <e p="Collectable_Controller.cs" t="Include" />
+        <e p="EquipmentManager.cs" t="Include" />
         <e p="Farming_Area_Controller.cs" t="Include" />
         <e p="Farming_Controller.cs" t="Include" />
         <e p="FX_Controller.cs" t="Include" />
@@ -65,6 +66,7 @@
             <e p="UI_Controller_Map.cs" t="Include" />
           </e>
           <e p="Inventory" t="Include">
+            <e p="Equipment.cs" t="Include" />
             <e p="Interactable.cs" t="Include" />
             <e p="Inventory.cs" t="Include" />
             <e p="InventorySlot.cs" t="Include" />

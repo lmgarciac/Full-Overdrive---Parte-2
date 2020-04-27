@@ -34,13 +34,15 @@ public class InventoryUI : MonoBehaviour
         {
             if (i < inventory.Items.Count)
             {
-                slots[i].AddItem(inventory.Items[i]); //Llamo al script dentro de cada Slot parado en i y agrego el item de la variable inventory q voy recorriendo
+                slots[i].AddItem(inventory.Items[i]); //Llamo al script dentro de cada Slot parado en i y agrego el item de la variable inventory
+                Debug.Log(slots[i]);
             }
             else
             {
                 slots[i].ClearSlot();
             }
         }
+        
     }
     
     
