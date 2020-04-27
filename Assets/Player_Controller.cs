@@ -39,7 +39,9 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] private int targetCollectables;
 
     private int currentarea;
-
+    
+    private Item item;
+    
     public enum camstate
     {
         idle = 0,
@@ -177,6 +179,7 @@ public class Player_Controller : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
         if (other.tag == "Collectable")
         {
             Debug.Log("Collectable!");
@@ -187,6 +190,16 @@ public class Player_Controller : MonoBehaviour
 
             other.gameObject.SetActive(false);
             EventController.TriggerEvent(ev_collect);
+        }
+        
+        if (other.tag == "Interactable")
+        {
+            Debug.Log("Interactable!");
+            //Deberia de agregar al inventario el objeto
+            item =  other.gameObject.GetComponent<ItemPickup>().item;
+            Inventory.instance.Add(item);
+            other.gameObject.SetActive(false); //No lo borro para agregarlo al inventario
+            //EventController.TriggerEvent(ev_items);
         }
     }
 

@@ -64,12 +64,24 @@
             <e p="UI_Controller.cs" t="Include" />
             <e p="UI_Controller_Map.cs" t="Include" />
           </e>
+          <e p="Inventory" t="Include">
+            <e p="Interactable.cs" t="Include" />
+            <e p="Inventory.cs" t="Include" />
+            <e p="InventorySlot.cs" t="Include" />
+            <e p="InventoryUI.cs" t="Include" />
+            <e p="Item.cs" t="Include" />
+            <e p="ItemPickup.cs" t="Include" />
+          </e>
           <e p="Menu" t="Include">
             <e p="Diff_Script.cs" t="Include" />
             <e p="Menu_Audio_Controller.cs" t="Include" />
             <e p="Volume_Script.cs" t="Include" />
           </e>
           <e p="NPCI_Controller.cs" t="Include" />
+          <e p="Persistence" t="Include">
+            <e p="DESEncryption.cs" t="Include" />
+            <e p="SessionData.cs" t="Include" />
+          </e>
           <e p="RipplePostProcessor.cs" t="Include" />
           <e p="ScriptableObjects" t="Include">
             <e p="Difficulty_Template.cs" t="Include" />
