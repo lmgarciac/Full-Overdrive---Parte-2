@@ -22,4 +22,8 @@ public class Equipment : Item
     
 }
 
-public enum EquipmentSlot{Headphone,Amplificator,Microphone}
+public enum EquipmentSlot
+{
+    Headphone,
+    Amplificator
+}

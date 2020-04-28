@@ -16,5 +16,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 86f46e81c232cff44a7c36ef65a6ffeb, type: 3}
   isDefaultItem: 0
   equipSlot: 1
-  defModifier: 1
-  dmgModifier: 2
+  defModifier: 3
+  dmgModifier: 4

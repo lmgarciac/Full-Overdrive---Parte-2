@@ -117,6 +117,11 @@
             <e p="Player_Options.cs" t="Include" />
             <e p="Player_Status.cs" t="Include" />
           </e>
+          <e p="Stats" t="Include">
+            <e p="CharacterStats.cs" t="Include" />
+            <e p="PlayerStats.cs" t="Include" />
+            <e p="Stat.cs" t="Include" />
+          </e>
           <e p="UI" t="Include">
             <e p="MainMenu.cs" t="Include" />
             <e p="ScriptSceneLogo.cs" t="Include" />
