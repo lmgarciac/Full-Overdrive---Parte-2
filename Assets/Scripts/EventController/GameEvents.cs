@@ -160,4 +160,33 @@ namespace Events
     public class QuitGameEvent : GameEvent
     {
     }
+
+    //PONG EVENTS
+
+    public class ScoreEvent : GameEvent
+    {
+        public int playerId;
+        public int scoreData;
+        public Vector3 playerPosition;
+    }
+    public class HitEvent : GameEvent
+    {
+        public int playerId;
+    }
+    public class WaitEvent : GameEvent
+    {
+        public bool waiting;
+        public KeyCode startKey;
+    }
+    public class GameStartEvent : GameEvent
+    {
+        public KeyCode startKey;
+    }
+    public class GameOverPongEvent : GameEvent
+    {
+        public int playerId;
+        public KeyCode reloadkey;
+        public int p1score;
+        public int p2score;
+    }
 }
