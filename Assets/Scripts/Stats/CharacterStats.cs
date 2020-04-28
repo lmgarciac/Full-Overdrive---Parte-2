@@ -7,24 +7,22 @@ public class CharacterStats : MonoBehaviour
 {
     public int maxHealt = 100;
     public int currentHealth { get; private set; }
-    public Stat hp; //Nosotros usaremos este el otro es para guardar como quedo la HP del pj
     public Stat attack;
     public Stat defense;
 
     private void Awake()
     {
         currentHealth = maxHealt;
-        maxHealt = maxHealt + hp.GetValue(); 
     }
 
     private void Update()
     {
         
         //por si modificamos el valor base con el uso de 1 item
-        if (Input.GetKeyDown(KeyCode.T))
+       /* if (Input.GetKeyDown(KeyCode.T))
         {
             TakeDamage(10);
-        };
+        };*/
     }
 
     public void TakeDamage(int damage)

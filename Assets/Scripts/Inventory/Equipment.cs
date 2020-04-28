@@ -16,6 +16,7 @@ public class Equipment : Item
         //Equip the Item
         EquipmentManager.instance.Equip(this);
         //Remove from Inventory
+        //Aca tendria q haber algun evento al cual le pueda pasar el item q Equipé y estoy sacando del inventario para dibujarlo en el boton
         RemoveFromInventory();
         
     }
