@@ -43,6 +43,11 @@ public class GameController : MonoBehaviour
 
     private bool waitingcpu;
 
+    public AudioSource audiosource;
+    public AudioClip so_win;
+    public AudioClip so_score;
+    public AudioClip so_hit;
+
     public struct highScore {
         public int playerwin;
         public int p1score;
@@ -243,6 +248,10 @@ public class GameController : MonoBehaviour
 
     private void OnScoreEvent(ScoreEvent score)
     {
+
+        audiosource.clip = so_score;
+        audiosource.Play();
+
         if (score.playerId == 1)
         {
             player1points = player1points + score.scoreData;
@@ -278,6 +287,9 @@ public class GameController : MonoBehaviour
             ev_gameover.p2score = player2points;
             EventController.TriggerEvent(ev_gameover);
             gameover = true;
+
+            audiosource.clip = so_win;
+            audiosource.Play();
         }
         if (player2points == maxscore)
         {
@@ -286,6 +298,9 @@ public class GameController : MonoBehaviour
             ev_gameover.p2score = player2points;            
             EventController.TriggerEvent(ev_gameover);
             gameover = true;
+
+            audiosource.clip = so_win;
+            audiosource.Play();
         }
     }
 
