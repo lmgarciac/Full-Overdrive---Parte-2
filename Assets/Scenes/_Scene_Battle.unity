@@ -368,7 +368,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 6250c6c8ec35800458a3bdbca9898c96, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b63ca760180a4b341a60d4c912a2aa89, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -424,7 +424,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6250c6c8ec35800458a3bdbca9898c96, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b63ca760180a4b341a60d4c912a2aa89, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -54010,27 +54010,27 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 36c406a027f510941a2fb5d9d0c2444a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 1.5566
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 36c406a027f510941a2fb5d9d0c2444a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.71
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 36c406a027f510941a2fb5d9d0c2444a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 6.2
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 36c406a027f510941a2fb5d9d0c2444a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: 0.0000002533197
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 36c406a027f510941a2fb5d9d0c2444a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 36c406a027f510941a2fb5d9d0c2444a,
         type: 3}
@@ -54040,7 +54040,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 36c406a027f510941a2fb5d9d0c2444a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071067
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 36c406a027f510941a2fb5d9d0c2444a,
         type: 3}
@@ -54065,23 +54065,28 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 36c406a027f510941a2fb5d9d0c2444a,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 81.038155
+      value: 1.0108372
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 36c406a027f510941a2fb5d9d0c2444a,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 81.038155
+      value: 1.0108372
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 36c406a027f510941a2fb5d9d0c2444a,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 81.038155
+      value: 1.0108372
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 36c406a027f510941a2fb5d9d0c2444a,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fbcae344d3ed14f469167bf5199e128c, type: 2}
+    - target: {fileID: 2502203975881118265, guid: 36c406a027f510941a2fb5d9d0c2444a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36c406a027f510941a2fb5d9d0c2444a, type: 3}
 --- !u!1 &1900549540
@@ -55728,7 +55733,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 4524db1911491ef47b00fb15f8216d19, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cbaf0149178644d4f8a452790c6ac9be, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -55784,7 +55789,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b7b05ceffa91eaa4ba291fbbcccfbeb7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cbaf0149178644d4f8a452790c6ac9be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
