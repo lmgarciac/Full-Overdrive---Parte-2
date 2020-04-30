@@ -1,14 +1,11 @@
 fileFormatVersion: 2
-guid: 6b84b85aff8f3564593ef1b32cb082d5
+guid: f039e6fe22d9a2843843a9413836ee59
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
-      74: -1647604002242223592
-    second: Hernan|Armature|mixamo.com|Layer0
-  - first:
-      74: 2037800161270408185
-    second: Hernan|Armature|mixamo.com|Layer0.001
+      74: 4167779324264561037
+    second: Hernan|HernanAction
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -36,7 +33,36 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Hernan|HernanAction
+      takeName: Hernan|HernanAction
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 75
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
