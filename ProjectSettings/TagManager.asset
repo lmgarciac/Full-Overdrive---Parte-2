@@ -29,6 +29,10 @@ TagManager:
   - LeftWall
   - Limit1
   - AIPlayer
+  - Gordon
+  - Milo
+  - Homeless
+  - GameKid
   layers:
   - Default
   - TransparentFX

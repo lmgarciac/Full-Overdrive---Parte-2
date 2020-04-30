@@ -161,6 +161,11 @@ namespace Events
     {
     }
 
+    public class PayMoneyEvent : GameEvent
+    {
+        public int moneypaid;
+    }
+
     //PONG EVENTS
 
     public class ScoreEvent : GameEvent
@@ -181,6 +186,7 @@ namespace Events
     public class GameStartEvent : GameEvent
     {
         public KeyCode startKey;
+        public int highscore;
     }
     public class GameOverPongEvent : GameEvent
     {
@@ -189,4 +195,6 @@ namespace Events
         public int p1score;
         public int p2score;
     }
+
+
 }

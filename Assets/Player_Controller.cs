@@ -7,6 +7,8 @@ using UnityEngine.AI;
 
 public class Player_Controller : MonoBehaviour
 {
+    private SceneController sceneController;
+
     public float fadeSpeed = 1f;
     public float targetAlpha;
 
@@ -79,6 +81,7 @@ public class Player_Controller : MonoBehaviour
         EventController.AddListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
         EventController.AddListener<DialogueStatusEvent>(DialogueStatusEvent);
         EventController.AddListener<QuitGameEvent>(QuitGameEvent);
+        EventController.AddListener<PayMoneyEvent>(PayMoneyEvent);
 
     }
 
@@ -88,6 +91,7 @@ public class Player_Controller : MonoBehaviour
         EventController.RemoveListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
         EventController.RemoveListener<DialogueStatusEvent>(DialogueStatusEvent);
         EventController.RemoveListener<QuitGameEvent>(QuitGameEvent);
+        EventController.RemoveListener<PayMoneyEvent>(PayMoneyEvent);
 
     }
 
@@ -100,6 +104,7 @@ public class Player_Controller : MonoBehaviour
 
         //Por el momento para testear
         //money = 1000;
+        sceneController = FindObjectOfType<SceneController>();
 
     }
 
@@ -132,6 +137,12 @@ public class Player_Controller : MonoBehaviour
         {
             playerAnimator.SetBool("Walking", false);
         }
+
+        if ((Input.GetKey(KeyCode.G) && enableinput)) //Temporal jugar al Gameboy
+        {
+            sceneController.FadeAndLoadScene("GameKid");
+        }
+
 
         if (Input.GetKey(KeyCode.UpArrow) && enableinput)
         {
@@ -182,7 +193,7 @@ public class Player_Controller : MonoBehaviour
         
         if (other.tag == "Collectable")
         {
-            Debug.Log("Collectable!");
+            //Debug.Log("Collectable!");
             //Sumar puntos
 
             collectables++;
@@ -414,6 +425,11 @@ public class Player_Controller : MonoBehaviour
         dialogueactive = status.dialogueactive;
     }
 
+    private void PayMoneyEvent(PayMoneyEvent paymoney)
+    {
+        if (money > 0)
+        money -= 1;
+    }
 
     private void QuitGameEvent(QuitGameEvent quitgame)
     {

@@ -74,6 +74,7 @@ public class UI_Controller_Map : MonoBehaviour
         EventController.AddListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
         EventController.AddListener<BuyEvent>(BuyEvent);
         EventController.AddListener<ExpandBoundariesEvent>(ExpandBoundariesEvent);
+        EventController.AddListener<PayMoneyEvent>(PayMoneyEvent);
 
     }
     private void OnDisable() {
@@ -83,6 +84,7 @@ public class UI_Controller_Map : MonoBehaviour
         EventController.RemoveListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
         EventController.RemoveListener<BuyEvent>(BuyEvent);
         EventController.RemoveListener<ExpandBoundariesEvent>(ExpandBoundariesEvent);
+        EventController.RemoveListener<PayMoneyEvent>(PayMoneyEvent);
 
     }
 
@@ -252,6 +254,16 @@ public class UI_Controller_Map : MonoBehaviour
             buffs++;
             tx_buffs.text = buffs.ToString();
             tx_shopbuffs.text = buffs.ToString();
+            tx_money.text = money.ToString();
+            tx_shopmoney.text = money.ToString();
+        }
+    }
+
+    private void PayMoneyEvent(PayMoneyEvent paymoney)
+    {
+        if (money > 0)
+        {
+            money -= 1;
             tx_money.text = money.ToString();
             tx_shopmoney.text = money.ToString();
         }

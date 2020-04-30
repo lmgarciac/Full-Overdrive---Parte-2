@@ -15,6 +15,9 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI tx_sessioncounter;
     [SerializeField] private TextMeshProUGUI tx_sessioncounterlabel;
     [SerializeField] private TextMeshProUGUI tx_keyinformation;
+    [SerializeField] private TextMeshProUGUI tx_highscore;
+
+    private int highscore;
 
     private string[] congratlist;
     private int congratlenght;
@@ -32,6 +35,7 @@ public class UIController : MonoBehaviour
                                     "Cool!",
                                     "Keep it up!" };
         congratlenght = congratlist.Length;
+        tx_highscore.text = null;
     }
 
     // Update is called once per frame
@@ -60,13 +64,19 @@ public class UIController : MonoBehaviour
         EventController.RemoveListener<WaitEvent>(OnWaitEvent);
     }
 
-   private void OnScoreEvent(ScoreEvent score)
+    private void OnScoreEvent(ScoreEvent score)
     {
         if (score.playerId == 1)
         {
             player1points = player1points + score.scoreData;
             tx_scoreP1.text = player1points.ToString();
             tx_congrats.text = $"Player {score.playerId} scores!"; //Interpolacion de cadenas
+
+            if (player1points > highscore)
+            {
+                highscore = player1points;
+                tx_highscore.text = highscore.ToString();
+            }
         }
         if (score.playerId == 2)
         {
@@ -85,6 +95,9 @@ public class UIController : MonoBehaviour
         tx_scoreP1.text = player1points.ToString();
         player2points = 0;
         tx_scoreP2.text = player2points.ToString();
+
+        highscore = start.highscore;
+        tx_highscore.text = highscore.ToString();
 
         tx_congrats.text = null;
         tx_keyinformation.text = null;

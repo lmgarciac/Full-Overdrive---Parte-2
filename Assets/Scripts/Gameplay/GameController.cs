@@ -17,6 +17,11 @@ public class GameController : MonoBehaviour
     [SerializeField] private int sessioncounter;
     [SerializeField] private int paramendscreencounter;
     [SerializeField] private int maxscore;
+    [SerializeField] private int configHighscore;
+
+    [SerializeField] private string previous_scene;
+    private SceneController sceneController;
+
     private MeshRenderer mr_player1;
     private Vector3 balldirection = Vector3.one;
     private Vector3 player1initposition;
@@ -32,6 +37,10 @@ public class GameController : MonoBehaviour
     private bool gameover;
     private bool nextscreen;
     private bool scoresaved;
+
+    private int highscore;
+    [SerializeField]
+
     private enum countertype {inittimer = 0, sessiontimer =1,}
     private WaitForSeconds waitforseconds = new WaitForSeconds(1);
     private readonly GameStartEvent ev_gamestart = new GameStartEvent();
@@ -65,6 +74,10 @@ public class GameController : MonoBehaviour
         ev_gameover.reloadkey = reloadkey;
         player1initposition = go_player1.transform.position;
         player2initposition = go_player2.transform.position;
+
+        sceneController = FindObjectOfType<SceneController>();
+
+
         StartProcedure();
     }
     private void OnEnable() {
@@ -81,6 +94,18 @@ public class GameController : MonoBehaviour
         if (!oncountdown && !playing)
             {
             playing = true;
+
+            Quests currentQuest = Player_Status.FindQuest("GameKidQuest");
+            if (currentQuest != null && currentQuest.genericnumber > configHighscore) //poner highscore mio
+            {
+                ev_gamestart.highscore = currentQuest.genericnumber;
+            }
+            else
+            {
+                ev_gamestart.highscore = configHighscore;
+            }
+
+
             EventController.TriggerEvent(ev_gamestart);
             StartBall();
             StartPlayers();
@@ -94,6 +119,11 @@ public class GameController : MonoBehaviour
             EventController.TriggerEvent(ev_waitevent);
             StartBall();
             }
+
+        if (Input.GetKey(KeyCode.Escape)) //Exit
+        {
+            sceneController.FadeAndLoadScene(previous_scene);
+        }
         if (gametime == 0)
         {
             if (player1points > player2points)
@@ -116,7 +146,17 @@ public class GameController : MonoBehaviour
             }            
             EventController.TriggerEvent(ev_gameover);
             gameover = true;
-        }                    
+        }
+        
+        if (gameover && player1points > highscore) //Update Quest Status
+        {
+            Quests currentQuest = Player_Status.FindQuest("GameKidQuest");
+            if (currentQuest != null && currentQuest.queststatus == 1) //Si la quest esta iniciada
+            {
+                Player_Status.QuestList[Player_Status.FindQuestIndex("GameKidQuest")] = new Quests("GameKidQuest", 2, player1points);
+            }
+        }
+
         if (gameover && !scoresaved)
         {
             EndProcedure();
@@ -175,6 +215,9 @@ public class GameController : MonoBehaviour
         go_ball.transform.position = Vector3.zero;        
         go_ball.GetComponent<Rigidbody>().velocity = Vector3.zero;
         go_ball.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+
+        highscore = configHighscore;
+
         StartPlayers();
         GetScores();
         StartCoroutine(StartCountdown());
@@ -301,6 +344,9 @@ public class GameController : MonoBehaviour
 
             audiosource.clip = so_win;
             audiosource.Play();
+
+            //Cargar Valor de Quest Ganada.
+
         }
     }
 
