@@ -227,7 +227,7 @@ public class Player_Controller : MonoBehaviour
         {
 
             RaycastHit hit = hits[i];
-            Debug.Log($"Raycast target: {hit.transform.gameObject.name}");
+            //Debug.Log($"Raycast target: {hit.transform.gameObject.name}");
             if (hit.transform.gameObject.tag == "Transparent")
             {
                 //Debug.Log("Hit!");

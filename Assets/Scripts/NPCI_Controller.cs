@@ -156,7 +156,7 @@ public class NPCI_Controller : MonoBehaviour
             
             if (currentQuest != null && currentQuest.queststatus == 1) //Si esta iniciada la quest entonces objetivo cumplido
             {
-                this.gameObject.SetActive(false);
+                //this.gameObject.SetActive(false);
                 Player_Status.QuestList[Player_Status.FindQuestIndex("MiloQuest")] = new Quests("MiloQuest", 2, 0);
             }
         }

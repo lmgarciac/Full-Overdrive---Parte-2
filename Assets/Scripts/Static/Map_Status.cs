@@ -9,6 +9,9 @@ public static class Map_Status
     private static Vector3 playerPosition;
     private static Quaternion playerRotation;
 
+    private static Vector3 miloPosition;
+    private static Quaternion miloRotation;
+
     private static Vector3 cameraPosition;
     private static Quaternion cameraRotation;
 
@@ -35,6 +38,30 @@ public static class Map_Status
         set
         {
             playerRotation = value;
+        }
+    }
+
+    public static Vector3 MiloPosition
+    {
+        get
+        {
+            return miloPosition;
+        }
+        set
+        {
+            miloPosition = value;
+        }
+    }
+
+    public static Quaternion MiloRotation
+    {
+        get
+        {
+            return miloRotation;
+        }
+        set
+        {
+            miloRotation = value;
         }
     }
 
