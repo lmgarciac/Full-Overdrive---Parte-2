@@ -62,7 +62,7 @@ public class UI_Controller_ObiYank : MonoBehaviour
                 Debug.Log($"Starting conversation with {dialogue.dialogue.name}");
                 sentences.Clear();
                 go_dialoguebox.SetActive(true);
-                tx_NPCIname.text = dialogue.dialogue.name;
+                tx_NPCIname.text = dialogue.dialogue.name.ToUpper();
                 im_NPCimage.sprite = dialogue.dialogue.image;
 
                 anim_dialogue.SetBool("Open", true);
@@ -84,6 +84,7 @@ public class UI_Controller_ObiYank : MonoBehaviour
             return;
         }
         string sentence = sentences.Dequeue();
+        sentence = sentence.ToUpper();
         Debug.Log(sentence);
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
