@@ -220,11 +220,14 @@ public class UI_Controller : MonoBehaviour
 
             tx_playerdamage.text = $"+{-ev_action.damage}HP";
             tx_playerhp.text = $"{player.hp}";
+            
+            //Mostrar el Consumo del Heal
         }
 
         if (ev_action.characterid == (int)characterid.player && ev_action.action == (int)action.buff)
         {
             tx_playerdamage.text = $"BUFFED!\n" + ev_action.buff.ToString("F1");
+            //Mostrar el Consumo del Buff
         }
 
         ////////////////////////Enemy actions///////////////////

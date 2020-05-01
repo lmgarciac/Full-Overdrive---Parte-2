@@ -33,6 +33,8 @@ TagManager:
   - Milo
   - Homeless
   - GameKid
+  - CantBluePill
+  - CantRedPill
   layers:
   - Default
   - TransparentFX
@@ -47,7 +49,7 @@ TagManager:
   - Collectables
   - Obstaculos
   - GameKid
-  - 
+  - UI FRONT
   - 
   - 
   - 
@@ -72,4 +74,7 @@ TagManager:
     locked: 0
   - name: Arrows
     uniqueID: 4154578687
+    locked: 0
+  - name: UI FRONT
+    uniqueID: 3121889213
     locked: 0
