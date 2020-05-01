@@ -121,7 +121,7 @@ public class UI_Controller_Map : MonoBehaviour
                 Debug.Log($"Starting conversation with {dialogue.dialogue.name}");
                 sentences.Clear();
                 go_dialoguebox.SetActive(true);
-                tx_NPCIname.text = dialogue.dialogue.name;
+                tx_NPCIname.text = dialogue.dialogue.name.ToUpper();
                 im_NPCIimage.sprite = dialogue.dialogue.image;
 
                 anim_dialogue.SetBool("Open", true);
@@ -152,13 +152,13 @@ public class UI_Controller_Map : MonoBehaviour
                 Debug.Log($"Starting conversation with {dialogue.dialogue.name}");
                 sentences.Clear();
                 go_shopbox.SetActive(true);
-                tx_Shopname.text = dialogue.dialogue.name;
+                tx_Shopname.text = dialogue.dialogue.name.ToUpper();
 
                 anim_shop.SetBool("Open", true);
 
                 foreach (string sentence in dialogue.dialogue.sentences)
                 {
-                    sentences.Enqueue(sentence);
+                    sentences.Enqueue(sentence.ToUpper());
                 }
                 DisplayNextSentence();
             }
@@ -174,6 +174,7 @@ public class UI_Controller_Map : MonoBehaviour
         }
 
         string sentence = sentences.Dequeue();
+        sentence = sentence.ToUpper();            
         Debug.Log(sentence);
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
@@ -196,7 +197,6 @@ public class UI_Controller_Map : MonoBehaviour
 
     IEnumerator TypeSentence(string sentence)
     {
-
         if (isshop)
         {
             tx_Shopdialogue.text = "";
