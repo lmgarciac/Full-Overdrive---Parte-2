@@ -13,12 +13,25 @@ public class Note_Controller : MonoBehaviour
     private WaitForSecondsRealtime waitenableinput = new WaitForSecondsRealtime(0.7f);
 
     public bool canbepressed;
-    //public bool inputenabled;
+    private bool buttoncanbepressed;
 
     public KeyCode keytopress;
 
+    private void OnEnable()
+    {
+        EventController.AddListener<QteMissEvent>(QteMissEvent);
+
+    }
+    private void OnDisable()
+    {
+        EventController.RemoveListener<QteMissEvent>(QteMissEvent);
+
+    }
+
+
     void Start()
     {
+        buttoncanbepressed = true;
         canbepressed = false;
         PlayerOptions.QteInputEnabled = true;
     }
@@ -30,7 +43,7 @@ public class Note_Controller : MonoBehaviour
 
         if (Input.GetKeyDown(keytopress))
         {
-            if (canbepressed && PlayerOptions.QteInputEnabled)
+            if (canbepressed && buttoncanbepressed)
 
             {
                 gameObject.SetActive(false);
@@ -55,32 +68,6 @@ public class Note_Controller : MonoBehaviour
 
                 EventController.TriggerEvent(ev_qtehit);
             }
-
-            else if (!canbepressed && PlayerOptions.QteInputEnabled)
-            {
-                PlayerOptions.QteInputEnabled = false;
-
-                if (this.tag == "ArrowBlue")
-                {
-                    ev_qtemiss.color = 0;
-                }
-                if (this.tag == "ArrowRed")
-                {
-                    ev_qtemiss.color = 1;
-                }
-                if (this.tag == "ArrowYellow")
-                {
-                    ev_qtemiss.color = 2;
-                }
-                if (this.tag == "ArrowGreen")
-                {
-                    ev_qtemiss.color = 3;
-                }
-
-                ev_qtemiss.enableinput = PlayerOptions.QteInputEnabled;
-                EventController.TriggerEvent(ev_qtemiss);
-                StartCoroutine(WaitEnableInput());
-            }
         }
     }
 
@@ -90,29 +77,6 @@ public class Note_Controller : MonoBehaviour
         {
             canbepressed = true;
         }
-        //if (other.tag == "ActivatorBlue")
-        //{
-        //    canbepressed = true;
-        //    ev_qtehit.color = 0;
-        //}
-
-        //else if (other.tag == "ActivatorRed")
-        //{
-        //    canbepressed = true;
-        //    ev_qtehit.color = 1;
-        //}
-
-        //else if (other.tag == "ActivatorYellow")
-        //{
-        //    canbepressed = true;
-        //    ev_qtehit.color = 2;
-        //}
-
-        //else if (other.tag == "ActivatorGreen")
-        //{
-        //    canbepressed = true;
-        //    ev_qtehit.color = 3;
-        //}
     }
     private void OnTriggerExit(Collider other)
     {
@@ -120,25 +84,26 @@ public class Note_Controller : MonoBehaviour
         {
             canbepressed = false;
         }
-        //if (other.tag == "ActivatorBlue")
-        //{
-        //    canbepressed = false;
-        //}
+    }
 
-        //else if(other.tag == "ActivatorRed")
-        //{
-        //    canbepressed = false;
-        //}
-
-        //else if (other.tag == "ActivatorYellow")
-        //{
-        //    canbepressed = false;
-        //}
-
-        //else if (other.tag == "ActivatorGreen")
-        //{
-        //    canbepressed = false;
-        //}
+    private void QteMissEvent(QteMissEvent qtemiss)
+    {
+        if (this.gameObject.tag == "ArrowYellow" && qtemiss.color == 2)
+        {
+            buttoncanbepressed = qtemiss.enableinput;
+        }
+        else if (this.gameObject.tag == "ArrowRed" && qtemiss.color == 1)
+        {
+            buttoncanbepressed = qtemiss.enableinput;
+        }
+        else if (this.gameObject.tag == "ArrowGreen" && qtemiss.color == 3)
+        {
+            buttoncanbepressed = qtemiss.enableinput;
+        }
+        else if (this.gameObject.tag == "ArrowBlue" && qtemiss.color == 0)
+        {
+            buttoncanbepressed = qtemiss.enableinput;
+        }
     }
 
     IEnumerator WaitEnableInput()
