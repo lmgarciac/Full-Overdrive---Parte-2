@@ -19,6 +19,8 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
+        PlayerOptions.InputEnabled = true;
+
         if (SessionData.LoadData())
         {
             nodata = false;
@@ -63,12 +65,21 @@ public class MainMenu : MonoBehaviour
             PlayerOptions.NewGame = true;
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             Fadeout();
+
+            //Set initial Stats
+
             Player_Status.Buffs = 2;
             Player_Status.Heals = 2;
             Player_Status.Money = 100;
             Player_Status.CurrentArea = 1;
             Player_Status.Collectables = 0;
             Player_Status.Picks = 0;
+
+            Player_Status.AttackStat = 10;
+            Player_Status.DefenseStat = 10;
+            Player_Status.MaxHPStat = 40;
+            Player_Status.MaxSPStat = 60;
+
         }
     }
 
@@ -79,12 +90,20 @@ public class MainMenu : MonoBehaviour
         PlayerOptions.NewGame = true;
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Fadeout();
+
         Player_Status.Buffs = 2;
         Player_Status.Heals = 2;
         Player_Status.Money = 100;
         Player_Status.CurrentArea = 1;
         Player_Status.Collectables = 0;
         Player_Status.Picks = 0;
+
+        //Set initial Stats
+
+        Player_Status.AttackStat = 10;
+        Player_Status.DefenseStat = 10;
+        Player_Status.MaxHPStat = 40;
+        Player_Status.MaxSPStat = 60;
 
         Debug.Log("Player Collectables: " + Player_Status.Collectables);
 

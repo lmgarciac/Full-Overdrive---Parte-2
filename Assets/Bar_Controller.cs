@@ -32,7 +32,7 @@ public class Bar_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && canenterbar && !dialogueactive)
+        if (Input.GetKeyDown(KeyCode.E) && canenterbar && !dialogueactive && PlayerOptions.InputEnabled)
         {
             //SceneManager.LoadScene("Battle", LoadSceneMode.Additive);
             //SceneManager.SetActiveScene(SceneManager.GetSceneByName("Battle"));

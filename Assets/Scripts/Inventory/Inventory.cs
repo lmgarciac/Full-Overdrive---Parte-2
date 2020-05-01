@@ -1,58 +1,152 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Events;
 
 public class Inventory : MonoBehaviour
 {
-   #region Singleton
+    #region Singleton
+    private readonly ObtainItemEvent ev_obtainitem = new ObtainItemEvent();
 
-   public static Inventory instance;
-   void Awake()
-   {
-      if (instance != null)
-      {
-         Debug.LogWarning("More than one instance of inventory Found");
-         return;
-      }
-      instance = this;
-   }
-   
-   #endregion
+    public static Inventory instance;
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogWarning("More than one instance of inventory Found");
+            return;
+        }
+        instance = this;
+    }
 
-   public delegate void OnItemChanged();
+    private void OnEnable()
+    {
+        EventController.AddListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
+        EventController.AddListener<BeforeSceneUnloadEvent>(BeforeSceneUnloadEvent);
+    }
 
-   public OnItemChanged onItemChangedCallback;
+    private void OnDisable()
+    {
+        EventController.RemoveListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
+        EventController.RemoveListener<BeforeSceneUnloadEvent>(BeforeSceneUnloadEvent);
+    }
 
-   
-   public int space = 20;
-   public List<Item> Items = new List<Item>();
+    #endregion
 
-   public bool Add(Item item)
-   {
-      if (!item.isDefaultItem)
-      {
-         if (Items.Count >= space)
-         {
-            Debug.Log("Not enough room");
-            return false;
-         }
-         Items.Add(item);  
-         //Llamo al delegate
-         if (onItemChangedCallback != null)
-         {
-            onItemChangedCallback.Invoke();   
-         }
-      }
-      return true;
-   }
+    public delegate void OnItemChanged();
 
-   public void Remove(Item item)
-       {
-          Items.Remove(item);
-          if (onItemChangedCallback != null)
-          {
-             onItemChangedCallback.Invoke();   
-          }
-       }
+    public OnItemChanged onItemChangedCallback;
 
+
+    public int space = 20;
+    public List<Item> Items = new List<Item>();
+
+    public bool Add(Item item)
+    {
+        if (!item.isDefaultItem)
+        {
+            if (Items.Count >= space)
+            {
+                Debug.Log("Not enough room");
+                return false;
+            }
+            item.equiped = false;
+            Items.Add(item);
+
+            //Evento para que escuche quien lo necesite
+            ev_obtainitem.item = item;
+            EventController.TriggerEvent(ev_obtainitem);
+            Debug.Log(item.name + " obtained");
+
+            //Llamo al delegate
+            if (onItemChangedCallback != null)
+            {
+                onItemChangedCallback.Invoke();
+            }
+        }
+
+        return true;
+    }
+
+    public void Remove(Item item)
+    {
+        Items.Remove(item);
+        if (onItemChangedCallback != null)
+        {
+            onItemChangedCallback.Invoke();
+        }
+    }
+
+    public void Consume(Item item)
+    {
+        if (item.name == "PILL OF HEALTH")
+        {
+            Player_Status.MaxHPStat += item.bonusMaxHP;
+        }
+
+        if (onItemChangedCallback != null)
+        {
+            onItemChangedCallback.Invoke();
+        }
+    }
+
+    public void Equip(Item item)
+    {
+        if (item.equiped == true)
+        {
+            item.equiped = false;
+            if (item.name == "AMP OF BATTLE")
+            {
+                Player_Status.AttackStat -= item.bonusAttack;
+            }
+            if (item.name == "BATTLE HEADPHONES")
+            {
+                Player_Status.DefenseStat -= item.bonusDefense;
+            }
+        }
+        else
+        {
+            item.equiped = true;
+
+            if (item.name == "AMP OF BATTLE")
+            {
+                Player_Status.AttackStat += item.bonusAttack;
+            }
+            if (item.name == "BATTLE HEADPHONES")
+            {
+                Player_Status.DefenseStat += item.bonusDefense;
+            }
+        }
+
+        if (onItemChangedCallback != null)
+        {
+            onItemChangedCallback.Invoke();
+        }
+    }
+
+    private void BeforeSceneUnloadEvent(BeforeSceneUnloadEvent scene)
+    {
+        foreach (var item in Items)
+        {
+            Debug.Log("Antes Item: " + item.name);
+        }
+        Player_Status.ItemList = Items;
+    }
+
+    private void AfterSceneLoadEvent(AfterSceneLoadEvent scene)
+    {
+        Items = Player_Status.ItemList;
+
+        foreach (var item in Items)
+        {
+            Debug.Log("Despues Item: " + item.name);
+        }
+
+        if (onItemChangedCallback != null)
+        {
+            Debug.Log("Callback OK!" + onItemChangedCallback);
+
+            onItemChangedCallback.Invoke();
+        }
+    }
 }

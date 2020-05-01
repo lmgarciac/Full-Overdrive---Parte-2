@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9829b2efac13f8f43b17ab51b47a69e7, type: 3}
+  m_Name: Amp of Test
+  m_EditorClassIdentifier: 
+  name: AMP OF BATTLE
+  icon: {fileID: 21300000, guid: 3fb473cfd2e277240aeff7a02f845e9b, type: 3}
+  isDefaultItem: 0
+  type: 1
+  bonusAttack: 5
+  bonusDefense: 0
+  bonusMaxHP: 0
+  bonusMaxSP: 0
+  equiped: 0
+  rotatingItem: {fileID: 3415620602513782986, guid: fd113654effd5a1418bc48d393a7ee23,
+    type: 3}

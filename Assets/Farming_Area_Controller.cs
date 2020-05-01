@@ -15,7 +15,7 @@ public class Farming_Area_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && canenterfarming)
+        if (Input.GetKeyDown(KeyCode.E) && canenterfarming && PlayerOptions.InputEnabled)
         {
             sceneController.FadeAndLoadScene("_Test_Farming");
         }

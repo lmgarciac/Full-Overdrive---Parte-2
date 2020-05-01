@@ -31,7 +31,16 @@ public class UI_Controller_Map : MonoBehaviour
     [SerializeField] private TextMeshProUGUI tx_shopmoney;
     [SerializeField] private TextMeshProUGUI tx_virtuosityLevel;
 
+    [SerializeField] private TextMeshProUGUI tx_itemobtained;
+    [SerializeField] private GameObject go_infoBox;
+    [SerializeField] private Vector3 rotatingItemPosition;
+
+
     [SerializeField] private Image im_virtuosity;
+
+    private WaitForSecondsRealtime waitshowitem = new WaitForSecondsRealtime(3f);
+
+    private GameObject childObject;
 
     private int currentarea;
 
@@ -75,6 +84,7 @@ public class UI_Controller_Map : MonoBehaviour
         EventController.AddListener<BuyEvent>(BuyEvent);
         EventController.AddListener<ExpandBoundariesEvent>(ExpandBoundariesEvent);
         EventController.AddListener<PayMoneyEvent>(PayMoneyEvent);
+        EventController.AddListener<ObtainItemEvent>(ObtainItemEvent);
 
     }
     private void OnDisable() {
@@ -85,6 +95,7 @@ public class UI_Controller_Map : MonoBehaviour
         EventController.RemoveListener<BuyEvent>(BuyEvent);
         EventController.RemoveListener<ExpandBoundariesEvent>(ExpandBoundariesEvent);
         EventController.RemoveListener<PayMoneyEvent>(PayMoneyEvent);
+        EventController.RemoveListener<ObtainItemEvent>(ObtainItemEvent);
 
     }
 
@@ -273,5 +284,26 @@ public class UI_Controller_Map : MonoBehaviour
     {
         tx_virtuosityLevel.text = expand.currentarea.ToString();
         im_virtuosity.fillAmount = 1.0f;
+    }
+
+    private void ObtainItemEvent(ObtainItemEvent item)
+    {
+        tx_itemobtained.text = item.item.name;
+        childObject = Instantiate(item.item.rotatingItem) as GameObject;
+        childObject.transform.parent = go_infoBox.transform;
+        childObject.transform.localPosition = rotatingItemPosition;
+        go_infoBox.GetComponent<Animator>().SetBool("Open", true);
+
+        PlayerOptions.InputEnabled = false;
+
+        StartCoroutine(WaitShowItem());
+    }
+
+    IEnumerator WaitShowItem()
+    {
+        yield return waitshowitem;
+        go_infoBox.GetComponent<Animator>().SetBool("Open", false);
+        Destroy(childObject);
+        PlayerOptions.InputEnabled = true;
     }
 }

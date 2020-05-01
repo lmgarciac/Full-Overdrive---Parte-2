@@ -82,6 +82,7 @@ public class Player_Controller : MonoBehaviour
         EventController.AddListener<DialogueStatusEvent>(DialogueStatusEvent);
         EventController.AddListener<QuitGameEvent>(QuitGameEvent);
         EventController.AddListener<PayMoneyEvent>(PayMoneyEvent);
+        EventController.AddListener<UseItemEvent>(UseItemEvent);
 
     }
 
@@ -92,6 +93,7 @@ public class Player_Controller : MonoBehaviour
         EventController.RemoveListener<DialogueStatusEvent>(DialogueStatusEvent);
         EventController.RemoveListener<QuitGameEvent>(QuitGameEvent);
         EventController.RemoveListener<PayMoneyEvent>(PayMoneyEvent);
+        EventController.RemoveListener<UseItemEvent>(UseItemEvent);
 
     }
 
@@ -105,7 +107,7 @@ public class Player_Controller : MonoBehaviour
         //Por el momento para testear
         //money = 1000;
         sceneController = FindObjectOfType<SceneController>();
-
+        PlayerOptions.InputEnabled = true;
     }
 
     void Update()
@@ -128,7 +130,7 @@ public class Player_Controller : MonoBehaviour
         if ((Input.GetKey(KeyCode.W) ||
             Input.GetKey(KeyCode.A) ||
             Input.GetKey(KeyCode.S) ||
-            Input.GetKey(KeyCode.D)) && enableinput)
+            Input.GetKey(KeyCode.D)) && enableinput && PlayerOptions.InputEnabled)
         {
             playerAnimator.SetBool("Walking", true);
             PlayerMovement();
@@ -138,13 +140,7 @@ public class Player_Controller : MonoBehaviour
             playerAnimator.SetBool("Walking", false);
         }
 
-        if ((Input.GetKey(KeyCode.G) && enableinput)) //Temporal jugar al Gameboy
-        {
-            sceneController.FadeAndLoadScene("GameKid");
-        }
-
-
-        if (Input.GetKey(KeyCode.UpArrow) && enableinput)
+        if (Input.GetKey(KeyCode.UpArrow) && enableinput && PlayerOptions.InputEnabled)
         {
             if (_camstate == (int)camstate.idle && !cameraplaying)
             {
@@ -165,7 +161,7 @@ public class Player_Controller : MonoBehaviour
                 StartCoroutine(WaitforCamera());
             }
         }
-        if (Input.GetKey(KeyCode.DownArrow) && enableinput)
+        if (Input.GetKey(KeyCode.DownArrow) && enableinput && PlayerOptions.InputEnabled)
         {
             if (_camstate == (int)camstate.idle && !cameraplaying)
             {
@@ -441,6 +437,17 @@ public class Player_Controller : MonoBehaviour
         Map_Status.CameraRotation = gameCamera.transform.rotation;
         Map_Status.CameraPosition = gameCamera.transform.position;
     }
+
+    //Inventory Usage
+
+    private void UseItemEvent(UseItemEvent useitem)
+    {
+        if (useitem.item.name == "GAMEKID")
+        {
+            sceneController.FadeAndLoadScene("GameKid");
+        }
+    }
+
 
     IEnumerator WaitEnableInput()
     {

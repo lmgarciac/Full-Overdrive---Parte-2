@@ -9,14 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 938f93761cd7495409c343ab3430dbe0, type: 3}
-  m_Name: Gamekid
+  m_Script: {fileID: 11500000, guid: 9829b2efac13f8f43b17ab51b47a69e7, type: 3}
+  m_Name: GameKid 1
   m_EditorClassIdentifier: 
-  name: GameKID
-  icon: {fileID: 21300000, guid: 4f751986dfb46ee4a906453ee5383251, type: 3}
+  name: GAMEKID
+  icon: {fileID: 21300000, guid: 8a55a50aded13f041942b0aad0a290fe, type: 3}
   isDefaultItem: 0
-  type: 0
+  type: 2
   equiped: 0
-  equipSlot: 0
-  defModifier: 5
-  dmgModifier: 1
+  rotatingItem: {fileID: 138640366495746610, guid: e83f4fa22eacd884692400d6e4687303,
+    type: 3}

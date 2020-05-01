@@ -8,14 +8,24 @@ public class InventorySlot : MonoBehaviour
     private Item item;
     public Image icon;
     public Button removeButton;
+    public Image equipedImage;
     
     public void AddItem(Item newItem)
     {
         item = newItem;
-
+        Debug.Log("Paso por aca el: " + item.name);
         icon.sprite = item.icon;
         icon.enabled = true;
-        removeButton.interactable = true;
+        //removeButton.interactable = true;
+
+        if (item.equiped == true)
+        {
+            equipedImage.enabled = true;
+        }
+        else
+        {
+            equipedImage.enabled = false;
+        }
 
     }
     
@@ -38,8 +48,7 @@ public class InventorySlot : MonoBehaviour
     {
         if (item != null)
         {
-            item.Use();
-            
+            item.Use();            
         }
             
     }

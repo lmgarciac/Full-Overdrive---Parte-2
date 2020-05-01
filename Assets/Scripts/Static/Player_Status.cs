@@ -11,17 +11,67 @@ public static class Player_Status
     private static int heals;
     private static int buffs;
     private static int money;
-    private static int currentarea; //Area 1, Area 2 or Area 3
 
     //Player quests status
 
     private static List<Quests> questlist = new List<Quests>();
 
-    //public stat Player_Status()
-    //{
-    //    questlist = new List<Quests>();
-    //}
+    //Player Inventory
 
+    public static List<Item> itemlist = new List<Item>();
+
+    //Player Stats
+    private static int attackStat;
+    private static int defenseStat;
+    private static int maxHPStat;
+    private static int maxSPStat;
+    private static int currentarea; //Area 1, Area 2 or Area 3
+
+    public static int AttackStat
+    {
+        get
+        {
+            return attackStat;
+        }
+        set
+        {
+            attackStat = value;
+        }
+    }
+
+    public static int DefenseStat
+    {
+        get
+        {
+            return defenseStat;
+        }
+        set
+        {
+            defenseStat = value;
+        }
+    }
+    public static int MaxHPStat
+    {
+        get
+        {
+            return maxHPStat;
+        }
+        set
+        {
+            maxHPStat = value;
+        }
+    }
+    public static int MaxSPStat
+    {
+        get
+        {
+            return maxSPStat;
+        }
+        set
+        {
+            maxSPStat = value;
+        }
+    }
 
     public static int Collectables
     {
@@ -46,7 +96,19 @@ public static class Player_Status
             questlist = value;
         }
     }
-    
+
+    public static List<Item> ItemList
+    {
+        get
+        {
+            return itemlist;
+        }
+        set
+        {
+            itemlist = value;
+        }
+    }
+
     public static Quests FindQuest (string questname)
     {
         for (int i = 0; i < questlist.Count; ++i)

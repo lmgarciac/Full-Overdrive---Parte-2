@@ -1,12 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
 
 public class InventoryUI : MonoBehaviour
 {
     public Transform itemsParents;    //Le indica quien es el padre de los InventorySlots
     public GameObject inventoryUI;
-    
+
+    [SerializeField] private TextMeshProUGUI tx_attackStat;
+    [SerializeField] private TextMeshProUGUI tx_defenseStat;
+    [SerializeField] private TextMeshProUGUI tx_maxHPStat;
+    [SerializeField] private TextMeshProUGUI tx_maxSPStat;
+    [SerializeField] private TextMeshProUGUI tx_virtuosity;
+
+
     Inventory inventory;
 
     
@@ -23,9 +32,22 @@ public class InventoryUI : MonoBehaviour
     {
         if (Input.GetButtonDown("Inventory"))
         {
-            inventoryUI.SetActive(!inventoryUI.activeSelf);
+            bool open = inventoryUI.GetComponent<Animator>().GetBool("Open");
+
+            if (!open && PlayerOptions.InputEnabled)
+            {
+                inventoryUI.GetComponent<Animator>().SetBool("Open", !open);
+                PlayerOptions.InputEnabled = false;
+            }
+
+            if (open)
+            {
+                inventoryUI.GetComponent<Animator>().SetBool("Open", !open);
+                PlayerOptions.InputEnabled = true;
+            }
+
+            UpdateUI();
         }
-        //Debug.Log("UPDATING UI INVENTORY");
     }
     
     void UpdateUI()
@@ -35,13 +57,21 @@ public class InventoryUI : MonoBehaviour
             if (i < inventory.Items.Count)
             {
                 slots[i].AddItem(inventory.Items[i]); //Llamo al script dentro de cada Slot parado en i y agrego el item de la variable inventory
-                Debug.Log(slots[i]);
+                Debug.Log("Paso por el for");
             }
             else
             {
                 slots[i].ClearSlot();
             }
         }
-        
+
+        //Update Stats
+        tx_attackStat.text = Player_Status.AttackStat.ToString();
+        tx_defenseStat.text = Player_Status.DefenseStat.ToString();
+        tx_maxHPStat.text = Player_Status.MaxHPStat.ToString();
+        tx_maxSPStat.text = Player_Status.MaxSPStat.ToString();
+        tx_virtuosity.text = Player_Status.CurrentArea.ToString();
+
+
     }
 }

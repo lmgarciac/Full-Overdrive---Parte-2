@@ -196,5 +196,16 @@ namespace Events
         public int p2score;
     }
 
+    //Inventory Events
 
+    public class UseItemEvent : GameEvent
+    {
+        public Item item;
+    }
+
+    public class ObtainItemEvent : GameEvent
+    {
+        public Item item;
+        public GameObject rotatingItem;
+    }
 }

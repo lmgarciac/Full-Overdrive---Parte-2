@@ -27,7 +27,7 @@ public class Shop_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && cantalk)
+        if (Input.GetKeyDown(KeyCode.E) && cantalk && PlayerOptions.InputEnabled)
         {
             if (!starttalking)
             {

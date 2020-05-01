@@ -9,14 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 938f93761cd7495409c343ab3430dbe0, type: 3}
-  m_Name: Gamekid
+  m_Script: {fileID: 11500000, guid: 9829b2efac13f8f43b17ab51b47a69e7, type: 3}
+  m_Name: Pedal
   m_EditorClassIdentifier: 
-  name: GameKID
-  icon: {fileID: 21300000, guid: 4f751986dfb46ee4a906453ee5383251, type: 3}
+  name: Pedal
+  icon: {fileID: 21300000, guid: 017a3479c7db9024489b7b736674cff2, type: 3}
   isDefaultItem: 0
   type: 0
   equiped: 0
-  equipSlot: 0
-  defModifier: 5
-  dmgModifier: 1

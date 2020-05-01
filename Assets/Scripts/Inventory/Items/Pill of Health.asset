@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9829b2efac13f8f43b17ab51b47a69e7, type: 3}
+  m_Name: Pill of Health
+  m_EditorClassIdentifier: 
+  name: PILL OF HEALTH
+  icon: {fileID: 21300000, guid: 84e00b398c78b844d9d7f36620f4bfc6, type: 3}
+  isDefaultItem: 0
+  type: 3
+  bonusAttack: 0
+  bonusDefense: 0
+  bonusMaxHP: 20
+  bonusMaxSP: 0
+  equiped: 0
+  rotatingItem: {fileID: 1040519165757309768, guid: 1f932ee6fbf6b484494ac8ccd130ee45,
+    type: 3}

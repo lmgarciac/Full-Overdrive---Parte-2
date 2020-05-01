@@ -8,6 +8,20 @@ public static class PlayerOptions
     private static float volume;
     private static bool newGame;
 
+    private static bool inputEnabled;
+
+    public static bool InputEnabled
+    {
+        get
+        {
+            return inputEnabled;
+        }
+        set
+        {
+            inputEnabled = value;
+        }
+    }
+
     public static int Difficulty
     {
         get
