@@ -192,6 +192,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1151763298672706713, guid: 4d49f2cbede4aa842ac826bafa92c74c,
+        type: 3}
+      propertyPath: QteSo
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151763298672706713, guid: 4d49f2cbede4aa842ac826bafa92c74c,
+        type: 3}
+      propertyPath: manualQte
+      value: QTE_Template_spe_1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d49f2cbede4aa842ac826bafa92c74c, type: 3}
 --- !u!1001 &243269120

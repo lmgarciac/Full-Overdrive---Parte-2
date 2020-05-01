@@ -136,6 +136,7 @@ MonoBehaviour:
   pressedImage: {fileID: 0}
   actionkey: 273
   ParticleNoteHit: {fileID: 8987205208939043255}
+  ParticleKeyInput: {fileID: 1918126119942319956}
 --- !u!65 &365892871136868290
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -147,7 +148,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.6, z: 0.2}
+  m_Size: {x: 1, y: 0.8, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &365892871136868293
 Rigidbody:
@@ -267,6 +268,7 @@ MonoBehaviour:
   pressedImage: {fileID: 0}
   actionkey: 275
   ParticleNoteHit: {fileID: 1066223747305910395}
+  ParticleKeyInput: {fileID: 3165655296040238207}
 --- !u!65 &365892871628410445
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -278,7 +280,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.6, z: 0.2}
+  m_Size: {x: 1, y: 0.8, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &365892871628410444
 Rigidbody:
@@ -398,6 +400,7 @@ MonoBehaviour:
   pressedImage: {fileID: 0}
   actionkey: 276
   ParticleNoteHit: {fileID: 3820418780509502049}
+  ParticleKeyInput: {fileID: 272538448903060965}
 --- !u!65 &365892871664078382
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -409,7 +412,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.6, z: 0.2}
+  m_Size: {x: 1, y: 0.8, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &365892871664078369
 Rigidbody:
@@ -529,6 +532,7 @@ MonoBehaviour:
   pressedImage: {fileID: 0}
   actionkey: 274
   ParticleNoteHit: {fileID: 3297679782757097266}
+  ParticleKeyInput: {fileID: 8871376985628146444}
 --- !u!65 &365892871985154893
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -540,7 +544,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.6, z: 0.2}
+  m_Size: {x: 1, y: 0.8, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &365892871985154892
 Rigidbody:

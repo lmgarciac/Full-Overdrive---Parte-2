@@ -11,6 +11,7 @@ public class QTE_Button_Controller : MonoBehaviour
     public KeyCode actionkey;
 
     [SerializeField] private ParticleSystem ParticleNoteHit;
+    [SerializeField] private GameObject ParticleKeyInput;
 
 
     void Start()
@@ -22,10 +23,14 @@ public class QTE_Button_Controller : MonoBehaviour
     private void OnEnable()
     {
         EventController.AddListener<QteHitEvent>(QteHitEvent);
+        EventController.AddListener<QteMissEvent>(QteMissEvent);
+
     }
     private void OnDisable()
     {
         EventController.RemoveListener<QteHitEvent>(QteHitEvent);
+        EventController.RemoveListener<QteMissEvent>(QteMissEvent);
+
     }
 
     void Update()
@@ -60,5 +65,56 @@ public class QTE_Button_Controller : MonoBehaviour
         {
             ParticleNoteHit.Play();
         }
+    }
+
+    private void QteMissEvent(QteMissEvent qtemiss)
+    {
+
+        if (qtemiss.color == 0 && this.tag == "ActivatorBlue")
+        {
+            if (qtemiss.enableinput)
+            {
+                ParticleKeyInput.SetActive(true);
+            }
+            else
+            {
+                ParticleKeyInput.SetActive(false);
+            }
+        }
+        if (qtemiss.color == 1 && this.tag == "ActivatorRed")
+        {
+            if (qtemiss.enableinput)
+            {
+                ParticleKeyInput.SetActive(true);
+            }
+            else
+            {
+                ParticleKeyInput.SetActive(false);
+            }
+        }
+        if (qtemiss.color == 2 && this.tag == "ActivatorYellow")
+        {
+            if (qtemiss.enableinput)
+            {
+                ParticleKeyInput.SetActive(true);
+            }
+            else
+            {
+                ParticleKeyInput.SetActive(false);
+            }
+        }
+        if (qtemiss.color == 3 && this.tag == "ActivatorGreen")
+        {
+            if (qtemiss.enableinput)
+            {
+                ParticleKeyInput.SetActive(true);
+            }
+            else
+            {
+                ParticleKeyInput.SetActive(false);
+            }
+        }
+
+
     }
 }

@@ -106,6 +106,12 @@ namespace Events
         public int noteamount;
      }
 
+    public class QteMissEvent : GameEvent
+    {
+        public bool enableinput;
+        public int color; //0 Blue, 1 Red, 2 Yellow, 3 Green
+    }
+
     public class AnimEvent : GameEvent
     {
         public bool playerturn;
