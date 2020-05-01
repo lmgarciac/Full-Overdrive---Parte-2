@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: GameKid 1
   m_EditorClassIdentifier: 
   name: GAMEKID
-  icon: {fileID: 21300000, guid: 8a55a50aded13f041942b0aad0a290fe, type: 3}
+  icon: {fileID: 21300000, guid: 5f6eae3273cd51c48a0255fbfc18bc08, type: 3}
   isDefaultItem: 0
   type: 2
+  bonusAttack: 0
+  bonusDefense: 0
+  bonusMaxHP: 0
+  bonusMaxSP: 0
   equiped: 0
   rotatingItem: {fileID: 138640366495746610, guid: e83f4fa22eacd884692400d6e4687303,
     type: 3}

@@ -14,6 +14,8 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI tx_maxHPStat;
     [SerializeField] private TextMeshProUGUI tx_maxSPStat;
     [SerializeField] private TextMeshProUGUI tx_virtuosity;
+    [SerializeField] private TextMeshProUGUI tx_redpills;
+    [SerializeField] private TextMeshProUGUI tx_bluepills;
 
 
     Inventory inventory;
@@ -71,6 +73,9 @@ public class InventoryUI : MonoBehaviour
         tx_maxHPStat.text = Player_Status.MaxHPStat.ToString();
         tx_maxSPStat.text = Player_Status.MaxSPStat.ToString();
         tx_virtuosity.text = Player_Status.CurrentArea.ToString();
+
+        tx_redpills.text = Player_Status.Heals.ToString();
+        tx_bluepills.text = Player_Status.Buffs.ToString();
 
 
     }

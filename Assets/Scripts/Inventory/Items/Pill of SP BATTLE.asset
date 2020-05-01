@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9829b2efac13f8f43b17ab51b47a69e7, type: 3}
-  m_Name: Headphones of Test
+  m_Name: Pill of SP BATTLE
   m_EditorClassIdentifier: 
-  name: BATTLE HEADPHONES
-  icon: {fileID: 21300000, guid: c7dbf5b7550e39f4e988c4f870fa1efe, type: 3}
+  name: PILL OF SP BATTLE
+  icon: {fileID: 21300000, guid: 9f886acd3a886064cab4737d3c6c1f03, type: 3}
   isDefaultItem: 0
-  type: 1
+  type: 0
   bonusAttack: 0
-  bonusDefense: 5
+  bonusDefense: 0
   bonusMaxHP: 0
   bonusMaxSP: 0
   equiped: 0
-  rotatingItem: {fileID: 3723004222990998179, guid: 481c8a2f9452b4c4e9ba160222ed3905,
+  rotatingItem: {fileID: 5811789661451727429, guid: ba8cf4d27f4d9d547b89277066316182,
     type: 3}

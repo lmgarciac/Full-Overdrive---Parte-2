@@ -40,6 +40,10 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] private int targetPicks;
     [SerializeField] private int targetCollectables;
 
+    //[SerializeField] private Item healItem;
+    //[SerializeField] private Item buffItem;
+
+
     private int currentarea;
     
     private Item item;
@@ -394,6 +398,7 @@ public class Player_Controller : MonoBehaviour
 
             heals++;
             Player_Status.Heals++;
+            //Inventory.instance.Add(healItem);
 
             EventController.TriggerEvent(ev_buy);
         }
@@ -411,6 +416,7 @@ public class Player_Controller : MonoBehaviour
 
             buffs++;
             Player_Status.Buffs++;
+            //Inventory.instance.Add(buffItem);
 
             EventController.TriggerEvent(ev_buy);
         }
