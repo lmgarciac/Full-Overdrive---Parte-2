@@ -166,7 +166,7 @@ void Update()
 
     private void QteMissEvent(QteMissEvent qtemiss)
     {
-        if (!qtemiss.enableinput)
+        if (!(qtemiss.enableinput))
         {
             so_miss = (AudioClip)Resources.Load<AudioClip>($"Sound/so_guitar_fail_{Random.Range(1, 4)}");
             soundPlayer.clip = so_miss;

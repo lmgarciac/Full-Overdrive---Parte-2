@@ -10,6 +10,8 @@ public static class PlayerOptions
 
     private static bool inputEnabled;
 
+    private static bool qteInputEnabled; //For QTE usage
+
     public static bool InputEnabled
     {
         get
@@ -21,6 +23,19 @@ public static class PlayerOptions
             inputEnabled = value;
         }
     }
+
+    public static bool QteInputEnabled
+    {
+        get
+        {
+            return qteInputEnabled;
+        }
+        set
+        {
+            qteInputEnabled = value;
+        }
+    }
+
 
     public static int Difficulty
     {

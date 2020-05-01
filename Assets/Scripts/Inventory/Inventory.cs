@@ -79,7 +79,7 @@ public class Inventory : MonoBehaviour
 
     public void Consume(Item item)
     {
-        if (item.name == "PILL OF HEALTH")
+        if (item.name == "UNKNOWN DRINK")
         {
             Player_Status.MaxHPStat += item.bonusMaxHP;
         }

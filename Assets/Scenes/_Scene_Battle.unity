@@ -13618,7 +13618,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625280935}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &625280939
 Camera:
   m_ObjectHideFlags: 0
@@ -55205,6 +55205,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bld_Salon_1
       objectReference: {fileID: 0}
+    - target: {fileID: 2502203975881118265, guid: 36c406a027f510941a2fb5d9d0c2444a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 36c406a027f510941a2fb5d9d0c2444a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -55274,11 +55279,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.0108372
-      objectReference: {fileID: 0}
-    - target: {fileID: 2502203975881118265, guid: 36c406a027f510941a2fb5d9d0c2444a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 36c406a027f510941a2fb5d9d0c2444a,
         type: 3}
@@ -55709,6 +55709,7 @@ MonoBehaviour:
   so_win: {fileID: 8300000, guid: 7a4894176e66cb74fbf66f6b354a81ef, type: 3}
   so_qtehit: {fileID: 8300000, guid: 72e8f8b8d4e8dc2439bdd4e6b86219c2, type: 3}
   so_qtemiss: {fileID: 8300000, guid: f94d0413c2c2a364183d8d9ad978cbae, type: 3}
+  so_miss: {fileID: 0}
   licktriggered: 0
 --- !u!82 &1945335166
 AudioSource:

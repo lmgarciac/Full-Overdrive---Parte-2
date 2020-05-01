@@ -13,21 +13,25 @@ public class Note_Controller : MonoBehaviour
     private WaitForSecondsRealtime waitenableinput = new WaitForSecondsRealtime(0.7f);
 
     public bool canbepressed;
-    public bool inputenabled;
+    //public bool inputenabled;
 
     public KeyCode keytopress;
 
     void Start()
     {
         canbepressed = false;
-        inputenabled = true;
+        PlayerOptions.QteInputEnabled = true;
     }
 
     void Update()
     {
+        //Debug.Log("Can be pressed: " + canbepressed);
+        //Debug.Log("Input enabled: " + PlayerOptions.QteInputEnabled);
+
         if (Input.GetKeyDown(keytopress))
         {
-            if(canbepressed && inputenabled)
+            if (canbepressed && PlayerOptions.QteInputEnabled)
+
             {
                 gameObject.SetActive(false);
                 ev_qtehit.success = true;
@@ -52,9 +56,9 @@ public class Note_Controller : MonoBehaviour
                 EventController.TriggerEvent(ev_qtehit);
             }
 
-            if (!canbepressed && inputenabled)
+            else if (!canbepressed && PlayerOptions.QteInputEnabled)
             {
-                inputenabled = false;
+                PlayerOptions.QteInputEnabled = false;
 
                 if (this.tag == "ArrowBlue")
                 {
@@ -73,7 +77,7 @@ public class Note_Controller : MonoBehaviour
                     ev_qtemiss.color = 3;
                 }
 
-                ev_qtemiss.enableinput = inputenabled;
+                ev_qtemiss.enableinput = PlayerOptions.QteInputEnabled;
                 EventController.TriggerEvent(ev_qtemiss);
                 StartCoroutine(WaitEnableInput());
             }
@@ -140,7 +144,7 @@ public class Note_Controller : MonoBehaviour
     IEnumerator WaitEnableInput()
     {
         yield return waitenableinput;
-        inputenabled = true;
+        PlayerOptions.QteInputEnabled = true;
 
         if (this.tag == "ArrowBlue")
         {
@@ -159,7 +163,7 @@ public class Note_Controller : MonoBehaviour
             ev_qtemiss.color = 3;
         }
 
-        ev_qtemiss.enableinput = inputenabled;
+        ev_qtemiss.enableinput = PlayerOptions.QteInputEnabled;
         EventController.TriggerEvent(ev_qtemiss);
     }
 

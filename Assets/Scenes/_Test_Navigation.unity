@@ -29835,9 +29835,9 @@ MonoBehaviour:
   targetScaleDuration: 3
   dialogue:
     image: {fileID: 21300000, guid: 8837a46c8ab11b64e99c6bda6261e9d2, type: 3}
-    name: Obi Dwarf
+    name: OBI DWARF
     sentences:
-    - You've unlocked a new area of the city!
+    - YOU'VE UNLOCKED A NEW AREA OF THE CITY!
 --- !u!4 &756758993
 Transform:
   m_ObjectHideFlags: 0
@@ -31647,7 +31647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 0.1
   interactionTransform: {fileID: 814347570}
-  item: {fileID: 11400000, guid: 60f35708655020f40ae9c45082424b8d, type: 2}
+  item: {fileID: 11400000, guid: ca7ef0cd62ffb634599f2e91a5572176, type: 2}
 --- !u!65 &814347567
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -50344,7 +50344,7 @@ PrefabInstance:
     - target: {fileID: 388127827913326802, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
       propertyPath: dialogTree.Array.data[2].sentences.Array.data[2]
-      value: WELL, A BET IS A BET. HERE, HAVE THIS.
+      value: WELL, A BET IS A BET. HERE, YOU CAN HAVE THIS.
       objectReference: {fileID: 0}
     - target: {fileID: 388127827913326802, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
@@ -50378,7 +50378,7 @@ PrefabInstance:
         type: 3}
       propertyPath: questItems.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 60f35708655020f40ae9c45082424b8d,
+      objectReference: {fileID: 11400000, guid: 8501337e8b665b545a1f7829fd8f5e3c,
         type: 2}
     - target: {fileID: 388127826884432217, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
@@ -69114,7 +69114,7 @@ PrefabInstance:
     - target: {fileID: 388127827913326802, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
       propertyPath: dialogTree.Array.data[1].sentences.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 388127827913326802, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
@@ -69197,8 +69197,7 @@ PrefabInstance:
     - target: {fileID: 388127827913326802, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
       propertyPath: dialogTree.Array.data[1].sentences.Array.data[1]
-      value: HAVE THIS, I FOUND IT IT THE TRASH... MAYBE YOU COULD GIVE SOME USE TO
-        THEM.
+      value: HAVE THIS... I HAVE TO QUIT DRINKING ANYWAY.
       objectReference: {fileID: 0}
     - target: {fileID: 388127827913326802, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
@@ -69226,8 +69225,13 @@ PrefabInstance:
         type: 3}
       propertyPath: questItems.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 8501337e8b665b545a1f7829fd8f5e3c,
+      objectReference: {fileID: 11400000, guid: ca7ef0cd62ffb634599f2e91a5572176,
         type: 2}
+    - target: {fileID: 388127827913326802, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
+        type: 3}
+      propertyPath: dialogTree.Array.data[1].sentences.Array.data[2]
+      value: SEE YA!
+      objectReference: {fileID: 0}
     - target: {fileID: 388127826884432217, guid: f4e7ea58fdb7a4140b83f5e49dc41133,
         type: 3}
       propertyPath: m_Name
@@ -77524,19 +77528,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: ac615df1fdd8be04ba378f7642f19543,
         type: 3}
-    - target: {fileID: 1850088239, guid: 0fe66f2c7f9b1f54089435a36bba2df4, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1910186952, guid: 0fe66f2c7f9b1f54089435a36bba2df4, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 47936840, guid: 0fe66f2c7f9b1f54089435a36bba2df4, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1906670835, guid: 0fe66f2c7f9b1f54089435a36bba2df4, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1850088239, guid: 0fe66f2c7f9b1f54089435a36bba2df4, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1910186952, guid: 0fe66f2c7f9b1f54089435a36bba2df4, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}

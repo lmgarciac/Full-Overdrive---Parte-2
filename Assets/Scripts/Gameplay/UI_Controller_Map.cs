@@ -140,7 +140,7 @@ public class UI_Controller_Map : MonoBehaviour
 
             tx_shopmoney.text = money.ToString();
             tx_shopbuffs.text = buffs.ToString();
-            tx_heals.text = heals.ToString();
+            tx_shopheals.text = heals.ToString();
 
 
             if (dialogue.talking)
