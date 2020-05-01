@@ -43,23 +43,32 @@
           <e p="SceneController.cs" t="Include" />
         </e>
         <e p="Scripts" t="Include">
+          <e p="CameraRenderTexture.cs" t="Include" />
           <e p="Dialogue.cs" t="Include" />
           <e p="EventController" t="Include">
             <e p="EventController.cs" t="Include" />
             <e p="GameEvents.cs" t="Include" />
           </e>
+          <e p="GameBoy.shader" t="Include" />
           <e p="Gameplay" t="Include">
             <e p="AnimationController.cs" t="Include" />
             <e p="Arrow_Controller.cs" t="Include" />
+            <e p="Ball.cs" t="Include" />
             <e p="Battle_Controller.cs" t="Include" />
+            <e p="BlockController.cs" t="Include" />
+            <e p="BlockGenerator.cs" t="Include" />
             <e p="Character_Controller.cs" t="Include" />
             <e p="Enemy_Controller.cs" t="Include" />
             <e p="EnemyController.cs" t="Include" />
+            <e p="GameController.cs" t="Include" />
+            <e p="Limit.cs" t="Include" />
             <e p="Notas.cs" t="Include" />
             <e p="Note_Controller.cs" t="Include" />
             <e p="Pause.cs" t="Include" />
+            <e p="Player.cs" t="Include" />
             <e p="QTE_Button_Controller.cs" t="Include" />
             <e p="QTE_Main_Controller.cs" t="Include" />
+            <e p="Scores.cs" t="Include" />
             <e p="Sound_Controller.cs" t="Include" />
             <e p="Sound_Controller_Map.cs" t="Include" />
             <e p="UI_Controller.cs" t="Include" />
@@ -124,7 +133,10 @@
           </e>
           <e p="UI" t="Include">
             <e p="MainMenu.cs" t="Include" />
+            <e p="MainMenuPong.cs" t="Include" />
             <e p="ScriptSceneLogo.cs" t="Include" />
+            <e p="UIController.cs" t="Include" />
+            <e p="UIController_Results.cs" t="Include" />
           </e>
           <e p="UI_Controller_ObiYank.cs" t="Include" />
         </e>

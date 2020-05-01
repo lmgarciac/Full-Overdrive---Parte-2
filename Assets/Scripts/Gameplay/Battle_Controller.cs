@@ -4,6 +4,7 @@ using UnityEngine;
 using Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class Battle_Controller : FiniteStateMachine
@@ -59,7 +60,9 @@ public class Battle_Controller : FiniteStateMachine
     [SerializeField] private GameObject enemyObject;
 
 
-
+    public TextMeshProUGUI cantRedPill;
+    public TextMeshProUGUI cantBluePill;
+    
     public enum characterid
     {
         player = 0,
@@ -240,6 +243,8 @@ public class Battle_Controller : FiniteStateMachine
 
     protected override void Update()
     {
+        cantRedPill.text = playerheal.ToString();
+        cantBluePill.text = playerbuff.ToString();
         // Check Exit
         if (Input.GetKeyDown(KeyCode.E) && gameover)
         {
@@ -549,20 +554,24 @@ public class Battle_Controller : FiniteStateMachine
                 defenseenemy = 1;
 
             }
-            else if (ev_action.characterid == (int)characterid.player && ev_action.action == (int)action.heal)
+            else if (ev_action.characterid == (int)characterid.player && ev_action.action == (int)action.heal && playerheal > 0)
             {
                 Debug.Log($"Heal: {CalculateHeal()}");
                 ev_action.damage = (int)(CalculateHeal() * buffplayer);
 
                 //player.hp = player.hp - ev_action.damage;//Negative damage
                 player.hp = Mathf.Clamp(player.hp - ev_action.damage, 0, playerhp);
-
+                playerheal = playerheal - 1;
+                cantRedPill.text = playerheal.ToString();
                 buffplayer = 1;
                 defenseenemy = 1;
 
             }
-            else if (ev_action.characterid == (int)characterid.player && ev_action.action == (int)action.buff)
+            else if (ev_action.characterid == (int)characterid.player && ev_action.action == (int)action.buff && playerbuff > 0)
             {
+                
+                playerbuff = playerbuff - 1;
+                cantBluePill.text = playerbuff.ToString();
                 buffplayer = CalculateBuff();
                 ev_action.buff = buffplayer;
                 defenseenemy = 1;
