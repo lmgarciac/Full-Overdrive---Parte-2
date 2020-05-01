@@ -71,6 +71,7 @@ public class AnimationController : MonoBehaviour
         EventController.AddListener<AnimEvent>(AnimEvent);
         EventController.AddListener<ActionEvent>(ActionEvent);
         EventController.AddListener<EnableTurnEvent>(EnableTurnEvent);
+        EventController.AddListener<QteMissEvent>(QteMissEvent);
 
     }
     private void OnDisable()
@@ -78,6 +79,7 @@ public class AnimationController : MonoBehaviour
         EventController.RemoveListener<AnimEvent>(AnimEvent);
         EventController.RemoveListener<ActionEvent>(ActionEvent);
         EventController.RemoveListener<EnableTurnEvent>(EnableTurnEvent);
+        EventController.RemoveListener<QteMissEvent>(QteMissEvent);
 
     }
 
@@ -334,5 +336,13 @@ public class AnimationController : MonoBehaviour
     private void EnableTurnEvent(EnableTurnEvent turn)
     {
         currentaction = (int)action.none;
+    }
+
+    private void QteMissEvent(QteMissEvent qtemiss)
+    {
+        if (!qtemiss.enableinput)
+        {
+            an_Camera.SetBool("Shake", true);
+        }
     }
 }

@@ -16,6 +16,7 @@ public class Sound_Controller : MonoBehaviour
     [SerializeField] private AudioClip so_win;
     [SerializeField] private AudioClip so_qtehit;
     [SerializeField] private AudioClip so_qtemiss;
+    [SerializeField] private AudioClip so_miss;
 
     private enum counterstatus {ready = 0, set =1, go=2}
     private AudioClip so_lick;
@@ -85,6 +86,7 @@ void Update()
         EventController.AddListener<QtePlayEvent>(QtePlayEvent); 
         EventController.AddListener<EnableTurnEvent>(EnableTurnEvent);
         EventController.AddListener<QtePrizeEvent>(QtePrizeEvent);
+        EventController.AddListener<QteMissEvent>(QteMissEvent);
 
         EventController.AddListener<AnimEvent>(AnimEvent);
         //EventController.AddListener<ActionEvent>(ActionEvent);
@@ -103,6 +105,7 @@ void Update()
         EventController.RemoveListener<QtePlayEvent>(QtePlayEvent); 
         EventController.RemoveListener<EnableTurnEvent>(EnableTurnEvent);
         EventController.RemoveListener<QtePrizeEvent>(QtePrizeEvent);
+        EventController.RemoveListener<QteMissEvent>(QteMissEvent);
 
         EventController.RemoveListener<AnimEvent>(AnimEvent);
         //EventController.RemoveListener<ActionEvent>(ActionEvent);
@@ -159,6 +162,17 @@ void Update()
         soundPlayer.clip = so_qtemiss;
         soundPlayer.Play();            
         }
+    }
+
+    private void QteMissEvent(QteMissEvent qtemiss)
+    {
+        if (!qtemiss.enableinput)
+        {
+            so_miss = (AudioClip)Resources.Load<AudioClip>($"Sound/so_guitar_fail_{Random.Range(1, 4)}");
+            soundPlayer.clip = so_miss;
+            soundPlayer.Play();
+            Debug.Log("Sonido Miss");
+        }     
     }
 
     private void EnableTurnEvent (EnableTurnEvent enableturn)
