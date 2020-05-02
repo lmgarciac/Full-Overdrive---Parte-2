@@ -15,5 +15,21 @@ MonoBehaviour:
   Areas:
   - targetPicks: 1
     targetCollectables: 3
+    enemyAttack: 10
+    enemyDefense: 10
+    enemyinitHP: 30
+    enemyinitSP: 30
+    enemyMaxHP: 30
+    enemyMaxSP: 60
+    enemyHeals: 0
+    enemyBuffs: 0
   - targetPicks: 2
     targetCollectables: 6
+    enemyAttack: 13
+    enemyDefense: 13
+    enemyinitHP: 40
+    enemyinitSP: 50
+    enemyMaxHP: 40
+    enemyMaxSP: 60
+    enemyHeals: 0
+    enemyBuffs: 0
