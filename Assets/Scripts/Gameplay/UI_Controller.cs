@@ -30,6 +30,8 @@ public class UI_Controller : MonoBehaviour
 
     [SerializeField] private GameObject go_pick;
 
+    [SerializeField] private Areas_Template areas;
+
     private enum countertype { inittimer = 0, sessiontimer = 1, }
     private enum counterstatus { ready = 0, set = 1, go = 2 }
 
@@ -344,8 +346,8 @@ public class UI_Controller : MonoBehaviour
         }
 
         anim_dialogue.SetBool("Open", true);
-        
-        if (Player_Status.CurrentArea > 1) //A futuro en vez de 1, debería ser currentBar
+
+        if (!(areas.Areas[Player_Status.CurrentArea - 1].targetPicks >= Player_Status.Picks)) //Si no se la dio, que se la de
         {
             go_pick.SetActive(false);
         }

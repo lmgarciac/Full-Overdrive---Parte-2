@@ -17,6 +17,11 @@ public class Map_Controller : MonoBehaviour
     [SerializeField] private float targetScale;
     [SerializeField] private float targetScaleDuration;
 
+    [SerializeField] private GameObject area1;
+    [SerializeField] private GameObject area2;
+    [SerializeField] private GameObject area3;
+    [SerializeField] private GameObject area4;
+
 
     ///Message Variables
     public Dialogue dialogue;
@@ -50,13 +55,34 @@ public class Map_Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (Player_Status.CurrentArea > 1) //A futuro cambiar a algo genérico
-        {
-            localscale.x = targetScale;
-            localscale.y = targetScale;
-            localscale.z = targetScale;
+        //if (Player_Status.CurrentArea > 1) //A futuro cambiar a algo genérico
+        //{
+        //    localscale.x = targetScale;
+        //    localscale.y = targetScale;
+        //    localscale.z = targetScale;
 
-            boundaries.transform.localScale = localscale;
+        //    boundaries.transform.localScale = localscale;
+        //}
+        if (Player_Status.CurrentArea == 1) //A futuro cambiar a algo genérico
+        {
+            area1.SetActive(true);
+            area2.SetActive(false);
+            area3.SetActive(false);
+            area4.SetActive(false);
+        }
+        if (Player_Status.CurrentArea == 2) //A futuro cambiar a algo genérico
+        {
+            area1.SetActive(false);
+            area2.SetActive(true);
+            area3.SetActive(false);
+            area4.SetActive(false);
+        }
+        if (Player_Status.CurrentArea == 3) //A futuro cambiar a algo genérico
+        {
+            area1.SetActive(false);
+            area2.SetActive(false);
+            area3.SetActive(true);
+            area4.SetActive(false);
         }
 
     }
@@ -155,7 +181,29 @@ public class Map_Controller : MonoBehaviour
     private void ExpandBoundariesEvent(ExpandBoundariesEvent expand)
     {
         sendmessage = true;
-        StartCoroutine(ExpandBoundaries(targetScale, targetScaleDuration));
+        //StartCoroutine(ExpandBoundaries(targetScale, targetScaleDuration));
+        if (Player_Status.CurrentArea == 1) //A futuro cambiar a algo genérico
+        {
+            area1.SetActive(true);
+            area2.SetActive(false);
+            area3.SetActive(false);
+            area4.SetActive(false);
+        }
+        if (Player_Status.CurrentArea == 2) //A futuro cambiar a algo genérico
+        {
+            area1.SetActive(false);
+            area2.SetActive(true);
+            area3.SetActive(false);
+            area4.SetActive(false);
+        }
+        if (Player_Status.CurrentArea == 3) //A futuro cambiar a algo genérico
+        {
+            area1.SetActive(false);
+            area2.SetActive(false);
+            area3.SetActive(true);
+            area4.SetActive(false);
+        }
+
     }
 
 

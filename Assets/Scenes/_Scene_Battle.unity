@@ -14640,6 +14640,7 @@ MonoBehaviour:
   anim_dialogue: {fileID: 1683927045}
   playerObject: {fileID: 315330545}
   enemyObject: {fileID: 1720893431}
+  areas: {fileID: 11400000, guid: 5c0b0da11c76fe645a517c67c4a43ea2, type: 2}
   cantRedPill: {fileID: 835529831}
   cantBluePill: {fileID: 310347108}
   chooseTime: 8
@@ -55652,6 +55653,7 @@ MonoBehaviour:
   tx_result: {fileID: 2137687692}
   anim_dialogue: {fileID: 1683927045}
   go_pick: {fileID: 1445629189}
+  areas: {fileID: 11400000, guid: 5c0b0da11c76fe645a517c67c4a43ea2, type: 2}
   ProgressHP_Player: {fileID: 247777892}
   ProgressHP_Enemy: {fileID: 947365046}
   ProgressSP_Player: {fileID: 957988390}

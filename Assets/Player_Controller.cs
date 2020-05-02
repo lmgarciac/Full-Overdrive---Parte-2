@@ -40,6 +40,9 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] private int targetPicks;
     [SerializeField] private int targetCollectables;
 
+    [SerializeField] private Areas_Template areas;
+
+
     //[SerializeField] private Item healItem;
     //[SerializeField] private Item buffItem;
 
@@ -465,12 +468,16 @@ public class Player_Controller : MonoBehaviour
     {
         yield return waitenableinput;
 
-        if (picks >= targetPicks && collectables >= targetCollectables && currentarea <2)
+        //if (picks >= targetPicks && collectables >= targetCollectables && currentarea <2)
+        if (picks >= areas.Areas[currentarea - 1].targetPicks && collectables >= areas.Areas[currentarea - 1].targetCollectables && currentarea < 3)
         {
-            currentarea = 2;
-            ev_expand.currentarea = 2;
-            EventController.TriggerEvent(ev_expand);
+            currentarea++;
+            ev_expand.currentarea = currentarea;
+
             Player_Status.CurrentArea = currentarea;
+
+            EventController.TriggerEvent(ev_expand);
+            
         }
         checkingarea = false;
     }

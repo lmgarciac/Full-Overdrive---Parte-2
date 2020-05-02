@@ -72,7 +72,15 @@ public class UI_Controller_Map : MonoBehaviour
     }
     void Update()
     {
-        im_virtuosity.fillAmount = (1.0f - (float)(picks + collectables) / 4.0f); // mejorar a futuro
+        currentarea = Player_Status.CurrentArea;
+        float multiplier;
+        multiplier = 4.0f * (float)currentarea;      
+        float fill = (float)((float)picks + (float)collectables) / (float)multiplier;
+        Debug.Log(fill);
+
+        im_virtuosity.fillAmount = 1.0f - fill; // mejorar a futuro
+
+        //im_virtuosity.fillAmount = 1.0f - 
 
     }
 

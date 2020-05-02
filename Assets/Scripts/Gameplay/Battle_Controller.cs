@@ -59,6 +59,8 @@ public class Battle_Controller : FiniteStateMachine
     [SerializeField] private GameObject playerObject;
     [SerializeField] private GameObject enemyObject;
 
+    [SerializeField] private Areas_Template areas;
+
 
     public TextMeshProUGUI cantRedPill;
     public TextMeshProUGUI cantBluePill;
@@ -704,7 +706,11 @@ public class Battle_Controller : FiniteStateMachine
                 ev_anim.camshake = false;
                 EventController.TriggerEvent(ev_anim);
 
-                Player_Status.Picks++; //A futuro corregir sino siempre te da el pick
+                if (areas.Areas[Player_Status.CurrentArea - 1].targetPicks >= Player_Status.Picks) //Si no se la dio, que se la de
+                {
+                    Player_Status.Picks++; 
+                }
+
             }
             if (player.hp <= 0)
             {
