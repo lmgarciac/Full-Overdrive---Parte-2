@@ -106,6 +106,9 @@ public class Player_Controller : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("Player Position: " + Map_Status.PlayerPosition);
+
+
         objectsHit = new Dictionary<int, GameObject>();
         cam_player = gameCamera.transform.position - this.transform.position;
 
@@ -132,6 +135,7 @@ public class Player_Controller : MonoBehaviour
             checkingarea = true;
             StartCoroutine(CheckCurrentArea()); //Checks if the player has met the requisites to advance to the next area
         }
+
 
         //Input routines
         if ((Input.GetKey(KeyCode.W) ||
@@ -467,9 +471,9 @@ public class Player_Controller : MonoBehaviour
     IEnumerator CheckCurrentArea() // A futuro, mejorar con un diccionario, lista, array o lo que sea
     {
         yield return waitenableinput;
-
+        Debug.Log("CurrentArea - 1: " + (currentarea - 1));
         //if (picks >= targetPicks && collectables >= targetCollectables && currentarea <2)
-        if (picks >= areas.Areas[currentarea - 1].targetPicks && collectables >= areas.Areas[currentarea - 1].targetCollectables && currentarea < 3)
+        if ((picks >= areas.Areas[currentarea - 1].targetPicks && collectables >= areas.Areas[currentarea - 1].targetCollectables && currentarea < 3) || Input.GetKeyUp(KeyCode.L))
         {
             currentarea++;
             ev_expand.currentarea = currentarea;

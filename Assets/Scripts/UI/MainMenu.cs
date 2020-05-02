@@ -75,6 +75,14 @@ public class MainMenu : MonoBehaviour
             Player_Status.Collectables = 0;
             Player_Status.Picks = 0;
 
+            Player_Status.QuestList = new List<Quests>();
+            Player_Status.ItemList = new List<Item>();
+
+            Map_Status.PlayerPosition = Vector3.zero;
+            Map_Status.PlayerRotation = Quaternion.identity;
+            Map_Status.MiloPosition = Vector3.zero;
+            Map_Status.MiloRotation = Quaternion.identity;
+
             Player_Status.AttackStat = 10;
             Player_Status.DefenseStat = 10;
             Player_Status.MaxHPStat = 40;
@@ -97,6 +105,14 @@ public class MainMenu : MonoBehaviour
         Player_Status.CurrentArea = 1;
         Player_Status.Collectables = 0;
         Player_Status.Picks = 0;
+
+        Player_Status.QuestList = new List<Quests>();
+        Player_Status.ItemList = new List<Item>();
+
+        Map_Status.PlayerPosition = Vector3.zero;
+        Map_Status.PlayerRotation = Quaternion.identity;
+        Map_Status.MiloPosition = Vector3.zero;
+        Map_Status.MiloRotation = Quaternion.identity;
 
         //Set initial Stats
 

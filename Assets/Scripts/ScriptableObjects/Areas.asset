@@ -33,3 +33,13 @@ MonoBehaviour:
     enemyMaxSP: 60
     enemyHeals: 0
     enemyBuffs: 0
+  - targetPicks: 3
+    targetCollectables: 9
+    enemyAttack: 13
+    enemyDefense: 13
+    enemyinitHP: 40
+    enemyinitSP: 50
+    enemyMaxHP: 40
+    enemyMaxSP: 60
+    enemyHeals: 0
+    enemyBuffs: 0

@@ -140,6 +140,7 @@ public class GameData
 
         //Map Status
         firstTime = Map_Status.FirstTime;
+
         playerPosition = Map_Status.PlayerPosition;
         playerRotation = Map_Status.PlayerRotation;
         cameraPosition = Map_Status.CameraPosition;
@@ -153,6 +154,8 @@ public class GameData
 
         Debug.Log("Player rotation: " + playerRotation);
         Debug.Log("Player position: " + playerPosition);
+
+        Debug.Log("Milo position: " + miloPosition);
 
         //PlayerStatus
         //Collectables

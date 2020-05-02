@@ -17,6 +17,11 @@ public class NPC_Controller : MonoBehaviour
 
     void Start()
     {
+        if(this.gameObject.tag == "Milo")
+        {
+            Debug.Log("Milo Position: " + Map_Status.MiloPosition);
+        }
+
         lastWaypointIndex = waypoints.Count - 1;
         targetWaypoint = waypoints[targetWaypointIndex];
 
@@ -32,12 +37,16 @@ public class NPC_Controller : MonoBehaviour
     {
         EventController.AddListener<BeforeSceneUnloadEvent>(BeforeSceneUnloadEvent);
         EventController.AddListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
+        EventController.AddListener<QuitGameEvent>(QuitGameEvent);
+
     }
 
     private void OnDisable()
     {
         EventController.RemoveListener<BeforeSceneUnloadEvent>(BeforeSceneUnloadEvent);
         EventController.RemoveListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
+        EventController.RemoveListener<QuitGameEvent>(QuitGameEvent);
+
     }
 
     void Update()
@@ -124,6 +133,16 @@ public class NPC_Controller : MonoBehaviour
         {
             this.transform.position = Map_Status.MiloPosition;
             this.transform.rotation = Map_Status.MiloRotation;
+        }
+    }
+
+    private void QuitGameEvent(QuitGameEvent quitgame)
+    {
+        if (this.gameObject.tag == "Milo")
+        {
+            ////Milo position
+            Map_Status.MiloRotation = this.transform.rotation;
+            Map_Status.MiloPosition = this.transform.position;
         }
     }
 

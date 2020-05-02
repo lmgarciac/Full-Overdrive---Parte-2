@@ -17,7 +17,6 @@ public static class Player_Status
     private static List<Quests> questlist = new List<Quests>();
 
     //Player Inventory
-
     public static List<Item> itemlist = new List<Item>();
 
     //Player Stats
