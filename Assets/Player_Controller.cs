@@ -437,7 +437,10 @@ public class Player_Controller : MonoBehaviour
     private void PayMoneyEvent(PayMoneyEvent paymoney)
     {
         if (money > 0)
-        money -= 1;
+        {
+            money -= 1;
+            Player_Status.Money -= 1;
+        }
     }
 
     private void QuitGameEvent(QuitGameEvent quitgame)
@@ -471,7 +474,7 @@ public class Player_Controller : MonoBehaviour
     IEnumerator CheckCurrentArea() // A futuro, mejorar con un diccionario, lista, array o lo que sea
     {
         yield return waitenableinput;
-        Debug.Log("CurrentArea - 1: " + (currentarea - 1));
+        //Debug.Log("CurrentArea - 1: " + (currentarea - 1));
         //if (picks >= targetPicks && collectables >= targetCollectables && currentarea <2)
         if ((picks >= areas.Areas[currentarea - 1].targetPicks && collectables >= areas.Areas[currentarea - 1].targetCollectables && currentarea < 3) || Input.GetKeyUp(KeyCode.L))
         {

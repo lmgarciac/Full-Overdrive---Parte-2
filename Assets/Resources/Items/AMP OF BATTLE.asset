@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9829b2efac13f8f43b17ab51b47a69e7, type: 3}
-  m_Name: Unknown Drink
+  m_Name: AMP OF BATTLE
   m_EditorClassIdentifier: 
-  name: UNKNOWN DRINK
-  icon: {fileID: 21300000, guid: 0a2d3063b081f244cabc03046dbb4c62, type: 3}
+  name: AMP OF BATTLE
+  icon: {fileID: 21300000, guid: 05302f6e3b1124e48b636d9c93b52c54, type: 3}
   isDefaultItem: 0
-  type: 3
-  bonusAttack: 0
+  type: 1
+  bonusAttack: 5
   bonusDefense: 0
-  bonusMaxHP: 20
+  bonusMaxHP: 0
   bonusMaxSP: 0
   equiped: 0
-  rotatingItem: {fileID: 4011148229071428705, guid: 74f20f55a7d86a644863e822c463ab9f,
+  rotatingItem: {fileID: 3415620602513782986, guid: fd113654effd5a1418bc48d393a7ee23,
     type: 3}

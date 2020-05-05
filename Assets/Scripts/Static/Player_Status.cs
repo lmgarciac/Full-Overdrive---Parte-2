@@ -18,6 +18,7 @@ public static class Player_Status
 
     //Player Inventory
     public static List<Item> itemlist = new List<Item>();
+    public static List<Item_Serializable> items_Serializable = new List<Item_Serializable>();
 
     //Player Stats
     private static int attackStat;
@@ -108,6 +109,18 @@ public static class Player_Status
         }
     }
 
+    public static List<Item_Serializable> Items_Serializable
+    {
+        get
+        {
+            return items_Serializable;
+        }
+        set
+        {
+            items_Serializable = value;
+        }
+    }
+
     public static Quests FindQuest (string questname)
     {
         for (int i = 0; i < questlist.Count; ++i)
@@ -133,6 +146,7 @@ public static class Player_Status
         }
         return 999;
     }
+
 
     public static int Picks
     {
@@ -195,6 +209,7 @@ public static class Player_Status
     }
 }
 
+[System.Serializable]
 public class Quests
 {
     public string questname;

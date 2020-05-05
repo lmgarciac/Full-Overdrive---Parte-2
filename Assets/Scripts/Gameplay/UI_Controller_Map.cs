@@ -76,7 +76,7 @@ public class UI_Controller_Map : MonoBehaviour
         float multiplier;
         multiplier = 4.0f * (float)currentarea;      
         float fill = (float)((float)picks + (float)collectables) / (float)multiplier;
-        Debug.Log(fill);
+        //Debug.Log(fill);
 
         im_virtuosity.fillAmount = 1.0f - fill; // mejorar a futuro
 

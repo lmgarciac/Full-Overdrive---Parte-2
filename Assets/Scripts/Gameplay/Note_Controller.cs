@@ -16,6 +16,8 @@ public class Note_Controller : MonoBehaviour
     private bool buttoncanbepressed;
 
     public KeyCode keytopress;
+    public KeyCode keytopressAlt;
+
 
     private void OnEnable()
     {
@@ -41,7 +43,7 @@ public class Note_Controller : MonoBehaviour
         //Debug.Log("Can be pressed: " + canbepressed);
         //Debug.Log("Input enabled: " + PlayerOptions.QteInputEnabled);
 
-        if (Input.GetKeyDown(keytopress))
+        if (Input.GetKeyDown(keytopress) || Input.GetKeyDown(keytopressAlt))
         {
             if (canbepressed && buttoncanbepressed)
 

@@ -121,8 +121,12 @@ public class GameData
     public int currentarea; //Area 1, Area 2 or Area 3 (Virtuosity)
 
     //Inventory
-    public List<Item> itemlist = new List<Item>();
-    
+    //public List<Item> itemlist = new List<Item>();
+    public List<Item_Serializable> Items_Serializable = new List<Item_Serializable>();
+
+    //Quests
+    public List<Quests> quests = new List<Quests>();
+
 
     //Game Options
     public int difficulty;
@@ -166,8 +170,11 @@ public class GameData
         money = Player_Status.Money;
 
         //Inventario
+        Retrieve_Items();
+        Items_Serializable = Player_Status.Items_Serializable;
 
-        itemlist = Player_Status.ItemList;
+        //Quests
+        quests = Player_Status.QuestList;
 
         //Stats
 
@@ -207,7 +214,10 @@ public class GameData
 
         //Inventario
 
-        Player_Status.ItemList = itemlist;
+        Player_Status.Items_Serializable = Items_Serializable;
+
+        //Quests
+        Player_Status.QuestList = quests;
 
         //Stats
 
@@ -226,5 +236,36 @@ public class GameData
 
         Debug.Log("First Time: " + firstTime);
         Debug.Log("Heals: " + heals);
+    }
+
+    public void Retrieve_Items()
+    {
+        Items_Serializable.Clear();
+        Player_Status.Items_Serializable.Clear();
+
+        foreach (var item in Inventory.instance.Items)
+        {
+            var item_Serializable = new Item_Serializable();
+
+            item_Serializable.name = item.name;
+            //item_Serializable.icon = item.icon;
+            item_Serializable.isDefaultItem = item.isDefaultItem;
+            item_Serializable.type = item.type;
+            item_Serializable.bonusAttack = item.bonusAttack;
+            item_Serializable.bonusDefense = item.bonusDefense;
+            item_Serializable.bonusMaxHP = item.bonusMaxHP;
+            item_Serializable.bonusMaxSP = item.bonusMaxSP;
+            item_Serializable.equiped = item.equiped;
+            //item_Serializable.rotatingItem = item.rotatingItem;
+
+            Player_Status.items_Serializable.Add(item_Serializable);
+            //Items_Serializable[i] = item_Serializable;
+
+        }
+
+        foreach (Item_Serializable item_print in Player_Status.Items_Serializable)
+        {
+            Debug.Log("Item name:" + item_print.name);
+        }
     }
 }

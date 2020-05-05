@@ -17,6 +17,8 @@ public class Inventory : MonoBehaviour
             return;
         }
         instance = this;
+
+        Return_Items();
     }
 
     private void OnEnable()
@@ -137,10 +139,10 @@ public class Inventory : MonoBehaviour
     {
         Items = Player_Status.ItemList;
 
-        foreach (var item in Items)
-        {
-            Debug.Log("Despues Item: " + item.name);
-        }
+        //foreach (var item in Items)
+        //{
+        //    Debug.Log("Despues Item: " + item.name);
+        //}
 
         if (onItemChangedCallback != null)
         {
@@ -149,4 +151,32 @@ public class Inventory : MonoBehaviour
             onItemChangedCallback.Invoke();
         }
     }
+
+
+    public void Return_Items()
+    {
+        Inventory.instance.Items.Clear();
+
+        Debug.Log("Items Static: " + Player_Status.Items_Serializable);
+
+        if (Player_Status.Items_Serializable != null)
+        {
+
+            foreach (Item_Serializable item_Serializable in Player_Status.Items_Serializable)
+            {
+                var item = new Item();
+                //(AudioClip)Resources.Load<AudioClip>($"Music/so_battle_theme");
+                item = (Item)Resources.Load<Item>($"Items/{item_Serializable.name}");
+                Debug.Log("Item: " + item.name);
+                Items.Add(item);
+            }
+        }
+
+        if (onItemChangedCallback != null)
+        {
+            onItemChangedCallback.Invoke();
+        }
+    }
+
+
 }

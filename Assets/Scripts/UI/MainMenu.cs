@@ -36,6 +36,12 @@ public class MainMenu : MonoBehaviour
 
         PlayerOptions.Volume = AudioListener.volume;
         PlayerOptions.Difficulty = 1;
+
+        foreach (Item_Serializable item_print in Player_Status.Items_Serializable)
+        {
+            Debug.Log("Item name:" + item_print.name);
+        }
+
     }
 
     void Update()
@@ -76,7 +82,8 @@ public class MainMenu : MonoBehaviour
             Player_Status.Picks = 0;
 
             Player_Status.QuestList = new List<Quests>();
-            Player_Status.ItemList = new List<Item>();
+            //Player_Status.ItemList = new List<Item>();
+            Player_Status.Items_Serializable = new List<Item_Serializable>();
 
             Map_Status.PlayerPosition = Vector3.zero;
             Map_Status.PlayerRotation = Quaternion.identity;
@@ -107,7 +114,8 @@ public class MainMenu : MonoBehaviour
         Player_Status.Picks = 0;
 
         Player_Status.QuestList = new List<Quests>();
-        Player_Status.ItemList = new List<Item>();
+        //Player_Status.ItemList = new List<Item>();
+        Player_Status.Items_Serializable = new List<Item_Serializable>();
 
         Map_Status.PlayerPosition = Vector3.zero;
         Map_Status.PlayerRotation = Quaternion.identity;

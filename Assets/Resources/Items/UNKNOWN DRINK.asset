@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9829b2efac13f8f43b17ab51b47a69e7, type: 3}
-  m_Name: Headphones of Test
+  m_Name: UNKNOWN DRINK
   m_EditorClassIdentifier: 
-  name: BATTLE HEADPHONES
-  icon: {fileID: 21300000, guid: c7dbf5b7550e39f4e988c4f870fa1efe, type: 3}
+  name: UNKNOWN DRINK
+  icon: {fileID: 21300000, guid: 0a2d3063b081f244cabc03046dbb4c62, type: 3}
   isDefaultItem: 0
-  type: 1
+  type: 3
   bonusAttack: 0
-  bonusDefense: 5
-  bonusMaxHP: 0
+  bonusDefense: 0
+  bonusMaxHP: 20
   bonusMaxSP: 0
   equiped: 0
-  rotatingItem: {fileID: 3723004222990998179, guid: 481c8a2f9452b4c4e9ba160222ed3905,
+  rotatingItem: {fileID: 4011148229071428705, guid: 74f20f55a7d86a644863e822c463ab9f,
     type: 3}
