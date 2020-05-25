@@ -35,6 +35,10 @@ TagManager:
   - GameKid
   - CantBluePill
   - CantRedPill
+  - Enemy
+  - EnemyInfo
+  - EnemyFX
+  - EnemyAnim
   layers:
   - Default
   - TransparentFX

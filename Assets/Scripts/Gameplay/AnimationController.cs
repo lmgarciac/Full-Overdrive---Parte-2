@@ -72,7 +72,7 @@ public class AnimationController : MonoBehaviour
         EventController.AddListener<ActionEvent>(ActionEvent);
         EventController.AddListener<EnableTurnEvent>(EnableTurnEvent);
         EventController.AddListener<QteMissEvent>(QteMissEvent);
-
+        EventController.AddListener<LoadEnemyEvent>(LoadEnemyEvent);
     }
     private void OnDisable()
     {
@@ -80,14 +80,13 @@ public class AnimationController : MonoBehaviour
         EventController.RemoveListener<ActionEvent>(ActionEvent);
         EventController.RemoveListener<EnableTurnEvent>(EnableTurnEvent);
         EventController.RemoveListener<QteMissEvent>(QteMissEvent);
-
+        EventController.RemoveListener<LoadEnemyEvent>(LoadEnemyEvent);
     }
 
     // Start is called before the first frame update
     void Start()
     {
         an_player = go_player.GetComponent<Animator>();
-        an_enemy = go_enemy.GetComponent<Animator>();
 
         an_UIAttack = go_UIAttack.GetComponent<Animator>();
         an_UIDefend = go_UIDefend.GetComponent<Animator>();
@@ -107,7 +106,23 @@ public class AnimationController : MonoBehaviour
     void Update()
     {
         an_Camera.SetBool("Shake", false);
+        an_enemy.SetBool("Damage", false);
+        an_player.SetBool("Damage", false);
+
     }
+
+    private void LoadEnemyEvent(LoadEnemyEvent currentEnemy)
+    {
+        //Debug.Log("Enemigos: " + GameObject.FindGameObjectsWithTag("EnemyAnim").Length);
+        go_enemy = GameObject.FindGameObjectWithTag("EnemyAnim");
+        an_enemy = go_enemy.GetComponent<Animator>();
+        an_enemy.SetBool("Lose", false);
+        //if (an_enemy != null)
+        //{
+        //    Debug.Log("Animator Cargado");
+        //}
+    }
+
 
     private void AnimEvent(AnimEvent anim)
     {
@@ -120,10 +135,13 @@ public class AnimationController : MonoBehaviour
                     an_player.SetBool("Attack", true);
                     an_player.SetBool("Idle", false);
                     an_player.SetBool("Special", false);
+                    an_player.SetBool("Win", false);
+                    an_player.SetBool("Lose", false);                  
 
                     if (anim.animstate && currentaction == (int)action.attack) //significa que debe shakear camara
                     {
                         an_Camera.SetBool("Shake",true);
+                        an_enemy.SetBool("Damage", true);
                     }
                     CloseAttackUI();
                 }
@@ -133,6 +151,14 @@ public class AnimationController : MonoBehaviour
                 an_player.SetBool("Idle", false);
                 an_player.SetBool("Attack", false);
                 an_player.SetBool("Special", true);
+                an_player.SetBool("Win", false);
+                an_player.SetBool("Lose", false);
+
+                if (anim.animstate && currentaction == (int)action.special) //significa que debe shakear camara
+                {
+                    an_Camera.SetBool("Shake", true);
+                    an_enemy.SetBool("Damage", true);
+                }
                 CloseAttackUI();
             }
             else if (anim.animation == (int)animation.none) //Miss
@@ -142,11 +168,14 @@ public class AnimationController : MonoBehaviour
                 an_player.SetBool("Special", false);
                 an_player.SetBool("Win", false);
                 an_player.SetBool("Lose", true);
+
+                an_enemy.SetBool("Damage", false);
+
                 CloseAttackUI();
             }
             else //Idle
             {
-                Debug.Log("InicializarUI");
+                //Debug.Log("InicializarUI");
 
                 an_player.SetBool("Idle", true);
                 an_player.SetBool("Attack", false);
@@ -154,7 +183,10 @@ public class AnimationController : MonoBehaviour
                 an_player.SetBool("Win", false);
                 an_player.SetBool("Lose", false);
 
-                if(!anim.dontshowUI)
+                an_enemy.SetBool("Lose", false);
+                an_enemy.SetBool("Damage", false);
+
+                if (!anim.dontshowUI)
                 {
                     InitializeAttackUI();
                 }
@@ -169,9 +201,12 @@ public class AnimationController : MonoBehaviour
                     an_enemy.SetBool("Attack", true);
                     an_enemy.SetBool("Idle", false);
                     an_enemy.SetBool("Special", false);
+                    an_enemy.SetBool("Win", false);
+                    an_enemy.SetBool("Lose", false);
 
                     if (anim.animstate && currentaction == (int)action.attack) //significa que debe shakear camara
                     {
+                        an_player.SetBool("Damage", true);
                         an_Camera.SetBool("Shake", true);
                     }
 
@@ -184,6 +219,10 @@ public class AnimationController : MonoBehaviour
                 an_enemy.SetBool("Idle", false);
                 an_enemy.SetBool("Attack", false);
                 an_enemy.SetBool("Special", true);
+                an_enemy.SetBool("Win", false);
+                an_enemy.SetBool("Lose", false);
+
+                an_player.SetBool("Damage", true);
 
                 an_Camera.SetBool("ZoomEnemy", false);
 
@@ -194,7 +233,11 @@ public class AnimationController : MonoBehaviour
                 an_enemy.SetBool("Attack", false);
                 an_enemy.SetBool("Special", false);
                 an_enemy.SetBool("Win", false);
+
                 an_enemy.SetBool("Lose", false);
+
+                an_player.SetBool("Damage", false);
+
 
                 if (!anim.dontshowUI)
                 {
@@ -212,12 +255,17 @@ public class AnimationController : MonoBehaviour
             an_player.SetBool("Special", false);
             an_player.SetBool("Lose", false);
             an_player.SetBool("Win", true);
+            an_player.SetBool("Damage", false);
+
 
             an_enemy.SetBool("Idle", false);
             an_enemy.SetBool("Attack", false);
             an_enemy.SetBool("Special", false);
             an_enemy.SetBool("Win", false);
+
+            an_enemy.SetBool("Damage", true);
             an_enemy.SetBool("Lose", true);
+
             CloseAttackUI();
         }
         else if (anim.animation == (int)animation.lose)
@@ -226,13 +274,19 @@ public class AnimationController : MonoBehaviour
             an_player.SetBool("Attack", false);
             an_player.SetBool("Special", false);
             an_player.SetBool("Win", false);
+
+            an_player.SetBool("Damage", true);
             an_player.SetBool("Lose", true);
+
 
             an_enemy.SetBool("Idle", false);
             an_enemy.SetBool("Attack", false);
             an_enemy.SetBool("Special", false);
+
             an_enemy.SetBool("Lose", false);
             an_enemy.SetBool("Win", true);
+            an_enemy.SetBool("Damage", false);
+
             CloseAttackUI();
         }
 

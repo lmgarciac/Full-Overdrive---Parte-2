@@ -27,6 +27,22 @@ public static class Player_Status
     private static int maxSPStat;
     private static int currentarea; //Area 1, Area 2 or Area 3
 
+    //Bar Status
+    private static int currentBar; //Bar where player is currently fighting
+
+
+    public static int CurrentBar
+    {
+        get
+        {
+            return currentBar;
+        }
+        set
+        {
+            currentBar = value;
+        }
+    }
+
     public static int AttackStat
     {
         get

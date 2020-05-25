@@ -214,4 +214,10 @@ namespace Events
         public Item item;
         public GameObject rotatingItem;
     }
+
+    public class LoadEnemyEvent : GameEvent
+    {
+        public Enemy_Template enemyTemplate;
+        public GameObject enemyGameObject;
+    }
 }

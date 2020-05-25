@@ -25,8 +25,8 @@ public class Battle_Controller : FiniteStateMachine
     [SerializeField] private int playerbuff;
     [SerializeField] private int playerheal;
 
-    [SerializeField] private int enemyhp;//max hp
-    [SerializeField] private int enemysp;//max sp
+    [SerializeField] private int enemyMaxHP;//max hp
+    [SerializeField] private int enemyMaxSP;//max sp
     [SerializeField] private int enemyinitsp;
     [SerializeField] private int enemyinithp;
     [SerializeField] private int enemyheal;
@@ -62,8 +62,7 @@ public class Battle_Controller : FiniteStateMachine
     [SerializeField] private Areas_Template areas;
 
 
-    public TextMeshProUGUI cantRedPill;
-    public TextMeshProUGUI cantBluePill;
+
     
     public enum characterid
     {
@@ -163,7 +162,9 @@ public class Battle_Controller : FiniteStateMachine
     private WaitForSecondsRealtime actionTimer = new WaitForSecondsRealtime(2f);
     private WaitForSecondsRealtime turnSwitchTimer = new WaitForSecondsRealtime(2f);
     private WaitForSecondsRealtime QTEShowWait = new WaitForSecondsRealtime(1f);
+    private WaitForSecondsRealtime switchEnemyTimer = new WaitForSecondsRealtime(4f);
 
+    
 
     private GameObject instantiatedQTE;
 
@@ -180,13 +181,14 @@ public class Battle_Controller : FiniteStateMachine
     private readonly GameOverEvent ev_gameover = new GameOverEvent();    
     private readonly QtePrizeEvent ev_qteprize = new QtePrizeEvent();
     private readonly AnimEvent ev_anim = new AnimEvent();
+    private readonly LoadEnemyEvent ev_enemy = new LoadEnemyEvent();
 
     private SceneController sceneController;
 
 
     public struct Character {
-        public int hp;
-        public int sp;
+        public int currentHP;
+        public int currentSP;
         public int buff;
         public int heal;
     }
@@ -209,6 +211,13 @@ public class Battle_Controller : FiniteStateMachine
 
     private bool iswaiting;
 
+    [SerializeField] private Bar_Template currentBar;
+    [SerializeField] private Enemy_Template currentEnemy;
+
+    private GameObject currentEnemyObject;
+    private int currentEnemyID;
+    private bool enemyswitch;
+    private bool enemywait = false; //Wait a little before switching enemies
     //Start Event
 
     void Start()
@@ -216,10 +225,65 @@ public class Battle_Controller : FiniteStateMachine
         StartProcedure();
 
         im_clock = go_clock.GetComponent<Image>();
-
         StartCoroutine(StartCountdown());
         sceneController = FindObjectOfType<SceneController>();
+      
+        if(Player_Status.CurrentBar == 0) //Only for testing
+        {
+            Player_Status.CurrentBar = 1;
+            Player_Status.CurrentArea = 1;
+        }
 
+        //Load Bar and Load Enemies
+        if(Player_Status.CurrentBar != 0)
+        {
+            currentBar = (Bar_Template)Resources.Load<Bar_Template>($"so_Bars/Bar_{Player_Status.CurrentBar}");
+            Instantiate((GameObject)Resources.Load<GameObject>($"Prefabs/{currentBar.prefabModelName}"));
+
+            currentEnemyID = 0;
+            if (currentBar.enemies.Length != 0)
+            {
+                LoadEnemy(currentBar.enemies[currentEnemyID]);
+            }
+        }
+    }
+
+    private void LoadEnemy(Enemy_Template loadEnemy)
+    {
+        if (loadEnemy == null)
+        {
+            return;
+        }
+
+        if (currentEnemyObject != null) //Destroy current enemy
+        {
+            DestroyImmediate(currentEnemyObject);
+            //Debug.Log("Objeto Destruido");
+        }
+
+        currentEnemy = loadEnemy;
+        currentEnemyObject = Instantiate((GameObject)Resources.Load<GameObject>($"Prefabs/{currentEnemy.prefabName}"));
+
+        if(currentEnemyObject != null && currentEnemy != null)
+        {
+            //Debug.Log("Objetos Instanciados");
+        }
+
+        enemy.currentHP = loadEnemy.enemyinitHP;
+        enemy.currentSP = loadEnemy.enemyinitSP;
+        enemyMaxHP = loadEnemy.enemyMaxHP;
+        enemyMaxSP = loadEnemy.enemyMaxSP;
+        enemy.heal = loadEnemy.enemyHeals;
+        enemy.buff = loadEnemy.enemyBuffs;
+
+        enemyObject = currentEnemyObject;
+
+//        enemyObject = GameObject.FindGameObjectWithTag("EnemyAnim");
+
+        ev_enemy.enemyTemplate = currentEnemy;
+        ev_enemy.enemyGameObject = currentEnemyObject;
+
+        EventController.TriggerEvent(ev_enemy);
     }
 
     //Enable / Disable Events
@@ -245,9 +309,14 @@ public class Battle_Controller : FiniteStateMachine
 
     protected override void Update()
     {
-        cantRedPill.text = playerheal.ToString();
-        cantBluePill.text = playerbuff.ToString();
-        // Check Exit
+        if (enemywait)
+        {
+            currentEnemyID++;
+            LoadEnemy(currentBar.enemies[currentEnemyID]);
+            enemywait = false;
+            triggerstate = true;
+        }
+
         if (Input.GetKeyDown(KeyCode.E) && gameover)
         {
             anim_dialogue.SetBool("Open", false);
@@ -310,8 +379,8 @@ public class Battle_Controller : FiniteStateMachine
 
             //ev_enableturn.turnstate = (int)turnstate.chooseaction;
 
-            spotlightplayer.SetActive(true);
-            spotlightenemy.SetActive(false);
+            //spotlightplayer.SetActive(true);
+            //spotlightenemy.SetActive(false);
 
             // _turnstate = (int)turnstate.turninfo;
             EventController.TriggerEvent(ev_enableturn);
@@ -323,7 +392,7 @@ public class Battle_Controller : FiniteStateMachine
 
             //Trigger anim
 
-            Debug.Log("Trigger animacion Turno!");
+            //Debug.Log("Trigger animacion Turno!");
 
             ev_anim.playerturn = playerturn;
             ev_anim.animation = (int)animation.idle;
@@ -348,8 +417,8 @@ public class Battle_Controller : FiniteStateMachine
 
 
 
-            spotlightplayer.SetActive(false);
-            spotlightenemy.SetActive(true);
+            //spotlightplayer.SetActive(false);
+            //spotlightenemy.SetActive(true);
 
             // _turnstate = (int)turnstate.turninfo;
             EventController.TriggerEvent(ev_enableturn);
@@ -494,7 +563,7 @@ public class Battle_Controller : FiniteStateMachine
                 || (playing && ev_action.action == (int)action.none && triggerstate && IsStateRunning(new QTEState().GetType())))
         {
 
-            Debug.Log("PASO!!!");
+            //Debug.Log("PASO!!!");
             triggerstate = false;
             selected = false;
             qteout = true;
@@ -520,8 +589,8 @@ public class Battle_Controller : FiniteStateMachine
             if (playerturn)
             {
                 ev_qteprize.playerturn = true;
-                player.sp += bonusSP;
-                Mathf.Clamp(player.sp, 0, playersp);
+                player.currentSP += bonusSP;
+                Mathf.Clamp(player.currentSP, 0, playersp);
             }
 
             //Añado defensa bonus player
@@ -539,7 +608,7 @@ public class Battle_Controller : FiniteStateMachine
                 ev_action.damage = (int)(CalculateDamage() * buffplayer * defenseenemy);
 
                 //enemy.hp = enemy.hp - ev_action.damage;
-                enemy.hp = Mathf.Clamp(enemy.hp - ev_action.damage, 0, enemyhp);
+                enemy.currentHP = Mathf.Clamp(enemy.currentHP - ev_action.damage, 0, enemyMaxHP);
                 defenseenemy = 1;
 
                 buffplayer = 1;
@@ -549,9 +618,9 @@ public class Battle_Controller : FiniteStateMachine
                 ev_action.damage = (int)(CalculateDamage() * buffplayer * defenseenemy);
 
                 //enemy.hp = enemy.hp - ev_action.damage;
-                enemy.hp = Mathf.Clamp(enemy.hp - ev_action.damage, 0, enemyhp);
+                enemy.currentHP = Mathf.Clamp(enemy.currentHP - ev_action.damage, 0, enemyMaxHP);
 
-                player.sp -= specialcost;
+                player.currentSP -= specialcost;
                 buffplayer = 1;
                 defenseenemy = 1;
 
@@ -562,9 +631,8 @@ public class Battle_Controller : FiniteStateMachine
                 ev_action.damage = (int)(CalculateHeal() * buffplayer);
 
                 //player.hp = player.hp - ev_action.damage;//Negative damage
-                player.hp = Mathf.Clamp(player.hp - ev_action.damage, 0, playerhp);
+                player.currentHP = Mathf.Clamp(player.currentHP - ev_action.damage, 0, playerhp);
                 playerheal = playerheal - 1;
-                cantRedPill.text = playerheal.ToString();
                 buffplayer = 1;
                 defenseenemy = 1;
 
@@ -573,7 +641,6 @@ public class Battle_Controller : FiniteStateMachine
             {
                 
                 playerbuff = playerbuff - 1;
-                cantBluePill.text = playerbuff.ToString();
                 buffplayer = CalculateBuff();
                 ev_action.buff = buffplayer;
                 defenseenemy = 1;
@@ -587,14 +654,14 @@ public class Battle_Controller : FiniteStateMachine
             if (!playerturn)
             {
                 ev_qteprize.playerturn = false;
-                enemy.sp += bonusSP;
-                Mathf.Clamp(enemy.sp, 0, enemysp);
+                enemy.currentSP += bonusSP;
+                Mathf.Clamp(enemy.currentSP, 0, enemyMaxSP);
             }
             //Añado defensa bonus enemy
             if (ev_action.characterid == (int)characterid.enemy && ev_action.action == (int)action.defend)
             {
                 defenseenemy = CalculateDefense();
-                Debug.Log($"Defense: {defenseenemy}");
+                //Debug.Log($"Defense: {defenseenemy}");
                 defenseplayer = 1;
             }
 
@@ -602,7 +669,7 @@ public class Battle_Controller : FiniteStateMachine
             {
                 ev_action.damage = (int)(CalculateDamage() * buffenemy * defenseplayer);
 
-                player.hp = Mathf.Clamp(player.hp - ev_action.damage,0,playerhp);
+                player.currentHP = Mathf.Clamp(player.currentHP - ev_action.damage,0,playerhp);
 
                 buffenemy = 1;
                 defenseplayer = 1;
@@ -610,8 +677,8 @@ public class Battle_Controller : FiniteStateMachine
             else if (ev_action.characterid == (int)characterid.enemy && ev_action.action == (int)action.special)
             {
                 ev_action.damage = (int)(CalculateDamage() * buffenemy * defenseplayer);
-                player.hp = Mathf.Clamp(player.hp - ev_action.damage, 0, playerhp);
-                enemy.sp -= specialcost;
+                player.currentHP = Mathf.Clamp(player.currentHP - ev_action.damage, 0, playerhp);
+                enemy.currentSP -= specialcost;
                 buffenemy = 1;
                 defenseplayer = 1;
 
@@ -621,9 +688,9 @@ public class Battle_Controller : FiniteStateMachine
                 Debug.Log($"Heal: {CalculateHeal()}");
 
                 ev_action.damage = (int)(CalculateHeal() * buffenemy);
-                enemy.hp = Mathf.Clamp(enemy.hp - ev_action.damage, 0, enemyhp);
+                enemy.currentHP = Mathf.Clamp(enemy.currentHP - ev_action.damage, 0, enemyMaxHP);
 
-                Debug.Log($"EnemyHP: {enemy.hp}");
+                Debug.Log($"EnemyHP: {enemy.currentHP}");
 
                 buffenemy = 1;
                 defenseplayer = 1;
@@ -693,28 +760,43 @@ public class Battle_Controller : FiniteStateMachine
             EventController.TriggerEvent(ev_anim);
             ev_anim.animstate = false;
 
-            if (enemy.hp <= 0)
+
+            ////Check State of Battle/////
+
+            if (enemy.currentHP <= 0)
             {
-                enemy.hp = 0;
-                ev_gameover.playerwin = true;
-                EventController.TriggerEvent(ev_gameover);
-                gameover = true;
+                enemy.currentHP = 0;
 
-                //Trigger anim Win
-                ev_anim.playerturn = playerturn;
-                ev_anim.animation = (int)animation.win;
-                ev_anim.camshake = false;
-                EventController.TriggerEvent(ev_anim);
-
-                if (areas.Areas[Player_Status.CurrentArea - 1].targetPicks >= Player_Status.Picks) //Si no se la dio, que se la de
+                //Check all enemies beaten//
+                if (currentEnemyID >= (currentBar.enemies.Length - 1))
                 {
-                    Player_Status.Picks++; 
-                }
+                    if (areas.Areas[Player_Status.CurrentArea - 1].targetPicks >= Player_Status.Picks) //Si no se la dio, que se la de
+                    {
+                        Player_Status.Picks++;
+                    }
 
+                    currentEnemyID++;
+                    gameover = true;
+                    ev_gameover.playerwin = true;
+                    EventController.TriggerEvent(ev_gameover);
+                    ev_anim.animation = (int)animation.win;
+                    ev_anim.camshake = false;
+                    EventController.TriggerEvent(ev_anim);
+                }
+                else if (!iswaiting)
+                {
+                    StartCoroutine(SwitchEnemyWait());
+
+                    enemyswitch = true;
+                    ev_anim.playerturn = playerturn;
+                    ev_anim.animation = (int)animation.win;
+                    ev_anim.camshake = false;
+                    EventController.TriggerEvent(ev_anim);
+                }
             }
-            if (player.hp <= 0)
+            if (player.currentHP <= 0)
             {
-                player.hp = 0;
+                player.currentHP = 0;
                 ev_gameover.playerwin = false;
                 EventController.TriggerEvent(ev_gameover);
                 gameover = true;
@@ -741,20 +823,22 @@ public class Battle_Controller : FiniteStateMachine
         else if (playing && triggerstate && IsStateRunning(new AnimState().GetType()))
         {
             //Trigger anim
-            //playerturn = !playerturn;
-
-
             ev_anim.playerturn = playerturn;
-            ev_anim.animation = (int)animation.idle;
-
             ev_anim.dontshowUI = true;
-
             ev_anim.camshake = false;
+            if (!enemyswitch) //if switching enemies, don't change turns
+            {
+                playerturn = !playerturn;
+                ev_anim.animation = (int)animation.idle;
+            }
+            else
+            {
+                ev_anim.animation = (int)animation.win;
+            }
+            enemyswitch = false;
+
             EventController.TriggerEvent(ev_anim);
-
             triggerstate = false;
-
-            playerturn = !playerturn;
 
             StartCoroutine(TurnSwitch());
 
@@ -781,7 +865,7 @@ public class Battle_Controller : FiniteStateMachine
                 EventController.TriggerEvent(ev_selected);
                 selected = true;
             }
-            if (Input.GetKeyDown(KeyCode.S) && player.sp >= specialcost && !selected) //Special
+            if (Input.GetKeyDown(KeyCode.S) && player.currentSP >= specialcost && !selected) //Special
             {
                 //ev_action.damage = (int)(CalculateDamage() * buffplayer * defenseenemy);
                 //defenseenemy = 1;
@@ -843,10 +927,10 @@ public class Battle_Controller : FiniteStateMachine
         {
             ResetPrizes();
 
-            Debug.Log($"Selected: {selected} - Playerbuff: {buffplayer}");
-            Debug.Log($"{enemy.hp} / {enemyhp} = {(float)enemy.hp / (float)enemyhp}");
+            //Debug.Log($"Selected: {selected} - Playerbuff: {buffplayer}");
+            //Debug.Log($"{enemy.currentHP} / {enemyMaxHP} = {(float)enemy.currentHP / (float)enemyMaxHP}");
 
-            if (((float)enemy.hp / (float)enemyhp < 0.4f) && enemy.heal > 0) //Se cura si tiene menos de 40% de vida
+            if (((float)enemy.currentHP / (float)enemyMaxHP < 0.4f) && enemy.heal > 0) //Se cura si tiene menos de 40% de vida
             {
                 enemy.heal--;
                 ev_action.action = ev_selected.action = (int)action.heal;
@@ -863,7 +947,7 @@ public class Battle_Controller : FiniteStateMachine
                 ev_action.action = ev_selected.action = (int)action.buff;
                 selected = true;
             }
-            else if (enemy.sp >= specialcost) //Tira el especial
+            else if (enemy.currentSP >= specialcost) //Tira el especial
             {
                 ev_action.action = ev_selected.action = (int)action.special;
                 selected = true;
@@ -878,7 +962,7 @@ public class Battle_Controller : FiniteStateMachine
                 selected = true;
             }
 
-            Debug.Log($"AccionEnemigo{ev_action.action}");
+            //Debug.Log($"AccionEnemigo{ev_action.action}");
 
             ev_action.characterid = ev_selected.characterid = (int)characterid.enemy;
             EventController.TriggerEvent(ev_selected);
@@ -955,12 +1039,12 @@ public class Battle_Controller : FiniteStateMachine
         oncountdown = true;
         gameover = false;
         enableitems = false;
-        player.hp = playerinithp;
-        player.sp = playerinitsp;
+        player.currentHP = playerinithp;
+        player.currentSP = playerinitsp;
         player.heal = playerheal;
         player.buff = playerbuff;
-        enemy.hp = enemyinithp;
-        enemy.sp = enemyinitsp;
+        enemy.currentHP = enemyinithp;
+        enemy.currentSP = enemyinitsp;
         enemy.heal = enemyheal;
         enemy.buff = enemybuff;  
         triggercountdown = false;
@@ -1000,8 +1084,8 @@ public class Battle_Controller : FiniteStateMachine
         ev_battlestarted.enemyinithp = enemyinithp;
         ev_battlestarted.buffqty = player.buff;
         ev_battlestarted.healqty = player.heal;
-        ev_battlestarted.enemyhp = enemyhp;
-        ev_battlestarted.enemysp = enemysp;
+        ev_battlestarted.enemyhp = enemyMaxHP;
+        ev_battlestarted.enemysp = enemyMaxSP;
         ev_battlestarted.specialcost = specialcost;
         EventController.TriggerEvent(ev_battlestarted);
 
@@ -1073,7 +1157,7 @@ public class Battle_Controller : FiniteStateMachine
 
     private int CalculateDamage(){
 
-        Debug.Log($"Bonusdamage: {bonusdamage}");
+        //Debug.Log($"Bonusdamage: {bonusdamage}");
         if (ev_action.action == (int)action.attack)
         {
         return Random.Range(5, 8) + bonusdamage;
@@ -1141,7 +1225,7 @@ public class Battle_Controller : FiniteStateMachine
         {
             if (qtenoteamount != 0)
             {
-                Debug.Log($"Counter:{qtecounter} - Amount:{qtenoteamount}");
+                //Debug.Log($"Counter:{qtecounter} - Amount:{qtenoteamount}");
                 qteeffic = (float)qtecounter / (float)qtenoteamount;
             }
         }
@@ -1167,7 +1251,7 @@ public class Battle_Controller : FiniteStateMachine
 
         ev_qteprize.effic = qteeffic;
 
-        Debug.Log($"{ev_action.action} Effi: {qteeffic}");
+        //Debug.Log($"{ev_action.action} Effi: {qteeffic}");
 
         ev_qteprize.prizeDamage = 0;
         ev_qteprize.prizeSP = 0;
@@ -1391,7 +1475,7 @@ public class Battle_Controller : FiniteStateMachine
 
         yield return actionTimer;
 
-        if (!gameover)
+        if (!gameover && !iswaiting)
         {
             triggerstate = true;
         }
@@ -1426,6 +1510,15 @@ public class Battle_Controller : FiniteStateMachine
         iswaiting = true;
         yield return turnSwitchTimer;
         selected = true;
+        iswaiting = false;
+    }
+
+    IEnumerator SwitchEnemyWait()
+    {
+        enemywait = false;
+        iswaiting = true;
+        yield return switchEnemyTimer;
+        enemywait = true;
         iswaiting = false;
     }
 

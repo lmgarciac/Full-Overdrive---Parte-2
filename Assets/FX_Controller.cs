@@ -5,6 +5,7 @@ using Events;
 
 public class FX_Controller : MonoBehaviour
 {
+    private EnemyFXScript enemyFX;
     [SerializeField] private GameObject fx_hearts_player;
     [SerializeField] private GameObject fx_buff_player;
     [SerializeField] private GameObject fx_defend_player;
@@ -57,6 +58,7 @@ public class FX_Controller : MonoBehaviour
         EventController.AddListener<ActionEvent>(ActionEvent);
         EventController.AddListener<EnableTurnEvent>(EnableTurnEvent);
         EventController.AddListener<SelectActionEvent>(SelectActionEvent);
+        EventController.AddListener<LoadEnemyEvent>(LoadEnemyEvent);
 
     }
     private void OnDisable()
@@ -65,6 +67,7 @@ public class FX_Controller : MonoBehaviour
         EventController.RemoveListener<ActionEvent>(ActionEvent);
         EventController.RemoveListener<EnableTurnEvent>(EnableTurnEvent);
         EventController.RemoveListener<SelectActionEvent>(SelectActionEvent);
+        EventController.RemoveListener<LoadEnemyEvent>(LoadEnemyEvent);
 
     }
 
@@ -76,6 +79,18 @@ public class FX_Controller : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void LoadEnemyEvent(LoadEnemyEvent currentEnemy)
+    {
+        enemyFX = GameObject.FindGameObjectWithTag("EnemyFX").GetComponent<EnemyFXScript>();
+        fx_hearts_enemy = enemyFX.fx_hearts_enemy;
+        fx_buff_enemy = enemyFX.fx_buff_enemy;
+        fx_defend_enemy = enemyFX.fx_defend_enemy;
+        fx_attack_enemy = enemyFX.fx_attack_enemy;
+        fx_special_enemy = enemyFX.fx_special_enemy;
+        fx_pre_attack_enemy = enemyFX.fx_pre_attack_enemy;
+        fx_pre_special_enemy = enemyFX.fx_pre_special_enemy;
     }
 
     private void AnimEvent(AnimEvent anim)

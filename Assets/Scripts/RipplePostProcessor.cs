@@ -66,7 +66,7 @@ public class RipplePostProcessor : MonoBehaviour
             this.RippleMaterial.SetFloat("_CenterX", modelposition.x);
             this.RippleMaterial.SetFloat("_CenterY", modelposition.y);
             showripple = false;
-            Debug.Log("Showripple " + showripple);
+            //Debug.Log("Showripple " + showripple);
         }
 
         this.RippleMaterial.SetFloat("_Amount", this.Amount);
@@ -84,13 +84,13 @@ public class RipplePostProcessor : MonoBehaviour
     {
         if (anim.animstate && currentaction == (int)action.attack) //This means fx should be played
         {
-            Debug.Log("ShowRipple");
+            //Debug.Log("ShowRipple");
             showripple = true;
             modelposition = anim.modelposition;
         }
         if (anim.animstate && currentaction == (int)action.special) //This means fx should be played
         {
-            Debug.Log("ShowRipple");
+            //Debug.Log("ShowRipple");
             showripple = true;
             modelposition = anim.modelposition;
         }
