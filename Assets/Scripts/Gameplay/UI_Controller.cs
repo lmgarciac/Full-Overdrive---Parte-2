@@ -93,7 +93,7 @@ public class UI_Controller : MonoBehaviour
 
     void Start()
     {
-
+        max_hp_player = Player_Status.MaxHPStat;
     }
     void Update()
     {
@@ -535,8 +535,11 @@ public class UI_Controller : MonoBehaviour
 
     void UpgradeHPBar()
     {
-        float _calc_hpdown_enemy = (float)enemy.currentHP / (float)max_hp_player;
-        float _calc_hpdown_player = (float)player.currentHP / (float)max_hp_enemy;
+        //float _calc_hpdown_enemy = (float)enemy.currentHP / (float)max_hp_player;
+        //float _calc_hpdown_player = (float)player.currentHP / (float)max_hp_enemy;
+
+        float _calc_hpdown_enemy = (float)enemy.currentHP / (float)max_hp_enemy;
+        float _calc_hpdown_player = (float)player.currentHP / (float)max_hp_player;
 
         if (float.IsNaN(_calc_hpdown_enemy))
         {
@@ -562,8 +565,11 @@ public class UI_Controller : MonoBehaviour
 
     void UpgradeSPBar()
     {
-        float _calc_spdown_enemy = (float)enemy.currentSP / (float)max_sp_player;
-        float _calc_spdown_player = (float)player.currentSP / (float)max_sp_enemy;
+        //float _calc_spdown_enemy = (float)enemy.currentSP / (float)max_sp_player;
+        //float _calc_spdown_player = (float)player.currentSP / (float)max_sp_enemy;
+
+        float _calc_spdown_enemy = (float)enemy.currentSP / (float)max_sp_enemy;
+        float _calc_spdown_player = (float)player.currentSP / (float)max_sp_player;
 
         if (float.IsNaN(_calc_spdown_player))
         {

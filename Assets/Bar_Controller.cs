@@ -7,6 +7,7 @@ using Events;
 public class Bar_Controller : MonoBehaviour
 {
     [SerializeField] private int barIdentifier;
+
     private bool canenterbar = false;
     private SceneController sceneController;
     private int[] collectablesIdentifiers;
@@ -39,6 +40,7 @@ public class Bar_Controller : MonoBehaviour
             //SceneManager.LoadScene("Battle", LoadSceneMode.Additive);
             //SceneManager.SetActiveScene(SceneManager.GetSceneByName("Battle"));
             //SaveMapState();
+            Player_Status.CurrentBar = barIdentifier;
             sceneController.FadeAndLoadScene("_Scene_Battle");
         }
     }
@@ -91,7 +93,8 @@ public class Bar_Controller : MonoBehaviour
 
     private void BeforeSceneUnloadEvent(BeforeSceneUnloadEvent before)
     {
-        Player_Status.CurrentBar = barIdentifier;
+        //Player_Status.CurrentBar = barIdentifier;
+       // Debug.Log("Bar Ident: " + barIdentifier);
     }
 
 }

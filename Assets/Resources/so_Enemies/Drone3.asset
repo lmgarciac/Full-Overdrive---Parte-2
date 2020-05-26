@@ -15,8 +15,8 @@ MonoBehaviour:
   prefabName: Drone_3
   enemyAttack: 10
   enemyDefense: 10
-  enemyinitHP: 15
-  enemyinitSP: 15
+  enemyinitHP: 30
+  enemyinitSP: 40
   enemyMaxHP: 30
   enemyMaxSP: 60
   enemyHeals: 0

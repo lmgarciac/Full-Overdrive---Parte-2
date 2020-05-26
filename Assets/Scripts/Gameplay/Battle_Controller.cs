@@ -32,6 +32,10 @@ public class Battle_Controller : FiniteStateMachine
     [SerializeField] private int enemyheal;
     [SerializeField] private int enemybuff;
 
+    [SerializeField] private int enemyAttack;
+    [SerializeField] private int enemyDefense;
+
+
     [SerializeField] private int specialcost;
 
 
@@ -232,10 +236,16 @@ public class Battle_Controller : FiniteStateMachine
         {
             Player_Status.CurrentBar = 1;
             Player_Status.CurrentArea = 1;
+            Player_Status.AttackStat = 10;
+            Player_Status.DefenseStat = 10;
+            Player_Status.Buffs = 2;
+            Player_Status.Heals = 2;
+            Player_Status.MaxHPStat = 40;
+            Player_Status.MaxSPStat = 60;
         }
 
-        //Load Bar and Load Enemies
-        if(Player_Status.CurrentBar != 0)
+        //Load Bar, Load Enemies and Load Player Stats
+        if (Player_Status.CurrentBar != 0)
         {
             currentBar = (Bar_Template)Resources.Load<Bar_Template>($"so_Bars/Bar_{Player_Status.CurrentBar}");
             Instantiate((GameObject)Resources.Load<GameObject>($"Prefabs/{currentBar.prefabModelName}"));
@@ -245,6 +255,9 @@ public class Battle_Controller : FiniteStateMachine
             {
                 LoadEnemy(currentBar.enemies[currentEnemyID]);
             }
+
+            playerhp = Player_Status.MaxHPStat;
+            playersp = Player_Status.MaxSPStat;
         }
     }
 
@@ -275,6 +288,8 @@ public class Battle_Controller : FiniteStateMachine
         enemyMaxSP = loadEnemy.enemyMaxSP;
         enemy.heal = loadEnemy.enemyHeals;
         enemy.buff = loadEnemy.enemyBuffs;
+        enemyAttack = loadEnemy.enemyAttack;
+        enemyDefense = loadEnemy.enemyDefense;
 
         enemyObject = currentEnemyObject;
 
@@ -930,13 +945,13 @@ public class Battle_Controller : FiniteStateMachine
             //Debug.Log($"Selected: {selected} - Playerbuff: {buffplayer}");
             //Debug.Log($"{enemy.currentHP} / {enemyMaxHP} = {(float)enemy.currentHP / (float)enemyMaxHP}");
 
-            if (((float)enemy.currentHP / (float)enemyMaxHP < 0.4f) && enemy.heal > 0) //Se cura si tiene menos de 40% de vida
+            if (((float)enemy.currentHP / (float)enemyMaxHP < 0.4f && Random.Range(0, 1001) > 500) && enemy.heal > 0) //Se cura si tiene menos de 40% de vida
             {
                 enemy.heal--;
                 ev_action.action = ev_selected.action = (int)action.heal;
                 selected = true;
             }
-            else if (buffplayer > 1f || Random.Range(0, 1001) > 900) //Se defiende si el otro esta buffeado o si tiene baja SP o un 10% al azar
+            else if (( buffplayer > 1f && Random.Range(0, 1001) > 500) || Random.Range(0, 1001) > 900) //Se defiende si el otro esta buffeado o si tiene baja SP o un 10% al azar
             {
                 ev_action.action = ev_selected.action = (int)action.defend;
                 selected = true;
@@ -1155,21 +1170,35 @@ public class Battle_Controller : FiniteStateMachine
         }
     }
 
-    private int CalculateDamage(){
+    private float CalculateStats()
+    {
+        if (playerturn)
+        {
+            Debug.Log("Calculate Player Stat: " + ((Player_Status.AttackStat / 10.0f) * (10.0f / enemyDefense)));
+            return ((Player_Status.AttackStat / 10.0f) * (10.0f / enemyDefense));
+        }
+        else
+        {
+            Debug.Log("Calculate Enemy Stat: " + ((enemyDefense / 10.0f) * (10.0f / Player_Status.DefenseStat)));
+            return ((enemyDefense / 10.0f) * (10.0f / Player_Status.DefenseStat));
+        }
+    }
 
+    private int CalculateDamage()
+    {
         //Debug.Log($"Bonusdamage: {bonusdamage}");
         if (ev_action.action == (int)action.attack)
         {
-        return Random.Range(5, 8) + bonusdamage;
+            return ((int)((Random.Range(5, 8) + bonusdamage) * CalculateStats()));
         }
         else //Special
         {
-        return Random.Range(15, 21) + bonusdamage;
+            return ((int)((Random.Range(15, 21) + bonusdamage) * CalculateStats()));
         }
     }
     private float CalculateBuff()
     {
-        return Random.Range(1.8f, 2.0f) + bonusmultiplier;
+        return Random.Range(1.3f, 1.5f) + bonusmultiplier;
     }
     private int CalculateHeal()
     {
@@ -1283,16 +1312,17 @@ public class Battle_Controller : FiniteStateMachine
             case (int)action.defend:
                 if (qteeffic < 0.3f)
                 {
-                    ev_qteprize.prizeMultiplier = 0.5f;//defense multipliers are negative
+                    ev_qteprize.prizeMultiplier = -0.15f;//defense multipliers are negative
                 }
                 else if (qteeffic >= 0.3f && qteeffic < 0.7f)
                 {
                     ev_qteprize.prizeSP = 5;
+                    ev_qteprize.prizeMultiplier = -0.25f;
                 }
                 else if (qteeffic >= 0.7f && qteeffic < 1)
                 {
                     ev_qteprize.prizeSP = 10;
-                    ev_qteprize.prizeMultiplier = -0.25f;
+                    ev_qteprize.prizeMultiplier = -0.35f;
                 }
                 else //100%
                 {
@@ -1342,7 +1372,7 @@ public class Battle_Controller : FiniteStateMachine
             case (int)action.buff:
                 if (qteeffic < 0.3f)
                 {
-                    ev_qteprize.prizeMultiplier = -1.5f;
+                    ev_qteprize.prizeMultiplier = -0.2f;
                 }
                 else if (qteeffic >= 0.3f && qteeffic < 0.7f)
                 {

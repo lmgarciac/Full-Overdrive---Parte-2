@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Drone2
   m_EditorClassIdentifier: 
   prefabName: Drone_2
-  enemyAttack: 10
-  enemyDefense: 10
-  enemyinitHP: 12
+  enemyAttack: 8
+  enemyDefense: 8
+  enemyinitHP: 25
   enemyinitSP: 20
-  enemyMaxHP: 30
-  enemyMaxSP: 70
+  enemyMaxHP: 25
+  enemyMaxSP: 60
   enemyHeals: 0
   enemyBuffs: 0
   beaten: 0

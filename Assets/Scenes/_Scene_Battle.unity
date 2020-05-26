@@ -12094,6 +12094,8 @@ MonoBehaviour:
   enemyinithp: 30
   enemyheal: 0
   enemybuff: 2
+  enemyAttack: 10
+  enemyDefense: 10
   specialcost: 60
   beatTempo: 140
   timesignature: 4

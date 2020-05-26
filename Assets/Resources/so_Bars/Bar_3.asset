@@ -9,16 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58632e0ad8b005d42b3451d92dd354a3, type: 3}
-  m_Name: Drone1
+  m_Script: {fileID: 11500000, guid: 5b47864685fb86d409a8e3eaadb8d130, type: 3}
+  m_Name: Bar_3
   m_EditorClassIdentifier: 
-  prefabName: Drone_1
-  enemyAttack: 5
-  enemyDefense: 5
-  enemyinitHP: 20
-  enemyinitSP: 0
-  enemyMaxHP: 20
-  enemyMaxSP: 60
-  enemyHeals: 0
-  enemyBuffs: 0
-  beaten: 0
+  barIdentifier: 0
+  prefabModelName: 
+  finished: 0
+  enemies: []
