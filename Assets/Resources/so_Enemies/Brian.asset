@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58632e0ad8b005d42b3451d92dd354a3, type: 3}
+  m_Name: Brian
+  m_EditorClassIdentifier: 
+  prefabName: Brian
+  enemyAttack: 13
+  enemyDefense: 15
+  enemyinitHP: 50
+  enemyinitSP: 40
+  enemyMaxHP: 50
+  enemyMaxSP: 60
+  enemyHeals: 0
+  enemyBuffs: 2
+  beaten: 0

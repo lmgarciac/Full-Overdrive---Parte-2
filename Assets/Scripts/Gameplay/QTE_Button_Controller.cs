@@ -83,7 +83,7 @@ public class QTE_Button_Controller : MonoBehaviour
 
     private void QteHitEvent(QteHitEvent qtehit)
     {
-        Debug.Log("Emit!");
+        //Debug.Log("Emit!");
 
         if(qtehit.color == 0 && this.tag == "ActivatorBlue")
         {

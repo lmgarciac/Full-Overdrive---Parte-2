@@ -6,6 +6,8 @@ using Events;
 
 public class Bar_Controller : MonoBehaviour
 {
+    [SerializeField] private int barIdentifier;
+
     private bool canenterbar = false;
     private SceneController sceneController;
     private int[] collectablesIdentifiers;
@@ -14,14 +16,15 @@ public class Bar_Controller : MonoBehaviour
 
     private void OnEnable()
     {
+        EventController.AddListener<BeforeSceneUnloadEvent>(BeforeSceneUnloadEvent);
         EventController.AddListener<DialogueStatusEvent>(DialogueStatusEvent);
 
     }
 
     private void OnDisable()
     {
+        EventController.RemoveListener<BeforeSceneUnloadEvent>(BeforeSceneUnloadEvent);
         EventController.RemoveListener<DialogueStatusEvent>(DialogueStatusEvent);
-
     }
 
     void Start()
@@ -37,6 +40,7 @@ public class Bar_Controller : MonoBehaviour
             //SceneManager.LoadScene("Battle", LoadSceneMode.Additive);
             //SceneManager.SetActiveScene(SceneManager.GetSceneByName("Battle"));
             //SaveMapState();
+            Player_Status.CurrentBar = barIdentifier;
             sceneController.FadeAndLoadScene("_Scene_Battle");
         }
     }
@@ -85,6 +89,12 @@ public class Bar_Controller : MonoBehaviour
         //Map_Status.CameraPosition = GameObject.FindGameObjectWithTag("MainCamera").transform.position;
 
         //Map_Status.FirstTime = false;
+    }
+
+    private void BeforeSceneUnloadEvent(BeforeSceneUnloadEvent before)
+    {
+        //Player_Status.CurrentBar = barIdentifier;
+       // Debug.Log("Bar Ident: " + barIdentifier);
     }
 
 }

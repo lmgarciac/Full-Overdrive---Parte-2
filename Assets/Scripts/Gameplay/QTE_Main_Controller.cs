@@ -53,7 +53,7 @@ public class QTE_Main_Controller : MonoBehaviour
     {
         if(other.tag.StartsWith("Arrow") && !licktriggered)
         {
-            Debug.Log("Entro!");
+            //Debug.Log("Entro!");
             ev_qteplay.noteamount = noteAmount;
             EventController.TriggerEvent(ev_qteplay);//Debería controlarse que sea el primer Arrow y el resto no        
         }
@@ -64,7 +64,7 @@ public class QTE_Main_Controller : MonoBehaviour
         if (other.tag.StartsWith("Arrow") && !licktriggered)
         {
             qteleavecounter++;
-            Debug.Log($"{qteleavecounter} / {noteAmount}");
+            //Debug.Log($"{qteleavecounter} / {noteAmount}");
             ev_qteleave.qtenoteleave++;
             EventController.TriggerEvent(ev_qteleave);//Debería controlarse que sea el primer Arrow y el resto no        
         }
@@ -82,12 +82,12 @@ public class QTE_Main_Controller : MonoBehaviour
         noteDown = (GameObject)Resources.Load("Prefabs/Arrow_Down_Prefab");
         noteLeft = (GameObject)Resources.Load("Prefabs/Arrow_Left_Prefab");
         noteRight = (GameObject)Resources.Load("Prefabs/Arrow_Right_Prefab");
-        Debug.Log(qtename);
+        //Debug.Log(qtename);
         QteSo = (Qte_Template)Resources.Load<Qte_Template>($"so_QTEs/{qtename}");
 
         licktriggered = false;
         noteAmount = QteSo.noteData.Length;
-        Debug.Log($"Noteamount: {noteAmount}");
+        //Debug.Log($"Noteamount: {noteAmount}");
         noteindex = 0;
         arrowsPosition = QteSo.arrowsHeight;
 

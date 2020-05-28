@@ -171,7 +171,7 @@ void Update()
             so_miss = (AudioClip)Resources.Load<AudioClip>($"Sound/so_guitar_fail_{Random.Range(1, 4)}");
             soundPlayer.clip = so_miss;
             soundPlayer.Play();
-            Debug.Log("Sonido Miss");
+            //Debug.Log("Sonido Miss");
         }     
     }
 
@@ -180,7 +180,7 @@ void Update()
         licktriggered = false;
         so_lick = (AudioClip)Resources.Load<AudioClip>($"Sound/so_lick{Random.Range(1, 7)}");
 
-        Debug.Log("Enable turn cambio current action!" + enableturn.turnstate);
+        //Debug.Log("Enable turn cambio current action!" + enableturn.turnstate);
 
 
         if (enableturn.turnstate != (int)turnstate.qte && enableturn.turnstate != (int)turnstate.anim) //sino me lo borra cuando deberia estar activo
@@ -224,7 +224,7 @@ void Update()
     private void AnimEvent(AnimEvent anim)
     {
 
-        Debug.Log("Current Action:" + currentaction);
+        //Debug.Log("Current Action:" + currentaction);
 
         if (anim.animstate && currentaction == (int)action.heal) //This means fx should be played
         {

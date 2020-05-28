@@ -32,6 +32,9 @@ public class UI_Controller : MonoBehaviour
 
     [SerializeField] private Areas_Template areas;
 
+    [SerializeField] private TextMeshProUGUI cantRedPill;
+    [SerializeField] private TextMeshProUGUI cantBluePill;
+
     private enum countertype { inittimer = 0, sessiontimer = 1, }
     private enum counterstatus { ready = 0, set = 1, go = 2 }
 
@@ -46,8 +49,8 @@ public class UI_Controller : MonoBehaviour
     }
     public struct Character
     {
-        public int hp;
-        public int sp;
+        public int currentHP;
+        public int currentSP;
         public int buff;
         public int heal;
     }
@@ -90,7 +93,7 @@ public class UI_Controller : MonoBehaviour
 
     void Start()
     {
-
+        max_hp_player = Player_Status.MaxHPStat;
     }
     void Update()
     {
@@ -114,6 +117,7 @@ public class UI_Controller : MonoBehaviour
         EventController.AddListener<QteHitEvent>(QteHitEvent);
         EventController.AddListener<QtePrizeEvent>(QtePrizeEvent);
         EventController.AddListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
+        EventController.AddListener<LoadEnemyEvent>(LoadEnemyEvent);
 
     }
     private void OnDisable()
@@ -132,11 +136,24 @@ public class UI_Controller : MonoBehaviour
         EventController.RemoveListener<QteHitEvent>(QteHitEvent);
         EventController.RemoveListener<QtePrizeEvent>(QtePrizeEvent);
         EventController.RemoveListener<AfterSceneLoadEvent>(AfterSceneLoadEvent);
+        EventController.RemoveListener<LoadEnemyEvent>(LoadEnemyEvent);
 
     }
     private void StartTimerEvent(StartTimerEvent timer)
     {
         go_itempanel.SetActive(false);
+    }
+
+    private void LoadEnemyEvent(LoadEnemyEvent currentEnemy)
+    {
+        enemy.currentHP = currentEnemy.enemyTemplate.enemyinitHP;
+        enemy.currentSP = currentEnemy.enemyTemplate.enemyinitSP;
+        max_hp_enemy = currentEnemy.enemyTemplate.enemyMaxHP;
+        max_sp_enemy = currentEnemy.enemyTemplate.enemyMaxSP;
+        tx_enemyhp.text = $"{enemy.currentHP}";
+        tx_enemysp.text = $"{enemy.currentSP}";
+
+        tx_enemydamage = GameObject.FindGameObjectWithTag("EnemyInfo").GetComponent<TextMeshPro>();
     }
 
     private void CounterStatusEvent(CounterStatusEvent status)
@@ -165,10 +182,10 @@ public class UI_Controller : MonoBehaviour
 
     private void BattleStartedEvent(BattleStartedEvent battlestart)
     {
-        player.hp = battlestart.playerinithp;
-        player.sp = battlestart.playerinitsp;
-        enemy.hp = battlestart.enemyinithp;
-        enemy.sp = battlestart.enemyinitsp;
+        player.currentHP = battlestart.playerinithp;
+        player.currentSP = battlestart.playerinitsp;
+        enemy.currentHP = battlestart.enemyinithp;
+        enemy.currentSP = battlestart.enemyinitsp;
         //player.buff = battlestart.buffqty;
         //player.heal = battlestart.healqty;
 
@@ -179,10 +196,13 @@ public class UI_Controller : MonoBehaviour
 
         specialcost = battlestart.specialcost;
 
-        tx_playerhp.text = $"{player.hp}";
-        tx_playersp.text = $"{player.sp}";
-        tx_enemyhp.text = $"{enemy.hp}";
-        tx_enemysp.text = $"{enemy.sp}";
+        tx_playerhp.text = $"{player.currentHP}";
+        tx_playersp.text = $"{player.currentSP}";
+        tx_enemyhp.text = $"{enemy.currentHP}";
+        tx_enemysp.text = $"{enemy.currentSP}";
+
+        cantRedPill.text = player.heal.ToString();
+        cantBluePill.text = player.buff.ToString();
         //tx_buffqty.text = $"{player.buff}";
         //tx_healqty.text = $"{player.heal}";
     }
@@ -193,35 +213,35 @@ public class UI_Controller : MonoBehaviour
 
         if (ev_action.characterid == (int)characterid.player && ev_action.action == (int)action.attack)
         {
-            enemy.hp -= ev_action.damage;
+            enemy.currentHP -= ev_action.damage;
 
-            if (enemy.hp < 0)
+            if (enemy.currentHP < 0)
             {
-                enemy.hp = 0;
+                enemy.currentHP = 0;
             }
             tx_enemydamage.text = $"-{ev_action.damage}HP";
-            tx_enemyhp.text = $"{enemy.hp}";
+            tx_enemyhp.text = $"{enemy.currentHP}";
         }
         if (ev_action.characterid == (int)characterid.player && ev_action.action == (int)action.special)
         {
-            enemy.hp -= ev_action.damage;
-            player.sp -= specialcost;
-            if (enemy.hp < 0)
+            enemy.currentHP -= ev_action.damage;
+            player.currentSP -= specialcost;
+            if (enemy.currentHP < 0)
             {
-                enemy.hp = 0;
+                enemy.currentHP = 0;
             }
             tx_enemydamage.text = $"-{ev_action.damage}HP";
-            tx_enemyhp.text = $"{enemy.hp}";
-            tx_playersp.text = $"{player.sp}";
+            tx_enemyhp.text = $"{enemy.currentHP}";
+            tx_playersp.text = $"{player.currentSP}";
         }
         if (ev_action.characterid == (int)characterid.player && ev_action.action == (int)action.heal)
         {
             //player.hp -= ev_action.damage;
-            player.hp = Mathf.Clamp(player.hp - ev_action.damage, 0, max_hp_player);
+            player.currentHP = Mathf.Clamp(player.currentHP - ev_action.damage, 0, max_hp_player);
 
 
             tx_playerdamage.text = $"+{-ev_action.damage}HP";
-            tx_playerhp.text = $"{player.hp}";
+            tx_playerhp.text = $"{player.currentHP}";
             
             //Mostrar el Consumo del Heal
         }
@@ -236,35 +256,35 @@ public class UI_Controller : MonoBehaviour
 
         if (ev_action.characterid == (int)characterid.enemy && ev_action.action == (int)action.attack)
         {
-            player.hp -= ev_action.damage;
-            if (player.hp < 0)
+            player.currentHP -= ev_action.damage;
+            if (player.currentHP < 0)
             {
-                player.hp = 0;
+                player.currentHP = 0;
             }
             tx_playerdamage.text = $"-{ev_action.damage}HP";
-            tx_playerhp.text = $"{player.hp}";
+            tx_playerhp.text = $"{player.currentHP}";
         }
 
         if (ev_action.characterid == (int)characterid.enemy && ev_action.action == (int)action.special)
         {
-            player.hp -= ev_action.damage;
-            enemy.sp -= specialcost;
-            if (player.hp < 0)
+            player.currentHP -= ev_action.damage;
+            enemy.currentSP -= specialcost;
+            if (player.currentHP < 0)
             {
-                player.hp = 0;
+                player.currentHP = 0;
             }
             tx_playerdamage.text = $"-{ev_action.damage}HP";
-            tx_playerhp.text = $"{player.hp}";
-            tx_enemysp.text = $"{enemy.sp}";
+            tx_playerhp.text = $"{player.currentHP}";
+            tx_enemysp.text = $"{enemy.currentSP}";
         }
 
         if (ev_action.characterid == (int)characterid.enemy && ev_action.action == (int)action.heal)
         {
             //enemy.hp -= ev_action.damage;
-            enemy.hp = Mathf.Clamp(enemy.hp - ev_action.damage, 0, max_hp_enemy);
+            enemy.currentHP = Mathf.Clamp(enemy.currentHP - ev_action.damage, 0, max_hp_enemy);
 
             tx_enemydamage.text = $"+{-ev_action.damage}HP";
-            tx_enemyhp.text = $"{enemy.hp}";
+            tx_enemyhp.text = $"{enemy.currentHP}";
         }
 
         if (ev_action.characterid == (int)characterid.enemy && ev_action.action == (int)action.buff)
@@ -345,6 +365,8 @@ public class UI_Controller : MonoBehaviour
             tx_result.text = $"YOU LOSE!";
         }
 
+        //Debug.Log("Pase por GameOverEvent");
+
         anim_dialogue.SetBool("Open", true);
 
         if (!(areas.Areas[Player_Status.CurrentArea - 1].targetPicks >= Player_Status.Picks)) //Si no se la dio, que se la de
@@ -360,6 +382,7 @@ public class UI_Controller : MonoBehaviour
         tx_enemydamage.text = null;
         tx_playerdamage.text = null;
     }
+
     private void SelectActionEvent(SelectActionEvent select)
     {
         if (select.characterid == (int)characterid.player && select.action == (int)action.item)
@@ -381,6 +404,7 @@ public class UI_Controller : MonoBehaviour
                 player.buff = 0;
             }
             tx_buffqty.text = $"{player.buff}";
+            cantBluePill.text = player.buff.ToString();
         }
 
         if (select.characterid == (int)characterid.player && select.action == (int)action.heal)
@@ -397,6 +421,7 @@ public class UI_Controller : MonoBehaviour
                 player.heal = 0;
             }
             tx_healqty.text = $"{player.heal}";
+            cantRedPill.text = player.heal.ToString();
         }
         if (select.characterid == (int)characterid.player && select.action == (int)action.back)
         {
@@ -406,7 +431,7 @@ public class UI_Controller : MonoBehaviour
 
         if (select.characterid != (int)characterid.player)
         {
-            Debug.Log("Estas pasando por aca mucho?");
+            //Debug.Log("Estas pasando por aca mucho?");
             if (select.action == (int)action.attack)
             {
                 tx_centralinfo.text = $"ATTACK!";
@@ -449,19 +474,19 @@ public class UI_Controller : MonoBehaviour
         //player.hp += qteprize.prizeHP;
         if (qteprize.playerturn)
         {
-            player.sp = Mathf.Clamp(player.sp + qteprize.prizeSP, 0, max_sp_player);
+            player.currentSP = Mathf.Clamp(player.currentSP + qteprize.prizeSP, 0, max_sp_player);
             //player.hp = Mathf.Clamp(player.hp + qteprize.prizeHP, 0, max_hp_player);
         }
         else
         {
-            enemy.sp = Mathf.Clamp(enemy.sp + qteprize.prizeSP, 0, max_sp_enemy);
+            enemy.currentSP = Mathf.Clamp(enemy.currentSP + qteprize.prizeSP, 0, max_sp_enemy);
             //enemy.hp = Mathf.Clamp(enemy.hp + qteprize.prizeHP, 0, max_hp_enemy);
         }
 
-        tx_playersp.text = $"{player.sp}";
-        tx_playerhp.text = $"{player.hp}";
-        tx_enemysp.text = $"{enemy.sp}";
-        tx_enemyhp.text = $"{enemy.hp}";
+        tx_playersp.text = $"{player.currentSP}";
+        tx_playerhp.text = $"{player.currentHP}";
+        tx_enemysp.text = $"{enemy.currentSP}";
+        tx_enemyhp.text = $"{enemy.currentHP}";
 
         if (qteprize.effic < 0.3f)
         {
@@ -510,8 +535,11 @@ public class UI_Controller : MonoBehaviour
 
     void UpgradeHPBar()
     {
-        float _calc_hpdown_enemy = (float)enemy.hp / (float)max_hp_player;
-        float _calc_hpdown_player = (float)player.hp / (float)max_hp_enemy;
+        //float _calc_hpdown_enemy = (float)enemy.currentHP / (float)max_hp_player;
+        //float _calc_hpdown_player = (float)player.currentHP / (float)max_hp_enemy;
+
+        float _calc_hpdown_enemy = (float)enemy.currentHP / (float)max_hp_enemy;
+        float _calc_hpdown_player = (float)player.currentHP / (float)max_hp_player;
 
         if (float.IsNaN(_calc_hpdown_enemy))
         {
@@ -523,13 +551,13 @@ public class UI_Controller : MonoBehaviour
             _calc_hpdown_player = 0;
         }
 
-        if (player.hp <= (float)max_hp_player)
+        if (player.currentHP <= (float)max_hp_player)
         {
             ProgressHP_Player.transform.localScale = new Vector3(Mathf.Clamp((_calc_hpdown_player), 0, 1), ProgressHP_Player.transform.localScale.y, ProgressHP_Player.transform.localScale.z); //Ajusto HP Player
 
         }
 
-        if (enemy.hp <= (float)max_hp_enemy)
+        if (enemy.currentHP <= (float)max_hp_enemy)
         {
             ProgressHP_Enemy.transform.localScale = new Vector3(Mathf.Clamp((_calc_hpdown_enemy), 0, 1), ProgressHP_Enemy.transform.localScale.y, ProgressHP_Enemy.transform.localScale.z); //Ajusto HP Enemy
         }
@@ -537,8 +565,11 @@ public class UI_Controller : MonoBehaviour
 
     void UpgradeSPBar()
     {
-        float _calc_spdown_enemy = (float)enemy.sp / (float)max_sp_player;
-        float _calc_spdown_player = (float)player.sp / (float)max_sp_enemy;
+        //float _calc_spdown_enemy = (float)enemy.currentSP / (float)max_sp_player;
+        //float _calc_spdown_player = (float)player.currentSP / (float)max_sp_enemy;
+
+        float _calc_spdown_enemy = (float)enemy.currentSP / (float)max_sp_enemy;
+        float _calc_spdown_player = (float)player.currentSP / (float)max_sp_player;
 
         if (float.IsNaN(_calc_spdown_player))
         {
@@ -551,13 +582,13 @@ public class UI_Controller : MonoBehaviour
         }
 
 
-        if (player.sp <= (float)max_sp_player)
+        if (player.currentSP <= (float)max_sp_player)
         {
             ProgressSP_Player.transform.localScale = new Vector3(Mathf.Clamp((_calc_spdown_player), 0f, 1f), ProgressSP_Player.transform.localScale.y, ProgressSP_Player.transform.localScale.z); //Ajusto SP Player
 
         }
 
-        if (enemy.sp <= (float)max_sp_enemy)
+        if (enemy.currentSP <= (float)max_sp_enemy)
         {
             ProgressSP_Enemy.transform.localScale = new Vector3(Mathf.Clamp((_calc_spdown_enemy), 0f, 1f), ProgressSP_Enemy.transform.localScale.y, ProgressSP_Enemy.transform.localScale.z); //Ajusto SP Enemy
         }
