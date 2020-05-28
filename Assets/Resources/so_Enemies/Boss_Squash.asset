@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58632e0ad8b005d42b3451d92dd354a3, type: 3}
-  m_Name: Squash
+  m_Name: Boss_Squash
   m_EditorClassIdentifier: 
-  prefabName: Squash
+  prefabName: Boss_Squash
   enemyAttack: 10
   enemyDefense: 10
   enemyinitHP: 40

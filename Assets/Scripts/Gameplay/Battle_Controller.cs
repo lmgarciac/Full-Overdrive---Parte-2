@@ -234,7 +234,7 @@ public class Battle_Controller : FiniteStateMachine
       
         if(Player_Status.CurrentBar == 0) //Only for testing
         {
-            Player_Status.CurrentBar = 2;
+            Player_Status.CurrentBar = 3;
             Player_Status.CurrentArea = 1;
             Player_Status.AttackStat = 10;
             Player_Status.DefenseStat = 10;
@@ -249,6 +249,7 @@ public class Battle_Controller : FiniteStateMachine
         {
             currentBar = (Bar_Template)Resources.Load<Bar_Template>($"so_Bars/Bar_{Player_Status.CurrentBar}");
             Instantiate((GameObject)Resources.Load<GameObject>($"Prefabs/{currentBar.prefabModelName}"));
+            Instantiate((GameObject)Resources.Load<GameObject>($"Prefabs/{currentBar.lightsPrefabModelName}"));
 
             currentEnemyID = 0;
             if (currentBar.enemies.Length != 0)

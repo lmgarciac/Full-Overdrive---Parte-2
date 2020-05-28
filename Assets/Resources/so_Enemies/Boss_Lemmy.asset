@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58632e0ad8b005d42b3451d92dd354a3, type: 3}
   m_Name: Boss_Lemmy
   m_EditorClassIdentifier: 
-  prefabName: 
-  enemyAttack: 0
-  enemyDefense: 0
-  enemyinitHP: 0
-  enemyinitSP: 0
-  enemyMaxHP: 0
-  enemyMaxSP: 0
-  enemyHeals: 0
-  enemyBuffs: 0
+  prefabName: Boss_Lemmy
+  enemyAttack: 16
+  enemyDefense: 15
+  enemyinitHP: 70
+  enemyinitSP: 30
+  enemyMaxHP: 70
+  enemyMaxSP: 60
+  enemyHeals: 1
+  enemyBuffs: 2
   beaten: 0

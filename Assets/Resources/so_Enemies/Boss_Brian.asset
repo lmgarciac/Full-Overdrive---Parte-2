@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58632e0ad8b005d42b3451d92dd354a3, type: 3}
-  m_Name: Brian
+  m_Name: Boss_Brian
   m_EditorClassIdentifier: 
-  prefabName: Brian
+  prefabName: Boss_Brian
   enemyAttack: 13
   enemyDefense: 15
   enemyinitHP: 50

@@ -7,6 +7,8 @@ public class Bar_Template : ScriptableObject
 {
     public int barIdentifier;
     public string prefabModelName;
+    public string lightsPrefabModelName;
+
     public bool finished;
     public Enemy_Template[] enemies;
 }

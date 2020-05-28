@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Bar_2
   m_EditorClassIdentifier: 
   barIdentifier: 2
-  prefabModelName: Stage_1
+  prefabModelName: Stage_2
+  lightsPrefabModelName: Luces_Ecenario_2
   finished: 0
   enemies:
   - {fileID: 11400000, guid: d5eef7b4d4eded54ebfe9b6448742756, type: 2}

@@ -119,6 +119,11 @@ public class Player_Controller : MonoBehaviour
         //money = 1000;
         sceneController = FindObjectOfType<SceneController>();
         PlayerOptions.InputEnabled = true;
+
+        if (Player_Status.CurrentArea == 0)
+        {
+            Player_Status.CurrentArea = currentarea = 1;
+        }
     }
 
     void Update()

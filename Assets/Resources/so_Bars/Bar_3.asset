@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b47864685fb86d409a8e3eaadb8d130, type: 3}
   m_Name: Bar_3
   m_EditorClassIdentifier: 
-  barIdentifier: 0
-  prefabModelName: 
+  barIdentifier: 3
+  prefabModelName: Stage_3
+  lightsPrefabModelName: Luces_Ecenario_3
   finished: 0
-  enemies: []
+  enemies:
+  - {fileID: 11400000, guid: 99e83c490e5073f499e9c98235f18481, type: 2}
+  - {fileID: 11400000, guid: d5eef7b4d4eded54ebfe9b6448742756, type: 2}
+  - {fileID: 11400000, guid: bee6420f4c18a1042bca6a1fd6e39021, type: 2}
+  - {fileID: 11400000, guid: d257bf99b737b9642b432bc4117aa16a, type: 2}
