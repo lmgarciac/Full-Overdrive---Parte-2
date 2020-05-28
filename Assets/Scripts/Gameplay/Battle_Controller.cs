@@ -798,9 +798,13 @@ public class Battle_Controller : FiniteStateMachine
                     {
                         Map_Status.FinishedBars.Add(new Bar_Serializable(Player_Status.CurrentBar, "", false));
                     }
+
+                    currentBar = Map_Status.FindBar(Player_Status.CurrentBar);
+
                     if (currentBar != null && currentBar.finished == false) //Si aun no finalizó el bar, darle pua y finalizarlo
                     {
                         Player_Status.Picks++;
+                        Debug.Log("Pua Obtenida");
                     }
 
                     currentEnemyID++;

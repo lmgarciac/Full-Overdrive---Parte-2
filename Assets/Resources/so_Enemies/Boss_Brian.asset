@@ -20,5 +20,5 @@ MonoBehaviour:
   enemyMaxHP: 50
   enemyMaxSP: 60
   enemyHeals: 0
-  enemyBuffs: 2
+  enemyBuffs: 0
   beaten: 0

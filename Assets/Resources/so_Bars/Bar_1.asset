@@ -18,5 +18,4 @@ MonoBehaviour:
   finished: 0
   enemies:
   - {fileID: 11400000, guid: 99e83c490e5073f499e9c98235f18481, type: 2}
-  - {fileID: 11400000, guid: d5eef7b4d4eded54ebfe9b6448742756, type: 2}
   - {fileID: 11400000, guid: 66da1fd9d0776f142813f4b5992054b4, type: 2}
