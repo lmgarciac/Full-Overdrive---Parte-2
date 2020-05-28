@@ -14,12 +14,12 @@ public class Area_Class
     public int targetPicks;
     public int targetCollectables;
 
-    public int enemyAttack;
-    public int enemyDefense;
-    public int enemyinitHP;
-    public int enemyinitSP;
-    public int enemyMaxHP;
-    public int enemyMaxSP;
-    public int enemyHeals;
-    public int enemyBuffs;
+    //public int enemyAttack;
+    //public int enemyDefense;
+    //public int enemyinitHP;
+    //public int enemyinitSP;
+    //public int enemyMaxHP;
+    //public int enemyMaxSP;
+    //public int enemyHeals;
+    //public int enemyBuffs;
 }

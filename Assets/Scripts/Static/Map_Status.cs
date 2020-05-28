@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public static class Map_Status
 {
@@ -16,6 +17,46 @@ public static class Map_Status
     private static Quaternion cameraRotation;
 
     private static int[] collectablesIdentifiers;
+
+    private static List<Bar_Serializable> finishedBars = new List<Bar_Serializable>();
+
+    public static List<Bar_Serializable> FinishedBars
+    {
+        get
+        {
+            return finishedBars;
+        }
+        set
+        {
+            finishedBars = value;
+        }
+    }
+
+    public static Bar_Serializable FindBar(int barIdent)
+    {
+        for (int i = 0; i < finishedBars.Count; ++i)
+        {
+            var bar = finishedBars.ElementAt(i);
+            if (bar.barIdentifier == barIdent)
+            {
+                return bar;
+            }
+        }
+        return null;
+    }
+
+    public static int FindBarIndex(int barIdent)
+    {
+        for (int i = 0; i < finishedBars.Count; ++i)
+        {
+            var bar = finishedBars.ElementAt(i);
+            if (bar.barIdentifier == barIdent)
+            {
+                return i;
+            }
+        }
+        return 999;
+    }
 
     public static Vector3 PlayerPosition
     {
