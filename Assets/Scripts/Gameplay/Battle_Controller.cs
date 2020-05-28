@@ -63,7 +63,7 @@ public class Battle_Controller : FiniteStateMachine
     [SerializeField] private GameObject playerObject;
     [SerializeField] private GameObject enemyObject;
 
-    [SerializeField] private Areas_Template areas;
+    //[SerializeField] private Areas_Template areas;
 
 
 
@@ -234,7 +234,7 @@ public class Battle_Controller : FiniteStateMachine
       
         if(Player_Status.CurrentBar == 0) //Only for testing
         {
-            Player_Status.CurrentBar = 1;
+            Player_Status.CurrentBar = 2;
             Player_Status.CurrentArea = 1;
             Player_Status.AttackStat = 10;
             Player_Status.DefenseStat = 10;
@@ -785,7 +785,19 @@ public class Battle_Controller : FiniteStateMachine
                 //Check all enemies beaten//
                 if (currentEnemyID >= (currentBar.enemies.Length - 1))
                 {
-                    if (areas.Areas[Player_Status.CurrentArea - 1].targetPicks >= Player_Status.Picks) //Si no se la dio, que se la de
+                    //if (areas.Areas[Player_Status.CurrentArea - 1].targetPicks >= Player_Status.Picks) //Si no se la dio, que se la de
+                    //{
+                    //    Player_Status.Picks++;
+                    //}
+
+                    // Check if Bar is finished
+                    Bar_Serializable currentBar = Map_Status.FindBar(Player_Status.CurrentBar);
+
+                    if (currentBar == null) //Si no esta agregado, agregarlo
+                    {
+                        Map_Status.FinishedBars.Add(new Bar_Serializable(Player_Status.CurrentBar, "", false));
+                    }
+                    if (currentBar != null && currentBar.finished == false) //Si aun no finalizó el bar, darle pua y finalizarlo
                     {
                         Player_Status.Picks++;
                     }

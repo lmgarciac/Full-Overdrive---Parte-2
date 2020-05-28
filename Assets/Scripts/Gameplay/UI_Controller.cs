@@ -30,7 +30,7 @@ public class UI_Controller : MonoBehaviour
 
     [SerializeField] private GameObject go_pick;
 
-    [SerializeField] private Areas_Template areas;
+    //[SerializeField] private Areas_Template areas;
 
     [SerializeField] private TextMeshProUGUI cantRedPill;
     [SerializeField] private TextMeshProUGUI cantBluePill;
@@ -365,14 +365,26 @@ public class UI_Controller : MonoBehaviour
             tx_result.text = $"YOU LOSE!";
         }
 
-        //Debug.Log("Pase por GameOverEvent");
-
         anim_dialogue.SetBool("Open", true);
 
-        if (!(areas.Areas[Player_Status.CurrentArea - 1].targetPicks >= Player_Status.Picks)) //Si no se la dio, que se la de
+
+        // Check if Bar is finished
+        Bar_Serializable currentBar = Map_Status.FindBar(Player_Status.CurrentBar);
+
+        if (currentBar == null) //Si no esta agregado, agregarlo
+        {
+            Map_Status.FinishedBars.Add(new Bar_Serializable(Player_Status.CurrentBar, "", false));
+        }
+
+        if (currentBar != null && currentBar.finished == false && gameover.playerwin) //Si aun no finalizó el bar, darle pua y finalizarlo
+        {
+            Map_Status.FinishedBars[Map_Status.FindBarIndex(Player_Status.CurrentBar)] = new Bar_Serializable(Player_Status.CurrentBar, "", true);
+        }
+        else
         {
             go_pick.SetActive(false);
         }
+
 
         //tx_centralinfo.text = $"GameOver!";
         go_actionspanel.SetActive(false);

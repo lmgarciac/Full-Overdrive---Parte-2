@@ -17,4 +17,11 @@ public class Bar_Serializable
     public int barIdentifier;
     public string barName;
     public bool finished;
+
+    public Bar_Serializable(int barIdent, string barNam, bool finish)
+    {
+        barIdentifier = barIdent;
+        barName = barNam;
+        finished = finish;
+    }
 }
