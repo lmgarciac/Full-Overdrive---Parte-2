@@ -107,9 +107,6 @@ public class Player_Controller : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Player Position: " + Map_Status.PlayerPosition);
-
-
         objectsHit = new Dictionary<int, GameObject>();
         cam_player = gameCamera.transform.position - this.transform.position;
 

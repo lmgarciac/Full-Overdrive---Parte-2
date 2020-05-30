@@ -17,11 +17,6 @@ public class NPC_Controller : MonoBehaviour
 
     void Start()
     {
-        if(this.gameObject.tag == "Milo")
-        {
-            Debug.Log("Milo Position: " + Map_Status.MiloPosition);
-        }
-
         lastWaypointIndex = waypoints.Count - 1;
         targetWaypoint = waypoints[targetWaypointIndex];
 

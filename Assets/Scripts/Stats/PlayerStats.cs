@@ -21,6 +21,6 @@ public class PlayerStats : CharacterStats
         {
             defense.AddModifier(oldItem.defModifier);
             attack.AddModifier(oldItem.dmgModifier);
-        } 
+        }
     }
 }

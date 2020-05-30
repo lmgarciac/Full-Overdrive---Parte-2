@@ -17,6 +17,7 @@ public class Inventory : MonoBehaviour
             return;
         }
         instance = this;
+        Debug.Log("inventory instanced");
 
         Return_Items();
     }
