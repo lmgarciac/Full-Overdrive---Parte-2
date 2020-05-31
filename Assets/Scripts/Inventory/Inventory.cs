@@ -17,9 +17,9 @@ public class Inventory : MonoBehaviour
             return;
         }
         instance = this;
-        Debug.Log("inventory instanced");
+        //Debug.Log("inventory instanced");
 
-        Return_Items();
+        //Return_Items();
     }
 
     private void OnEnable()
@@ -44,7 +44,7 @@ public class Inventory : MonoBehaviour
     public int space = 20;
     public List<Item> Items = new List<Item>();
 
-    public bool Add(Item item)
+    public bool Add(Item item, bool showMessage)
     {
         if (!item.isDefaultItem)
         {
@@ -58,8 +58,10 @@ public class Inventory : MonoBehaviour
 
             //Evento para que escuche quien lo necesite
             ev_obtainitem.item = item;
+            ev_obtainitem.showMessage = showMessage;
+
             EventController.TriggerEvent(ev_obtainitem);
-            Debug.Log(item.name + " obtained");
+            //Debug.Log(item.name + " obtained");
 
             //Llamo al delegate
             if (onItemChangedCallback != null)
@@ -129,55 +131,61 @@ public class Inventory : MonoBehaviour
 
     private void BeforeSceneUnloadEvent(BeforeSceneUnloadEvent scene)
     {
-        foreach (var item in Items)
-        {
-            Debug.Log("Antes Item: " + item.name);
-        }
-        Player_Status.ItemList = Items;
+        Player_Status.ItemList = instance.Items;
+
+        //foreach (Item items in Player_Status.ItemList)
+        //{
+        //    Debug.Log("Item: " + items.name);
+        //}
     }
 
     private void AfterSceneLoadEvent(AfterSceneLoadEvent scene)
     {
-        Items = Player_Status.ItemList;
+        instance.Items = Player_Status.ItemList;
 
-        //foreach (var item in Items)
+        //foreach (Item items in instance.Items)
         //{
-        //    Debug.Log("Despues Item: " + item.name);
+        //    Debug.Log("Item: " + items.name);
         //}
 
-        if (onItemChangedCallback != null)
-        {
-            Debug.Log("Callback OK!" + onItemChangedCallback);
-
-            onItemChangedCallback.Invoke();
-        }
+        //if (onItemChangedCallback != null)
+        //{
+        //    onItemChangedCallback.Invoke();
+        //}
     }
 
 
-    public void Return_Items()
-    {
-        Inventory.instance.Items.Clear();
+    //public void Return_Items()
+    //{
+    //    Inventory.instance.Items.Clear();
 
-        Debug.Log("Items Static: " + Player_Status.Items_Serializable);
+    //    Debug.Log("Pase por el Awake");
 
-        if (Player_Status.Items_Serializable != null)
-        {
+    //    if (Player_Status.Items_Serializable != null)
+    //    {
 
-            foreach (Item_Serializable item_Serializable in Player_Status.Items_Serializable)
-            {
-                var item = new Item();
-                //(AudioClip)Resources.Load<AudioClip>($"Music/so_battle_theme");
-                item = (Item)Resources.Load<Item>($"Items/{item_Serializable.name}");
-                Debug.Log("Item: " + item.name);
-                Items.Add(item);
-            }
-        }
+    //        foreach (Item_Serializable item_Serializable in Player_Status.Items_Serializable)
+    //        {
+    //            var item = new Item();
+    //            //(AudioClip)Resources.Load<AudioClip>($"Music/so_battle_theme");
+    //            item = (Item)Resources.Load<Item>($"Items/{item_Serializable.name}");
+    //            //Debug.Log("Item: " + item.name);
+    //            instance.Add(item,false);
+    //        }
+    //    }
 
-        if (onItemChangedCallback != null)
-        {
-            onItemChangedCallback.Invoke();
-        }
-    }
+    //    Player_Status.ItemList = instance.Items;
 
+    //    //foreach (Item item in instance.Items)
+    //    //{
+    //    //    Debug.Log("Item: " + item.name);
+    //    //}
+    //    //if (onItemChangedCallback != null)
+    //    //{
+    //    //    Debug.Log("Callback OK! En Reload!" + onItemChangedCallback);
+
+    //    //    onItemChangedCallback.Invoke();
+    //    //}
+    //}
 
 }

@@ -156,10 +156,10 @@ public class GameData
 
         collectablesIdentifiers = Map_Status.CollectablesIdentifiers;
 
-        Debug.Log("Player rotation: " + playerRotation);
-        Debug.Log("Player position: " + playerPosition);
+        //Debug.Log("Player rotation: " + playerRotation);
+        //Debug.Log("Player position: " + playerPosition);
 
-        Debug.Log("Milo position: " + miloPosition);
+        //Debug.Log("Milo position: " + miloPosition);
 
         //PlayerStatus
         //Collectables
@@ -216,6 +216,8 @@ public class GameData
 
         Player_Status.Items_Serializable = Items_Serializable;
 
+        Return_Items();
+
         //Quests
         Player_Status.QuestList = quests;
 
@@ -232,10 +234,10 @@ public class GameData
         PlayerOptions.Volume = volume;
         //PlayerOptions.NewGame = false; esta variable no se controla aca asi que no guardar
 
-        Debug.Log("Data Loaded");
+        //Debug.Log("Data Loaded");
 
-        Debug.Log("First Time: " + firstTime);
-        Debug.Log("Heals: " + heals);
+        //Debug.Log("First Time: " + firstTime);
+        //Debug.Log("Heals: " + heals);
     }
 
     public void Retrieve_Items()
@@ -266,6 +268,19 @@ public class GameData
         foreach (Item_Serializable item_print in Player_Status.Items_Serializable)
         {
             Debug.Log("Item name:" + item_print.name);
+        }
+    }
+
+    public void Return_Items()
+    {
+        if (Player_Status.Items_Serializable != null)
+        {
+            foreach (Item_Serializable item_Serializable in Player_Status.Items_Serializable)
+            {
+                var item = new Item();
+                item = (Item)Resources.Load<Item>($"Items/{item_Serializable.name}");
+                Player_Status.ItemList.Add(item);
+            }
         }
     }
 }

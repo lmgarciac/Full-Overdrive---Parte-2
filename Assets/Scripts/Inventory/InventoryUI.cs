@@ -25,6 +25,12 @@ public class InventoryUI : MonoBehaviour
     void Start()
     {
         inventory = Inventory.instance;
+
+        //foreach (Item item in Inventory.instance.Items)
+        //{
+        //    Debug.Log("Item en Start de UI: " + item.name);
+        //}
+
         inventory.onItemChangedCallback += UpdateUI; //despues de hacer el OnItemChanged en el Script del Inventario llama a UpdateUI
 
         slots = itemsParents.GetComponentsInChildren<InventorySlot>();
@@ -54,12 +60,17 @@ public class InventoryUI : MonoBehaviour
     
     void UpdateUI()
     {
+        //Debug.Log("Inventory Count: " + inventory.Items.Count);
+
         for (int i = 0; i < slots.Length; i++)
         {
+            //Debug.Log("Estoy entando al FOR");
+
             if (i < inventory.Items.Count)
             {
+                //Debug.Log("Lo estoy agregando al Item");
                 slots[i].AddItem(inventory.Items[i]); //Llamo al script dentro de cada Slot parado en i y agrego el item de la variable inventory
-                Debug.Log("Paso por el for");
+                //Debug.Log("Paso por el for");
             }
             else
             {

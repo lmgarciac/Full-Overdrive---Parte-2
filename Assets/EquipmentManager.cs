@@ -54,7 +54,7 @@ public class EquipmentManager : MonoBehaviour
       {
          Debug.Log("Entra a EQUIPAR 1");
          olditem = currentEquipment[slotIndex];
-         inventory.Add(olditem);
+         inventory.Add(olditem,true);
          
 
       if (currentEquipment[0] != null)
@@ -82,7 +82,7 @@ public class EquipmentManager : MonoBehaviour
       if (currentEquipment[slotIndex]!=null)
       {
          Equipment olditem = currentEquipment[slotIndex];
-         inventory.Add(olditem);
+         inventory.Add(olditem,true);
          currentEquipment[slotIndex] = null;
          
          if (onEquipmentChanged != null)

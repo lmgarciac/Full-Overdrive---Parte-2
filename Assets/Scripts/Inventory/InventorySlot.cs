@@ -13,7 +13,7 @@ public class InventorySlot : MonoBehaviour
     public void AddItem(Item newItem)
     {
         item = newItem;
-        Debug.Log("Paso por aca el: " + item.name);
+        //Debug.Log("Paso por aca el: " + item.name);
         icon.sprite = item.icon;
         icon.enabled = true;
         //removeButton.interactable = true;

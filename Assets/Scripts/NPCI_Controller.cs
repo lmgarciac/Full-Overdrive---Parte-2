@@ -146,7 +146,7 @@ public class NPCI_Controller : MonoBehaviour
             if (currentQuest != null && currentQuest.queststatus == 2) //Si cumplio el objetivo finalizar la quest y premiar
             {
                 Player_Status.QuestList[Player_Status.FindQuestIndex("MiloQuest")] = new Quests("MiloQuest", 3, 0);
-                Inventory.instance.Add(questItems[0]);
+                Inventory.instance.Add(questItems[0],true);
             }
         }
 
@@ -191,7 +191,7 @@ public class NPCI_Controller : MonoBehaviour
             if (currentQuest != null && currentQuest.queststatus == 2) //Si cumplio el objetivo finalizar la quest y premiar
             {
                 Player_Status.QuestList[Player_Status.FindQuestIndex("HomelessQuest")] = new Quests("HomelessQuest", 3, 0);
-                Inventory.instance.Add(questItems[0]); // Le doy el premio
+                Inventory.instance.Add(questItems[0], true); // Le doy el premio
             }
         }
 
@@ -202,13 +202,13 @@ public class NPCI_Controller : MonoBehaviour
             if (currentQuest == null) //Si no esta iniciada, iniciarla
             {
                 Player_Status.QuestList.Add(new Quests("GameKidQuest", 1, 1));
-                Inventory.instance.Add(questItems[0]); // Le doy el GameKid
+                Inventory.instance.Add(questItems[0], true); // Le doy el GameKid
             }
 
             if (currentQuest!= null && currentQuest.queststatus == 2) //Si cumplio objetivo premiar
             {
                 Player_Status.QuestList[Player_Status.FindQuestIndex("GameKidQuest")] = new Quests("GameKidQuest", 3, currentQuest.genericnumber);
-                Inventory.instance.Add(questItems[1]);            
+                Inventory.instance.Add(questItems[1], true);            
             }
         }
 

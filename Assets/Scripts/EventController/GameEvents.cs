@@ -213,6 +213,7 @@ namespace Events
     {
         public Item item;
         public GameObject rotatingItem;
+        public bool showMessage;
     }
 
     public class LoadEnemyEvent : GameEvent

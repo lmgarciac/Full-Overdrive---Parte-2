@@ -32,15 +32,15 @@ public class MainMenu : MonoBehaviour
             continueButton.SetActive(false);
         }
 
-        Debug.Log("NoData" + nodata);
+        //Debug.Log("NoData" + nodata);
 
         PlayerOptions.Volume = AudioListener.volume;
         PlayerOptions.Difficulty = 1;
 
-        foreach (Item_Serializable item_print in Player_Status.Items_Serializable)
-        {
-            Debug.Log("Item name:" + item_print.name);
-        }
+        //foreach (Item_Serializable item_print in Player_Status.Items_Serializable)
+        //{
+        //    Debug.Log("Item name:" + item_print.name);
+        //}
 
     }
 

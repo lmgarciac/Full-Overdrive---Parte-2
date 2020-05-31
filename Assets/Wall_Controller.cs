@@ -32,12 +32,12 @@ public class Wall_Controller : MonoBehaviour
     {
         sendmessage = true;
         playerAnimator.SetBool("Walking", false);
-        Debug.Log("EnterNiebla!");
+        //Debug.Log("EnterNiebla!");
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("ExitNiebla!");
+        //Debug.Log("ExitNiebla!");
         sendmessage = false;
     }
 

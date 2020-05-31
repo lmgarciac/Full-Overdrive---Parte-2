@@ -220,10 +220,10 @@ public class Player_Controller : MonoBehaviour
         
         if (other.tag == "Interactable")
         {
-            Debug.Log("Interactable!");
+            //Debug.Log("Interactable!");
             //Deberia de agregar al inventario el objeto
             item =  other.gameObject.GetComponent<ItemPickup>().item;
-            Inventory.instance.Add(item); //Llama a la instancia del Inventario y la agrega! de pechio (Se podria agregar un parametro mas con el ID para otro prc y agregarlo como Key item debajo)
+            Inventory.instance.Add(item,true); //Llama a la instancia del Inventario y la agrega! de pechio (Se podria agregar un parametro mas con el ID para otro prc y agregarlo como Key item debajo)
             other.gameObject.SetActive(false); //No lo borro para agregarlo al inventario
             //EventController.TriggerEvent(ev_items);
         }

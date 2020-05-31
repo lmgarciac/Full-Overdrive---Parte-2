@@ -136,7 +136,7 @@ public class Map_Controller : MonoBehaviour
     private void AfterSceneLoadEvent(AfterSceneLoadEvent after)
     {
 
-        Debug.Log("New Game: " + PlayerOptions.NewGame);
+        //Debug.Log("New Game: " + PlayerOptions.NewGame);
 
         //f (Map_Status.FirstTime)
         if (PlayerOptions.NewGame)   
@@ -147,7 +147,7 @@ public class Map_Controller : MonoBehaviour
             int i = 0;
             foreach (GameObject activeCollectable in activeCollectables)
             {
-                Debug.Log(activeCollectable.GetComponent<Collectable_Controller>().uniqueIdentifier);
+                //Debug.Log(activeCollectable.GetComponent<Collectable_Controller>().uniqueIdentifier);
                 collectableController = activeCollectable.GetComponent<Collectable_Controller>();
                 collectablesIdentifiers[i] = collectableController.uniqueIdentifier;
                 i++;
@@ -255,10 +255,10 @@ public class Map_Controller : MonoBehaviour
         {
             if (!starttalking)
             {
-                Debug.Log("TAlkin");
+                //Debug.Log("TAlkin");
                 ev_dialogue.talking = false;
                 ev_dialogue.dialogue = dialogue;
-                Debug.Log(dialogue.name);
+                //Debug.Log(dialogue.name);
                 ev_dialogue.isshop = false;
                 EventController.TriggerEvent(ev_dialogue);
                 starttalking = true;

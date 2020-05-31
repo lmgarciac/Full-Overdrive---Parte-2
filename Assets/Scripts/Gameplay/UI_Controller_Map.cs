@@ -118,7 +118,7 @@ public class UI_Controller_Map : MonoBehaviour
         //NPCI
         if (!dialogue.isshop)
         {
-            Debug.Log("Entro!!");
+            //Debug.Log("Entro!!");
             isshop = false;
             if (dialogue.talking)
             {
@@ -126,7 +126,7 @@ public class UI_Controller_Map : MonoBehaviour
             }
             else
             {
-                Debug.Log($"Starting conversation with {dialogue.dialogue.name}");
+                //Debug.Log($"Starting conversation with {dialogue.dialogue.name}");
                 sentences.Clear();
                 go_dialoguebox.SetActive(true);
                 tx_NPCIname.text = dialogue.dialogue.name.ToUpper();
@@ -183,7 +183,7 @@ public class UI_Controller_Map : MonoBehaviour
 
         string sentence = sentences.Dequeue();
         sentence = sentence.ToUpper();            
-        Debug.Log(sentence);
+        //Debug.Log(sentence);
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
         //tx_NPCIdialogue.text = sentence;
@@ -192,7 +192,7 @@ public class UI_Controller_Map : MonoBehaviour
 
     public void EndDialogue()
     {
-        Debug.Log("End of conversation");
+        //Debug.Log("End of conversation");
         if(isshop)
         {
             anim_shop.SetBool("Open", false);
@@ -240,12 +240,12 @@ public class UI_Controller_Map : MonoBehaviour
         picks = Player_Status.Picks;
 
 
-        Debug.Log("Heals UI: " + Player_Status.Heals.ToString());
+        //Debug.Log("Heals UI: " + Player_Status.Heals.ToString());
 
-        tx_heals.text = Player_Status.Heals.ToString();
+        //tx_heals.text = Player_Status.Heals.ToString();
         heals = Player_Status.Heals;
 
-        tx_buffs.text = Player_Status.Buffs.ToString();
+        //tx_buffs.text = Player_Status.Buffs.ToString();
         buffs = Player_Status.Buffs;
 
         tx_money.text = Player_Status.Money.ToString();
@@ -296,6 +296,10 @@ public class UI_Controller_Map : MonoBehaviour
 
     private void ObtainItemEvent(ObtainItemEvent item)
     {
+        if (!item.showMessage)
+        {
+            return;
+        }
         tx_itemobtained.text = item.item.name;
         childObject = Instantiate(item.item.rotatingItem) as GameObject;
         childObject.transform.parent = go_infoBox.transform;
