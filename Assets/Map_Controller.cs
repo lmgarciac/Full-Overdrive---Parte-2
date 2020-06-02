@@ -17,10 +17,6 @@ public class Map_Controller : MonoBehaviour
     [SerializeField] private float targetScale;
     [SerializeField] private float targetScaleDuration;
 
-    [SerializeField] private GameObject area1;
-    [SerializeField] private GameObject area2;
-    [SerializeField] private GameObject area3;
-    [SerializeField] private GameObject area4;
 
 
     ///Message Variables
@@ -32,6 +28,23 @@ public class Map_Controller : MonoBehaviour
     private bool cantalk = false;
     private bool conversationbegin = false;
     private bool sendmessage;
+
+    //Area Fader
+    [SerializeField] private GameObject area1;
+    [SerializeField] private GameObject area2;
+    [SerializeField] private GameObject area3;
+    [SerializeField] private GameObject area4;
+    [SerializeField] private GameObject area1Mesh;
+    [SerializeField] private GameObject area2Mesh;
+    [SerializeField] private GameObject area3Mesh;
+    [SerializeField] private GameObject area4Mesh;
+
+    [SerializeField] private float fadeDuration;
+    [SerializeField] private float targetAlpha;
+
+    private bool isFading;
+
+    private WaitForSecondsRealtime waitenableinput = new WaitForSecondsRealtime(1f);
 
     private void OnEnable()
     {
@@ -74,8 +87,6 @@ public class Map_Controller : MonoBehaviour
         {
             area1.SetActive(false);
             area2.SetActive(true);
-            area3.SetActive(false);
-            area4.SetActive(false);
         }
         if (Player_Status.CurrentArea == 3) //A futuro cambiar a algo genérico
         {
@@ -147,7 +158,6 @@ public class Map_Controller : MonoBehaviour
             int i = 0;
             foreach (GameObject activeCollectable in activeCollectables)
             {
-                //Debug.Log(activeCollectable.GetComponent<Collectable_Controller>().uniqueIdentifier);
                 collectableController = activeCollectable.GetComponent<Collectable_Controller>();
                 collectablesIdentifiers[i] = collectableController.uniqueIdentifier;
                 i++;
@@ -191,10 +201,9 @@ public class Map_Controller : MonoBehaviour
         }
         if (Player_Status.CurrentArea == 2) //A futuro cambiar a algo genérico
         {
-            area1.SetActive(false);
-            area2.SetActive(true);
-            area3.SetActive(false);
-            area4.SetActive(false);
+            StartCoroutine(FadeArea(area1Mesh.GetComponent<MeshRenderer>(), 0.0f, area1, false));
+            StartCoroutine(FadeArea(area2Mesh.GetComponent<MeshRenderer>(), targetAlpha, area2, true));
+
         }
         if (Player_Status.CurrentArea == 3) //A futuro cambiar a algo genérico
         {
@@ -235,7 +244,6 @@ public class Map_Controller : MonoBehaviour
         {
             if (!starttalking)
             {
-                Debug.Log("TAlkin");
                 ev_dialogue.talking = false;
                 ev_dialogue.dialogue = dialogue;
                 Debug.Log(dialogue.name);
@@ -248,6 +256,7 @@ public class Map_Controller : MonoBehaviour
                 EventController.TriggerEvent(ev_dialoguestatus);
 
                 conversationbegin = true;
+                PlayerOptions.InputEnabled = false;
             }
         }
 
@@ -255,15 +264,12 @@ public class Map_Controller : MonoBehaviour
         {
             if (!starttalking)
             {
-                //Debug.Log("TAlkin");
                 ev_dialogue.talking = false;
                 ev_dialogue.dialogue = dialogue;
-                //Debug.Log(dialogue.name);
                 ev_dialogue.isshop = false;
                 EventController.TriggerEvent(ev_dialogue);
                 starttalking = true;
                 dialoguecounter++;
-
                 ev_dialoguestatus.dialogueactive = true;
                 EventController.TriggerEvent(ev_dialoguestatus);
 
@@ -279,12 +285,46 @@ public class Map_Controller : MonoBehaviour
             {
                 dialoguecounter = 0;
                 starttalking = false;
-
                 ev_dialoguestatus.dialogueactive = false;
                 EventController.TriggerEvent(ev_dialoguestatus);
-
                 sendmessage = false;
+                StartCoroutine(WaitEnableInput());
             }
+        }
+    }
+
+    IEnumerator WaitEnableInput()
+    {
+        yield return waitenableinput;
+        PlayerOptions.InputEnabled = true;
+    }
+
+    private IEnumerator FadeArea(MeshRenderer mesh, float finalAlpha, GameObject areaObject, bool activate)
+    {
+        isFading = true;
+        Color color;
+        color = mesh.material.color;
+
+        if (activate)
+        {
+            areaObject.SetActive(true);
+            color.a = 0.0f;
+            mesh.material.color = color;
+        }
+
+        float fadeSpeed = Mathf.Abs(color.a - finalAlpha) / fadeDuration;
+
+        while (!Mathf.Approximately(color.a, finalAlpha))
+        {
+            color.a = Mathf.MoveTowards(color.a, finalAlpha, fadeSpeed * Time.deltaTime);
+            yield return null;
+            mesh.material.color = color;
+        }
+        isFading = false;
+
+        if (!activate)
+        {
+            areaObject.SetActive(false);
         }
     }
 }

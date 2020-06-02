@@ -16,6 +16,7 @@ public class InventorySlot : MonoBehaviour
         //Debug.Log("Paso por aca el: " + item.name);
         icon.sprite = item.icon;
         icon.enabled = true;
+        icon.preserveAspect = true;
         //removeButton.interactable = true;
 
         if (item.equiped == true)

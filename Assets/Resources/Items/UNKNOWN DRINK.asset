@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: UNKNOWN DRINK
   m_EditorClassIdentifier: 
   name: UNKNOWN DRINK
-  icon: {fileID: 21300000, guid: 0a2d3063b081f244cabc03046dbb4c62, type: 3}
+  icon: {fileID: 21300000, guid: 9838b4aee67f89b40ab26bc2b994b331, type: 3}
   isDefaultItem: 0
   type: 3
   bonusAttack: 0
