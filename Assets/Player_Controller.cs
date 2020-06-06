@@ -83,6 +83,59 @@ public class Player_Controller : MonoBehaviour
 
     private bool skiparea = false;
 
+    //Ragdoll
+    public List<Collider> RagdollParts = new List<Collider>();
+
+    private void Awake()
+    {
+        SetRagdollParts();
+    }
+
+    private IEnumerator StartRagdoll()
+    {
+        this.GetComponent<NavMeshAgent>().enabled = false;
+        this.GetComponent<Rigidbody>().isKinematic = false;
+
+        yield return new WaitForSeconds(3f);
+        TurnOnRagdoll();
+        yield return new WaitForSeconds(0.5f);
+        this.GetComponent<Rigidbody>().AddForce(200f * Vector3.up, ForceMode.Impulse);
+
+    }
+
+    private void SetRagdollParts()
+    {
+        Collider[] colliders = this.GetComponentsInChildren<Collider>();
+
+        foreach (Collider c in colliders)
+        {
+            if (c.gameObject != this.gameObject)
+            {
+                c.isTrigger = true;
+                RagdollParts.Add(c);
+            }
+        }
+    }
+
+    private void TurnOnRagdoll()
+    {
+        //this.GetComponent<Rigidbody>().useGravity = false;
+
+        this.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+        //this.gameObject.GetComponent<SphereCollider>().enabled = false;
+
+        playerAnimator.enabled = false;
+        playerAnimator.avatar = null;
+
+
+        foreach (Collider c in RagdollParts)
+        {
+            c.isTrigger = false;
+            c.attachedRigidbody.velocity = Vector3.zero;
+        }
+    }
+
     private void OnEnable()
     {
         EventController.AddListener<BeforeSceneUnloadEvent>(BeforeSceneUnloadEvent);
@@ -107,6 +160,8 @@ public class Player_Controller : MonoBehaviour
 
     void Start()
     {
+        //StartCoroutine(StartRagdoll());
+
         objectsHit = new Dictionary<int, GameObject>();
         cam_player = gameCamera.transform.position - this.transform.position;
 
