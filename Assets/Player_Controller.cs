@@ -269,7 +269,7 @@ public class Player_Controller : MonoBehaviour
             collectables++;
             Player_Status.Collectables++;
 
-            other.gameObject.SetActive(false);
+            //other.gameObject.SetActive(false);
             EventController.TriggerEvent(ev_collect);
         }
         
