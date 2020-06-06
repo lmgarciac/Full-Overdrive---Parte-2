@@ -111,6 +111,7 @@ public class QTE_Main_Controller : MonoBehaviour
             if (notePosition == 0) //Left
             {
                 noteinitialPosition = new Vector3(-1.9f, noteDelay, 0f);
+                //noteinitialPosition = new Vector3(-61.9f, noteDelay, 0f);
                 GameObject clone = (GameObject)Instantiate(noteLeft, noteinitialPosition,noteLeft.transform.rotation, this.transform);
                 //noteinitialPosition = new Vector3(-1f, noteDelay, 0f) + new Vector3(QteSo.QTEPosition.x, QteSo.QTEPosition.y, QteSo.QTEPosition.z);
                 clone.transform.position = noteinitialPosition;
@@ -121,6 +122,7 @@ public class QTE_Main_Controller : MonoBehaviour
             if (notePosition == 1) //Up
             {
                 noteinitialPosition = new Vector3(-0.69f, noteDelay, 0f);
+                //noteinitialPosition = new Vector3(-60.69f, noteDelay, 0f);
 
                 GameObject clone = (GameObject)Instantiate(noteUp,noteinitialPosition,noteUp.transform.rotation,this.transform);
                 //noteinitialPosition = new Vector3(-0.5f, noteDelay, 0f) + new Vector3(QteSo.QTEPosition.x, QteSo.QTEPosition.y, QteSo.QTEPosition.z);
@@ -132,6 +134,8 @@ public class QTE_Main_Controller : MonoBehaviour
             if (notePosition == 2) //Down
             {
                 noteinitialPosition = new Vector3(0.86f, noteDelay, 0f);
+                //noteinitialPosition = new Vector3(-59.14f, noteDelay, 0f);
+
                 GameObject clone = (GameObject)Instantiate(noteDown,noteinitialPosition,noteDown.transform.rotation,this.transform);
                 //noteinitialPosition = new Vector3(0.5f, noteDelay, 0f) + new Vector3(QteSo.QTEPosition.x, QteSo.QTEPosition.y, QteSo.QTEPosition.z);
                 clone.transform.position = noteinitialPosition;
@@ -142,6 +146,8 @@ public class QTE_Main_Controller : MonoBehaviour
             if (notePosition == 3) //Right
             {
                 noteinitialPosition = new Vector3(2.04f, noteDelay, 0f);
+                //noteinitialPosition = new Vector3(-57.96f, noteDelay, 0f);
+
                 GameObject clone = (GameObject)Instantiate(noteRight,noteinitialPosition,noteRight.transform.rotation,this.transform);
                 //noteinitialPosition = new Vector3(1f, noteDelay, 0f) + new Vector3(QteSo.QTEPosition.x, QteSo.QTEPosition.y, QteSo.QTEPosition.z);
                 clone.transform.position = noteinitialPosition;
