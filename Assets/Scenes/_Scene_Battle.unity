@@ -12048,7 +12048,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625280935}
   m_LocalRotation: {x: 0, y: 0.9864293, z: -0.1641869, w: 0}
-  m_LocalPosition: {x: 1.6, y: 16.5, z: 35.58}
+  m_LocalPosition: {x: -28, y: 16.5, z: 35.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -12606,7 +12606,7 @@ MonoBehaviour:
   go_clock: {fileID: 1752195545}
   go_clockParent: {fileID: 132101711}
   qtelerpTime: 1
-  qtestep: 62
+  qtestep: 32
   qtein: 0
   qteout: 0
   currentBar: {fileID: 11400000, guid: ba0af062dfe716f47b22c5d3e9af88fb, type: 2}
