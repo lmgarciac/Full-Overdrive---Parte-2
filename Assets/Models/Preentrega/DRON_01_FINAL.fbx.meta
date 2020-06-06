@@ -1,26 +1,26 @@
 fileFormatVersion: 2
-guid: 90ba926ac1d4c234d99af75c3d1d6df4
+guid: 31d41800d168c174a8e9bbf1666dcc2c
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
       74: -6788532455012819382
-    second: Dron3_Final|Damage
+    second: Dron1_Final|Damage
   - first:
       74: 2258879471585568124
-    second: Dron3_Final|Listen
+    second: Dron1_Final|Listen
   - first:
       74: 6363340012903033430
-    second: Dron3_Final|Lose
+    second: Dron1_Final|Lose
   - first:
       74: 8038022515420905442
-    second: Dron3_Final|NormalAttack
+    second: Dron1_Final|NormalAttack
   - first:
       74: -6931126006632911450
-    second: Dron3_Final|SpecialAttack
+    second: Dron1_Final|SpecialAttack
   - first:
       74: -1228952814471920847
-    second: Dron3_Final|Victory
+    second: Dron1_Final|Victory
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -50,7 +50,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Dron3_Final|Damage
+      name: Dron1_Final|Damage
       takeName: Armature|Damage
       internalID: 0
       firstFrame: 0
@@ -79,11 +79,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Dron3_Final|Listen
+      name: Dron1_Final|Listen
       takeName: Armature|Listen
       internalID: 0
       firstFrame: 0
-      lastFrame: 134
+      lastFrame: 135
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -108,7 +108,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Dron3_Final|Lose
+      name: Dron1_Final|Lose
       takeName: Armature|Lose
       internalID: 0
       firstFrame: 0
@@ -137,7 +137,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Dron3_Final|NormalAttack
+      name: Dron1_Final|NormalAttack
       takeName: Armature|NormalAttack
       internalID: 0
       firstFrame: 0
@@ -166,7 +166,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Dron3_Final|SpecialAttack
+      name: Dron1_Final|SpecialAttack
       takeName: Armature|SpecialAttack
       internalID: 0
       firstFrame: 0
@@ -195,7 +195,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Dron3_Final|Victory
+      name: Dron1_Final|Victory
       takeName: Armature|Victory
       internalID: 0
       firstFrame: 0
