@@ -35,6 +35,7 @@ public class UI_Controller_Map : MonoBehaviour
     [SerializeField] private GameObject go_infoBox;
     [SerializeField] private Vector3 rotatingItemPosition;
 
+    [SerializeField] private Areas_Template areas;
 
     [SerializeField] private Image im_virtuosity;
 
@@ -74,14 +75,24 @@ public class UI_Controller_Map : MonoBehaviour
     {
         currentarea = Player_Status.CurrentArea;
         float multiplier;
-        multiplier = 4.0f * (float)currentarea;      
-        float fill = (float)((float)picks + (float)collectables) / (float)multiplier;
-        //Debug.Log(fill);
+        float previousPicks;
+        float previousCollect;
+        float fill;
+        //multiplier = 4.0f * (float)currentarea;
+        multiplier = (float)(areas.Areas[currentarea - 1].targetPicks + areas.Areas[currentarea - 1].targetCollectables);
+
+        if (currentarea == 1)
+        {
+            fill = (float)((float)picks + (float)collectables) / (float)multiplier;
+        }
+        else
+        {
+            previousPicks = areas.Areas[currentarea - 2].targetPicks;
+            previousCollect = areas.Areas[currentarea - 2].targetCollectables;
+            fill = (float)((float)picks + (float)collectables - (float)previousPicks - (float)previousCollect) / (float)multiplier;
+        }
 
         im_virtuosity.fillAmount = 1.0f - fill; // mejorar a futuro
-
-        //im_virtuosity.fillAmount = 1.0f - 
-
     }
 
     private void OnEnable() {
