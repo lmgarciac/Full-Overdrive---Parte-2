@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc50df09b214c824d81e9ab132bf51dc, type: 3}
-  m_Name: QTE_Template_def_1
+  m_Name: QTE_Template_atk_3
   m_EditorClassIdentifier: 
   qteDescription: Descripcion del QTE
   speed: 5
@@ -21,16 +21,14 @@ MonoBehaviour:
   - notePosition: 0
     noteDelay: 2
   - notePosition: 1
-    noteDelay: 2
+    noteDelay: 4
+  - notePosition: 2
+    noteDelay: 6
+  - notePosition: 3
+    noteDelay: 8
+  - notePosition: 2
+    noteDelay: 10
   - notePosition: 1
-    noteDelay: 6
-  - notePosition: 2
-    noteDelay: 6
-  - notePosition: 2
-    noteDelay: 10
-  - notePosition: 3
-    noteDelay: 10
+    noteDelay: 12
   - notePosition: 0
-    noteDelay: 14
-  - notePosition: 3
     noteDelay: 14

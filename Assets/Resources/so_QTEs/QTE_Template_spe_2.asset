@@ -14,23 +14,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   qteDescription: Descripcion del QTE
   speed: 6
-  arrowsHeight: 20
+  arrowsHeight: 12
   QTEPosition: {x: -30, y: 8, z: -9}
   QTERotation: {x: -90, y: 180, z: 0, w: 0}
   noteData:
-  - notePosition: 0
+  - notePosition: 3
     noteDelay: 2
-  - notePosition: 1
-    noteDelay: 2
-  - notePosition: 3
-    noteDelay: 6
-  - notePosition: 3
-    noteDelay: 6
-  - notePosition: 0
-    noteDelay: 8
-  - notePosition: 1
-    noteDelay: 8
-  - notePosition: 3
-    noteDelay: 10
   - notePosition: 2
-    noteDelay: 10
+    noteDelay: 2
+  - notePosition: 1
+    noteDelay: 6
+  - notePosition: 0
+    noteDelay: 6
+  - notePosition: 3
+    noteDelay: 8
+  - notePosition: 2
+    noteDelay: 8
+  - notePosition: 0
+    noteDelay: 11
+  - notePosition: 1
+    noteDelay: 12
+  - notePosition: 2
+    noteDelay: 13
+  - notePosition: 3
+    noteDelay: 14
+  - notePosition: 2
+    noteDelay: 15
+  - notePosition: 1
+    noteDelay: 16

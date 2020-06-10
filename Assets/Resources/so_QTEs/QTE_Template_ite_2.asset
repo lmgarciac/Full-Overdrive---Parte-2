@@ -21,8 +21,16 @@ MonoBehaviour:
   - notePosition: 3
     noteDelay: 2
   - notePosition: 2
-    noteDelay: 4
+    noteDelay: 3
   - notePosition: 1
+    noteDelay: 4
+  - notePosition: 3
     noteDelay: 6
   - notePosition: 0
-    noteDelay: 8
+    noteDelay: 0
+  - notePosition: 0
+    noteDelay: 12
+  - notePosition: 1
+    noteDelay: 13
+  - notePosition: 2
+    noteDelay: 14

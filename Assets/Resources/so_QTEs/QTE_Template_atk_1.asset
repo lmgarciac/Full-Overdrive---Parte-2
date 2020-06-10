@@ -26,3 +26,9 @@ MonoBehaviour:
     noteDelay: 4
   - notePosition: 3
     noteDelay: 6
+  - notePosition: 0
+    noteDelay: 10
+  - notePosition: 0
+    noteDelay: 12
+  - notePosition: 3
+    noteDelay: 14

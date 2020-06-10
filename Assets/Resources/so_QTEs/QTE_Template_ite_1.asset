@@ -19,10 +19,18 @@ MonoBehaviour:
   QTERotation: {x: -90, y: 180, z: 0, w: 0}
   noteData:
   - notePosition: 0
-    noteDelay: 8
+    noteDelay: 2
   - notePosition: 1
-    noteDelay: 5
+    noteDelay: 2
+  - notePosition: 1
+    noteDelay: 4
   - notePosition: 2
-    noteDelay: 3
-  - notePosition: 0
+    noteDelay: 5
+  - notePosition: 1
+    noteDelay: 6
+  - notePosition: 2
     noteDelay: 10
+  - notePosition: 3
+    noteDelay: 10
+  - notePosition: 0
+    noteDelay: 12
