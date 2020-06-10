@@ -1453,22 +1453,22 @@ public class Battle_Controller : FiniteStateMachine
         switch (ev_action.action)
         {
             case (int)action.attack:
-                return ($"QTE_Template_atk_{ Random.Range(1, 3)}");
+                return ($"QTE_Template_atk_{ Random.Range(1, 4)}");
                 break;
             case (int)action.defend:
-                return ($"QTE_Template_def_{Random.Range(1, 2)}");
+                return ($"QTE_Template_def_{Random.Range(1, 4)}");
                 break;
             case (int)action.special:
-                return ($"QTE_Template_spe_{Random.Range(1, 2)}");
+                return ($"QTE_Template_spe_{Random.Range(1, 4)}");
                 break;
             case (int)action.heal:
-                return ($"QTE_Template_ite_{Random.Range(1, 2)}");
+                return ($"QTE_Template_ite_{Random.Range(1, 4)}");
                 break;
             case (int)action.buff:
-                return ($"QTE_Template_ite_{Random.Range(1, 2)}");
+                return ($"QTE_Template_ite_{Random.Range(1, 4)}");
                 break;
             default:
-                return ($"QTE_Template_atk_{Random.Range(1, 2)}");
+                return ($"QTE_Template_atk_{Random.Range(1, 4)}");
                 break;
         }
     }
