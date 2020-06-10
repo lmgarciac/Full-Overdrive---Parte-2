@@ -279,6 +279,7 @@ public class GameData
             {
                 var item = new Item();
                 item = (Item)Resources.Load<Item>($"Items/{item_Serializable.name}");
+                item.equiped = item_Serializable.equiped;
                 Player_Status.ItemList.Add(item);
             }
         }

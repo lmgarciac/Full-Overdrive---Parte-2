@@ -18,6 +18,8 @@ public class InventorySlot : MonoBehaviour
         icon.enabled = true;
         icon.preserveAspect = true;
         //removeButton.interactable = true;
+        equipedImage.enabled = false;
+
 
         if (item.equiped == true)
         {
@@ -38,6 +40,7 @@ public class InventorySlot : MonoBehaviour
         icon.sprite = null;
         icon.enabled = false;
         removeButton.interactable = false;
+        equipedImage.enabled = false;
     }
 
     public void OnRemoveButton()

@@ -74,11 +74,12 @@ public class UI_Controller_Map : MonoBehaviour
     void Update()
     {
         currentarea = Player_Status.CurrentArea;
-        float multiplier;
+        float multiplier = 0;
         float previousPicks;
         float previousCollect;
         float fill;
         //multiplier = 4.0f * (float)currentarea;
+
         multiplier = (float)(areas.Areas[currentarea - 1].targetPicks + areas.Areas[currentarea - 1].targetCollectables);
 
         if (currentarea == 1)
