@@ -30,10 +30,11 @@ public class UI_Controller : MonoBehaviour
 
     [SerializeField] private GameObject go_pick;
 
-    //[SerializeField] private Areas_Template areas;
-
     [SerializeField] private TextMeshProUGUI cantRedPill;
     [SerializeField] private TextMeshProUGUI cantBluePill;
+
+    [SerializeField] private Image enemyName;
+
 
     private enum countertype { inittimer = 0, sessiontimer = 1, }
     private enum counterstatus { ready = 0, set = 1, go = 2 }
@@ -152,6 +153,8 @@ public class UI_Controller : MonoBehaviour
         max_sp_enemy = currentEnemy.enemyTemplate.enemyMaxSP;
         tx_enemyhp.text = $"{enemy.currentHP}";
         tx_enemysp.text = $"{enemy.currentSP}";
+
+        enemyName.sprite = (Sprite)Resources.Load<Sprite>($"Images/{currentEnemy.enemyTemplate.prefabName}");
 
         tx_enemydamage = GameObject.FindGameObjectWithTag("EnemyInfo").GetComponent<TextMeshPro>();
     }
