@@ -22,19 +22,19 @@ public class Diff_Script : MonoBehaviour
     {
         if(diff_slider.value == 0)
         {
-            tx_diff.text = $"Easy";
+            tx_diff.text = $"EASY";
         }
         if (diff_slider.value == 1)
         {
-            tx_diff.text = $"Medium";
+            tx_diff.text = $"MEDIUM";
         }
         if (diff_slider.value == 2)
         {
-            tx_diff.text = $"Hard";
+            tx_diff.text = $"HARD";
         }
         if (diff_slider.value == 3)
         {
-            tx_diff.text = $"Brutal";
+            tx_diff.text = $"BRUTAL";
         }
 
         PlayerOptions.Difficulty = (int)diff_slider.value;

@@ -11615,7 +11615,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &541875131
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12611,6 +12611,7 @@ MonoBehaviour:
   qteout: 0
   currentBar: {fileID: 11400000, guid: ba0af062dfe716f47b22c5d3e9af88fb, type: 2}
   currentEnemy: {fileID: 0}
+  barSelect: 1
 --- !u!4 &746474962
 Transform:
   m_ObjectHideFlags: 0
@@ -37952,7 +37953,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1467992929
 RectTransform:
   m_ObjectHideFlags: 0
