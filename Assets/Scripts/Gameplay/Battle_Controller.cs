@@ -224,6 +224,8 @@ public class Battle_Controller : FiniteStateMachine
     private bool enemywait = false; //Wait a little before switching enemies
     //Start Event
 
+    public int barSelect = 1;
+
     void Start()
     {
         StartProcedure();
@@ -234,7 +236,12 @@ public class Battle_Controller : FiniteStateMachine
       
         if(Player_Status.CurrentBar == 0) //Only for testing
         {
-            Player_Status.CurrentBar = 3;
+            if (barSelect > 3 || barSelect < 1)
+            {
+                barSelect = 1;
+            }
+
+            Player_Status.CurrentBar = barSelect;
             Player_Status.CurrentArea = 1;
             Player_Status.AttackStat = 10;
             Player_Status.DefenseStat = 10;
