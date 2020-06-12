@@ -40,6 +40,14 @@ public class AnimationController : MonoBehaviour
     [SerializeField] private GameObject go_Camera;
     private Animator an_Camera;
 
+    [SerializeField] private GameObject go_cintaPlayer;
+    private Animator an_cintaPlayer;
+
+    [SerializeField] private GameObject go_cintaEnemy;
+    private Animator an_cintaEnemy;
+
+    private bool cintaActivada = false;
+
     public enum animation
     {
         none = 0,
@@ -98,6 +106,8 @@ public class AnimationController : MonoBehaviour
         an_UIClock = go_UIClock.GetComponent<Animator>();
         an_Crowd = go_Crowd.GetComponent<Animator>();
         an_Camera = go_Camera.GetComponent<Animator>();
+        an_cintaPlayer = go_cintaPlayer.GetComponent<Animator>();
+        an_cintaEnemy = go_cintaEnemy.GetComponent<Animator>();
 
 
     }
@@ -126,6 +136,7 @@ public class AnimationController : MonoBehaviour
 
     private void AnimEvent(AnimEvent anim)
     {
+
         if (anim.playerturn) //Player
         {
             if (anim.animation == (int)animation.play)
@@ -266,6 +277,14 @@ public class AnimationController : MonoBehaviour
             an_enemy.SetBool("Damage", true);
             an_enemy.SetBool("Lose", true);
 
+            if (cintaActivada == false)
+            {
+                an_cintaEnemy.SetBool("CintaIn", true);
+                cintaActivada = true;
+                StartCoroutine(CintaOut());
+            }
+
+
             CloseAttackUI();
         }
         else if (anim.animation == (int)animation.lose)
@@ -286,6 +305,14 @@ public class AnimationController : MonoBehaviour
             an_enemy.SetBool("Lose", false);
             an_enemy.SetBool("Win", true);
             an_enemy.SetBool("Damage", false);
+            
+            if (cintaActivada == false)
+            {
+                an_cintaPlayer.SetBool("CintaIn", true);
+                cintaActivada = true;
+                StartCoroutine(CintaOut());
+            }
+
 
             CloseAttackUI();
         }
@@ -310,6 +337,17 @@ public class AnimationController : MonoBehaviour
             an_Crowd.SetBool("MoveOut", true);
         }
 
+    }
+
+    IEnumerator CintaOut()
+    {
+        yield return new WaitForEndOfFrame();
+
+        an_cintaEnemy.SetBool("CintaIn", false);
+        an_cintaPlayer.SetBool("CintaIn", false);
+
+        yield return new WaitForSecondsRealtime(8f);
+        cintaActivada = false;
     }
 
     private void InitializeAttackUI()
