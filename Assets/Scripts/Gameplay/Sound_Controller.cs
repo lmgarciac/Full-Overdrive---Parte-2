@@ -59,7 +59,7 @@ public class Sound_Controller : MonoBehaviour
         musicPlayer = audios[2];
         licktriggered = false;
         //so_backsong = (AudioClip)Resources.Load<AudioClip>($"so_backsong");
-        if (Player_Status.CurrentBar == 1)
+        if (Player_Status.CurrentBar == 1 || Player_Status.CurrentBar == 0)
         {
             so_backsong = (AudioClip)Resources.Load<AudioClip>($"Music/so_battle_theme");
             musicPlayer.volume = 0.2f;
@@ -74,6 +74,7 @@ public class Sound_Controller : MonoBehaviour
             so_backsong = (AudioClip)Resources.Load<AudioClip>($"Music/so_battle_theme_lenny");
             musicPlayer.volume = 0.37f;
         }
+
         //musicPlayer.volume = 0.2f;
         soundFXPlayer.volume = 0.8f;
         soundPlayer.volume = 0.8f;

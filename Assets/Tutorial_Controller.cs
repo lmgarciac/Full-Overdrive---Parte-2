@@ -45,6 +45,8 @@ public class Tutorial_Controller : MonoBehaviour
     private AudioSource dialoguePlayer;
 
     private AudioClip so_dialogueGero;
+    private AudioClip so_music;
+
 
     [SerializeField] private float qtelerpTime = 1f;
     [SerializeField] private float qtestep = 1f;
@@ -66,6 +68,10 @@ public class Tutorial_Controller : MonoBehaviour
         AudioSource[] audios = soundController.GetComponents<AudioSource>();
         dialoguePlayer = audios[1];
         musicPlayer = audios[2];
+
+        //so_music = (AudioClip)Resources.Load<AudioClip>($"Music/so_battle_theme");
+        //musicPlayer.clip = so_music;
+        //musicPlayer.Play();
 
         so_dialogueGero = (AudioClip)Resources.Load<AudioClip>($"Sound/so_dialogue_gero");
 
