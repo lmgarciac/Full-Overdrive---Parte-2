@@ -185,10 +185,14 @@ public class Player_Controller : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.L) && Input.GetKeyUp(KeyCode.O))
         {
-            skiparea = true;
+            //skiparea = true;
+
+            currentarea = 2;
+            picks = 3;
+            
         }
 
-        if(dialogueactive)
+        if (dialogueactive)
         {
             return;
         }
@@ -548,6 +552,12 @@ public class Player_Controller : MonoBehaviour
             EventController.TriggerEvent(ev_expand);
             skiparea = false;
         }
+
+        if (picks >= areas.Areas[currentarea - 1].targetPicks && currentarea == 2) //Solo para vertical slice
+        {
+            sceneController.FadeAndLoadScene("_Scene_Interludio_2");
+        }
+
         checkingarea = false;
     }
 }

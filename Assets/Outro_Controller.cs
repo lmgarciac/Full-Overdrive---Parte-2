@@ -51,7 +51,7 @@ public class Outro_Controller : MonoBehaviour
         yield return waitforseconds;
 
 
-        sceneController.FadeAndLoadScene("_Scene_ObiYank");
+        sceneController.FadeAndLoadScene("_Scene_Interludio_Final");
     }
 
 }
