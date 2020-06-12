@@ -28,3 +28,12 @@ MonoBehaviour:
   - sceneName: _Test_Farming
     cancion: {fileID: 8300000, guid: d867fbe66cecced469af150a85919b1a, type: 3}
     volume: 0.7
+  - sceneName: _Scene_Out
+    cancion: {fileID: 8300000, guid: e6218307527423c43bf40c8ac6b73be7, type: 3}
+    volume: 0.7
+  - sceneName: _Scene_Interludio_2
+    cancion: {fileID: 8300000, guid: e6218307527423c43bf40c8ac6b73be7, type: 3}
+    volume: 0.7
+  - sceneName: _Scene_Interludio_Final
+    cancion: {fileID: 8300000, guid: e6218307527423c43bf40c8ac6b73be7, type: 3}
+    volume: 0.7
