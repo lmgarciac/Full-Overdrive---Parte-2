@@ -95,6 +95,7 @@ public class SceneController : MonoBehaviour
         if(PlayerOptions.NewGame && Input.GetKeyDown(KeyCode.Escape) && !isFading)
         {
             FadeAndLoadScene("_Test_Navigation");
+            Time.timeScale = 1f;
         }
     }
     // This is the main external point of contact and influence from the rest of the project.

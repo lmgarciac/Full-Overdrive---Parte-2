@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canbepressed: 0
   keytopress: 276
-  keytopressAlt: 97
+  keytopressAlt: 104
 --- !u!135 &3244607944315245625
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -185,21 +185,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -7170466346163925006, guid: f29bd6ab13dd73b47999e0c33a47e4c3,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7170466346163925006, guid: f29bd6ab13dd73b47999e0c33a47e4c3,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7170466346163925006, guid: f29bd6ab13dd73b47999e0c33a47e4c3,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1276603737757889232, guid: f29bd6ab13dd73b47999e0c33a47e4c3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -244,6 +229,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7170466346163925006, guid: f29bd6ab13dd73b47999e0c33a47e4c3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7170466346163925006, guid: f29bd6ab13dd73b47999e0c33a47e4c3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7170466346163925006, guid: f29bd6ab13dd73b47999e0c33a47e4c3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8304545770963488453, guid: f29bd6ab13dd73b47999e0c33a47e4c3,
         type: 3}
