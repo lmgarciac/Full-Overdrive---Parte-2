@@ -12611,7 +12611,7 @@ MonoBehaviour:
   qteout: 0
   currentBar: {fileID: 11400000, guid: ba0af062dfe716f47b22c5d3e9af88fb, type: 2}
   currentEnemy: {fileID: 0}
-  barSelect: 1
+  barSelect: 2
 --- !u!4 &746474962
 Transform:
   m_ObjectHideFlags: 0

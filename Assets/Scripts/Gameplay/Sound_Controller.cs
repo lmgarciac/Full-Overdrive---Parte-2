@@ -59,8 +59,22 @@ public class Sound_Controller : MonoBehaviour
         musicPlayer = audios[2];
         licktriggered = false;
         //so_backsong = (AudioClip)Resources.Load<AudioClip>($"so_backsong");
-        so_backsong = (AudioClip)Resources.Load<AudioClip>($"Music/so_battle_theme");
-        musicPlayer.volume = 0.2f;
+        if (Player_Status.CurrentBar == 1)
+        {
+            so_backsong = (AudioClip)Resources.Load<AudioClip>($"Music/so_battle_theme");
+            musicPlayer.volume = 0.2f;
+        }
+        if (Player_Status.CurrentBar == 2)
+        {
+            so_backsong = (AudioClip)Resources.Load<AudioClip>($"Music/so_battle_theme_brian");
+            musicPlayer.volume = 0.55f;
+        }
+        if (Player_Status.CurrentBar == 3)
+        {
+            so_backsong = (AudioClip)Resources.Load<AudioClip>($"Music/so_battle_theme_lenny");
+            musicPlayer.volume = 0.37f;
+        }
+        //musicPlayer.volume = 0.2f;
         soundFXPlayer.volume = 0.8f;
         soundPlayer.volume = 0.8f;
         musicPlayer.clip = so_backsong;
