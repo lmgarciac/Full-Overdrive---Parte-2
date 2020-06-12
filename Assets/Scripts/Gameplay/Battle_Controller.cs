@@ -265,6 +265,7 @@ public class Battle_Controller : FiniteStateMachine
             }
 
             playerhp = Player_Status.MaxHPStat;
+            playerinithp = Player_Status.MaxHPStat;
             playersp = Player_Status.MaxSPStat;
         }
     }
