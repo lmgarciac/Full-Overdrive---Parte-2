@@ -1116,11 +1116,11 @@ public class Battle_Controller : FiniteStateMachine
         //qteobject = GameObject.FindGameObjectWithTag("QTE");
         //qteobject.SetActive(false);
 
-        ev_battlestarted.playerhp = playerhp;
+        ev_battlestarted.playerhp = Player_Status.MaxHPStat;
         ev_battlestarted.playersp = playersp;
         ev_battlestarted.playerinitsp = playerinitsp;
         ev_battlestarted.enemyinitsp = enemyinitsp;
-        ev_battlestarted.playerinithp = playerinithp;
+        ev_battlestarted.playerinithp = Player_Status.MaxHPStat;
         ev_battlestarted.enemyinithp = enemyinithp;
         ev_battlestarted.buffqty = player.buff;
         ev_battlestarted.healqty = player.heal;

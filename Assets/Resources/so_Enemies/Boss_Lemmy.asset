@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Boss_Lemmy
   m_EditorClassIdentifier: 
   prefabName: Boss_Lemmy
-  enemyAttack: 16
-  enemyDefense: 15
-  enemyinitHP: 70
+  enemyAttack: 13
+  enemyDefense: 14
+  enemyinitHP: 55
   enemyinitSP: 30
-  enemyMaxHP: 70
+  enemyMaxHP: 55
   enemyMaxSP: 60
   enemyHeals: 0
   enemyBuffs: 0

@@ -16,6 +16,8 @@ public class Wall_Controller : MonoBehaviour
     private bool conversationbegin = false;
     private bool sendmessage;
 
+    private bool keypressed = false;
+
     [SerializeField] private Animator playerAnimator;
     void Start()
     {
@@ -25,7 +27,14 @@ public class Wall_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            keypressed = true;
+        }
+
         SendMessage();
+
+        Debug.Log("SendMessage: " + sendmessage);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -38,7 +47,7 @@ public class Wall_Controller : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         //Debug.Log("ExitNiebla!");
-        sendmessage = false;
+        //sendmessage = false;
     }
 
     private void SendMessage()
@@ -62,9 +71,11 @@ public class Wall_Controller : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && sendmessage && conversationbegin)
-        {
-            if (!starttalking)
+        //if (Input.GetKeyDown(KeyCode.E) && sendmessage && conversationbegin)
+          if (keypressed && sendmessage && conversationbegin)
+
+            {
+                if (!starttalking)
             {
                 ev_dialogue.talking = false;
                 ev_dialogue.dialogue = dialogue;

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Boss_Brian
   m_EditorClassIdentifier: 
   prefabName: Boss_Brian
-  enemyAttack: 13
-  enemyDefense: 15
+  enemyAttack: 12
+  enemyDefense: 13
   enemyinitHP: 50
   enemyinitSP: 40
   enemyMaxHP: 50
